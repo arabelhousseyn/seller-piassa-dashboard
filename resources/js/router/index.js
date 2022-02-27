@@ -7,6 +7,10 @@ const routes = [
     {
         path : '/',
         component: () => import('../pages/LoginPage')
+    },
+    {
+        path : '/home',
+        component: () => import('../pages/DashboardPage')
     }
 
 ]

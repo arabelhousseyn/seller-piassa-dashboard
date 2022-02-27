@@ -22,6 +22,12 @@
                                         <input id="password" type="password" @keydown="check" v-model="form.password"  class="form-control" name="password" required data-eye>
                                     </div>
 
+                                    <div v-if="hasError" class="alert alert-danger mt-3">
+                                        <ul>
+                                            <li v-for="(error,index) in errors" :key="index" >{{ error }}</li>
+                                        </ul>
+                                    </div>
+
                                     <div class="form-group mt-3">
                                         <button @click="login" :disabled="disabled" type="submit" class="btn btn-primary piassa-color btn-block">
                                             <v-progress-circular
@@ -54,6 +60,8 @@
           },
           disabled : true,
           loading : false,
+          hasError : false,
+          errors : []
       }),
       methods : {
           login(e)
@@ -64,8 +72,23 @@
                   axios.post('/api/login',this.form)
                   .then(e=>{
                       this.loading = false
-                      console.log(e.data)
+                      this.$store.commit('SET_AUTH',true)
+                      this.$store.commit('SET_USER',e.data)
+                      localStorage.setItem('isAuth',true)
+                      localStorage.setItem('data',e.data)
+                      this.$router.push('/home')
                   }).catch(err => {
+
+                      if(err.response.status == 422)
+                      {
+                          let errors = err.response.data.errors
+                          let values = Object.values(errors)
+                          for (let i = 0;i<values.length;i++)
+                          {
+                              this.errors.push(values[i][0])
+                          }
+                          this.hasError = true
+                      }
                       this.loading = false
                       this.disabled = true
                       this.removeData()
@@ -75,6 +98,8 @@
           },
           check()
           {
+              this.hasError = false
+              this.errors = []
               this.disabled = (this.form.phone == null || this.form.password == null) ? true : false
           },
           removeData()

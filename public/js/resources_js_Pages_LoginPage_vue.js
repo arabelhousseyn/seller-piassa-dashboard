@@ -58,6 +58,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -66,7 +72,9 @@ __webpack_require__.r(__webpack_exports__);
         password: null
       },
       disabled: true,
-      loading: false
+      loading: false,
+      hasError: false,
+      errors: []
     };
   },
   methods: {
@@ -78,8 +86,27 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('/sanctum/csrf-cookie').then(function (response) {
         axios.post('/api/login', _this.form).then(function (e) {
           _this.loading = false;
-          console.log(e.data);
+
+          _this.$store.commit('SET_AUTH', true);
+
+          _this.$store.commit('SET_USER', e.data);
+
+          localStorage.setItem('isAuth', true);
+          localStorage.setItem('data', e.data);
+
+          _this.$router.push('/home');
         })["catch"](function (err) {
+          if (err.response.status == 422) {
+            var errors = err.response.data.errors;
+            var values = Object.values(errors);
+
+            for (var i = 0; i < values.length; i++) {
+              _this.errors.push(values[i][0]);
+            }
+
+            _this.hasError = true;
+          }
+
           _this.loading = false;
           _this.disabled = true;
 
@@ -90,6 +117,8 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     check: function check() {
+      this.hasError = false;
+      this.errors = [];
       this.disabled = this.form.phone == null || this.form.password == null ? true : false;
     },
     removeData: function removeData() {
@@ -268,6 +297,20 @@ var render = function () {
                       },
                     }),
                   ]),
+                  _vm._v(" "),
+                  _vm.hasError
+                    ? _c("div", { staticClass: "alert alert-danger mt-3" }, [
+                        _c(
+                          "ul",
+                          _vm._l(_vm.errors, function (error, index) {
+                            return _c("li", { key: index }, [
+                              _vm._v(_vm._s(error)),
+                            ])
+                          }),
+                          0
+                        ),
+                      ])
+                    : _vm._e(),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group mt-3" }, [
                     _c(

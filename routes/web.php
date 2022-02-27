@@ -17,8 +17,6 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 
-Route::get('/',function (){
+Route::any('{any}',function (){
     return view('master');
-});
-
-Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+})->where('any', '.*')->name('home');

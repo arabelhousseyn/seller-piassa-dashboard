@@ -142,9 +142,13 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'phone' => [
+            'required' => 'Téléphone requis.',
+            'digits' => 'Téléphone doit avoir 10 chiffre',
         ],
+        'password' => [
+            'required' => 'Mote de passe requis.'
+        ]
     ],
 
     /*
