@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@section('title','Connexion')
 @section('master')
-welcome
+    <master-view />
 @endsection

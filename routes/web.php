@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\LoginController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +17,8 @@ use App\Http\Controllers\Auth\LoginController;
 Auth::routes();
 
 
-Route::get('/',[LoginController::class,'showLoginForm']);
+Route::get('/',function (){
+    return view('master');
+});
 
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

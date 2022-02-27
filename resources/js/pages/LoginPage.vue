@@ -1,0 +1,87 @@
+<template>
+    <div class="my-login-page">
+        <section class="h-100">
+            <div class="container h-100">
+                <div class="row justify-content-md-center h-100">
+                    <div class="card-wrapper">
+                        <div class="brand">
+                            <img src="public/assets/logo/piassa-logo.png" alt="logo">
+                        </div>
+                        <div class="card fat">
+                            <div class="card-body">
+                                <h4 class="card-title">Connexion</h4>
+                                <form method="POST" action="/login">
+                                    <div class="form-group">
+                                        <label for="phone">Téléphone</label>
+                                        <input id="phone" type="text" @keydown="check" v-model="form.phone" class="form-control" name="phone" required autofocus>
+                                    </div>
+
+                                    <div class="form-group mt-2">
+                                        <label for="password">Mote de passe
+                                        </label>
+                                        <input id="password" type="password" @keydown="check" v-model="form.password"  class="form-control" name="password" required data-eye>
+                                    </div>
+
+                                    <div class="form-group mt-3">
+                                        <button @click="login" :disabled="disabled" type="submit" class="btn btn-primary piassa-color btn-block">
+                                            <v-progress-circular
+                                                v-if="loading"
+                                                indeterminate
+                                                color="white"
+                                            ></v-progress-circular>
+                                            <span v-else>Connexion</span>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="footer">
+                            Copyright &copy; 2022 &mdash; piassa
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</template>
+
+<script>
+  export default {
+      data : () => ({
+          form : {
+              phone : null,
+              password : null,
+          },
+          disabled : true,
+          loading : false,
+      }),
+      methods : {
+          login(e)
+          {
+              this.loading = true
+              e.preventDefault()
+              axios.get('/sanctum/csrf-cookie').then(response => {
+                  axios.post('/api/login',this.form)
+                  .then(e=>{
+                      this.loading = false
+                      console.log(e.data)
+                  }).catch(err => {
+                      this.loading = false
+                      this.disabled = true
+                      this.removeData()
+                      console.log(err)
+                  })
+              });
+          },
+          check()
+          {
+              this.disabled = (this.form.phone == null || this.form.password == null) ? true : false
+          },
+          removeData()
+          {
+              this.form.phone = null
+              this.form.password = null
+          }
+      }
+  }
+</script>
