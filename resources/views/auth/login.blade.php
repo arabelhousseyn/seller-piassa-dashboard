@@ -79,11 +79,11 @@
                     </div>
                     <div class="card fat">
                         <div class="card-body">
-                            <h4 class="card-title">Login</h4>
+                            <h4 class="card-title">{{__('titles.login')}}</h4>
                             <form method="POST" action="{{ route('login') }}">
                                 <div class="form-group">
-                                    <label for="phone">Téléphone</label>
-                                    <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" placeholder="Téléphone" name="phone" value="{{ old('phone') }}" required autofocus>
+                                    <label for="phone">{{__('titles.phone')}}</label>
+                                    <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" placeholder="{{__('titles.phone')}}" name="phone" value="{{ old('phone') }}" required autofocus>
                                     @error('phone')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -92,9 +92,9 @@
                                 </div>
 
                                 <div class="form-group mt-2">
-                                    <label for="password">Mote de passe
+                                    <label for="password">{{__('titles.password')}}
                                     </label>
-                                    <input id="password" type="password" placeholder="Mote de passe" class="form-control @error('password') is-invalid @enderror" name="password" required data-eye>
+                                    <input id="password" type="password" placeholder="{{__('titles.password')}}" class="form-control @error('password') is-invalid @enderror" name="password" required data-eye>
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
