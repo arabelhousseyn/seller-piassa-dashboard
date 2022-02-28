@@ -775,7 +775,11 @@ var render = function () {
               _c(
                 "v-list-item",
                 { staticClass: "px-2 d-flex justify-content-center" },
-                [_c("img", { attrs: { src: _vm.$store.state.sm_logo } })]
+                [
+                  _c("a", { attrs: { href: "/home" } }, [
+                    _c("img", { attrs: { src: _vm.$store.state.sm_logo } }),
+                  ]),
+                ]
               ),
             ],
             1
@@ -930,6 +934,7 @@ var render = function () {
                 [
                   _c(
                     "v-list-item",
+                    { attrs: { link: "" } },
                     [
                       _c("v-list-item-avatar", [
                         _c("img", {

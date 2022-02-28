@@ -9,7 +9,7 @@
         <v-navigation-drawer app color="secondary" v-model="drawer" fixed>
             <v-list>
                 <v-list-item class="px-2 d-flex justify-content-center">
-                        <img :src="$store.state.sm_logo"></img>
+                        <a href="/home"><img :src="$store.state.sm_logo"></img></a>
                 </v-list-item>
             </v-list>
 

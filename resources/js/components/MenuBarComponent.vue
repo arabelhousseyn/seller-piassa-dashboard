@@ -17,7 +17,7 @@
 
             <v-card>
                 <v-list>
-                    <v-list-item>
+                    <v-list-item link>
                         <v-list-item-avatar>
                             <img
                                 :src="$store.state.user_logo"
