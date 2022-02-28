@@ -10,7 +10,7 @@
                         <div class="card fat">
                             <div class="card-body">
                                 <h4 class="card-title">Connexion</h4>
-                                <form method="POST" action="/login">
+                                <form method="POST" @click.prevent="login">
                                     <div class="form-group">
                                         <label for="phone">Téléphone</label>
                                         <input id="phone" type="text" @keydown="check" v-model="form.phone" class="form-control" name="phone" required autofocus>
@@ -29,7 +29,7 @@
                                     </div>
 
                                     <div class="form-group mt-3">
-                                        <button @click="login" :disabled="disabled" type="submit" class="btn btn-primary piassa-color btn-block">
+                                        <button :disabled="disabled" type="submit" class="btn btn-primary piassa-color btn-block">
                                             <v-progress-circular
                                                 v-if="loading"
                                                 indeterminate
