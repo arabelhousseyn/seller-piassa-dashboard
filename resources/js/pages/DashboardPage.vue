@@ -1,11 +1,13 @@
 <template>
     <div class="dashboard">
-        {{$store.state.user}}
+        <progress-circular-component />
     </div>
 </template>
 
 <script>
+import ProgressCircularComponent from "../components/ProgressCircularComponent";
 export default {
+    components: {ProgressCircularComponent},
     mounted() {
         console.log(this.$store.state.user)
     }
