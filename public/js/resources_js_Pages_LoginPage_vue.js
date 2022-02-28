@@ -335,7 +335,7 @@ var render = function () {
                         [
                           _vm.loading
                             ? _c("v-progress-circular", {
-                                attrs: { indeterminate: "", color: "white" },
+                                attrs: { indeterminate: "", color: "primary" },
                               })
                             : _c("span", [_vm._v("Connexion")]),
                         ],

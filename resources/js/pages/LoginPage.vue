@@ -33,7 +33,7 @@
                                             <v-progress-circular
                                                 v-if="loading"
                                                 indeterminate
-                                                color="white"
+                                                color="primary"
                                             ></v-progress-circular>
                                             <span v-else>Connexion</span>
                                         </button>
