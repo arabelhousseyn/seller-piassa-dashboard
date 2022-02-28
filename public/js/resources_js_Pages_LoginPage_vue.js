@@ -92,7 +92,7 @@ __webpack_require__.r(__webpack_exports__);
           _this.$store.commit('SET_USER', e.data);
 
           localStorage.setItem('isAuth', true);
-          localStorage.setItem('data', e.data);
+          localStorage.setItem('data', JSON.stringify(e.data));
 
           _this.$router.push('/home');
         })["catch"](function (err) {

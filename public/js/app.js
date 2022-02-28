@@ -5511,7 +5511,7 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_1_
     },
     CHECK_AUTH: function CHECK_AUTH(state, option) {
       state.isAuth = localStorage.getItem('isAuth') !== null ? true : false;
-      state.user = localStorage.getItem('data') !== null ? localStorage.getItem('data') : [];
+      state.user = localStorage.getItem('data') !== null ? JSON.parse(localStorage.getItem('data')) : [];
     }
   },
   actions: {},

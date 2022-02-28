@@ -25,7 +25,7 @@ export default new Vuex.Store({
         CHECK_AUTH(state,option)
         {
             state.isAuth = (localStorage.getItem('isAuth') !== null) ? true : false
-            state.user = (localStorage.getItem('data') !== null) ? localStorage.getItem('data') : []
+            state.user = (localStorage.getItem('data') !== null) ? JSON.parse(localStorage.getItem('data')) : []
         }
     },
     actions: {

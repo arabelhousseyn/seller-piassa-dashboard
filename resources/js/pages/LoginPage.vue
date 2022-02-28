@@ -75,7 +75,7 @@
                       this.$store.commit('SET_AUTH',true)
                       this.$store.commit('SET_USER',e.data)
                       localStorage.setItem('isAuth',true)
-                      localStorage.setItem('data',e.data)
+                      localStorage.setItem('data',JSON.stringify(e.data))
                       this.$router.push('/home')
                   }).catch(err => {
 
