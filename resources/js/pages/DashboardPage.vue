@@ -2,7 +2,7 @@
     <div class="dashboard">
         <progress-circular-component />
             <header-component />
-            <v-main style="background-color: #eee;">
+            <v-main>
                 <router-view />
                 <footer-component />
             </v-main>

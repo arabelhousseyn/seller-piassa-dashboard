@@ -84,6 +84,7 @@ export default {
                     if(e.status == 200)
                     {
                         this.$store.commit('SET_OUT')
+                        this.overlay = true
                         this.$router.push('/')
                     }
 

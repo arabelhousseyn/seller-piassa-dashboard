@@ -68,91 +68,18 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "div",
+    { staticClass: "main" },
+    [
+      _c("v-container", { attrs: { fluid: "" } }, [
+        _vm._v("\n        welcome\n    "),
+      ]),
+    ],
+    1
+  )
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "main" }, [
-      _vm._v("\n    welcome\n    "),
-      _c("br"),
-      _vm._v("\n    welcome\n    "),
-      _c("br"),
-      _vm._v("\n    welcome\n    "),
-      _c("br"),
-      _vm._v("\n    welcome\n    "),
-      _c("br"),
-      _vm._v("\n    welcome\n    "),
-      _c("br"),
-      _vm._v("\n    welcome\n    "),
-      _c("br"),
-      _vm._v("\n    welcome\n    "),
-      _c("br"),
-      _vm._v("\n    welcome\n    "),
-      _c("br"),
-      _vm._v("\n    welcome\n    "),
-      _c("br"),
-      _vm._v("\n    welcome\n    "),
-      _c("br"),
-      _vm._v("\n    welcome\n    "),
-      _c("br"),
-      _vm._v("\n    welcome\n    "),
-      _c("br"),
-      _vm._v("\n    welcome\n    "),
-      _c("br"),
-      _vm._v("\n    welcome\n    "),
-      _c("br"),
-      _vm._v("\n    welcome\n    "),
-      _c("br"),
-      _vm._v("\n    welcome\n    "),
-      _c("br"),
-      _vm._v("\n    welcome\n    "),
-      _c("br"),
-      _vm._v("\n    welcome\n    "),
-      _c("br"),
-      _vm._v("\n    welcome\n    "),
-      _c("br"),
-      _vm._v("\n    welcome\n    "),
-      _c("br"),
-      _vm._v("\n    welcome\n    "),
-      _c("br"),
-      _vm._v("\n    welcome\n    "),
-      _c("br"),
-      _vm._v("\n    welcome\n    "),
-      _c("br"),
-      _vm._v("\n    welcome\n    "),
-      _c("br"),
-      _vm._v("\n    welcome\n    "),
-      _c("br"),
-      _vm._v("\n    welcome\n    "),
-      _c("br"),
-      _vm._v("\n    welcome\n    "),
-      _c("br"),
-      _vm._v("\n    welcome\n    "),
-      _c("br"),
-      _vm._v("\n    welcome\n    "),
-      _c("br"),
-      _vm._v("\n    welcome\n    "),
-      _c("br"),
-      _vm._v("\n    welcome\n    "),
-      _c("br"),
-      _vm._v("\n    welcome\n    "),
-      _c("br"),
-      _vm._v("\n    welcome\n    "),
-      _c("br"),
-      _vm._v("\n    welcome\n    "),
-      _c("br"),
-      _vm._v("\n    welcome\n    "),
-      _c("br"),
-      _vm._v("\n    welcome\n    "),
-      _c("br"),
-      _vm._v("\n    welcome\n    "),
-      _c("br"),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

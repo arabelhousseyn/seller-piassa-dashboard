@@ -213,6 +213,8 @@ __webpack_require__.r(__webpack_exports__);
           if (e.status == 200) {
             _this.$store.commit('SET_OUT');
 
+            _this.overlay = true;
+
             _this.$router.push('/');
           }
         })["catch"](function (err) {
@@ -1102,12 +1104,7 @@ var render = function () {
       _vm._v(" "),
       _c("header-component"),
       _vm._v(" "),
-      _c(
-        "v-main",
-        { staticStyle: { "background-color": "#eee" } },
-        [_c("router-view"), _vm._v(" "), _c("footer-component")],
-        1
-      ),
+      _c("v-main", [_c("router-view"), _vm._v(" "), _c("footer-component")], 1),
     ],
     1
   )
