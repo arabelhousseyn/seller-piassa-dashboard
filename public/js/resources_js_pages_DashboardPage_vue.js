@@ -62,9 +62,7 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     ProgressCircularComponent: _components_ProgressCircularComponent__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
-  mounted: function mounted() {
-    console.log(this.$store.state.user);
-  }
+  mounted: function mounted() {}
 });
 
 /***/ }),

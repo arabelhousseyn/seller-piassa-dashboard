@@ -96,6 +96,14 @@ __webpack_require__.r(__webpack_exports__);
 
           _this.$router.push('/home');
         })["catch"](function (err) {
+          if (err.response.status == 429 || err.response.status == 401) {
+            var error = err.response.data.message;
+
+            _this.errors.push(error);
+
+            _this.hasError = true;
+          }
+
           if (err.response.status == 422) {
             var errors = err.response.data.errors;
             var values = Object.values(errors);
@@ -111,8 +119,6 @@ __webpack_require__.r(__webpack_exports__);
           _this.disabled = true;
 
           _this.removeData();
-
-          console.log(err);
         });
       });
     },
@@ -227,123 +233,112 @@ var render = function () {
               _c("div", { staticClass: "card-body" }, [
                 _c("h4", { staticClass: "card-title" }, [_vm._v("Connexion")]),
                 _vm._v(" "),
-                _c(
-                  "form",
-                  {
-                    attrs: { method: "POST" },
-                    on: {
-                      click: function ($event) {
-                        $event.preventDefault()
-                        return _vm.login.apply(null, arguments)
-                      },
-                    },
-                  },
-                  [
-                    _c("div", { staticClass: "form-group" }, [
-                      _c("label", { attrs: { for: "phone" } }, [
-                        _vm._v("Téléphone"),
-                      ]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.form.phone,
-                            expression: "form.phone",
-                          },
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          id: "phone",
-                          type: "text",
-                          name: "phone",
-                          required: "",
-                          autofocus: "",
-                        },
-                        domProps: { value: _vm.form.phone },
-                        on: {
-                          keydown: _vm.check,
-                          input: function ($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(_vm.form, "phone", $event.target.value)
-                          },
-                        },
-                      }),
+                _c("form", { attrs: { method: "POST" } }, [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "phone" } }, [
+                      _vm._v("Téléphone"),
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "form-group mt-2" }, [
-                      _c("label", { attrs: { for: "password" } }, [
-                        _vm._v(
-                          "Mote de passe\n                                    "
-                        ),
-                      ]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.form.password,
-                            expression: "form.password",
-                          },
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          id: "password",
-                          type: "password",
-                          name: "password",
-                          required: "",
-                          "data-eye": "",
-                        },
-                        domProps: { value: _vm.form.password },
-                        on: {
-                          keydown: _vm.check,
-                          input: function ($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.$set(_vm.form, "password", $event.target.value)
-                          },
-                        },
-                      }),
-                    ]),
-                    _vm._v(" "),
-                    _vm.hasError
-                      ? _c("div", { staticClass: "alert alert-danger mt-3" }, [
-                          _c(
-                            "ul",
-                            _vm._l(_vm.errors, function (error, index) {
-                              return _c("li", { key: index }, [
-                                _vm._v(_vm._s(error)),
-                              ])
-                            }),
-                            0
-                          ),
-                        ])
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group mt-3" }, [
-                      _c(
-                        "button",
+                    _c("input", {
+                      directives: [
                         {
-                          staticClass: "btn btn-primary piassa-color btn-block",
-                          attrs: { disabled: _vm.disabled, type: "submit" },
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.phone,
+                          expression: "form.phone",
                         },
-                        [
-                          _vm.loading
-                            ? _c("v-progress-circular", {
-                                attrs: { indeterminate: "", color: "primary" },
-                              })
-                            : _c("span", [_vm._v("Connexion")]),
-                        ],
-                        1
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        id: "phone",
+                        type: "text",
+                        name: "phone",
+                        required: "",
+                        autofocus: "",
+                      },
+                      domProps: { value: _vm.form.phone },
+                      on: {
+                        keydown: _vm.check,
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.form, "phone", $event.target.value)
+                        },
+                      },
+                    }),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group mt-2" }, [
+                    _c("label", { attrs: { for: "password" } }, [
+                      _vm._v(
+                        "Mote de passe\n                                    "
                       ),
                     ]),
-                  ]
-                ),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.password,
+                          expression: "form.password",
+                        },
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        id: "password",
+                        type: "password",
+                        name: "password",
+                        required: "",
+                        "data-eye": "",
+                      },
+                      domProps: { value: _vm.form.password },
+                      on: {
+                        keydown: _vm.check,
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.form, "password", $event.target.value)
+                        },
+                      },
+                    }),
+                  ]),
+                  _vm._v(" "),
+                  _vm.hasError
+                    ? _c("div", { staticClass: "alert alert-danger mt-3" }, [
+                        _c(
+                          "ul",
+                          _vm._l(_vm.errors, function (error, index) {
+                            return _c("li", { key: index }, [
+                              _vm._v(_vm._s(error)),
+                            ])
+                          }),
+                          0
+                        ),
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group mt-3" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary piassa-color btn-block",
+                        attrs: { disabled: _vm.disabled, type: "submit" },
+                        on: { click: _vm.login },
+                      },
+                      [
+                        _vm.loading
+                          ? _c("v-progress-circular", {
+                              attrs: { indeterminate: "", color: "primary" },
+                            })
+                          : _c("span", [_vm._v("Connexion")]),
+                      ],
+                      1
+                    ),
+                  ]),
+                ]),
               ]),
             ]),
             _vm._v(" "),

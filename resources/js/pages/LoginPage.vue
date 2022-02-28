@@ -10,7 +10,7 @@
                         <div class="card fat">
                             <div class="card-body">
                                 <h4 class="card-title">Connexion</h4>
-                                <form method="POST" @click.prevent="login">
+                                <form method="POST">
                                     <div class="form-group">
                                         <label for="phone">Téléphone</label>
                                         <input id="phone" type="text" @keydown="check" v-model="form.phone" class="form-control" name="phone" required autofocus>
@@ -29,7 +29,7 @@
                                     </div>
 
                                     <div class="form-group mt-3">
-                                        <button :disabled="disabled" type="submit" class="btn btn-primary piassa-color btn-block">
+                                        <button @click="login" :disabled="disabled" type="submit" class="btn btn-primary piassa-color btn-block">
                                             <v-progress-circular
                                                 v-if="loading"
                                                 indeterminate
@@ -79,6 +79,14 @@
                       this.$router.push('/home')
                   }).catch(err => {
 
+                      if(err.response.status == 429 || err.response.status == 401)
+                      {
+                          let error = err.response.data.message
+
+                          this.errors.push(error)
+                          this.hasError = true
+                      }
+
                       if(err.response.status == 422)
                       {
                           let errors = err.response.data.errors
@@ -92,7 +100,6 @@
                       this.loading = false
                       this.disabled = true
                       this.removeData()
-                      console.log(err)
                   })
               });
           },

@@ -9,7 +9,7 @@ import ProgressCircularComponent from "../components/ProgressCircularComponent";
 export default {
     components: {ProgressCircularComponent},
     mounted() {
-        console.log(this.$store.state.user)
+
     }
 }
 </script>

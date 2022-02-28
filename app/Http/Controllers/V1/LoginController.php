@@ -24,6 +24,8 @@ class LoginController extends Controller
                 $token = $user->createToken('piassa-dashboard')->plainTextToken;
                 $user['token'] = $token;
                 return response($user,200);
+            }else{
+                return response(['message' => __('messages.failed')],401);
             }
         }
     }
