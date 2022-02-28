@@ -2,26 +2,35 @@
     <div>
         <v-app-bar app color="white" elevation="0" clipped-right>
             <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-            <v-toolbar-title>Title</v-toolbar-title>
+            <v-spacer></v-spacer>
+            welcome
         </v-app-bar>
 
         <v-navigation-drawer app color="secondary" v-model="drawer" fixed>
             <v-list>
                 <v-list-item class="px-2 d-flex justify-content-center">
-                        <img style="height: 50px; width: 150px;" :src="$store.state.logo"></img>
+                        <img :src="$store.state.sm_logo"></img>
                 </v-list-item>
             </v-list>
 
-            <v-list nav>
-                <v-list-item v-for="item in items" :key="item.title" link>
-                    <v-list-item-icon>
-                        <v-icon>{{ item.icon }}</v-icon>
-                    </v-list-item-icon>
-
-                    <v-list-item-content>
-                        <v-list-item-title>{{ item.title }}</v-list-item-title>
-                    </v-list-item-content>
-                </v-list-item>
+            <v-list dark>
+                <v-list-item-group
+                    v-model="selectedItem"
+                    color="primary"
+                >
+                    <v-list-item
+                        v-for="(item, i) in items"
+                        :key="i"
+                        style="border-right: 4px solid;"
+                    >
+                        <v-list-item-icon>
+                            <v-icon v-text="item.icon"></v-icon>
+                        </v-list-item-icon>
+                        <v-list-item-content>
+                            <v-list-item-title v-text="item.title"></v-list-item-title>
+                        </v-list-item-content>
+                    </v-list-item>
+                </v-list-item-group>
             </v-list>
         </v-navigation-drawer>
     </div>
@@ -30,6 +39,7 @@
 <script>
 export default {
     data: () => ({
+        selectedItem: 0,
         drawer: null,
         items: [
             { title: 'Dashboard', icon: 'mdi-view-dashboard' },
