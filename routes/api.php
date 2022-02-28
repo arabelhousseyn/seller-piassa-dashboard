@@ -24,3 +24,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::middleware(['throttle:login'])->group(function (){
     Route::post('login',LoginController::class);
 });
+
+
+Route::middleware('auth:sanctum')->group(function (){
+
+});
