@@ -24,6 +24,8 @@ export default new Vuex.Store({
         {
             state.user = []
             state.isAuth = false
+            localStorage.removeItem('isAuth')
+            localStorage.removeItem('data')
         },
         CHECK_AUTH(state,option)
         {

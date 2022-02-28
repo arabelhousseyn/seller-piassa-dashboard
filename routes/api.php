@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 
-use App\Http\Controllers\V1\{LoginController};
+use App\Http\Controllers\V1\{LoginController,LogoutController};
 
 /*
 |--------------------------------------------------------------------------
@@ -27,5 +27,11 @@ Route::middleware(['throttle:login'])->group(function (){
 
 
 Route::middleware('auth:sanctum')->group(function (){
+
+
+    // admin handle
+    Route::prefix('admin')->group(function (){
+        Route::get('logout',LogoutController::class);
+    });
 
 });

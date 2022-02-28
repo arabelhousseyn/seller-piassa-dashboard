@@ -202,6 +202,23 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     logout: function logout() {
+      var _this = this;
+
+      axios.get('/sanctum/csrf-cookie').then(function (res) {
+        axios.get('api/admin/logout', {
+          headers: {
+            'Authorization': 'Bearer ' + _this.$store.state.user.token
+          }
+        }).then(function (e) {
+          if (e.status == 200) {
+            _this.$store.commit('SET_OUT');
+
+            _this.$router.push('/');
+          }
+        })["catch"](function (err) {
+          console.log(err);
+        });
+      });
       this.menu = false;
     }
   }
@@ -234,7 +251,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      overlay: false
+      overlay: true
     };
   },
   created: function created() {
@@ -873,7 +890,7 @@ var render = function () {
                     "v-btn",
                     _vm._g(
                       _vm._b(
-                        { attrs: { flat: "", elevation: "0", color: "white" } },
+                        { attrs: { elevation: "0", color: "white" } },
                         "v-btn",
                         attrs,
                         false

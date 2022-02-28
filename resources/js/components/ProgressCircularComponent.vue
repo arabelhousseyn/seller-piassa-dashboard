@@ -13,7 +13,7 @@
 <script>
 export default {
     data: () => ({
-        overlay: false,
+        overlay: true,
     }),
     created() {
         setTimeout(() => {

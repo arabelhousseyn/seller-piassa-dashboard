@@ -10,7 +10,7 @@
                 <v-avatar>
                     <v-img :src="$store.state.user_logo"></v-img>
                 </v-avatar>
-                <v-btn v-bind="attrs" v-on="on" flat elevation="0" color="white">
+                <v-btn v-bind="attrs" v-on="on" elevation="0" color="white">
                     {{ $store.state.user.fullName }} <span><v-icon>mdi-menu-down</v-icon> </span>
                 </v-btn>
             </template>
@@ -78,6 +78,19 @@ export default {
     methods : {
         logout()
         {
+            axios.get('/sanctum/csrf-cookie').then(res =>{
+                axios.get('api/admin/logout',{headers : { 'Authorization' : 'Bearer ' + this.$store.state.user.token }})
+                .then(e =>{
+                    if(e.status == 200)
+                    {
+                        this.$store.commit('SET_OUT')
+                        this.$router.push('/')
+                    }
+
+                }).catch(err =>{
+                    console.log(err)
+                })
+            })
             this.menu = false
         }
     }
