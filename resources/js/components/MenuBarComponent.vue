@@ -84,7 +84,10 @@ export default {
                     if(e.status == 200)
                     {
                         this.$store.commit('SET_OUT')
-                        this.overlay = true
+                        this.$toast.open({
+                            message : "Opération effectué",
+                            type : 'success'
+                        })
                         this.$router.push('/')
                     }
 

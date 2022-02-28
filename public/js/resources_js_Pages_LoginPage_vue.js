@@ -96,12 +96,19 @@ __webpack_require__.r(__webpack_exports__);
 
           _this.$router.push('/home');
         })["catch"](function (err) {
-          if (err.response.status == 429 || err.response.status == 401) {
+          if (err.response.status == 401) {
             var error = err.response.data.message;
 
             _this.errors.push(error);
 
             _this.hasError = true;
+          }
+
+          if (err.response.status == 429) {
+            _this.$toast.open({
+              message: err.response.data.message,
+              type: 'error'
+            });
           }
 
           if (err.response.status == 422) {

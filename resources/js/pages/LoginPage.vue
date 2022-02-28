@@ -79,12 +79,20 @@
                       this.$router.push('/home')
                   }).catch(err => {
 
-                      if(err.response.status == 429 || err.response.status == 401)
+                      if(err.response.status == 401)
                       {
                           let error = err.response.data.message
 
                           this.errors.push(error)
                           this.hasError = true
+                      }
+
+                      if(err.response.status == 429)
+                      {
+                          this.$toast.open({
+                              message : err.response.data.message,
+                              type : 'error'
+                          })
                       }
 
                       if(err.response.status == 422)

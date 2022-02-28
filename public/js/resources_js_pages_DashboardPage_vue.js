@@ -213,7 +213,10 @@ __webpack_require__.r(__webpack_exports__);
           if (e.status == 200) {
             _this.$store.commit('SET_OUT');
 
-            _this.overlay = true;
+            _this.$toast.open({
+              message: "Opération effectué",
+              type: 'success'
+            });
 
             _this.$router.push('/');
           }
