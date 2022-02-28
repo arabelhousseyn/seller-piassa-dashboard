@@ -5,7 +5,7 @@
                 <div class="row justify-content-md-center h-100">
                     <div class="card-wrapper">
                         <div class="brand">
-                            <img src="public/assets/logo/piassa-logo.png" alt="logo">
+                            <img :src="$store.state.logo" alt="logo">
                         </div>
                         <div class="card fat">
                             <div class="card-body">

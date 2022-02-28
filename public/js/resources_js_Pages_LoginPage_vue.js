@@ -219,7 +219,9 @@ var render = function () {
       _c("div", { staticClass: "container h-100" }, [
         _c("div", { staticClass: "row justify-content-md-center h-100" }, [
           _c("div", { staticClass: "card-wrapper" }, [
-            _vm._m(0),
+            _c("div", { staticClass: "brand" }, [
+              _c("img", { attrs: { src: _vm.$store.state.logo, alt: "logo" } }),
+            ]),
             _vm._v(" "),
             _c("div", { staticClass: "card fat" }, [
               _c("div", { staticClass: "card-body" }, [
@@ -345,18 +347,7 @@ var render = function () {
     ]),
   ])
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "brand" }, [
-      _c("img", {
-        attrs: { src: "public/assets/logo/piassa-logo.png", alt: "logo" },
-      }),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
