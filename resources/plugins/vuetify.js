@@ -11,7 +11,8 @@ export default new Vuetify({
                 primary: '#e85810',
                 secondary: '#304156',
                 third : '#eee',
-                white : '#FFF'
+                white : '#FFF',
+                black : '#000'
             },
         },
     },

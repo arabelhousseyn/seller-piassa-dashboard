@@ -3,7 +3,7 @@
         <v-app-bar app color="white" elevation="0" clipped-right>
             <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
             <v-spacer></v-spacer>
-            welcome
+            <menu-bar-component />
         </v-app-bar>
 
         <v-navigation-drawer app color="secondary" v-model="drawer" fixed>
@@ -37,7 +37,9 @@
 </template>
 
 <script>
+import MenuBarComponent from "./MenuBarComponent";
 export default {
+    components: {MenuBarComponent},
     data: () => ({
         selectedItem: 0,
         drawer: null,
