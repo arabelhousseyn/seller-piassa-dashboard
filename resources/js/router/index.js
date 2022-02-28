@@ -12,7 +12,10 @@ const routes = [
         path : '/home',
         component: () => import('../pages/DashboardPage'),
         children : [
-
+            {
+                path : '/',
+                component : () => import('../components/MainComponent')
+            }
         ]
     }
 

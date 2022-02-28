@@ -5469,7 +5469,12 @@ var routes = [{
   component: function component() {
     return __webpack_require__.e(/*! import() */ "resources_js_pages_DashboardPage_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../pages/DashboardPage */ "./resources/js/pages/DashboardPage.vue"));
   },
-  children: []
+  children: [{
+    path: '/',
+    component: function component() {
+      return __webpack_require__.e(/*! import() */ "resources_js_components_MainComponent_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../components/MainComponent */ "./resources/js/components/MainComponent.vue"));
+    }
+  }]
 }];
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: 'history',
@@ -5549,9 +5554,8 @@ vue__WEBPACK_IMPORTED_MODULE_2__["default"].use((vuetify__WEBPACK_IMPORTED_MODUL
     themes: {
       light: {
         primary: '#e85810',
-        secondary: '#3665f3',
-        accent: '#8c9eff',
-        error: '#b71c1c',
+        secondary: '#304156',
+        third: '#eee',
         white: '#FFF'
       }
     }
@@ -91679,7 +91683,7 @@ var index = {
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_pages_LoginPage_vue":1,"resources_js_pages_DashboardPage_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_pages_LoginPage_vue":1,"resources_js_pages_DashboardPage_vue":1,"resources_js_components_MainComponent_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

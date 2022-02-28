@@ -1,13 +1,20 @@
 <template>
     <div class="dashboard">
         <progress-circular-component />
-    </div>
+            <header-component />
+            <v-main style="background-color: #eee;">
+                <router-view />
+                <footer-component />
+            </v-main>
+        </div>
 </template>
 
 <script>
 import ProgressCircularComponent from "../components/ProgressCircularComponent";
+import HeaderComponent from "../components/HeaderComponent";
+import FooterComponent from "../components/FooterComponent";
 export default {
-    components: {ProgressCircularComponent},
+    components: {FooterComponent, HeaderComponent, ProgressCircularComponent},
     mounted() {
 
     }
