@@ -2,16 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
-class Shipper extends Authenticatable
+class Shipper extends Model
 {
-    use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
+    use  HasFactory, Notifiable, SoftDeletes;
     const KM = 16;
     const S = 0;
     const E = 500;
