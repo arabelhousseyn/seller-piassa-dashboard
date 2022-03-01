@@ -2210,7 +2210,7 @@ var render = function () {
         {
           attrs: {
             "close-on-content-click": false,
-            "nudge-width": 200,
+            "nudge-width": 50,
             "offset-x": "",
           },
           scopedSlots: _vm._u([

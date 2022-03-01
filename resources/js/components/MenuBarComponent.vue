@@ -3,7 +3,7 @@
         <v-menu
             v-model="menu"
             :close-on-content-click="false"
-            :nudge-width="200"
+            :nudge-width="50"
             offset-x
         >
             <template v-slot:activator="{ on, attrs }">
