@@ -15,6 +15,10 @@ const routes = [
             {
                 path : '/',
                 component : () => import('../components/MainComponent')
+            },
+            {
+                path : '*',
+                component: () => import('../pages/NotFoundPage'),
             }
         ]
     }
