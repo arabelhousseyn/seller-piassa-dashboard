@@ -7,7 +7,7 @@
             offset-x
         >
             <template v-slot:activator="{ on, attrs }">
-                <v-avatar>
+                <v-avatar size="35">
                     <v-img :src="$store.state.user_logo"></v-img>
                 </v-avatar>
                 <v-btn v-bind="attrs" v-on="on" elevation="0" color="white">

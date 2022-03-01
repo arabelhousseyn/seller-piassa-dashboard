@@ -1373,6 +1373,7 @@ var render = function () {
                 return [
                   _c(
                     "v-avatar",
+                    { attrs: { size: "35" } },
                     [
                       _c("v-img", {
                         attrs: { src: _vm.$store.state.user_logo },
