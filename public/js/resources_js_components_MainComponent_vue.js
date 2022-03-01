@@ -64,6 +64,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -332,7 +353,56 @@ var render = function () {
                 { attrs: { cols: "3" } },
                 [
                   _c("card-information-component", {
-                    attrs: { count: "50", icon: "mdi-account", title: "user" },
+                    attrs: {
+                      count: _vm.$store.state.data.users.count,
+                      icon: _vm.$store.state.data.users.icon,
+                      title: _vm.$store.state.data.users.title,
+                    },
+                  }),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-col",
+                { attrs: { cols: "3" } },
+                [
+                  _c("card-information-component", {
+                    attrs: {
+                      count: _vm.$store.state.data.sellers.count,
+                      icon: _vm.$store.state.data.sellers.icon,
+                      title: _vm.$store.state.data.sellers.title,
+                    },
+                  }),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-col",
+                { attrs: { cols: "3" } },
+                [
+                  _c("card-information-component", {
+                    attrs: {
+                      count: _vm.$store.state.data.shippers.count,
+                      icon: _vm.$store.state.data.shippers.icon,
+                      title: _vm.$store.state.data.shippers.title,
+                    },
+                  }),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-col",
+                { attrs: { cols: "3" } },
+                [
+                  _c("card-information-component", {
+                    attrs: {
+                      count: _vm.$store.state.data.company.count,
+                      icon: _vm.$store.state.data.company.icon,
+                      title: _vm.$store.state.data.company.title,
+                    },
                   }),
                 ],
                 1
