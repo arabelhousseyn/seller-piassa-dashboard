@@ -114,6 +114,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -897,7 +898,7 @@ var render = function () {
       _c(
         "v-menu",
         {
-          attrs: { bottom: "", "offset-y": "" },
+          attrs: { bottom: "", "offset-y": "", "max-height": "350px" },
           scopedSlots: _vm._u([
             {
               key: "activator",

@@ -3,6 +3,7 @@
         <v-menu
             bottom
             offset-y
+            max-height="350px"
         >
             <template v-slot:activator="{ on, attrs }">
                 <v-badge
