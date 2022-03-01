@@ -3,6 +3,7 @@
         <v-app-bar app color="white" elevation="0" clipped-right>
             <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
             <v-spacer></v-spacer>
+            <bell-notification-menu-component />
             <menu-bar-component />
         </v-app-bar>
 
@@ -37,9 +38,10 @@
 </template>
 
 <script>
-import MenuBarComponent from "./MenuBarComponent";
+import MenuBarComponent from "./MenuBarComponent"
+import BellNotificationMenuComponent from './BellNotificationMenuComponent'
 export default {
-    components: {MenuBarComponent},
+    components: {MenuBarComponent,BellNotificationMenuComponent},
     data: () => ({
         selectedItem: 0,
         drawer: null,

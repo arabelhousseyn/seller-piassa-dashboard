@@ -1,6 +1,155 @@
 "use strict";
 (self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_pages_DashboardPage_vue"],{
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/BellNotificationMenuComponent.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/BellNotificationMenuComponent.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      selected: [2],
+      items: [{
+        action: '15 min',
+        headline: 'Brunch this weekend?',
+        subtitle: "I'll be in your neighborhood doing errands this weekend. Do you want to hang out?",
+        title: 'Ali Connors'
+      }, {
+        action: '2 hr',
+        headline: 'Summer BBQ',
+        subtitle: "Wish I could come, but I'm out of town this weekend.",
+        title: 'me, Scrott, Jennifer'
+      }, {
+        action: '6 hr',
+        headline: 'Oui oui',
+        subtitle: 'Do you have Paris recommendations? Have you ever been?',
+        title: 'Sandra Adams'
+      }, {
+        action: '12 hr',
+        headline: 'Birthday gift',
+        subtitle: 'Have any ideas about what we should get Heidi for her birthday?',
+        title: 'Trevor Hansen'
+      }, {
+        action: '18hr',
+        headline: 'Recipe to try',
+        subtitle: 'We should eat this: Grate, Squash, Corn, and tomatillo Tacos.',
+        title: 'Britta Holt'
+      }]
+    };
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/FooterComponent.vue?vue&type=script&lang=js&":
 /*!**********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/FooterComponent.vue?vue&type=script&lang=js& ***!
@@ -49,6 +198,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _MenuBarComponent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MenuBarComponent */ "./resources/js/components/MenuBarComponent.vue");
+/* harmony import */ var _BellNotificationMenuComponent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BellNotificationMenuComponent */ "./resources/js/components/BellNotificationMenuComponent.vue");
+//
 //
 //
 //
@@ -88,9 +239,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    MenuBarComponent: _MenuBarComponent__WEBPACK_IMPORTED_MODULE_0__["default"]
+    MenuBarComponent: _MenuBarComponent__WEBPACK_IMPORTED_MODULE_0__["default"],
+    BellNotificationMenuComponent: _BellNotificationMenuComponent__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   data: function data() {
     return {
@@ -308,6 +461,44 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/BellNotificationMenuComponent.vue":
+/*!*******************************************************************!*\
+  !*** ./resources/js/components/BellNotificationMenuComponent.vue ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _BellNotificationMenuComponent_vue_vue_type_template_id_57778d15___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BellNotificationMenuComponent.vue?vue&type=template&id=57778d15& */ "./resources/js/components/BellNotificationMenuComponent.vue?vue&type=template&id=57778d15&");
+/* harmony import */ var _BellNotificationMenuComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BellNotificationMenuComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/BellNotificationMenuComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _BellNotificationMenuComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _BellNotificationMenuComponent_vue_vue_type_template_id_57778d15___WEBPACK_IMPORTED_MODULE_0__.render,
+  _BellNotificationMenuComponent_vue_vue_type_template_id_57778d15___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/BellNotificationMenuComponent.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/FooterComponent.vue":
 /*!*****************************************************!*\
   !*** ./resources/js/components/FooterComponent.vue ***!
@@ -498,6 +689,21 @@ component.options.__file = "resources/js/pages/DashboardPage.vue"
 
 /***/ }),
 
+/***/ "./resources/js/components/BellNotificationMenuComponent.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/components/BellNotificationMenuComponent.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BellNotificationMenuComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./BellNotificationMenuComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/BellNotificationMenuComponent.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BellNotificationMenuComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/js/components/FooterComponent.vue?vue&type=script&lang=js&":
 /*!******************************************************************************!*\
   !*** ./resources/js/components/FooterComponent.vue?vue&type=script&lang=js& ***!
@@ -570,6 +776,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DashboardPage_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./DashboardPage.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/DashboardPage.vue?vue&type=script&lang=js&");
  /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DashboardPage_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/BellNotificationMenuComponent.vue?vue&type=template&id=57778d15&":
+/*!**************************************************************************************************!*\
+  !*** ./resources/js/components/BellNotificationMenuComponent.vue?vue&type=template&id=57778d15& ***!
+  \**************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BellNotificationMenuComponent_vue_vue_type_template_id_57778d15___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BellNotificationMenuComponent_vue_vue_type_template_id_57778d15___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BellNotificationMenuComponent_vue_vue_type_template_id_57778d15___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./BellNotificationMenuComponent.vue?vue&type=template&id=57778d15& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/BellNotificationMenuComponent.vue?vue&type=template&id=57778d15&");
+
 
 /***/ }),
 
@@ -649,6 +871,268 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DashboardPage_vue_vue_type_template_id_576da70a___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DashboardPage_vue_vue_type_template_id_576da70a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./DashboardPage.vue?vue&type=template&id=576da70a& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/DashboardPage.vue?vue&type=template&id=576da70a&");
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/BellNotificationMenuComponent.vue?vue&type=template&id=57778d15&":
+/*!*****************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/BellNotificationMenuComponent.vue?vue&type=template&id=57778d15& ***!
+  \*****************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "bell-notification mr-5" },
+    [
+      _c(
+        "v-menu",
+        {
+          attrs: { bottom: "", "offset-y": "" },
+          scopedSlots: _vm._u([
+            {
+              key: "activator",
+              fn: function (ref) {
+                var on = ref.on
+                var attrs = ref.attrs
+                return [
+                  _c(
+                    "v-badge",
+                    {
+                      attrs: { bordered: "", color: "error", overlap: "" },
+                      scopedSlots: _vm._u(
+                        [
+                          {
+                            key: "badge",
+                            fn: function () {
+                              return [_c("span", [_vm._v("0")])]
+                            },
+                            proxy: true,
+                          },
+                        ],
+                        null,
+                        true
+                      ),
+                    },
+                    [
+                      _vm._v(" "),
+                      _c(
+                        "v-btn",
+                        _vm._g(
+                          _vm._b(
+                            { attrs: { icon: "", small: "" } },
+                            "v-btn",
+                            attrs,
+                            false
+                          ),
+                          on
+                        ),
+                        [_c("v-icon", [_vm._v("mdi-bell")])],
+                        1
+                      ),
+                    ],
+                    1
+                  ),
+                ]
+              },
+            },
+          ]),
+        },
+        [
+          _vm._v(" "),
+          _c(
+            "v-card",
+            [
+              _c(
+                "v-card-text",
+                [
+                  _c(
+                    "v-list",
+                    { attrs: { "two-line": "" } },
+                    [
+                      _c(
+                        "v-list-item-group",
+                        [
+                          _c(
+                            "v-list-item",
+                            [
+                              _c(
+                                "v-list-item-avatar",
+                                [_c("v-icon", [_vm._v("mdi-star")])],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-list-item-content",
+                                [
+                                  _c("v-list-item-title", [_vm._v("hello")]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-list-item-subtitle",
+                                    { staticClass: "text--primary" },
+                                    [_vm._v("You have new notification")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("v-list-item-subtitle", [
+                                    _vm._v("New notification"),
+                                  ]),
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-list-item-action",
+                                [
+                                  _c("v-list-item-action-text", [
+                                    _vm._v(
+                                      "\n                                            6h ago\n                                        "
+                                    ),
+                                  ]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-icon",
+                                    { attrs: { color: "grey lighten-1" } },
+                                    [_vm._v("mdi-email-open-outline")]
+                                  ),
+                                ],
+                                1
+                              ),
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c("v-divider"),
+                          _vm._v(" "),
+                          _c(
+                            "v-list-item",
+                            [
+                              _c(
+                                "v-list-item-avatar",
+                                [_c("v-icon", [_vm._v("mdi-star")])],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-list-item-content",
+                                [
+                                  _c("v-list-item-title", [_vm._v("hello")]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-list-item-subtitle",
+                                    { staticClass: "text--primary" },
+                                    [_vm._v("You have new notification")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("v-list-item-subtitle", [
+                                    _vm._v("New notification"),
+                                  ]),
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-list-item-action",
+                                [
+                                  _c("v-list-item-action-text", [
+                                    _vm._v(
+                                      "\n                                    6h ago\n                                "
+                                    ),
+                                  ]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-icon",
+                                    { attrs: { color: "grey lighten-1" } },
+                                    [_vm._v("mdi-email-open-outline")]
+                                  ),
+                                ],
+                                1
+                              ),
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c("v-divider"),
+                          _vm._v(" "),
+                          _c(
+                            "v-list-item",
+                            [
+                              _c(
+                                "v-list-item-avatar",
+                                [_c("v-icon", [_vm._v("mdi-star")])],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-list-item-content",
+                                [
+                                  _c("v-list-item-title", [_vm._v("hello")]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-list-item-subtitle",
+                                    { staticClass: "text--primary" },
+                                    [_vm._v("You have new notification")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("v-list-item-subtitle", [
+                                    _vm._v("New notification"),
+                                  ]),
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-list-item-action",
+                                [
+                                  _c("v-list-item-action-text", [
+                                    _vm._v(
+                                      "\n                                    6h ago\n                                "
+                                    ),
+                                  ]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-icon",
+                                    { attrs: { color: "grey lighten-1" } },
+                                    [_vm._v("mdi-email-open-outline")]
+                                  ),
+                                ],
+                                1
+                              ),
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c("v-divider"),
+                        ],
+                        1
+                      ),
+                    ],
+                    1
+                  ),
+                ],
+                1
+              ),
+            ],
+            1
+          ),
+        ],
+        1
+      ),
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
 
 
 /***/ }),
@@ -753,6 +1237,8 @@ var render = function () {
           }),
           _vm._v(" "),
           _c("v-spacer"),
+          _vm._v(" "),
+          _c("bell-notification-menu-component"),
           _vm._v(" "),
           _c("menu-bar-component"),
         ],
