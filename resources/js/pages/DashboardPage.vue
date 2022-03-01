@@ -4,8 +4,8 @@
             <header-component />
             <v-main>
                 <router-view />
-                <footer-component />
             </v-main>
+        <footer-component />
         </div>
 </template>
 

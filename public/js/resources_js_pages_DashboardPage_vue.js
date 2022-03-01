@@ -1112,7 +1112,9 @@ var render = function () {
       _vm._v(" "),
       _c("header-component"),
       _vm._v(" "),
-      _c("v-main", [_c("router-view"), _vm._v(" "), _c("footer-component")], 1),
+      _c("v-main", [_c("router-view")], 1),
+      _vm._v(" "),
+      _c("footer-component"),
     ],
     1
   )
