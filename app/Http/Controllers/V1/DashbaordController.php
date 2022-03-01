@@ -15,7 +15,7 @@ class DashbaordController extends Controller
      */
     public function __invoke()
     {
-        $comission_info = Money::DZD(CompanyCommission::sum('amount'));
+
         $data = [
             'users' => [
                 'count' => User::count(),
@@ -33,7 +33,7 @@ class DashbaordController extends Controller
                 'title' => __('messages.shippers')
             ],
             'company' => [
-                'count' => $comission_info->getAmount() . ' DZD',
+                'count' => Money::DZD(CompanyCommission::sum('amount'))->getAmount() . ' DZD',
                 'icon' => 'mdi-currency-usd',
                 'title' => __('messages.company')
             ],
