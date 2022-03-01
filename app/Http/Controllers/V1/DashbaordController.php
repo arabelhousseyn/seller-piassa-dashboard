@@ -4,6 +4,7 @@ namespace App\Http\Controllers\V1;
 
 use App\Http\Controllers\Controller;
 use App\Models\{User,Seller,Shipper,CompanyCommission};
+use Akaunting\Money\Money;
 class DashbaordController extends Controller
 {
     /**
@@ -14,7 +15,7 @@ class DashbaordController extends Controller
      */
     public function __invoke()
     {
-
+        $comission_info = Money::DZD(CompanyCommission::sum('amount'));
         $data = [
             'users' => [
                 'count' => User::count(),
@@ -32,7 +33,7 @@ class DashbaordController extends Controller
                 'title' => __('messages.shippers')
             ],
             'company' => [
-                'count' => CompanyCommission::sum('amount'),
+                'count' => $comission_info->getAmount() . ' DZD',
                 'icon' => 'mdi-currency-usd',
                 'title' => __('messages.company')
             ],
