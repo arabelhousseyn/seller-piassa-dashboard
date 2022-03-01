@@ -250,8 +250,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -262,17 +260,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       selectedItem: 0,
-      drawer: null,
-      items: [{
-        title: 'Dashboard',
-        icon: 'mdi-view-dashboard'
-      }, {
-        title: 'Photos',
-        icon: 'mdi-image'
-      }, {
-        title: 'About',
-        icon: 'mdi-help-box'
-      }]
+      drawer: null
     };
   }
 });
@@ -2138,34 +2126,26 @@ var render = function () {
                     expression: "selectedItem",
                   },
                 },
-                _vm._l(_vm.items, function (item, i) {
-                  return _c(
+                [
+                  _c(
                     "v-list-item",
-                    { key: i, staticStyle: { "border-right": "4px solid" } },
+                    { staticStyle: { "border-right": "4px solid" } },
                     [
                       _c(
                         "v-list-item-icon",
-                        [
-                          _c("v-icon", {
-                            domProps: { textContent: _vm._s(item.icon) },
-                          }),
-                        ],
+                        [_c("v-icon", [_vm._v("mdi-home")])],
                         1
                       ),
                       _vm._v(" "),
                       _c(
                         "v-list-item-content",
-                        [
-                          _c("v-list-item-title", {
-                            domProps: { textContent: _vm._s(item.title) },
-                          }),
-                        ],
+                        [_c("v-list-item-title", [_vm._v("Acceuil")])],
                         1
                       ),
                     ],
                     1
-                  )
-                }),
+                  ),
+                ],
                 1
               ),
             ],

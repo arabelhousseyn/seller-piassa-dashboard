@@ -20,15 +20,13 @@
                     color="primary"
                 >
                     <v-list-item
-                        v-for="(item, i) in items"
-                        :key="i"
                         style="border-right: 4px solid;"
                     >
                         <v-list-item-icon>
-                            <v-icon v-text="item.icon"></v-icon>
+                            <v-icon>mdi-home</v-icon>
                         </v-list-item-icon>
                         <v-list-item-content>
-                            <v-list-item-title v-text="item.title"></v-list-item-title>
+                            <v-list-item-title>Acceuil</v-list-item-title>
                         </v-list-item-content>
                     </v-list-item>
                 </v-list-item-group>
@@ -45,11 +43,6 @@ export default {
     data: () => ({
         selectedItem: 0,
         drawer: null,
-        items: [
-            { title: 'Dashboard', icon: 'mdi-view-dashboard' },
-            { title: 'Photos', icon: 'mdi-image' },
-            { title: 'About', icon: 'mdi-help-box' },
-        ]
     }),
 };
 </script>
