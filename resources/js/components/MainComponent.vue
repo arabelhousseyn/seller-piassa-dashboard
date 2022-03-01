@@ -3,7 +3,7 @@
         <v-container fluid>
             <v-row>
                 <v-col cols="3">
-                    <card-information-component count="50" type="users" icon="mdi-account" title="user" />
+                    <card-information-component count="50" icon="mdi-account" title="user" />
                 </v-col>
             </v-row>
         </v-container>

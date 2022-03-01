@@ -1,6 +1,6 @@
 <template>
-    <div class="card-information mt-2">
-        <v-card @click="forward" link rounded elevation="0" class="pa-2 pt-2">
+    <div class="card-information">
+        <v-card rounded elevation="0" class="pa-2 pt-2">
 
                 <v-list disabled>
                        <v-list-item-group>
@@ -24,12 +24,8 @@
 
 <script>
 export default {
-    props : ['count','type','icon','title'],
+    props : ['count','icon','title'],
     methods : {
-        forward()
-        {
-            this.$router.push(`/home/${this.type}`)
-        }
     }
 }
 </script>

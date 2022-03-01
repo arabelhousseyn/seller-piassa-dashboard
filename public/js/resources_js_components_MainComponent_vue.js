@@ -36,12 +36,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['count', 'type', 'icon', 'title'],
-  methods: {
-    forward: function forward() {
-      this.$router.push("/home/".concat(this.type));
-    }
-  }
+  props: ['count', 'icon', 'title'],
+  methods: {}
 });
 
 /***/ }),
@@ -232,15 +228,11 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "card-information mt-2" },
+    { staticClass: "card-information" },
     [
       _c(
         "v-card",
-        {
-          staticClass: "pa-2 pt-2",
-          attrs: { link: "", rounded: "", elevation: "0" },
-          on: { click: _vm.forward },
-        },
+        { staticClass: "pa-2 pt-2", attrs: { rounded: "", elevation: "0" } },
         [
           _c(
             "v-list",
@@ -340,12 +332,7 @@ var render = function () {
                 { attrs: { cols: "3" } },
                 [
                   _c("card-information-component", {
-                    attrs: {
-                      count: "50",
-                      type: "users",
-                      icon: "mdi-account",
-                      title: "user",
-                    },
+                    attrs: { count: "50", icon: "mdi-account", title: "user" },
                   }),
                 ],
                 1
