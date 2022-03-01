@@ -237,7 +237,7 @@ var render = function () {
       _c(
         "v-card",
         {
-          staticClass: "pa-2",
+          staticClass: "pa-2 pt-2",
           attrs: { link: "", rounded: "", elevation: "0" },
           on: { click: _vm.forward },
         },

@@ -1,6 +1,6 @@
 <template>
     <div class="card-information mt-2">
-        <v-card @click="forward" link rounded elevation="0" class="pa-2">
+        <v-card @click="forward" link rounded elevation="0" class="pa-2 pt-2">
 
                 <v-list disabled>
                        <v-list-item-group>
