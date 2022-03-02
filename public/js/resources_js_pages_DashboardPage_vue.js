@@ -2102,7 +2102,10 @@ var render = function () {
                 { staticClass: "px-2 d-flex justify-content-center" },
                 [
                   _c("a", { attrs: { href: "/home" } }, [
-                    _c("img", { attrs: { src: _vm.$store.state.sm_logo } }),
+                    _c("img", {
+                      staticStyle: { width: "150px" },
+                      attrs: { src: _vm.$store.state.sm_logo },
+                    }),
                   ]),
                 ]
               ),
