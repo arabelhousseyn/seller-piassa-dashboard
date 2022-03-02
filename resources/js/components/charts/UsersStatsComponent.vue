@@ -1,58 +1,21 @@
-<template>
-    <div class="stats">
-        welcome to user stats
-        <br>
-        welcome to user stats
-        <br>
-        welcome to user stats
-        <br>
-        welcome to user stats
-        <br>
-        welcome to user stats
-        <br>
-        welcome to user stats
-        <br>
-        welcome to user stats
-        <br>
-        welcome to user stats
-        <br>
-        welcome to user stats
-        <br>
-        welcome to user stats
-        <br>
-        welcome to user stats
-        <br>
-        welcome to user stats
-        <br>
-        welcome to user stats
-        <br>
-        welcome to user stats
-        <br>
-        welcome to user stats
-        <br>        welcome to user stats
-        <br>
-        welcome to user stats
-        <br>
-        welcome to user stats
-        <br>
-        welcome to user stats
-        <br>
-        welcome to user stats
-        <br>
-        welcome to user stats
-        <br>
-        welcome to user stats
-        <br>
-        welcome to user stats
-        <br>
-        welcome to user stats
-        <br>
-        welcome to user stats
-        <br>
-        welcome to user stats
-        <br>
-        welcome to user stats12
-        <br>
 
-    </div>
-</template>
+<script>
+import { Line } from 'vue-chartjs'
+
+export default {
+    extends: Line,
+    mounted () {
+
+        this.renderChart({
+            labels: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+            datasets: [
+                {
+                    label: `Utilisateurs par mois ${new Date().getFullYear()}- ${new Date().getFullYear() + 1} `,
+                    backgroundColor: '#e85810',
+                    data: this.$store.state.data.users_by_month
+                }
+            ]
+        })
+    }
+}
+</script>
