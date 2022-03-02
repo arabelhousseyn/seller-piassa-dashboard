@@ -53,6 +53,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _CardInformationComponent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CardInformationComponent */ "./resources/js/components/CardInformationComponent.vue");
+/* harmony import */ var _charts_UsersStatsComponent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./charts/UsersStatsComponent */ "./resources/js/components/charts/UsersStatsComponent.vue");
+/* harmony import */ var _charts_ComissionStatsComponent__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./charts/ComissionStatsComponent */ "./resources/js/components/charts/ComissionStatsComponent.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -86,8 +98,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
+    ComissionStatsComponent: _charts_ComissionStatsComponent__WEBPACK_IMPORTED_MODULE_2__["default"],
+    UsersStatsComponent: _charts_UsersStatsComponent__WEBPACK_IMPORTED_MODULE_1__["default"],
     CardInformationComponent: _CardInformationComponent__WEBPACK_IMPORTED_MODULE_0__["default"]
   }
 });
@@ -170,6 +186,78 @@ component.options.__file = "resources/js/components/MainComponent.vue"
 
 /***/ }),
 
+/***/ "./resources/js/components/charts/ComissionStatsComponent.vue":
+/*!********************************************************************!*\
+  !*** ./resources/js/components/charts/ComissionStatsComponent.vue ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _ComissionStatsComponent_vue_vue_type_template_id_2421220f___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ComissionStatsComponent.vue?vue&type=template&id=2421220f& */ "./resources/js/components/charts/ComissionStatsComponent.vue?vue&type=template&id=2421220f&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+var script = {}
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
+  script,
+  _ComissionStatsComponent_vue_vue_type_template_id_2421220f___WEBPACK_IMPORTED_MODULE_0__.render,
+  _ComissionStatsComponent_vue_vue_type_template_id_2421220f___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/charts/ComissionStatsComponent.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/charts/UsersStatsComponent.vue":
+/*!****************************************************************!*\
+  !*** ./resources/js/components/charts/UsersStatsComponent.vue ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _UsersStatsComponent_vue_vue_type_template_id_4008b6f7___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UsersStatsComponent.vue?vue&type=template&id=4008b6f7& */ "./resources/js/components/charts/UsersStatsComponent.vue?vue&type=template&id=4008b6f7&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+var script = {}
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
+  script,
+  _UsersStatsComponent_vue_vue_type_template_id_4008b6f7___WEBPACK_IMPORTED_MODULE_0__.render,
+  _UsersStatsComponent_vue_vue_type_template_id_4008b6f7___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/charts/UsersStatsComponent.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/CardInformationComponent.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************!*\
   !*** ./resources/js/components/CardInformationComponent.vue?vue&type=script&lang=js& ***!
@@ -228,6 +316,38 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MainComponent_vue_vue_type_template_id_3ee370e9___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MainComponent_vue_vue_type_template_id_3ee370e9___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./MainComponent.vue?vue&type=template&id=3ee370e9& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/MainComponent.vue?vue&type=template&id=3ee370e9&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/charts/ComissionStatsComponent.vue?vue&type=template&id=2421220f&":
+/*!***************************************************************************************************!*\
+  !*** ./resources/js/components/charts/ComissionStatsComponent.vue?vue&type=template&id=2421220f& ***!
+  \***************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ComissionStatsComponent_vue_vue_type_template_id_2421220f___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ComissionStatsComponent_vue_vue_type_template_id_2421220f___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ComissionStatsComponent_vue_vue_type_template_id_2421220f___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ComissionStatsComponent.vue?vue&type=template&id=2421220f& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/charts/ComissionStatsComponent.vue?vue&type=template&id=2421220f&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/charts/UsersStatsComponent.vue?vue&type=template&id=4008b6f7&":
+/*!***********************************************************************************************!*\
+  !*** ./resources/js/components/charts/UsersStatsComponent.vue?vue&type=template&id=4008b6f7& ***!
+  \***********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UsersStatsComponent_vue_vue_type_template_id_4008b6f7___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UsersStatsComponent_vue_vue_type_template_id_4008b6f7___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UsersStatsComponent_vue_vue_type_template_id_4008b6f7___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./UsersStatsComponent.vue?vue&type=template&id=4008b6f7& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/charts/UsersStatsComponent.vue?vue&type=template&id=4008b6f7&");
 
 
 /***/ }),
@@ -350,7 +470,7 @@ var render = function () {
             [
               _c(
                 "v-col",
-                { attrs: { cols: "3" } },
+                { attrs: { cols: "12", lg: "3", md: "4" } },
                 [
                   _c("card-information-component", {
                     attrs: {
@@ -365,7 +485,7 @@ var render = function () {
               _vm._v(" "),
               _c(
                 "v-col",
-                { attrs: { cols: "3" } },
+                { attrs: { cols: "12", lg: "3", md: "4" } },
                 [
                   _c("card-information-component", {
                     attrs: {
@@ -380,7 +500,7 @@ var render = function () {
               _vm._v(" "),
               _c(
                 "v-col",
-                { attrs: { cols: "3" } },
+                { attrs: { cols: "12", lg: "3", md: "4" } },
                 [
                   _c("card-information-component", {
                     attrs: {
@@ -395,7 +515,7 @@ var render = function () {
               _vm._v(" "),
               _c(
                 "v-col",
-                { attrs: { cols: "3" } },
+                { attrs: { cols: "12", lg: "3", md: "4" } },
                 [
                   _c("card-information-component", {
                     attrs: {
@@ -413,11 +533,150 @@ var render = function () {
         ],
         1
       ),
+      _vm._v(" "),
+      _c(
+        "v-container",
+        { attrs: { fluid: "" } },
+        [
+          _c(
+            "v-row",
+            [
+              _c(
+                "v-col",
+                { attrs: { cols: "12", lg: "6", md: "6" } },
+                [_c("users-stats-component")],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-col",
+                { attrs: { cols: "12", lg: "6", md: "6" } },
+                [_c("comission-stats-component")],
+                1
+              ),
+            ],
+            1
+          ),
+        ],
+        1
+      ),
     ],
     1
   )
 }
 var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/charts/ComissionStatsComponent.vue?vue&type=template&id=2421220f&":
+/*!******************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/charts/ComissionStatsComponent.vue?vue&type=template&id=2421220f& ***!
+  \******************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "stats" }, [
+    _vm._v("\n    welcome to comission stats\n"),
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/charts/UsersStatsComponent.vue?vue&type=template&id=4008b6f7&":
+/*!**************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/charts/UsersStatsComponent.vue?vue&type=template&id=4008b6f7& ***!
+  \**************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "stats" }, [
+      _vm._v("\n    welcome to user stats\n    "),
+      _c("br"),
+      _vm._v("\n    welcome to user stats\n    "),
+      _c("br"),
+      _vm._v("\n    welcome to user stats\n    "),
+      _c("br"),
+      _vm._v("\n    welcome to user stats\n    "),
+      _c("br"),
+      _vm._v("\n    welcome to user stats\n    "),
+      _c("br"),
+      _vm._v("\n    welcome to user stats\n    "),
+      _c("br"),
+      _vm._v("\n    welcome to user stats\n    "),
+      _c("br"),
+      _vm._v("\n    welcome to user stats\n    "),
+      _c("br"),
+      _vm._v("\n    welcome to user stats\n    "),
+      _c("br"),
+      _vm._v("\n    welcome to user stats\n    "),
+      _c("br"),
+      _vm._v("\n    welcome to user stats\n    "),
+      _c("br"),
+      _vm._v("\n    welcome to user stats\n    "),
+      _c("br"),
+      _vm._v("\n    welcome to user stats\n    "),
+      _c("br"),
+      _vm._v("\n    welcome to user stats\n    "),
+      _c("br"),
+      _vm._v("\n    welcome to user stats\n    "),
+      _c("br"),
+      _vm._v("        welcome to user stats\n    "),
+      _c("br"),
+      _vm._v("\n    welcome to user stats\n    "),
+      _c("br"),
+      _vm._v("\n    welcome to user stats\n    "),
+      _c("br"),
+      _vm._v("\n    welcome to user stats\n    "),
+      _c("br"),
+      _vm._v("\n    welcome to user stats\n    "),
+      _c("br"),
+      _vm._v("\n    welcome to user stats\n    "),
+      _c("br"),
+      _vm._v("\n    welcome to user stats\n    "),
+      _c("br"),
+      _vm._v("\n    welcome to user stats\n    "),
+      _c("br"),
+      _vm._v("\n    welcome to user stats\n    "),
+      _c("br"),
+      _vm._v("\n    welcome to user stats\n    "),
+      _c("br"),
+      _vm._v("\n    welcome to user stats\n    "),
+      _c("br"),
+      _vm._v("\n    welcome to user stats12\n    "),
+      _c("br"),
+    ])
+  },
+]
 render._withStripped = true
 
 
