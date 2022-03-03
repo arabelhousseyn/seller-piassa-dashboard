@@ -20,6 +20,7 @@
                     color="primary"
                 >
                     <v-list-item
+                        @click="()=>{this.$router.push('/')}"
                         style="border-right: 4px solid;"
                     >
                         <v-list-item-icon>
@@ -29,6 +30,38 @@
                             <v-list-item-title>Acceuil</v-list-item-title>
                         </v-list-item-content>
                     </v-list-item>
+
+                    <v-list-group
+                        prepend-icon="mdi-account"
+                        no-action
+                    >
+                        <template v-slot:activator>
+                            <v-list-item-content>
+                                <v-list-item-title>Comptes</v-list-item-title>
+                            </v-list-item-content>
+                        </template>
+
+                        <v-list-item style="border-right: 4px solid;" @click="()=>{this.$router.push('/home/users')}">
+                            <v-list-item-content>
+                                <v-list-item-title>Utilisateurs</v-list-item-title>
+                            </v-list-item-content>
+                        </v-list-item>
+
+
+                        <v-list-item style="border-right: 4px solid;" @click="()=>{this.$router.push('/home/sellers')}">
+                            <v-list-item-content>
+                                <v-list-item-title>Vendeurs</v-list-item-title>
+                            </v-list-item-content>
+                        </v-list-item>
+
+
+                        <v-list-item style="border-right: 4px solid;" @click="()=>{this.$router.push('/home/shippers')}">
+                            <v-list-item-content>
+                                <v-list-item-title>Livreurs</v-list-item-title>
+                            </v-list-item-content>
+                        </v-list-item>
+                    </v-list-group>
+
                 </v-list-item-group>
             </v-list>
         </v-navigation-drawer>

@@ -10,9 +10,9 @@
 
             <div class="view d-flex justify-content-center mt-16">
                 <v-btn  color="primary">
-                    <router-link style="text-decoration: none; color: white;" to="/home" >
+                    <a style="text-decoration: none; color: white;" href="/home" >
                         <v-icon>mdi-subdirectory-arrow-left</v-icon> Acceuil
-                    </router-link>
+                    </a>
                 </v-btn>
             </div>
         </v-container>

@@ -250,6 +250,39 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -2047,6 +2080,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
 /* harmony export */ });
 var render = function () {
+  var this$1 = this
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
@@ -2132,7 +2166,14 @@ var render = function () {
                 [
                   _c(
                     "v-list-item",
-                    { staticStyle: { "border-right": "4px solid" } },
+                    {
+                      staticStyle: { "border-right": "4px solid" },
+                      on: {
+                        click: function () {
+                          this$1.$router.push("/")
+                        },
+                      },
+                    },
                     [
                       _c(
                         "v-list-item-icon",
@@ -2143,6 +2184,91 @@ var render = function () {
                       _c(
                         "v-list-item-content",
                         [_c("v-list-item-title", [_vm._v("Acceuil")])],
+                        1
+                      ),
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-list-group",
+                    {
+                      attrs: { "prepend-icon": "mdi-account", "no-action": "" },
+                      scopedSlots: _vm._u([
+                        {
+                          key: "activator",
+                          fn: function () {
+                            return [
+                              _c(
+                                "v-list-item-content",
+                                [_c("v-list-item-title", [_vm._v("Comptes")])],
+                                1
+                              ),
+                            ]
+                          },
+                          proxy: true,
+                        },
+                      ]),
+                    },
+                    [
+                      _vm._v(" "),
+                      _c(
+                        "v-list-item",
+                        {
+                          staticStyle: { "border-right": "4px solid" },
+                          on: {
+                            click: function () {
+                              this$1.$router.push("/home/users")
+                            },
+                          },
+                        },
+                        [
+                          _c(
+                            "v-list-item-content",
+                            [_c("v-list-item-title", [_vm._v("Utilisateurs")])],
+                            1
+                          ),
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-list-item",
+                        {
+                          staticStyle: { "border-right": "4px solid" },
+                          on: {
+                            click: function () {
+                              this$1.$router.push("/home/sellers")
+                            },
+                          },
+                        },
+                        [
+                          _c(
+                            "v-list-item-content",
+                            [_c("v-list-item-title", [_vm._v("Vendeurs")])],
+                            1
+                          ),
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-list-item",
+                        {
+                          staticStyle: { "border-right": "4px solid" },
+                          on: {
+                            click: function () {
+                              this$1.$router.push("/home/shippers")
+                            },
+                          },
+                        },
+                        [
+                          _c(
+                            "v-list-item-content",
+                            [_c("v-list-item-title", [_vm._v("Livreurs")])],
+                            1
+                          ),
+                        ],
                         1
                       ),
                     ],

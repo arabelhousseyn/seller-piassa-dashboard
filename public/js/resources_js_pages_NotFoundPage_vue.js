@@ -93,25 +93,20 @@ var render = function () {
           "div",
           { staticClass: "view d-flex justify-content-center mt-16" },
           [
-            _c(
-              "v-btn",
-              { attrs: { color: "primary" } },
-              [
-                _c(
-                  "router-link",
-                  {
-                    staticStyle: { "text-decoration": "none", color: "white" },
-                    attrs: { to: "/home" },
-                  },
-                  [
-                    _c("v-icon", [_vm._v("mdi-subdirectory-arrow-left")]),
-                    _vm._v(" Acceuil\n                "),
-                  ],
-                  1
-                ),
-              ],
-              1
-            ),
+            _c("v-btn", { attrs: { color: "primary" } }, [
+              _c(
+                "a",
+                {
+                  staticStyle: { "text-decoration": "none", color: "white" },
+                  attrs: { href: "/home" },
+                },
+                [
+                  _c("v-icon", [_vm._v("mdi-subdirectory-arrow-left")]),
+                  _vm._v(" Acceuil\n                "),
+                ],
+                1
+              ),
+            ]),
           ],
           1
         ),
