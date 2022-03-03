@@ -6,5 +6,8 @@ return[
     'users' => 'Utilisateurs',
     'shippers' => 'Livreurs',
     'sellers' => 'Vendeurs',
-    'company' => 'Piassa comission'
+    'company' => 'Piassa comission',
+    'user_delete_error' => 'Utilisateur déjà supprimé',
+    'user_not_found' => 'Utilisateur non trouvé',
+    'user_not_deleted' => 'Utilisateur non supprimé',
 ];

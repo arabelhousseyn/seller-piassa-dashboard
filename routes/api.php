@@ -24,6 +24,11 @@ Route::middleware('auth:sanctum')->group(function (){
         Route::get('data',DashbaordController::class);
     });
 
+    //user
+    Route::controller(UserController::class)->prefix('users')->group(function (){
+            Route::get('restore/{id}','restore')->whereNumber('id');
+    });
+
     //resources
     Route::apiResources([
         'users' => UserController::class,
