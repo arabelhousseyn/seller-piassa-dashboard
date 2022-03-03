@@ -26,7 +26,7 @@ Route::middleware('auth:sanctum')->group(function (){
 
     //user
     Route::controller(UserController::class)->prefix('users')->group(function (){
-            Route::get('restore/{id}','restore')->whereNumber('id');
+            Route::put('restore/{id}','restore')->whereNumber('id');
     });
 
     //resources

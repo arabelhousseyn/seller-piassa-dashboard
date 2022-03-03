@@ -100,6 +100,105 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/RestoreUserDialog.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/RestoreUserDialog.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ['dialog1', 'id'],
+  data: function data() {
+    return {
+      load: false
+    };
+  },
+  methods: {
+    destroy: function destroy() {
+      var _this = this;
+
+      this.load = true;
+      axios.get('/sanctum/csrf-cookie').then(function (res) {
+        axios.put("/api/users/restore/".concat(_this.id)).then(function (e) {
+          if (e.status == 204) {
+            _this.$toast.open({
+              message: 'Opération effectué',
+              type: 'success'
+            });
+
+            _this.load = false;
+            window.location.reload();
+          }
+        })["catch"](function (err) {
+          _this.$toast.open({
+            message: 'ERROR',
+            type: 'error'
+          });
+        });
+      });
+    },
+    close: function close() {
+      this.$emit('close1');
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/UsersPage.vue?vue&type=script&lang=js&":
 /*!***********************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/UsersPage.vue?vue&type=script&lang=js& ***!
@@ -111,6 +210,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _components_dialog_DeleteUserDialog__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/dialog/DeleteUserDialog */ "./resources/js/components/dialog/DeleteUserDialog.vue");
+/* harmony import */ var _components_dialog_RestoreUserDialog__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/dialog/RestoreUserDialog */ "./resources/js/components/dialog/RestoreUserDialog.vue");
+//
 //
 //
 //
@@ -241,13 +342,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
+    RestoreUserDialog: _components_dialog_RestoreUserDialog__WEBPACK_IMPORTED_MODULE_1__["default"],
     DeleteUserDialog: _components_dialog_DeleteUserDialog__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   data: function data() {
     return {
       dialog: false,
+      dialog1: false,
       users: [],
       loading: true,
       selected: null,
@@ -284,9 +388,17 @@ __webpack_require__.r(__webpack_exports__);
       this.dialog = true;
       this.selected = id;
     },
-    restore: function restore(id) {},
+    restore: function restore(id) {
+      this.dialog1 = true;
+      this.selected = id;
+    },
     close: function close() {
+      this.selected = null;
       this.dialog = false;
+    },
+    close1: function close1() {
+      this.selected = null;
+      this.dialog1 = false;
     },
     init: function init() {
       var _this = this;
@@ -349,6 +461,44 @@ component.options.__file = "resources/js/components/dialog/DeleteUserDialog.vue"
 
 /***/ }),
 
+/***/ "./resources/js/components/dialog/RestoreUserDialog.vue":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/dialog/RestoreUserDialog.vue ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _RestoreUserDialog_vue_vue_type_template_id_7477d345___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./RestoreUserDialog.vue?vue&type=template&id=7477d345& */ "./resources/js/components/dialog/RestoreUserDialog.vue?vue&type=template&id=7477d345&");
+/* harmony import */ var _RestoreUserDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RestoreUserDialog.vue?vue&type=script&lang=js& */ "./resources/js/components/dialog/RestoreUserDialog.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _RestoreUserDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _RestoreUserDialog_vue_vue_type_template_id_7477d345___WEBPACK_IMPORTED_MODULE_0__.render,
+  _RestoreUserDialog_vue_vue_type_template_id_7477d345___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/dialog/RestoreUserDialog.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/pages/UsersPage.vue":
 /*!******************************************!*\
   !*** ./resources/js/pages/UsersPage.vue ***!
@@ -402,6 +552,21 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/dialog/RestoreUserDialog.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/components/dialog/RestoreUserDialog.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_RestoreUserDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./RestoreUserDialog.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/RestoreUserDialog.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_RestoreUserDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/js/pages/UsersPage.vue?vue&type=script&lang=js&":
 /*!*******************************************************************!*\
   !*** ./resources/js/pages/UsersPage.vue?vue&type=script&lang=js& ***!
@@ -429,6 +594,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteUserDialog_vue_vue_type_template_id_337b4fec___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteUserDialog_vue_vue_type_template_id_337b4fec___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./DeleteUserDialog.vue?vue&type=template&id=337b4fec& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/DeleteUserDialog.vue?vue&type=template&id=337b4fec&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/dialog/RestoreUserDialog.vue?vue&type=template&id=7477d345&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/components/dialog/RestoreUserDialog.vue?vue&type=template&id=7477d345& ***!
+  \*********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RestoreUserDialog_vue_vue_type_template_id_7477d345___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RestoreUserDialog_vue_vue_type_template_id_7477d345___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RestoreUserDialog_vue_vue_type_template_id_7477d345___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./RestoreUserDialog.vue?vue&type=template&id=7477d345& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/RestoreUserDialog.vue?vue&type=template&id=7477d345&");
 
 
 /***/ }),
@@ -538,6 +719,120 @@ var render = function () {
                           on: { click: _vm.destroy },
                         },
                         [_c("v-icon", [_vm._v("mdi-delete")])],
+                        1
+                      )
+                    : _c("v-progress-circular", {
+                        attrs: { indeterminate: "", color: "primary" },
+                      }),
+                ],
+                1
+              ),
+            ],
+            1
+          ),
+        ],
+        1
+      ),
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/RestoreUserDialog.vue?vue&type=template&id=7477d345&":
+/*!************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/RestoreUserDialog.vue?vue&type=template&id=7477d345& ***!
+  \************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "resotre_user_dialog" },
+    [
+      _c(
+        "v-dialog",
+        {
+          attrs: { persistent: "", "max-width": "290" },
+          scopedSlots: _vm._u([
+            {
+              key: "activator",
+              fn: function (ref) {
+                var on = ref.on
+                var attrs = ref.attrs
+                return [
+                  _c(
+                    "v-btn",
+                    _vm._g(
+                      _vm._b(
+                        { attrs: { color: "primary", dark: "" } },
+                        "v-btn",
+                        attrs,
+                        false
+                      ),
+                      on
+                    ),
+                    [_vm._v("\n                Open Dialog\n            ")]
+                  ),
+                ]
+              },
+            },
+          ]),
+          model: {
+            value: _vm.dialog1,
+            callback: function ($$v) {
+              _vm.dialog1 = $$v
+            },
+            expression: "dialog1",
+          },
+        },
+        [
+          _vm._v(" "),
+          _c(
+            "v-card",
+            [
+              _c("v-card-title", { staticClass: "text-h5" }, [
+                _vm._v(
+                  "\n                Etes-vous sûr que vous voulez restorer !\n            "
+                ),
+              ]),
+              _vm._v(" "),
+              _c(
+                "v-card-actions",
+                [
+                  _c("v-spacer"),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { color: "grey darken-1", text: "" },
+                      on: { click: _vm.close },
+                    },
+                    [_c("v-icon", [_vm._v("mdi-cancel")])],
+                    1
+                  ),
+                  _vm._v(" "),
+                  !_vm.load
+                    ? _c(
+                        "v-btn",
+                        {
+                          attrs: { color: "success darken-1", text: "" },
+                          on: { click: _vm.destroy },
+                        },
+                        [_c("v-icon", [_vm._v("mdi-restore")])],
                         1
                       )
                     : _c("v-progress-circular", {
@@ -1022,6 +1317,11 @@ var render = function () {
           _c("delete-user-dialog", {
             attrs: { dialog: _vm.dialog, id: _vm.selected },
             on: { close: _vm.close },
+          }),
+          _vm._v(" "),
+          _c("restore-user-dialog", {
+            attrs: { dialog1: _vm.dialog1, id: _vm.selected },
+            on: { close1: _vm.close1 },
           }),
         ],
         1

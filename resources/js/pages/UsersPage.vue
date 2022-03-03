@@ -123,16 +123,19 @@
                 </template>
             </v-data-table>
             <delete-user-dialog @close="close" :dialog="dialog" :id="selected" />
+            <restore-user-dialog @close1="close1" :dialog1="dialog1" :id="selected" />
         </v-container>
     </div>
 </template>
 
 <script>
 import DeleteUserDialog from "../components/dialog/DeleteUserDialog";
+import RestoreUserDialog from "../components/dialog/RestoreUserDialog";
 export default {
-    components: {DeleteUserDialog},
+    components: {RestoreUserDialog, DeleteUserDialog},
     data : ()=>({
         dialog : false,
+        dialog1 : false,
         users : [],
         loading : true,
         selected : null,
@@ -163,11 +166,18 @@ export default {
         },
         restore(id)
         {
-
+            this.dialog1 = true
+            this.selected = id
         },
         close()
         {
+            this.selected = null
           this.dialog = false
+        },
+        close1()
+        {
+            this.selected = null
+            this.dialog1 = false
         },
         init()
         {
