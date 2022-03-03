@@ -22,6 +22,14 @@ const routes = [
                 component : () => import('../pages/UsersPage')
             },
             {
+                path : 'sellers',
+                component : () => import('../pages/SellersPage')
+            },
+            {
+                path : 'shippers',
+                component : () => import('../pages/ShippersPage')
+            },
+            {
                 path : '*',
                 component: () => import('../pages/NotFoundPage'),
             }
