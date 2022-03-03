@@ -4,7 +4,7 @@ namespace App\Http\Controllers\V1;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Models\{User};
 class UserController extends Controller
 {
     /**
@@ -14,7 +14,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::with('locations','profile','vehicle','carts','orders','commercial_info','roles')
+            ->latest('id','desc')->get();
+        return response(['data' => $users],200);
     }
 
     /**

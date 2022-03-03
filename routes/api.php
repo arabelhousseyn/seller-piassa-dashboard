@@ -26,9 +26,9 @@ Route::middleware('auth:sanctum')->group(function (){
 
     //resources
     Route::apiResources([
-        'user' => UserController::class,
-        'seller' => SellerController::class,
-        'shipper' => ShipperController::class
+        'users' => UserController::class,
+        'sellers' => SellerController::class,
+        'shippers' => ShipperController::class
     ]);
 
 });
