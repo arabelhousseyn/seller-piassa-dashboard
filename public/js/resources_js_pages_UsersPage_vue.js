@@ -82,6 +82,51 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -99,6 +144,9 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         text: 'Créé à',
         value: 'created_at'
+      }, {
+        text: 'Statu',
+        value: 'deleted_at'
       }, {
         text: 'actions',
         value: 'actions',
@@ -298,9 +346,9 @@ var render = function () {
                   var item = ref.item
                   return [
                     _c(
-                      "v-tooltip",
+                      "v-menu",
                       {
-                        attrs: { bottom: "" },
+                        attrs: { bottom: "", "min-width": "200" },
                         scopedSlots: _vm._u(
                           [
                             {
@@ -314,8 +362,13 @@ var render = function () {
                                     _vm._g(
                                       _vm._b(
                                         {
-                                          staticClass: "mr-2",
-                                          attrs: { color: "primary" },
+                                          attrs: {
+                                            dark: "",
+                                            color: "primary",
+                                            fab: "",
+                                            small: "",
+                                            text: "",
+                                          },
                                         },
                                         "v-btn",
                                         attrs,
@@ -325,9 +378,7 @@ var render = function () {
                                     ),
                                     [
                                       _c("v-icon", [
-                                        _vm._v(
-                                          "\n                        mdi-account\n                    "
-                                        ),
+                                        _vm._v("mdi-dots-horizontal"),
                                       ]),
                                     ],
                                     1
@@ -340,54 +391,265 @@ var render = function () {
                           true
                         ),
                       },
-                      [_vm._v(" "), _c("span", [_vm._v("Compte")])]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "v-tooltip",
-                      {
-                        attrs: { bottom: "" },
-                        scopedSlots: _vm._u(
+                      [
+                        _vm._v(" "),
+                        _c(
+                          "v-list",
                           [
-                            {
-                              key: "activator",
-                              fn: function (ref) {
-                                var on = ref.on
-                                var attrs = ref.attrs
-                                return [
-                                  _c(
-                                    "v-btn",
-                                    _vm._g(
-                                      _vm._b(
-                                        {
-                                          staticClass: "mr-2",
-                                          attrs: { color: "primary" },
-                                        },
-                                        "v-btn",
-                                        attrs,
-                                        false
-                                      ),
-                                      on
-                                    ),
-                                    [
-                                      _c("v-icon", [
-                                        _vm._v(
-                                          "\n                                mdi-delete\n                            "
+                            _c(
+                              "v-list-item-group",
+                              [
+                                _c(
+                                  "v-list-item",
+                                  {
+                                    attrs: { link: "" },
+                                    on: { click: function () {} },
+                                  },
+                                  [
+                                    _c(
+                                      "v-list-item-icon",
+                                      [
+                                        _c(
+                                          "v-icon",
+                                          { attrs: { color: "primary" } },
+                                          [_vm._v("mdi-account")]
                                         ),
-                                      ]),
-                                    ],
-                                    1
-                                  ),
-                                ]
-                              },
-                            },
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-list-item-content",
+                                      [
+                                        _c("v-list-item-title", [
+                                          _vm._v("Compte"),
+                                        ]),
+                                      ],
+                                      1
+                                    ),
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "v-list-item",
+                                  {
+                                    attrs: { link: "" },
+                                    on: { click: function () {} },
+                                  },
+                                  [
+                                    _c(
+                                      "v-list-item-icon",
+                                      [
+                                        _c(
+                                          "v-icon",
+                                          { attrs: { color: "primary" } },
+                                          [_vm._v("mdi-pencil")]
+                                        ),
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-list-item-content",
+                                      [
+                                        _c("v-list-item-title", [
+                                          _vm._v("Modifier"),
+                                        ]),
+                                      ],
+                                      1
+                                    ),
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "v-list-item",
+                                  {
+                                    attrs: { link: "" },
+                                    on: { click: function () {} },
+                                  },
+                                  [
+                                    _c(
+                                      "v-list-item-icon",
+                                      [
+                                        _c(
+                                          "v-icon",
+                                          { attrs: { color: "primary" } },
+                                          [_vm._v("mdi-car")]
+                                        ),
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-list-item-content",
+                                      [
+                                        _c("v-list-item-title", [
+                                          _vm._v("Véhicules"),
+                                        ]),
+                                      ],
+                                      1
+                                    ),
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "v-list-item",
+                                  {
+                                    attrs: { link: "" },
+                                    on: { click: function () {} },
+                                  },
+                                  [
+                                    _c(
+                                      "v-list-item-icon",
+                                      [
+                                        _c(
+                                          "v-icon",
+                                          { attrs: { color: "primary" } },
+                                          [_vm._v("mdi-cart-outline")]
+                                        ),
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-list-item-content",
+                                      [
+                                        _c("v-list-item-title", [
+                                          _vm._v("Panier actuel"),
+                                        ]),
+                                      ],
+                                      1
+                                    ),
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "v-list-item",
+                                  {
+                                    attrs: { link: "" },
+                                    on: { click: function () {} },
+                                  },
+                                  [
+                                    _c(
+                                      "v-list-item-icon",
+                                      [
+                                        _c(
+                                          "v-icon",
+                                          { attrs: { color: "primary" } },
+                                          [_vm._v("mdi-cart")]
+                                        ),
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-list-item-content",
+                                      [
+                                        _c("v-list-item-title", [
+                                          _vm._v("Commandes"),
+                                        ]),
+                                      ],
+                                      1
+                                    ),
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                item.deleted_at == null
+                                  ? _c(
+                                      "v-list-item",
+                                      {
+                                        attrs: { link: "" },
+                                        on: { click: function () {} },
+                                      },
+                                      [
+                                        _c(
+                                          "v-list-item-icon",
+                                          [
+                                            _c(
+                                              "v-icon",
+                                              { attrs: { color: "red" } },
+                                              [_vm._v("mdi-delete")]
+                                            ),
+                                          ],
+                                          1
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "v-list-item-content",
+                                          [
+                                            _c("v-list-item-title", [
+                                              _vm._v("Supprimer"),
+                                            ]),
+                                          ],
+                                          1
+                                        ),
+                                      ],
+                                      1
+                                    )
+                                  : _c(
+                                      "v-list-item",
+                                      {
+                                        attrs: { link: "" },
+                                        on: { click: function () {} },
+                                      },
+                                      [
+                                        _c(
+                                          "v-list-item-icon",
+                                          [
+                                            _c(
+                                              "v-icon",
+                                              { attrs: { color: "green" } },
+                                              [_vm._v("mdi-restore")]
+                                            ),
+                                          ],
+                                          1
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "v-list-item-content",
+                                          [
+                                            _c("v-list-item-title", [
+                                              _vm._v("Restaurer"),
+                                            ]),
+                                          ],
+                                          1
+                                        ),
+                                      ],
+                                      1
+                                    ),
+                              ],
+                              1
+                            ),
                           ],
-                          null,
-                          true
+                          1
                         ),
-                      },
-                      [_vm._v(" "), _c("span", [_vm._v("Supprimer")])]
+                      ],
+                      1
                     ),
+                  ]
+                },
+              },
+              {
+                key: "item.deleted_at",
+                fn: function (ref) {
+                  var item = ref.item
+                  return [
+                    item.deleted_at == null
+                      ? _c("v-chip", { attrs: { dark: "", color: "green" } }, [
+                          _vm._v(
+                            "\n                    Active\n                "
+                          ),
+                        ])
+                      : _c("v-chip", { attrs: { dark: "", color: "red" } }, [
+                          _vm._v(
+                            "\n                    Supprimé\n                "
+                          ),
+                        ]),
                   ]
                 },
               },
