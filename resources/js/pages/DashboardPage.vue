@@ -19,8 +19,9 @@ export default {
     }),
     components: {FooterComponent, HeaderComponent, ProgressCircularComponent},
     async mounted() {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${this.$store.state.user.token}`
        await axios.get('/sanctum/csrf-cookie').then(res =>{
-            axios.get('/api/company/data',{headers : { 'Authorization' : `Bearer ${this.$store.state.user.token}`}})
+            axios.get('/api/company/data')
             .then(e =>{
                 this.isLoading = false
                 this.$store.commit('SET_DATA',e.data)

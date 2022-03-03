@@ -1,5 +1,7 @@
 <template>
     <div class="users">
-        welcome
+        <v-container fluid>
+            welcome
+        </v-container>
     </div>
 </template>

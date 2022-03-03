@@ -515,13 +515,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _context.next = 2;
+              axios.defaults.headers.common['Authorization'] = "Bearer ".concat(_this.$store.state.user.token);
+              _context.next = 3;
               return axios.get('/sanctum/csrf-cookie').then(function (res) {
-                axios.get('/api/company/data', {
-                  headers: {
-                    'Authorization': "Bearer ".concat(_this.$store.state.user.token)
-                  }
-                }).then(function (e) {
+                axios.get('/api/company/data').then(function (e) {
                   _this.isLoading = false;
 
                   _this.$store.commit('SET_DATA', e.data);
@@ -533,7 +530,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 });
               });
 
-            case 2:
+            case 3:
             case "end":
               return _context.stop();
           }
