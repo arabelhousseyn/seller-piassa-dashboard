@@ -2,9 +2,12 @@
     <div class="users">
         <v-container fluid>
             <v-data-table
+                :loading="loading"
+                loading-text="Chargement... veuillez patienter"
                 :headers="headers"
                 :items="users"
-                sort-by="calories"
+                :search="search"
+                sort-by="created_at"
                 class="elevation-1"
             >
                 <template v-slot:top>
@@ -18,23 +21,42 @@
                             vertical
                         ></v-divider>
                         <v-spacer></v-spacer>
-                        hello
+                        <v-btn color="primary">
+                            <v-icon>mdi-plus</v-icon> Ajouter
+                        </v-btn>
+                    </v-toolbar>
+                    <v-toolbar flat>
+                        <v-text-field
+                            v-model="search"
+                            append-icon="mdi-magnify"
+                            label="Recherche"
+                            single-line
+                            hide-details
+                        ></v-text-field>
                     </v-toolbar>
                 </template>
                 <template v-slot:item.actions="{ item }">
-                    <v-icon
-                        small
-                        class="mr-2"
+                    <v-tooltip bottom>
+                        <template v-slot:activator="{ on, attrs }">
+                    <v-btn color="primary" class="mr-2" v-bind="attrs" v-on="on">
+                        <v-icon>
+                            mdi-account
+                        </v-icon>
+                    </v-btn>
+                        </template>
+                        <span>Compte</span>
+                    </v-tooltip>
 
-                    >
-                        mdi-pencil
-                    </v-icon>
-                    <v-icon
-                        small
-
-                    >
-                        mdi-delete
-                    </v-icon>
+                    <v-tooltip bottom>
+                        <template v-slot:activator="{ on, attrs }">
+                            <v-btn color="primary" class="mr-2" v-bind="attrs" v-on="on">
+                                <v-icon>
+                                    mdi-delete
+                                </v-icon>
+                            </v-btn>
+                        </template>
+                        <span>Supprimer</span>
+                    </v-tooltip>
                 </template>
                 <template v-slot:no-data>
                     <v-btn
@@ -51,6 +73,8 @@
 export default {
     data : ()=>({
         users : [],
+        loading : true,
+        search : null,
         headers: [
             {
                 text: 'Téléphone',
@@ -60,6 +84,7 @@ export default {
             },
             { text: 'Email', value: 'email' },
             { text: 'Créé à', value: 'created_at' },
+            { text: 'actions', value: 'actions', sortable: false },
         ],
     }),
     methods : {
@@ -72,6 +97,7 @@ export default {
             axios.get('/sanctum/csrf-cookie').then(res =>{
                 axios.get('/api/users')
                     .then(e =>{
+                        this.loading = false
                         this.users = e.data.data
                     }).catch(err => {
                     this.$toast.open({message : 'Erreur dans serveur veuillez réessayer',type : 'error'})

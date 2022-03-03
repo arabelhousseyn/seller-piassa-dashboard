@@ -60,10 +60,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       users: [],
+      loading: true,
+      search: null,
       headers: [{
         text: 'Téléphone',
         align: 'start',
@@ -75,6 +99,10 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         text: 'Créé à',
         value: 'created_at'
+      }, {
+        text: 'actions',
+        value: 'actions',
+        sortable: false
       }]
     };
   },
@@ -87,6 +115,7 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('/sanctum/csrf-cookie').then(function (res) {
         axios.get('/api/users').then(function (e) {
+          _this.loading = false;
           _this.users = e.data.data;
         })["catch"](function (err) {
           _this.$toast.open({
@@ -199,9 +228,12 @@ var render = function () {
           _c("v-data-table", {
             staticClass: "elevation-1",
             attrs: {
+              loading: _vm.loading,
+              "loading-text": "Chargement... veuillez patienter",
               headers: _vm.headers,
               items: _vm.users,
-              "sort-by": "calories",
+              search: _vm.search,
+              "sort-by": "created_at",
             },
             scopedSlots: _vm._u([
               {
@@ -220,7 +252,39 @@ var render = function () {
                         }),
                         _vm._v(" "),
                         _c("v-spacer"),
-                        _vm._v("\n                    hello\n                "),
+                        _vm._v(" "),
+                        _c(
+                          "v-btn",
+                          { attrs: { color: "primary" } },
+                          [
+                            _c("v-icon", [_vm._v("mdi-plus")]),
+                            _vm._v(" Ajouter\n                    "),
+                          ],
+                          1
+                        ),
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "v-toolbar",
+                      { attrs: { flat: "" } },
+                      [
+                        _c("v-text-field", {
+                          attrs: {
+                            "append-icon": "mdi-magnify",
+                            label: "Recherche",
+                            "single-line": "",
+                            "hide-details": "",
+                          },
+                          model: {
+                            value: _vm.search,
+                            callback: function ($$v) {
+                              _vm.search = $$v
+                            },
+                            expression: "search",
+                          },
+                        }),
                       ],
                       1
                     ),
@@ -234,20 +298,96 @@ var render = function () {
                   var item = ref.item
                   return [
                     _c(
-                      "v-icon",
-                      { staticClass: "mr-2", attrs: { small: "" } },
-                      [
-                        _vm._v(
-                          "\n                    mdi-pencil\n                "
+                      "v-tooltip",
+                      {
+                        attrs: { bottom: "" },
+                        scopedSlots: _vm._u(
+                          [
+                            {
+                              key: "activator",
+                              fn: function (ref) {
+                                var on = ref.on
+                                var attrs = ref.attrs
+                                return [
+                                  _c(
+                                    "v-btn",
+                                    _vm._g(
+                                      _vm._b(
+                                        {
+                                          staticClass: "mr-2",
+                                          attrs: { color: "primary" },
+                                        },
+                                        "v-btn",
+                                        attrs,
+                                        false
+                                      ),
+                                      on
+                                    ),
+                                    [
+                                      _c("v-icon", [
+                                        _vm._v(
+                                          "\n                        mdi-account\n                    "
+                                        ),
+                                      ]),
+                                    ],
+                                    1
+                                  ),
+                                ]
+                              },
+                            },
+                          ],
+                          null,
+                          true
                         ),
-                      ]
+                      },
+                      [_vm._v(" "), _c("span", [_vm._v("Compte")])]
                     ),
                     _vm._v(" "),
-                    _c("v-icon", { attrs: { small: "" } }, [
-                      _vm._v(
-                        "\n                    mdi-delete\n                "
-                      ),
-                    ]),
+                    _c(
+                      "v-tooltip",
+                      {
+                        attrs: { bottom: "" },
+                        scopedSlots: _vm._u(
+                          [
+                            {
+                              key: "activator",
+                              fn: function (ref) {
+                                var on = ref.on
+                                var attrs = ref.attrs
+                                return [
+                                  _c(
+                                    "v-btn",
+                                    _vm._g(
+                                      _vm._b(
+                                        {
+                                          staticClass: "mr-2",
+                                          attrs: { color: "primary" },
+                                        },
+                                        "v-btn",
+                                        attrs,
+                                        false
+                                      ),
+                                      on
+                                    ),
+                                    [
+                                      _c("v-icon", [
+                                        _vm._v(
+                                          "\n                                mdi-delete\n                            "
+                                        ),
+                                      ]),
+                                    ],
+                                    1
+                                  ),
+                                ]
+                              },
+                            },
+                          ],
+                          null,
+                          true
+                        ),
+                      },
+                      [_vm._v(" "), _c("span", [_vm._v("Supprimer")])]
+                    ),
                   ]
                 },
               },
