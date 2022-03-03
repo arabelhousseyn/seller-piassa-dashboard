@@ -18,6 +18,10 @@ const routes = [
                 component : () => import('../components/MainComponent')
             },
             {
+                path : 'users',
+                component : () => import('../pages/UsersPage')
+            },
+            {
                 path : '*',
                 component: () => import('../pages/NotFoundPage'),
             }
