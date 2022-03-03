@@ -129,8 +129,8 @@
 </template>
 
 <script>
-import DeleteUserDialog from "../components/dialog/DeleteUserDialog";
-import RestoreUserDialog from "../components/dialog/RestoreUserDialog";
+import DeleteUserDialog from "../components/dialog/user/DeleteUserDialog";
+import RestoreUserDialog from "../components/dialog/user/RestoreUserDialog";
 export default {
     components: {RestoreUserDialog, DeleteUserDialog},
     data : ()=>({
