@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
-
 class User extends Model
 {
     use  HasFactory, HasRoles,Notifiable, SoftDeletes;
@@ -42,8 +41,12 @@ class User extends Model
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'phone_verified_at' => 'datetime'
+        'phone_verified_at' => 'datetime',
+        'created_at' => 'date:Y-m-d H:i:s'
     ];
+
+
+
 
     public function locations()
     {
@@ -79,6 +82,8 @@ class User extends Model
     {
         return $this->hasOne(UserInfo::class)->withDefault();
     }
+
+
 
 
 }
