@@ -127,6 +127,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -141,6 +153,9 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         text: 'Email',
         value: 'email'
+      }, {
+        text: 'Role',
+        value: 'roles'
       }, {
         text: 'Créé à',
         value: 'created_at'
@@ -631,6 +646,37 @@ var render = function () {
                       ],
                       1
                     ),
+                  ]
+                },
+              },
+              {
+                key: "item.roles",
+                fn: function (ref) {
+                  var item = ref.item
+                  return [
+                    item.roles[0].name == "P"
+                      ? _c("v-chip", { attrs: { color: "primary" } }, [
+                          _vm._v(
+                            "\n                    Particulier\n                "
+                          ),
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    item.roles[0].name == "C"
+                      ? _c("v-chip", { attrs: { color: "primary" } }, [
+                          _vm._v(
+                            "\n                    Corporate\n                "
+                          ),
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    item.roles[0].name == "A"
+                      ? _c("v-chip", { attrs: { color: "primary" } }, [
+                          _vm._v(
+                            "\n                    Atelier\n                "
+                          ),
+                        ])
+                      : _vm._e(),
                   ]
                 },
               },

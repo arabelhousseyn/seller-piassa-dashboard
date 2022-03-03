@@ -94,6 +94,18 @@
                     </v-menu>
                 </template>
 
+                <template v-slot:item.roles="{ item }">
+                    <v-chip v-if="item.roles[0].name =='P'" color="primary">
+                        Particulier
+                    </v-chip>
+                    <v-chip v-if="item.roles[0].name =='C'" color="primary">
+                        Corporate
+                    </v-chip>
+                    <v-chip v-if="item.roles[0].name =='A'" color="primary">
+                        Atelier
+                    </v-chip>
+                </template>
+
                 <template v-slot:item.deleted_at="{ item }">
                     <v-chip dark v-if="item.deleted_at == null" color="green">
                         Active
@@ -128,6 +140,7 @@ export default {
                 value: 'phone',
             },
             { text: 'Email', value: 'email' },
+            { text: 'Role', value: 'roles' },
             { text: 'Créé à', value: 'created_at' },
             { text: 'Statu', value: 'deleted_at' },
             { text: 'actions', value: 'actions', sortable: false },
