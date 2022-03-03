@@ -51,16 +51,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['dialog', 'id'],
   data: function data() {
@@ -110,16 +100,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -653,30 +633,6 @@ var render = function () {
         "v-dialog",
         {
           attrs: { persistent: "", "max-width": "290" },
-          scopedSlots: _vm._u([
-            {
-              key: "activator",
-              fn: function (ref) {
-                var on = ref.on
-                var attrs = ref.attrs
-                return [
-                  _c(
-                    "v-btn",
-                    _vm._g(
-                      _vm._b(
-                        { attrs: { color: "primary", dark: "" } },
-                        "v-btn",
-                        attrs,
-                        false
-                      ),
-                      on
-                    ),
-                    [_vm._v("\n                Open Dialog\n            ")]
-                  ),
-                ]
-              },
-            },
-          ]),
           model: {
             value: _vm.dialog,
             callback: function ($$v) {
@@ -686,7 +642,6 @@ var render = function () {
           },
         },
         [
-          _vm._v(" "),
           _c(
             "v-card",
             [
@@ -767,30 +722,6 @@ var render = function () {
         "v-dialog",
         {
           attrs: { persistent: "", "max-width": "290" },
-          scopedSlots: _vm._u([
-            {
-              key: "activator",
-              fn: function (ref) {
-                var on = ref.on
-                var attrs = ref.attrs
-                return [
-                  _c(
-                    "v-btn",
-                    _vm._g(
-                      _vm._b(
-                        { attrs: { color: "primary", dark: "" } },
-                        "v-btn",
-                        attrs,
-                        false
-                      ),
-                      on
-                    ),
-                    [_vm._v("\n                Open Dialog\n            ")]
-                  ),
-                ]
-              },
-            },
-          ]),
           model: {
             value: _vm.dialog1,
             callback: function ($$v) {
@@ -800,7 +731,6 @@ var render = function () {
           },
         },
         [
-          _vm._v(" "),
           _c(
             "v-card",
             [
