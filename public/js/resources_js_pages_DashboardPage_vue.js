@@ -1197,7 +1197,7 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "v-footer",
-    { attrs: { app: "", color: "third", fixed: "" } },
+    { attrs: { color: "third" } },
     [
       _c("v-col", { staticClass: "text-center", attrs: { cols: "12" } }, [
         _c(

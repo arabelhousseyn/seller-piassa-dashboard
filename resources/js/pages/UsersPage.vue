@@ -38,9 +38,7 @@
                 </template>
                 <template v-slot:no-data>
                     <v-btn
-                        color="primary"
-
-                    >
+                        color="primary">
                         Reset
                     </v-btn>
                 </template>
@@ -64,15 +62,25 @@ export default {
             { text: 'Créé à', value: 'created_at' },
         ],
     }),
-    mounted() {
-        axios.get('/sanctum/csrf-cookie').then(res =>{
-            axios.get('/api/users')
-                .then(e =>{
-                    this.users = e.data.data
-                }).catch(err => {
-                this.$toast.open({message : 'Erreur dans serveur veuillez réessayer',type : 'error'})
+    methods : {
+        reset()
+        {
+            this.init()
+        },
+        init()
+        {
+            axios.get('/sanctum/csrf-cookie').then(res =>{
+                axios.get('/api/users')
+                    .then(e =>{
+                        this.users = e.data.data
+                    }).catch(err => {
+                    this.$toast.open({message : 'Erreur dans serveur veuillez réessayer',type : 'error'})
+                })
             })
-        })
+        }
+    },
+    mounted() {
+        this.init()
     }
 }
 </script>

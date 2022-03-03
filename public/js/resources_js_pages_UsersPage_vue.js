@@ -60,8 +60,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -80,19 +78,27 @@ __webpack_require__.r(__webpack_exports__);
       }]
     };
   },
-  mounted: function mounted() {
-    var _this = this;
+  methods: {
+    reset: function reset() {
+      this.init();
+    },
+    init: function init() {
+      var _this = this;
 
-    axios.get('/sanctum/csrf-cookie').then(function (res) {
-      axios.get('/api/users').then(function (e) {
-        _this.users = e.data.data;
-      })["catch"](function (err) {
-        _this.$toast.open({
-          message: 'Erreur dans serveur veuillez réessayer',
-          type: 'error'
+      axios.get('/sanctum/csrf-cookie').then(function (res) {
+        axios.get('/api/users').then(function (e) {
+          _this.users = e.data.data;
+        })["catch"](function (err) {
+          _this.$toast.open({
+            message: 'Erreur dans serveur veuillez réessayer',
+            type: 'error'
+          });
         });
       });
-    });
+    }
+  },
+  mounted: function mounted() {
+    this.init();
   }
 });
 
