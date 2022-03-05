@@ -21,9 +21,7 @@
                             vertical
                         ></v-divider>
                         <v-spacer></v-spacer>
-                        <v-btn color="primary">
-                            <v-icon>mdi-plus</v-icon> Ajouter
-                        </v-btn>
+                        <create-user-dialog />
                     </v-toolbar>
                     <v-toolbar flat>
                         <v-text-field
@@ -131,8 +129,9 @@
 <script>
 import DeleteUserDialog from "../components/dialog/user/DeleteUserDialog";
 import RestoreUserDialog from "../components/dialog/user/RestoreUserDialog";
+import CreateUserDialog from "../components/dialog/user/CreateUserDialog";
 export default {
-    components: {RestoreUserDialog, DeleteUserDialog},
+    components: {CreateUserDialog, RestoreUserDialog, DeleteUserDialog},
     data : ()=>({
         dialog : false,
         dialog1 : false,

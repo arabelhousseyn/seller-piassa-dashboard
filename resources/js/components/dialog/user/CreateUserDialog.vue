@@ -1,5 +1,4 @@
 <template>
-    <v-row justify="center">
         <v-dialog
             v-model="dialog"
             persistent
@@ -12,12 +11,12 @@
                     v-bind="attrs"
                     v-on="on"
                 >
-                    Open Dialog
+                    <v-icon>mdi-plus</v-icon> Ajouter
                 </v-btn>
             </template>
             <v-card>
                 <v-card-title>
-                    <span class="text-h5">User Profile</span>
+                    <span class="text-h5">Créer un utilisateur</span>
                 </v-card-title>
                 <v-card-text>
                     <v-container>
@@ -110,7 +109,6 @@
                 </v-card-actions>
             </v-card>
         </v-dialog>
-    </v-row>
 </template>
 <script>
 export default {
