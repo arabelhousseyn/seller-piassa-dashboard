@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreUserRequest;
 use Illuminate\Http\Request;
 use App\Models\{User};
 class UserController extends Controller
@@ -35,9 +36,14 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUserRequest $request)
     {
-        //
+        if($request->validated())
+        {
+            $user = User::create($request->only('phone','email'));
+            $profile = $user->profile()->create($request->except('phone','email'));
+            return response(['success' => true],200);
+        }
     }
 
     /**
