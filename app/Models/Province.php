@@ -27,4 +27,9 @@ class Province extends Model
     {
         return $this->belongsTo(Country::class)->withDefault();
     }
+
+    public function scopeAvailable($query)
+    {
+        $query->where('is_available',true);
+    }
 }

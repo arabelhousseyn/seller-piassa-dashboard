@@ -11,21 +11,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 //
 //
 //
@@ -126,8 +117,44 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      dialog: false
+      dialog: false,
+      provinces: [],
+      data: [],
+      items: ['Homme', 'Femme'],
+      items2: []
     };
+  },
+  methods: {
+    create: function create() {}
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get('/sanctum/csrf-cookie').then(function (res) {
+      axios.get('/api/provinces').then(function (e) {
+        _this.provinces = e.data;
+
+        var _iterator = _createForOfIteratorHelper(e.data),
+            _step;
+
+        try {
+          for (_iterator.s(); !(_step = _iterator.n()).done;) {
+            var province = _step.value;
+
+            _this.items2.push(province.name);
+          }
+        } catch (err) {
+          _iterator.e(err);
+        } finally {
+          _iterator.f();
+        }
+      })["catch"](function (err) {
+        _this.$toast.open({
+          message: "ERROR",
+          type: 'error'
+        });
+      });
+    });
   }
 });
 
@@ -885,111 +912,124 @@ var render = function () {
                 "v-container",
                 [
                   _c(
-                    "v-row",
+                    "v-form",
+                    {
+                      attrs: { method: "post" },
+                      on: {
+                        click: function ($event) {
+                          $event.preventDefault()
+                          return _vm.create.apply(null, arguments)
+                        },
+                      },
+                    },
                     [
                       _c(
-                        "v-col",
-                        { attrs: { cols: "12", sm: "6", md: "4" } },
+                        "v-row",
                         [
-                          _c("v-text-field", {
-                            attrs: { label: "Legal first name*", required: "" },
-                          }),
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-col",
-                        { attrs: { cols: "12", sm: "6", md: "4" } },
-                        [
-                          _c("v-text-field", {
-                            attrs: {
-                              label: "Legal middle name",
-                              hint: "example of helper text only on focus",
-                            },
-                          }),
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-col",
-                        { attrs: { cols: "12", sm: "6", md: "4" } },
-                        [
-                          _c("v-text-field", {
-                            attrs: {
-                              label: "Legal last name*",
-                              hint: "example of persistent helper text",
-                              "persistent-hint": "",
-                              required: "",
-                            },
-                          }),
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-col",
-                        { attrs: { cols: "12" } },
-                        [
-                          _c("v-text-field", {
-                            attrs: { label: "Email*", required: "" },
-                          }),
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-col",
-                        { attrs: { cols: "12" } },
-                        [
-                          _c("v-text-field", {
-                            attrs: {
-                              label: "Password*",
-                              type: "password",
-                              required: "",
-                            },
-                          }),
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-col",
-                        { attrs: { cols: "12", sm: "6" } },
-                        [
-                          _c("v-select", {
-                            attrs: {
-                              items: ["0-17", "18-29", "30-54", "54+"],
-                              label: "Age*",
-                              required: "",
-                            },
-                          }),
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-col",
-                        { attrs: { cols: "12", sm: "6" } },
-                        [
-                          _c("v-autocomplete", {
-                            attrs: {
-                              items: [
-                                "Skiing",
-                                "Ice hockey",
-                                "Soccer",
-                                "Basketball",
-                                "Hockey",
-                                "Reading",
-                                "Writing",
-                                "Coding",
-                                "Basejump",
-                              ],
-                              label: "Interests",
-                              multiple: "",
-                            },
-                          }),
+                          _c(
+                            "v-col",
+                            { attrs: { cols: "12", sm: "6", md: "6" } },
+                            [
+                              _c("v-text-field", {
+                                attrs: { label: "Nom complete*", required: "" },
+                              }),
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-col",
+                            { attrs: { cols: "12", sm: "6", md: "6" } },
+                            [
+                              _c("v-text-field", {
+                                attrs: { label: "Téléphone*", required: "" },
+                              }),
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-col",
+                            { attrs: { cols: "12" } },
+                            [
+                              _c("v-text-field", {
+                                attrs: { type: "email", label: "Email" },
+                              }),
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-col",
+                            { attrs: { cols: "12", md: "6", sm: "6" } },
+                            [
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Mote de passe*",
+                                  type: "password",
+                                  required: "",
+                                },
+                              }),
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-col",
+                            { attrs: { cols: "12", md: "6", sm: "6" } },
+                            [
+                              _c("v-text-field", {
+                                attrs: {
+                                  label: "Confirmer mote de passe*",
+                                  type: "password",
+                                  required: "",
+                                },
+                              }),
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-col",
+                            { attrs: { cols: "12", md: "6", sm: "6" } },
+                            [
+                              _c("v-select", {
+                                attrs: {
+                                  items: _vm.items,
+                                  placeholder: "Sexe*",
+                                },
+                              }),
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-col",
+                            { attrs: { cols: "12", md: "6", sm: "6" } },
+                            [
+                              _c("v-select", {
+                                attrs: {
+                                  items: _vm.items2,
+                                  placeholder: "Willaya*",
+                                },
+                              }),
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-col",
+                            { attrs: { cols: "12" } },
+                            [
+                              _c(
+                                "v-btn",
+                                { attrs: { type: "submit", color: "primary" } },
+                                [_c("v-icon", [_vm._v("mdi-plus")])],
+                                1
+                              ),
+                            ],
+                            1
+                          ),
                         ],
                         1
                       ),
@@ -1000,7 +1040,7 @@ var render = function () {
                 1
               ),
               _vm._v(" "),
-              _c("small", [_vm._v("*indicates required field")]),
+              _c("small", [_vm._v("*indique le champ obligatoire")]),
             ],
             1
           ),
@@ -1020,20 +1060,7 @@ var render = function () {
                     },
                   },
                 },
-                [_vm._v("\n                Close\n            ")]
-              ),
-              _vm._v(" "),
-              _c(
-                "v-btn",
-                {
-                  attrs: { color: "blue darken-1", text: "" },
-                  on: {
-                    click: function ($event) {
-                      _vm.dialog = false
-                    },
-                  },
-                },
-                [_vm._v("\n                Save\n            ")]
+                [_vm._v("\n                Cancel\n            ")]
               ),
             ],
             1

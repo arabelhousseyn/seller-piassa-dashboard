@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 
 use App\Http\Controllers\V1\{LoginController,LogoutController,UserController,SellerController,ShipperController
-,DashbaordController};
+,DashbaordController,ProvincesController};
 
 
 Route::middleware(['throttle:login'])->group(function (){
@@ -33,7 +33,8 @@ Route::middleware('auth:sanctum')->group(function (){
     Route::apiResources([
         'users' => UserController::class,
         'sellers' => SellerController::class,
-        'shippers' => ShipperController::class
+        'shippers' => ShipperController::class,
+        'provinces' => ProvincesController::class
     ]);
 
 });
