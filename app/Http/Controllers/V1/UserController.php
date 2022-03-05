@@ -5,7 +5,9 @@ namespace App\Http\Controllers\V1;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUserRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 use App\Models\{User};
 class UserController extends Controller
 {
@@ -44,7 +46,7 @@ class UserController extends Controller
             $password_hash = ['password' => Hash::make($request->password)];
 
             $user = User::create(array_merge($request->only('phone','email'),$password_hash));
-            $user->assignRole($request->role);
+            $this->assigRole($user,$request->role);
             $profile = $user->profile()->create($request->except('phone','email'));
             return response(['success' => true],200);
         }
@@ -140,5 +142,15 @@ class UserController extends Controller
             ];
             return response($data,422);
         }
+    }
+
+    public function assigRole($user,$role)
+    {
+        $role = Role::whereName($role)->first();
+        DB::table('model_has_roles')->insert([
+            'role_id' => $role->id,
+            'model_type' => get_class($user),
+            'model_id' => $user->id
+        ]);
     }
 }

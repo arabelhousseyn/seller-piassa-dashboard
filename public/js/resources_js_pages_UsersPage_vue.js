@@ -132,6 +132,15 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -139,16 +148,19 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       provinces: [],
       selectedGender: null,
       selectedProvince: null,
+      selectedRole: null,
       data: {
         phone: null,
         password: null,
         password_confirmation: null,
         province_id: null,
         full_name: null,
-        gender: null
+        gender: null,
+        role: null
       },
       items: ['Homme', 'Femme'],
       items2: [],
+      items3: ['Particulier', 'Corporate', 'Atelier'],
       disabled: true,
       errors: [],
       hasError: false
@@ -162,6 +174,14 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         this.data.gender = 'M';
       } else if (this.selectedGender == "Femme") {
         this.data.gender = 'W';
+      }
+
+      if (this.selectedRole == 'Particulier') {
+        this.data.role = 'P';
+      } else if (this.selectedRole == 'Corporate') {
+        this.data.role = 'C';
+      } else if (this.selectedRole == 'Atelier') {
+        this.data.role = 'A';
       }
 
       var _iterator = _createForOfIteratorHelper(this.provinces),
@@ -206,7 +226,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     check: function check() {
       this.hasError = false;
       this.errors = [];
-      this.disabled = this.data.phone == null || this.data.password == null || this.data.password_confirmation == null || this.data.full_name == null || this.selectedProvince == null || this.selectedGender == null ? true : false;
+      this.disabled = this.data.phone == null || this.data.password == null || this.data.password_confirmation == null || this.data.full_name == null || this.selectedProvince == null || this.selectedGender == null || this.selectedRole == null ? true : false;
     }
   },
   mounted: function mounted() {
@@ -1116,7 +1136,7 @@ var render = function () {
                           _vm._v(" "),
                           _c(
                             "v-col",
-                            { attrs: { cols: "12", md: "6", sm: "6" } },
+                            { attrs: { cols: "12", md: "4", sm: "4" } },
                             [
                               _c("v-select", {
                                 attrs: {
@@ -1138,7 +1158,7 @@ var render = function () {
                           _vm._v(" "),
                           _c(
                             "v-col",
-                            { attrs: { cols: "12", md: "6", sm: "6" } },
+                            { attrs: { cols: "12", md: "4", sm: "4" } },
                             [
                               _c("v-select", {
                                 attrs: {
@@ -1152,6 +1172,28 @@ var render = function () {
                                     _vm.selectedProvince = $$v
                                   },
                                   expression: "selectedProvince",
+                                },
+                              }),
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-col",
+                            { attrs: { cols: "12", md: "4", sm: "4" } },
+                            [
+                              _c("v-select", {
+                                attrs: {
+                                  items: _vm.items3,
+                                  placeholder: "Role*",
+                                },
+                                on: { change: _vm.check },
+                                model: {
+                                  value: _vm.selectedRole,
+                                  callback: function ($$v) {
+                                    _vm.selectedRole = $$v
+                                  },
+                                  expression: "selectedRole",
                                 },
                               }),
                             ],
@@ -1460,7 +1502,7 @@ var render = function () {
               headers: _vm.headers,
               items: _vm.users,
               search: _vm.search,
-              "sort-by": "created_at",
+              "disable-sort": "",
             },
             scopedSlots: _vm._u([
               {

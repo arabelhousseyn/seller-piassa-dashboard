@@ -7,7 +7,7 @@
                 :headers="headers"
                 :items="users"
                 :search="search"
-                sort-by="created_at"
+                disable-sort
                 class="elevation-1"
             >
                 <template v-slot:top>

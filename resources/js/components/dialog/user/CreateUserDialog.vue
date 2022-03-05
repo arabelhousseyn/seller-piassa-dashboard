@@ -71,7 +71,7 @@
                                     required
                                 ></v-text-field>
                             </v-col>
-                            <v-col cols="12" md="6" sm="6">
+                            <v-col cols="12" md="4" sm="4">
                                 <v-select
                                     @change="check"
                                     v-model="selectedGender"
@@ -79,12 +79,21 @@
                                     placeholder="Sexe*"
                                 ></v-select>
                             </v-col>
-                            <v-col cols="12" md="6" sm="6">
+                            <v-col cols="12" md="4" sm="4">
                                 <v-select
                                     @change="check"
                                     v-model="selectedProvince"
                                     :items="items2"
                                     placeholder="Willaya*"
+                                ></v-select>
+                            </v-col>
+
+                            <v-col cols="12" md="4" sm="4">
+                                <v-select
+                                    @change="check"
+                                    v-model="selectedRole"
+                                    :items="items3"
+                                    placeholder="Role*"
                                 ></v-select>
                             </v-col>
                             <v-alert v-if="hasError" border="right" colored-border type="error" elevation="2">
@@ -120,16 +129,19 @@ export default {
         provinces : [],
         selectedGender : null,
         selectedProvince : null,
+        selectedRole : null,
         data  : {
             phone : null,
             password : null,
-            password_confirmation :  null,
+            password_confirmation : null,
             province_id : null,
             full_name : null,
             gender : null,
+            role : null,
         },
         items: ['Homme', 'Femme'],
         items2 : [],
+        items3 : ['Particulier','Corporate','Atelier'],
         disabled : true,
         errors : [],
         hasError : false,
@@ -146,6 +158,17 @@ export default {
                 this.data.gender = 'W'
             }
 
+            if(this.selectedRole == 'Particulier')
+            {
+                this.data.role = 'P';
+            }else if(this.selectedRole == 'Corporate')
+            {
+                this.data.role = 'C';
+            }else if(this.selectedRole == 'Atelier')
+            {
+                this.data.role = 'A';
+            }
+
             for (const province of this.provinces) {
                 if(province.name == this.selectedProvince)
                 {
@@ -153,6 +176,7 @@ export default {
                     break;
                 }
             }
+
 
             axios.get('/sanctum/csrf-cookie').then(res => {
                 axios.post('/api/users',this.data).then(e=>{
@@ -176,7 +200,7 @@ export default {
             this.errors = []
             this.disabled = (this.data.phone == null || this.data.password == null
             || this.data.password_confirmation == null || this.data.full_name == null ||
-            this.selectedProvince == null || this.selectedGender == null) ? true : false
+            this.selectedProvince == null || this.selectedGender == null || this.selectedRole == null) ? true : false
         }
     },
     mounted() {
