@@ -144,7 +144,7 @@ return [
     'custom' => [
         'phone' => [
             'required' => 'Téléphone requis.',
-            'digits' => 'Téléphone doit avoir 10 chiffre',
+            'digits' => 'Téléphone doit avoir 10 chiffre.',
             'unique' => 'Le téléphone existe déjà.'
         ],
         'password' => [

@@ -20,7 +20,7 @@
                 </v-card-title>
                 <v-card-text>
                     <v-container>
-                        <v-form @click.prevent="create" method="post">
+                        <v-form @submit.prevent="create" method="post">
                         <v-row>
                                 <v-col
                                     cols="12"
@@ -28,6 +28,8 @@
                                     md="6"
                                 >
                                     <v-text-field
+                                        @keydown="check"
+                                        v-model="data.full_name"
                                         label="Nom complete*"
                                         required
                                     ></v-text-field>
@@ -38,18 +40,23 @@
                                     md="6"
                                 >
                                     <v-text-field
+                                        @keydown="check"
+                                        v-model="data.phone"
                                         label="Téléphone*"
                                         required
                                     ></v-text-field>
                                 </v-col>
                                 <v-col cols="12">
                                     <v-text-field
+                                        v-model="data.email"
                                         type="email"
                                         label="Email"
                                     ></v-text-field>
                                 </v-col>
                                 <v-col cols="12" md="6" sm="6">
                                     <v-text-field
+                                        @keydown="check"
+                                        v-model="data.password"
                                         label="Mote de passe*"
                                         type="password"
                                         required
@@ -57,6 +64,8 @@
                                 </v-col>
                             <v-col cols="12" md="6" sm="6">
                                 <v-text-field
+                                    @keydown="check"
+                                    v-model="data.password_confirmation"
                                     label="Confirmer mote de passe*"
                                     type="password"
                                     required
@@ -64,18 +73,27 @@
                             </v-col>
                             <v-col cols="12" md="6" sm="6">
                                 <v-select
+                                    @change="check"
+                                    v-model="selectedGender"
                                     :items="items"
                                     placeholder="Sexe*"
                                 ></v-select>
                             </v-col>
                             <v-col cols="12" md="6" sm="6">
                                 <v-select
+                                    @change="check"
+                                    v-model="selectedProvince"
                                     :items="items2"
                                     placeholder="Willaya*"
                                 ></v-select>
                             </v-col>
+                            <v-alert v-if="hasError" border="right" colored-border type="error" elevation="2">
+                                <ul>
+                                    <li v-for="(error,index) in errors" :key="index"><span>{{error}}</span></li>
+                                </ul>
+                            </v-alert>
                                 <v-col cols="12">
-                                    <v-btn type="submit" color="primary"><v-icon>mdi-plus</v-icon></v-btn>
+                                    <v-btn type="submit" :disabled="disabled" color="primary"><v-icon>mdi-plus</v-icon></v-btn>
                                 </v-col>
                         </v-row>
                         </v-form>
@@ -100,14 +118,65 @@ export default {
     data: () => ({
         dialog: false,
         provinces : [],
-        data  : [],
+        selectedGender : null,
+        selectedProvince : null,
+        data  : {
+            phone : null,
+            password : null,
+            password_confirmation :  null,
+            province_id : null,
+            full_name : null,
+            gender : null,
+        },
         items: ['Homme', 'Femme'],
         items2 : [],
+        disabled : true,
+        errors : [],
+        hasError : false,
+
     }),
     methods : {
         create()
         {
+            if(this.selectedGender == "Homme")
+            {
+                this.data.gender = 'M'
+            }else if(this.selectedGender == "Femme")
+            {
+                this.data.gender = 'W'
+            }
 
+            for (const province of this.provinces) {
+                if(province.name == this.selectedProvince)
+                {
+                    this.data.province_id = province.id
+                    break;
+                }
+            }
+
+            axios.get('/sanctum/csrf-cookie').then(res => {
+                axios.post('/api/users',this.data).then(e=>{
+                    this.$toast.open({
+                        message : "Opération effectué",
+                        type : 'success',
+                    })
+                    window.location.reload()
+                }).catch(err =>{
+                    let errors = Object.values(err.response.data.errors)
+                    for (const error of errors) {
+                        this.errors.push(error[0])
+                        this.hasError = true
+                    }
+                })
+            })
+        },
+        check()
+        {
+            this.hasError = false
+            this.errors = []
+            this.disabled = (this.data.phone == null || this.data.password == null
+            || this.data.password_confirmation == null || this.data.full_name == null ||
+            this.selectedProvince == null || this.selectedGender == null) ? true : false
         }
     },
     mounted() {

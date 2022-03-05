@@ -114,42 +114,124 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       dialog: false,
       provinces: [],
-      data: [],
+      selectedGender: null,
+      selectedProvince: null,
+      data: {
+        phone: null,
+        password: null,
+        password_confirmation: null,
+        province_id: null,
+        full_name: null,
+        gender: null
+      },
       items: ['Homme', 'Femme'],
-      items2: []
+      items2: [],
+      disabled: true,
+      errors: [],
+      hasError: false
     };
   },
   methods: {
-    create: function create() {}
+    create: function create() {
+      var _this = this;
+
+      if (this.selectedGender == "Homme") {
+        this.data.gender = 'M';
+      } else if (this.selectedGender == "Femme") {
+        this.data.gender = 'W';
+      }
+
+      var _iterator = _createForOfIteratorHelper(this.provinces),
+          _step;
+
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var province = _step.value;
+
+          if (province.name == this.selectedProvince) {
+            this.data.province_id = province.id;
+            break;
+          }
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+
+      axios.get('/sanctum/csrf-cookie').then(function (res) {
+        axios.post('/api/users', _this.data).then(function (e) {
+          _this.$toast.open({
+            message: "Opération effectué",
+            type: 'success'
+          });
+
+          window.location.reload();
+        })["catch"](function (err) {
+          var errors = Object.values(err.response.data.errors);
+
+          for (var _i = 0, _errors = errors; _i < _errors.length; _i++) {
+            var error = _errors[_i];
+
+            _this.errors.push(error[0]);
+
+            _this.hasError = true;
+          }
+        });
+      });
+    },
+    check: function check() {
+      this.hasError = false;
+      this.errors = [];
+      this.disabled = this.data.phone == null || this.data.password == null || this.data.password_confirmation == null || this.data.full_name == null || this.selectedProvince == null || this.selectedGender == null ? true : false;
+    }
   },
   mounted: function mounted() {
-    var _this = this;
+    var _this2 = this;
 
     axios.get('/sanctum/csrf-cookie').then(function (res) {
       axios.get('/api/provinces').then(function (e) {
-        _this.provinces = e.data;
+        _this2.provinces = e.data;
 
-        var _iterator = _createForOfIteratorHelper(e.data),
-            _step;
+        var _iterator2 = _createForOfIteratorHelper(e.data),
+            _step2;
 
         try {
-          for (_iterator.s(); !(_step = _iterator.n()).done;) {
-            var province = _step.value;
+          for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+            var province = _step2.value;
 
-            _this.items2.push(province.name);
+            _this2.items2.push(province.name);
           }
         } catch (err) {
-          _iterator.e(err);
+          _iterator2.e(err);
         } finally {
-          _iterator.f();
+          _iterator2.f();
         }
       })["catch"](function (err) {
-        _this.$toast.open({
+        _this2.$toast.open({
           message: "ERROR",
           type: 'error'
         });
@@ -916,7 +998,7 @@ var render = function () {
                     {
                       attrs: { method: "post" },
                       on: {
-                        click: function ($event) {
+                        submit: function ($event) {
                           $event.preventDefault()
                           return _vm.create.apply(null, arguments)
                         },
@@ -932,6 +1014,14 @@ var render = function () {
                             [
                               _c("v-text-field", {
                                 attrs: { label: "Nom complete*", required: "" },
+                                on: { keydown: _vm.check },
+                                model: {
+                                  value: _vm.data.full_name,
+                                  callback: function ($$v) {
+                                    _vm.$set(_vm.data, "full_name", $$v)
+                                  },
+                                  expression: "data.full_name",
+                                },
                               }),
                             ],
                             1
@@ -943,6 +1033,14 @@ var render = function () {
                             [
                               _c("v-text-field", {
                                 attrs: { label: "Téléphone*", required: "" },
+                                on: { keydown: _vm.check },
+                                model: {
+                                  value: _vm.data.phone,
+                                  callback: function ($$v) {
+                                    _vm.$set(_vm.data, "phone", $$v)
+                                  },
+                                  expression: "data.phone",
+                                },
                               }),
                             ],
                             1
@@ -954,6 +1052,13 @@ var render = function () {
                             [
                               _c("v-text-field", {
                                 attrs: { type: "email", label: "Email" },
+                                model: {
+                                  value: _vm.data.email,
+                                  callback: function ($$v) {
+                                    _vm.$set(_vm.data, "email", $$v)
+                                  },
+                                  expression: "data.email",
+                                },
                               }),
                             ],
                             1
@@ -968,6 +1073,14 @@ var render = function () {
                                   label: "Mote de passe*",
                                   type: "password",
                                   required: "",
+                                },
+                                on: { keydown: _vm.check },
+                                model: {
+                                  value: _vm.data.password,
+                                  callback: function ($$v) {
+                                    _vm.$set(_vm.data, "password", $$v)
+                                  },
+                                  expression: "data.password",
                                 },
                               }),
                             ],
@@ -984,6 +1097,18 @@ var render = function () {
                                   type: "password",
                                   required: "",
                                 },
+                                on: { keydown: _vm.check },
+                                model: {
+                                  value: _vm.data.password_confirmation,
+                                  callback: function ($$v) {
+                                    _vm.$set(
+                                      _vm.data,
+                                      "password_confirmation",
+                                      $$v
+                                    )
+                                  },
+                                  expression: "data.password_confirmation",
+                                },
                               }),
                             ],
                             1
@@ -997,6 +1122,14 @@ var render = function () {
                                 attrs: {
                                   items: _vm.items,
                                   placeholder: "Sexe*",
+                                },
+                                on: { change: _vm.check },
+                                model: {
+                                  value: _vm.selectedGender,
+                                  callback: function ($$v) {
+                                    _vm.selectedGender = $$v
+                                  },
+                                  expression: "selectedGender",
                                 },
                               }),
                             ],
@@ -1012,10 +1145,43 @@ var render = function () {
                                   items: _vm.items2,
                                   placeholder: "Willaya*",
                                 },
+                                on: { change: _vm.check },
+                                model: {
+                                  value: _vm.selectedProvince,
+                                  callback: function ($$v) {
+                                    _vm.selectedProvince = $$v
+                                  },
+                                  expression: "selectedProvince",
+                                },
                               }),
                             ],
                             1
                           ),
+                          _vm._v(" "),
+                          _vm.hasError
+                            ? _c(
+                                "v-alert",
+                                {
+                                  attrs: {
+                                    border: "right",
+                                    "colored-border": "",
+                                    type: "error",
+                                    elevation: "2",
+                                  },
+                                },
+                                [
+                                  _c(
+                                    "ul",
+                                    _vm._l(_vm.errors, function (error, index) {
+                                      return _c("li", { key: index }, [
+                                        _c("span", [_vm._v(_vm._s(error))]),
+                                      ])
+                                    }),
+                                    0
+                                  ),
+                                ]
+                              )
+                            : _vm._e(),
                           _vm._v(" "),
                           _c(
                             "v-col",
@@ -1023,7 +1189,13 @@ var render = function () {
                             [
                               _c(
                                 "v-btn",
-                                { attrs: { type: "submit", color: "primary" } },
+                                {
+                                  attrs: {
+                                    type: "submit",
+                                    disabled: _vm.disabled,
+                                    color: "primary",
+                                  },
+                                },
                                 [_c("v-icon", [_vm._v("mdi-plus")])],
                                 1
                               ),
