@@ -31,7 +31,8 @@ class StoreUserRequest extends FormRequest
             'password' => ['required','confirmed',Password::default()],
             'province_id' => 'required|exists:provinces,id',
             'full_name' => 'required',
-            'gender' => ['required',new CheckGender()]
+            'gender' => ['required',new CheckGender()],
+            'role' => 'required|exists:roles,name'
         ];
     }
 }

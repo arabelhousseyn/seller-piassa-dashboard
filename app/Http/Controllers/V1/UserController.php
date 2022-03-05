@@ -44,6 +44,7 @@ class UserController extends Controller
             $password_hash = ['password' => Hash::make($request->password)];
 
             $user = User::create(array_merge($request->only('phone','email'),$password_hash));
+            $user->assignRole($request->role);
             $profile = $user->profile()->create($request->except('phone','email'));
             return response(['success' => true],200);
         }
