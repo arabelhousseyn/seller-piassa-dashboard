@@ -142,23 +142,8 @@ return [
     */
 
     'custom' => [
-        'phone' => [
-            'required' => 'Téléphone requis.',
-            'digits' => 'Le numéro de téléphone doit comporter 10 chiffres.',
-            'unique' => 'Le téléphone existe déjà.'
-        ],
-        'email' => [
-            'email' => 'L\'email doit être valide.'
-        ],
-        'province_id' => [
-            'required' => 'Willaya requis.',
-            'exists' => 'Willaya n\'existe pas.',
-        ],
-        'full_name' => [
-            'required' => 'Nom complete requis.'
-        ],
-        'gender' => [
-            'required' => 'Sexe requis.'
+        'attribute-name' => [
+            'rule-name' => 'custom-message',
         ],
     ],
 
