@@ -11,6 +11,9 @@ class User extends Model
 {
     use  HasFactory, HasRoles,Notifiable, SoftDeletes;
 
+    const MALE = 'M';
+    const FEMALE = 'W';
+
     /**
      * The attributes that are mass assignable.
      *

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\V1;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUserRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\Models\{User};
 class UserController extends Controller
 {
@@ -40,7 +41,9 @@ class UserController extends Controller
     {
         if($request->validated())
         {
-            $user = User::create($request->only('phone','email'));
+            $password_hash = ['password' => Hash::make($request->password)];
+
+            $user = User::create(array_merge($request->only('phone','email'),$password_hash));
             $profile = $user->profile()->create($request->except('phone','email'));
             return response(['success' => true],200);
         }
