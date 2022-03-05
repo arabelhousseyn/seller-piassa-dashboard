@@ -3,7 +3,7 @@
 namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
-
+use App\Enums\GenderEnum\GenderEnum;
 class CheckGender implements Rule
 {
     /**
@@ -25,7 +25,12 @@ class CheckGender implements Rule
      */
     public function passes($attribute, $value)
     {
-        //
+        switch ($value)
+        {
+            case GenderEnum::M : return true; break;
+            case GenderEnum::F : return true;break;
+            default : return false;
+        }
     }
 
     /**
@@ -35,6 +40,6 @@ class CheckGender implements Rule
      */
     public function message()
     {
-        return 'The validation error message.';
+        return __('messages.gender');
     }
 }

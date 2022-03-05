@@ -10,4 +10,5 @@ return[
     'user_delete_error' => 'Utilisateur déjà supprimé',
     'user_not_found' => 'Utilisateur non trouvé',
     'user_not_deleted' => 'Utilisateur non supprimé',
+    'gender' => 'Le sexe non valide.'
 ];

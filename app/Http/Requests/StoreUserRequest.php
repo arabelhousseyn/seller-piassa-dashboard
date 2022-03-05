@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use App\Rules\CheckGender;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\Password;
 
 class StoreUserRequest extends FormRequest
 {
@@ -27,6 +28,7 @@ class StoreUserRequest extends FormRequest
         return [
             'phone' => 'required|digits:10|unique:users,phone',
             'email' => 'email:rfc,dns,filter',
+            'password' => ['required','confirmed',Password::default()],
             'province_id' => 'required|exists:provinces,id',
             'full_name' => 'required',
             'gender' => ['required',new CheckGender()]
