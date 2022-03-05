@@ -61,7 +61,7 @@
                                    <v-list-item-icon><v-icon color="primary">mdi-account</v-icon></v-list-item-icon>
                                    <v-list-item-content><v-list-item-title>Compte</v-list-item-title></v-list-item-content>
                                </v-list-item>
-                               <v-list-item link @click="()=>{}">
+                               <v-list-item link @click="update(item)">
                                    <v-list-item-icon><v-icon color="primary">mdi-pencil</v-icon></v-list-item-icon>
                                    <v-list-item-content><v-list-item-title>Modifier</v-list-item-title></v-list-item-content>
                                </v-list-item>
@@ -123,6 +123,7 @@
             <delete-user-dialog @close="close" :dialog="dialog" :id="selected" />
             <restore-user-dialog @close1="close1" :dialog1="dialog1" :id="selected" />
             <user-profile-dialog v-if="dialog2" :dialog="dialog2" @close2="close2" :profile="profile" />
+            <update-user-dialog v-if="dialog3" :dialog="dialog3" @close3="close3" :data="data" />
         </v-container>
     </div>
 </template>
@@ -132,14 +133,17 @@ import DeleteUserDialog from "../components/dialog/user/DeleteUserDialog";
 import RestoreUserDialog from "../components/dialog/user/RestoreUserDialog";
 import CreateUserDialog from "../components/dialog/user/CreateUserDialog";
 import UserProfileDialog from "../components/dialog/user/UserProfileDialog";
+import UpdateUserDialog from "../components/dialog/user/UpdateUserDialog";
 export default {
-    components: {UserProfileDialog, CreateUserDialog, RestoreUserDialog, DeleteUserDialog},
+    components: {UpdateUserDialog, UserProfileDialog, CreateUserDialog, RestoreUserDialog, DeleteUserDialog},
     data : ()=>({
         dialog : false,
         dialog1 : false,
         dialog2 : false,
+        dialog3 : false,
         users : [],
         profile : [],
+        data : [],
         loading : true,
         selected : null,
         search : null,
@@ -187,6 +191,11 @@ export default {
             this.profile = []
             this.dialog2 = false
         },
+        close3()
+        {
+            this.data = []
+            this.dialog3 = false
+        },
         init()
         {
             axios.get('/sanctum/csrf-cookie').then(res =>{
@@ -203,6 +212,11 @@ export default {
         {
             this.dialog2 = true
             this.profile = data.profile
+        },
+        update(data)
+        {
+            this.dialog3 = true
+            this.data = data
         }
     },
     mounted() {
