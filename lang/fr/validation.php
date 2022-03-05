@@ -164,6 +164,10 @@ return [
         'gender' => [
             'required' => 'Sexe requis.'
         ],
+        'role' => [
+            'required' => 'Role requis.',
+            'exists' => 'Role n\'existe pas.'
+        ],
     ],
 
     /*
