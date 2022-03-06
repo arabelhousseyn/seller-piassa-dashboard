@@ -85,7 +85,7 @@
                                 </v-alert>
 
                                 <v-col cols="12">
-                                    <v-btn type="submit" color="success"><v-icon>mdi-pencil</v-icon> </v-btn>
+                                    <v-btn type="submit" color="success"><v-icon>mdi-check</v-icon> </v-btn>
                                 </v-col>
                             </v-row>
                         </form>

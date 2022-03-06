@@ -2176,7 +2176,7 @@ var render = function () {
                                     color: "primary",
                                   },
                                 },
-                                [_c("v-icon", [_vm._v("mdi-plus")])],
+                                [_c("v-icon", [_vm._v("mdi-check")])],
                                 1
                               ),
                             ],
@@ -2560,7 +2560,7 @@ var render = function () {
                                       color: "success",
                                     },
                                   },
-                                  [_c("v-icon", [_vm._v("mdi-pencil")])],
+                                  [_c("v-icon", [_vm._v("mdi-check")])],
                                   1
                                 ),
                               ],
@@ -2876,7 +2876,7 @@ var render = function () {
                                   {
                                     attrs: { type: "submit", color: "success" },
                                   },
-                                  [_c("v-icon", [_vm._v("mdi-pencil")])],
+                                  [_c("v-icon", [_vm._v("mdi-check")])],
                                   1
                                 ),
                               ],

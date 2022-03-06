@@ -171,7 +171,7 @@
                                 </ul>
                             </v-alert>
                                 <v-col cols="12">
-                                    <v-btn type="submit" :disabled="disabled" color="primary"><v-icon>mdi-plus</v-icon></v-btn>
+                                    <v-btn type="submit" :disabled="disabled" color="primary"><v-icon>mdi-check</v-icon></v-btn>
                                 </v-col>
                         </v-row>
                         </v-form>

@@ -47,7 +47,7 @@
                                 </v-alert>
 
                                 <v-col cols="12">
-                                    <v-btn :disabled="disable" type="submit" color="success"><v-icon>mdi-pencil</v-icon> </v-btn>
+                                    <v-btn :disabled="disable" type="submit" color="success"><v-icon>mdi-check</v-icon> </v-btn>
                                 </v-col>
                             </v-row>
                         </form>
