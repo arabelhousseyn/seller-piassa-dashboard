@@ -53,8 +53,6 @@ class UserController extends Controller
                     {
                         $rules = [
                             'commercial_registration' => 'required',
-                            'nif' => 'required',
-                            'num_ar' => 'required',
                             'name_company' => 'required',
                             'contact_name' => 'required',
                         ];

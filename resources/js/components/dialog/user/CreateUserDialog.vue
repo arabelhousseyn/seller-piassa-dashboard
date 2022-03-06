@@ -118,7 +118,7 @@
                                     <v-text-field
                                         @keydown="check"
                                         v-model="data.nif"
-                                        label="Nif*"
+                                        label="Nif"
                                         required
                                     ></v-text-field>
                                 </v-col>
@@ -132,7 +132,7 @@
                                     <v-text-field
                                         @keydown="check"
                                         v-model="data.num_ar"
-                                        label="Numero ar*"
+                                        label="Numero ar"
                                         required
                                     ></v-text-field>
                                 </v-col>

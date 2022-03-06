@@ -2051,7 +2051,7 @@ var render = function () {
                                 { attrs: { cols: "12", sm: "6", md: "6" } },
                                 [
                                   _c("v-text-field", {
-                                    attrs: { label: "Nif*", required: "" },
+                                    attrs: { label: "Nif", required: "" },
                                     on: { keydown: _vm.check },
                                     model: {
                                       value: _vm.data.nif,
@@ -2072,10 +2072,7 @@ var render = function () {
                                 { attrs: { cols: "12", sm: "6", md: "6" } },
                                 [
                                   _c("v-text-field", {
-                                    attrs: {
-                                      label: "Numero ar*",
-                                      required: "",
-                                    },
+                                    attrs: { label: "Numero ar", required: "" },
                                     on: { keydown: _vm.check },
                                     model: {
                                       value: _vm.data.num_ar,
