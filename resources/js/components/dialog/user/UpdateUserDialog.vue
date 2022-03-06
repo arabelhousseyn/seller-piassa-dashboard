@@ -25,6 +25,60 @@
                                     ></v-text-field>
                                 </v-col>
 
+                                <v-col
+                                    cols="12"
+                                    sm="6"
+                                    md="4"
+                                >
+                                    <v-text-field
+                                        v-model="data.email"
+                                        label="Email"
+                                        required
+                                    ></v-text-field>
+                                </v-col>
+
+                                <v-col
+                                    cols="12"
+                                    sm="6"
+                                    md="4"
+                                >
+                                    <v-text-field
+                                        v-model="data.phone"
+                                        label="Telephone"
+                                        required
+                                    ></v-text-field>
+                                </v-col>
+
+                                <v-col
+                                    cols="12"
+                                    sm="6"
+                                    md="4"
+                                >
+                                    <v-select v-model="selectedProvince" :items="items3" placeholder="Willyas"></v-select>
+                                    <v-chip color="primary">{{ data.profile.province.name }}</v-chip>
+                                </v-col>
+
+                                <v-col
+                                    cols="12"
+                                    sm="6"
+                                    md="4"
+                                >
+                                    <v-select v-model="selectedGender" :items="items" placeholder="Sexe"></v-select>
+                                    <v-chip color="primary" v-if="data.profile.gender == 'M'">Homme</v-chip>
+                                    <v-chip color="primary" v-if="data.profile.gender == 'W'">Femme</v-chip>
+                                </v-col>
+
+                                <v-col
+                                    cols="12"
+                                    sm="6"
+                                    md="4"
+                                >
+                                    <v-select v-model="selectedRole" :items="items2" placeholder="Role"></v-select>
+                                    <v-chip color="primary" v-if="data.roles[0].name == 'P'">Particulier</v-chip>
+                                    <v-chip color="primary" v-if="data.roles[0].name == 'C'">Corporate</v-chip>
+                                    <v-chip color="primary" v-if="data.roles[0].name == 'A'">Atelier</v-chip>
+                                </v-col>
+
                                 <v-col cols="12">
                                     <v-btn type="submit" color="success"><v-icon>mdi-pencil</v-icon> </v-btn>
                                 </v-col>
@@ -51,6 +105,15 @@
 <script>
 export default {
     props : ['data','dialog'],
+    data : ()=>({
+        selectedRole : null,
+        selectedGender : null,
+        selectedProvince : null,
+        provinces : [],
+        items : ['Homme','Femme'],
+        items2 : ['Particulier','Corporate','Atelier'],
+        items3 : []
+    }),
     methods : {
         close()
         {
@@ -60,6 +123,21 @@ export default {
         {
 
         }
+    },
+    mounted() {
+        axios.get('/sanctum/csrf-cookie').then(res =>{
+            axios.get('/api/provinces').then(e=>{
+                this.provinces = e.data
+                for (const province of e.data) {
+                    this.items3.push(province.name)
+                }
+            }).catch(err =>{
+                this.$toast.open({
+                    message : "ERROR",
+                    type : 'error'
+                })
+            })
+        })
     }
 }
 </script>

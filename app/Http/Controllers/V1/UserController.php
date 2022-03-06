@@ -4,6 +4,7 @@ namespace App\Http\Controllers\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -100,9 +101,15 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateUserRequest $request, $id)
     {
-        //
+        if($request->validated())
+        {
+            $user = User::whereId($id)->update($request->only('phone','email'));
+            $user->profile()->update($request->except('phone','email','role'));
+            $this->updateRole($id,$request->role);
+            return response(['success' => true],200);
+        }
     }
 
     /**
@@ -170,6 +177,14 @@ class UserController extends Controller
             'role_id' => $role->id,
             'model_type' => get_class($user),
             'model_id' => $user->id
+        ]);
+    }
+
+    public function updateRole($model_id,$role)
+    {
+        $role = Role::whereName($role)->first();
+        DB::table('model_has_roles')->where('model_id',$model_id)->update([
+            'role_id' => $role->id,
         ]);
     }
 }

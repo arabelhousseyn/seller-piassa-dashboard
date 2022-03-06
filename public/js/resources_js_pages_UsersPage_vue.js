@@ -536,6 +536,66 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -588,11 +648,51 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['data', 'dialog'],
+  data: function data() {
+    return {
+      selectedRole: null,
+      selectedGender: null,
+      selectedProvince: null,
+      provinces: [],
+      items: ['Homme', 'Femme'],
+      items2: ['Particulier', 'Corporate', 'Atelier'],
+      items3: []
+    };
+  },
   methods: {
     close: function close() {
       this.$emit('close3');
     },
     update: function update() {}
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get('/sanctum/csrf-cookie').then(function (res) {
+      axios.get('/api/provinces').then(function (e) {
+        _this.provinces = e.data;
+
+        var _iterator = _createForOfIteratorHelper(e.data),
+            _step;
+
+        try {
+          for (_iterator.s(); !(_step = _iterator.n()).done;) {
+            var province = _step.value;
+
+            _this.items3.push(province.name);
+          }
+        } catch (err) {
+          _iterator.e(err);
+        } finally {
+          _iterator.f();
+        }
+      })["catch"](function (err) {
+        _this.$toast.open({
+          message: "ERROR",
+          type: 'error'
+        });
+      });
+    });
   }
 });
 
@@ -2080,6 +2180,151 @@ var render = function () {
                                     expression: "data.profile.full_name",
                                   },
                                 }),
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-col",
+                              { attrs: { cols: "12", sm: "6", md: "4" } },
+                              [
+                                _c("v-text-field", {
+                                  attrs: { label: "Email", required: "" },
+                                  model: {
+                                    value: _vm.data.email,
+                                    callback: function ($$v) {
+                                      _vm.$set(_vm.data, "email", $$v)
+                                    },
+                                    expression: "data.email",
+                                  },
+                                }),
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-col",
+                              { attrs: { cols: "12", sm: "6", md: "4" } },
+                              [
+                                _c("v-text-field", {
+                                  attrs: { label: "Telephone", required: "" },
+                                  model: {
+                                    value: _vm.data.phone,
+                                    callback: function ($$v) {
+                                      _vm.$set(_vm.data, "phone", $$v)
+                                    },
+                                    expression: "data.phone",
+                                  },
+                                }),
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-col",
+                              { attrs: { cols: "12", sm: "6", md: "4" } },
+                              [
+                                _c("v-select", {
+                                  attrs: {
+                                    items: _vm.items3,
+                                    placeholder: "Willyas",
+                                  },
+                                  model: {
+                                    value: _vm.selectedProvince,
+                                    callback: function ($$v) {
+                                      _vm.selectedProvince = $$v
+                                    },
+                                    expression: "selectedProvince",
+                                  },
+                                }),
+                                _vm._v(" "),
+                                _c("v-chip", { attrs: { color: "primary" } }, [
+                                  _vm._v(
+                                    _vm._s(_vm.data.profile.province.name)
+                                  ),
+                                ]),
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-col",
+                              { attrs: { cols: "12", sm: "6", md: "4" } },
+                              [
+                                _c("v-select", {
+                                  attrs: {
+                                    items: _vm.items,
+                                    placeholder: "Sexe",
+                                  },
+                                  model: {
+                                    value: _vm.selectedGender,
+                                    callback: function ($$v) {
+                                      _vm.selectedGender = $$v
+                                    },
+                                    expression: "selectedGender",
+                                  },
+                                }),
+                                _vm._v(" "),
+                                _vm.data.profile.gender == "M"
+                                  ? _c(
+                                      "v-chip",
+                                      { attrs: { color: "primary" } },
+                                      [_vm._v("Homme")]
+                                    )
+                                  : _vm._e(),
+                                _vm._v(" "),
+                                _vm.data.profile.gender == "W"
+                                  ? _c(
+                                      "v-chip",
+                                      { attrs: { color: "primary" } },
+                                      [_vm._v("Femme")]
+                                    )
+                                  : _vm._e(),
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-col",
+                              { attrs: { cols: "12", sm: "6", md: "4" } },
+                              [
+                                _c("v-select", {
+                                  attrs: {
+                                    items: _vm.items2,
+                                    placeholder: "Role",
+                                  },
+                                  model: {
+                                    value: _vm.selectedRole,
+                                    callback: function ($$v) {
+                                      _vm.selectedRole = $$v
+                                    },
+                                    expression: "selectedRole",
+                                  },
+                                }),
+                                _vm._v(" "),
+                                _vm.data.roles[0].name == "P"
+                                  ? _c(
+                                      "v-chip",
+                                      { attrs: { color: "primary" } },
+                                      [_vm._v("Particulier")]
+                                    )
+                                  : _vm._e(),
+                                _vm._v(" "),
+                                _vm.data.roles[0].name == "C"
+                                  ? _c(
+                                      "v-chip",
+                                      { attrs: { color: "primary" } },
+                                      [_vm._v("Corporate")]
+                                    )
+                                  : _vm._e(),
+                                _vm._v(" "),
+                                _vm.data.roles[0].name == "A"
+                                  ? _c(
+                                      "v-chip",
+                                      { attrs: { color: "primary" } },
+                                      [_vm._v("Atelier")]
+                                    )
+                                  : _vm._e(),
                               ],
                               1
                             ),
