@@ -1015,6 +1015,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -3012,6 +3017,38 @@ var render = function () {
                                       [
                                         _c("v-list-item-title", [
                                           _vm._v("Commandes"),
+                                        ]),
+                                      ],
+                                      1
+                                    ),
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "v-list-item",
+                                  {
+                                    attrs: { link: "" },
+                                    on: { click: function () {} },
+                                  },
+                                  [
+                                    _c(
+                                      "v-list-item-icon",
+                                      [
+                                        _c(
+                                          "v-icon",
+                                          { attrs: { color: "primary" } },
+                                          [_vm._v("mdi-security")]
+                                        ),
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-list-item-content",
+                                      [
+                                        _c("v-list-item-title", [
+                                          _vm._v("Sécurité"),
                                         ]),
                                       ],
                                       1
