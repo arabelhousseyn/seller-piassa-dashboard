@@ -597,22 +597,62 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['dialog', 'user_id'],
   data: function data() {
     return {
       data: {
-        user_id: null,
         password: null,
         password_confirmation: null
-      }
+      },
+      errors: [],
+      hasError: false,
+      disable: true
     };
   },
   methods: {
     close: function close() {
       this.$emit('close4');
     },
-    changePassword: function changePassword() {}
+    changePassword: function changePassword() {
+      var _this = this;
+
+      axios.get('/sanctum/csrf-cookie').then(function (res) {
+        axios.put("/api/users/change-password/".concat(_this.user_id), _this.data).then(function (e) {
+          _this.$toast.open({
+            message: "Opération effectué",
+            type: 'success'
+          });
+
+          window.location.reload();
+        })["catch"](function (err) {
+          var errors = Object.values(err.response.data.errors);
+
+          for (var _i = 0, _errors = errors; _i < _errors.length; _i++) {
+            var error = _errors[_i];
+
+            _this.errors.push(error[0]);
+
+            _this.hasError = true;
+          }
+        });
+      });
+    },
+    check: function check() {
+      this.hasError = false;
+      this.errors = [];
+      this.disable = this.data.password == null || this.data.password_confirmation == null ? true : false;
+    }
   }
 });
 
@@ -2431,13 +2471,15 @@ var render = function () {
                           [
                             _c(
                               "v-col",
-                              { attrs: { cols: "12", sm: "6", md: "4" } },
+                              { attrs: { cols: "12", sm: "6", md: "6" } },
                               [
                                 _c("v-text-field", {
                                   attrs: {
                                     label: "Mote de passe*",
+                                    type: "password",
                                     required: "",
                                   },
+                                  on: { keydown: _vm.check },
                                   model: {
                                     value: _vm.data.password,
                                     callback: function ($$v) {
@@ -2452,13 +2494,15 @@ var render = function () {
                             _vm._v(" "),
                             _c(
                               "v-col",
-                              { attrs: { cols: "12", sm: "6", md: "4" } },
+                              { attrs: { cols: "12", sm: "6", md: "6" } },
                               [
                                 _c("v-text-field", {
                                   attrs: {
                                     label: "Confirmation mote de passe*",
+                                    type: "password",
                                     required: "",
                                   },
+                                  on: { keydown: _vm.check },
                                   model: {
                                     value: _vm.data.password_confirmation,
                                     callback: function ($$v) {
@@ -2475,6 +2519,34 @@ var render = function () {
                               1
                             ),
                             _vm._v(" "),
+                            _vm.hasError
+                              ? _c(
+                                  "v-alert",
+                                  {
+                                    attrs: {
+                                      border: "right",
+                                      "colored-border": "",
+                                      type: "error",
+                                      elevation: "2",
+                                    },
+                                  },
+                                  [
+                                    _c(
+                                      "ul",
+                                      _vm._l(
+                                        _vm.errors,
+                                        function (error, index) {
+                                          return _c("li", { key: index }, [
+                                            _c("span", [_vm._v(_vm._s(error))]),
+                                          ])
+                                        }
+                                      ),
+                                      0
+                                    ),
+                                  ]
+                                )
+                              : _vm._e(),
+                            _vm._v(" "),
                             _c(
                               "v-col",
                               { attrs: { cols: "12" } },
@@ -2482,7 +2554,11 @@ var render = function () {
                                 _c(
                                   "v-btn",
                                   {
-                                    attrs: { type: "submit", color: "success" },
+                                    attrs: {
+                                      disabled: _vm.disable,
+                                      type: "submit",
+                                      color: "success",
+                                    },
                                   },
                                   [_c("v-icon", [_vm._v("mdi-pencil")])],
                                   1
