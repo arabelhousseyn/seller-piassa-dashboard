@@ -288,8 +288,7 @@ export default {
                 this.disabled = (this.data.phone == null || this.data.password == null
                     || this.data.password_confirmation == null || this.data.full_name == null ||
                     this.selectedProvince == null || this.selectedGender == null || this.selectedRole == null
-                || this.data.commercial_registration == null || this.data.nif == null
-                || this.data.num_ar == null || this.data.name_company == null
+                || this.data.commercial_registration == null || this.data.name_company == null
                 || this.data.contact_name == null) ? true : false
             }
         }
