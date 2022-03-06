@@ -7,8 +7,11 @@ use App\Http\Requests\StoreUserRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use mysql_xdevapi\Exception;
 use Spatie\Permission\Models\Role;
 use App\Models\{User};
+use Illuminate\Support\Facades\Validator;
+
 class UserController extends Controller
 {
     /**
@@ -43,11 +46,27 @@ class UserController extends Controller
     {
         if($request->validated())
         {
-            $password_hash = ['password' => Hash::make($request->password)];
-
+                    $password_hash = ['password' => Hash::make($request->password)];
+                    if($request->role == 'C')
+                    {
+                        $rules = [
+                            'commercial_registration' => 'required',
+                            'nif' => 'required',
+                            'num_ar' => 'required',
+                            'name_company' => 'required',
+                            'contact_name' => 'required',
+                        ];
+                        $validated = $request->validate($rules);
+                        $user = User::create(array_merge($request->only('phone','email'),$password_hash));
+                        $this->assigRole($user,$request->role);
+                        $profile = $user->profile()->create($request->except('phone','email'));
+                        $user->commercial_info()->create($validated);
+                        return response(['success' => true],200);
+                    }
             $user = User::create(array_merge($request->only('phone','email'),$password_hash));
             $this->assigRole($user,$request->role);
             $profile = $user->profile()->create($request->except('phone','email'));
+
             return response(['success' => true],200);
         }
     }
