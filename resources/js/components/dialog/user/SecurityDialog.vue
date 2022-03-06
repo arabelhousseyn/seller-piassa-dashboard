@@ -11,7 +11,7 @@
                 </v-card-title>
                 <v-card-text>
                     <v-container>
-                        <form @submit.prevent="changePassword" method="post">
+                        <form @submit.prevent="changePassword" method="put">
                             <v-row>
                                 <v-col
                                     cols="12"
