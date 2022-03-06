@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 
 use App\Http\Controllers\V1\{LoginController,LogoutController,UserController,SellerController,ShipperController
-,DashbaordController,ProvincesController};
+,DashbaordController,ProvincesController,UserChangePassword};
 
 
 Route::middleware(['throttle:login'])->group(function (){
@@ -29,6 +29,9 @@ Route::middleware('auth:sanctum')->group(function (){
             Route::put('restore/{id}','restore')->whereNumber('id');
     });
 
+    Route::prefix('users')->group(function (){
+        Route::put('change-password/{id}',UserChangePassword::class)->whereNumber('id');
+    });
     //resources
     Route::apiResources([
         'users' => UserController::class,
