@@ -96,6 +96,75 @@
                                     placeholder="Role*"
                                 ></v-select>
                             </v-col>
+                                <v-col
+                                    v-if="show"
+                                    cols="12"
+                                    sm="6"
+                                    md="6"
+                                >
+                                    <v-text-field
+                                        @keydown="check"
+                                        v-model="data.commercial_registration"
+                                        label="Registre commerce*"
+                                        required
+                                    ></v-text-field>
+                                </v-col>
+                                <v-col
+                                    v-if="show"
+                                    cols="12"
+                                    sm="6"
+                                    md="6"
+                                >
+                                    <v-text-field
+                                        @keydown="check"
+                                        v-model="data.nif"
+                                        label="Nif*"
+                                        required
+                                    ></v-text-field>
+                                </v-col>
+
+                                <v-col
+                                    v-if="show"
+                                    cols="12"
+                                    sm="6"
+                                    md="6"
+                                >
+                                    <v-text-field
+                                        @keydown="check"
+                                        v-model="data.num_ar"
+                                        label="Numero ar*"
+                                        required
+                                    ></v-text-field>
+                                </v-col>
+
+                                <v-col
+                                    v-if="show"
+                                    cols="12"
+                                    sm="6"
+                                    md="6"
+                                >
+                                    <v-text-field
+                                        @keydown="check"
+                                        v-model="data.name_company"
+                                        label="Nom entreprise*"
+                                        required
+                                    ></v-text-field>
+                                </v-col>
+
+                                <v-col
+                                    v-if="show"
+                                    cols="12"
+                                    sm="6"
+                                    md="6"
+                                >
+                                    <v-text-field
+                                        @keydown="check"
+                                        v-model="data.contact_name"
+                                        label="Nom contact*"
+                                        required
+                                    ></v-text-field>
+                                </v-col>
+
                             <v-alert v-if="hasError" border="right" colored-border type="error" elevation="2">
                                 <ul>
                                     <li v-for="(error,index) in errors" :key="index"><span>{{error}}</span></li>
@@ -130,6 +199,7 @@ export default {
         selectedGender : null,
         selectedProvince : null,
         selectedRole : null,
+        show : false,
         data  : {
             phone : null,
             password : null,
@@ -138,6 +208,11 @@ export default {
             full_name : null,
             gender : null,
             role : null,
+            commercial_registration : null,
+            nif : null,
+            num_ar : null,
+            name_company : null,
+            contact_name : null,
         },
         items: ['Homme', 'Femme'],
         items2 : [],
@@ -196,11 +271,27 @@ export default {
         },
         check()
         {
+            if(this.selectedRole == 'Corporate')
+            {
+                this.show = true
+            }else{
+                this.show = false
+            }
             this.hasError = false
             this.errors = []
-            this.disabled = (this.data.phone == null || this.data.password == null
-            || this.data.password_confirmation == null || this.data.full_name == null ||
-            this.selectedProvince == null || this.selectedGender == null || this.selectedRole == null) ? true : false
+            if(!this.show)
+            {
+                this.disabled = (this.data.phone == null || this.data.password == null
+                    || this.data.password_confirmation == null || this.data.full_name == null ||
+                    this.selectedProvince == null || this.selectedGender == null || this.selectedRole == null) ? true : false
+            }else{
+                this.disabled = (this.data.phone == null || this.data.password == null
+                    || this.data.password_confirmation == null || this.data.full_name == null ||
+                    this.selectedProvince == null || this.selectedGender == null || this.selectedRole == null
+                || this.data.commercial_registration == null || this.data.nif == null
+                || this.data.num_ar == null || this.data.name_company == null
+                || this.data.contact_name == null) ? true : false
+            }
         }
     },
     mounted() {

@@ -141,6 +141,75 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -149,6 +218,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       selectedGender: null,
       selectedProvince: null,
       selectedRole: null,
+      show: false,
       data: {
         phone: null,
         password: null,
@@ -156,7 +226,12 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         province_id: null,
         full_name: null,
         gender: null,
-        role: null
+        role: null,
+        commercial_registration: null,
+        nif: null,
+        num_ar: null,
+        name_company: null,
+        contact_name: null
       },
       items: ['Homme', 'Femme'],
       items2: [],
@@ -224,9 +299,20 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       });
     },
     check: function check() {
+      if (this.selectedRole == 'Corporate') {
+        this.show = true;
+      } else {
+        this.show = false;
+      }
+
       this.hasError = false;
       this.errors = [];
-      this.disabled = this.data.phone == null || this.data.password == null || this.data.password_confirmation == null || this.data.full_name == null || this.selectedProvince == null || this.selectedGender == null || this.selectedRole == null ? true : false;
+
+      if (!this.show) {
+        this.disabled = this.data.phone == null || this.data.password == null || this.data.password_confirmation == null || this.data.full_name == null || this.selectedProvince == null || this.selectedGender == null || this.selectedRole == null ? true : false;
+      } else {
+        this.disabled = this.data.phone == null || this.data.password == null || this.data.password_confirmation == null || this.data.full_name == null || this.selectedProvince == null || this.selectedGender == null || this.selectedRole == null || this.data.commercial_registration == null || this.data.nif == null || this.data.num_ar == null || this.data.name_company == null || this.data.contact_name == null ? true : false;
+      }
     }
   },
   mounted: function mounted() {
@@ -1519,6 +1605,128 @@ var render = function () {
                             ],
                             1
                           ),
+                          _vm._v(" "),
+                          _vm.show
+                            ? _c(
+                                "v-col",
+                                { attrs: { cols: "12", sm: "6", md: "6" } },
+                                [
+                                  _c("v-text-field", {
+                                    attrs: {
+                                      label: "Registre commerce*",
+                                      required: "",
+                                    },
+                                    on: { keydown: _vm.check },
+                                    model: {
+                                      value: _vm.data.commercial_registration,
+                                      callback: function ($$v) {
+                                        _vm.$set(
+                                          _vm.data,
+                                          "commercial_registration",
+                                          $$v
+                                        )
+                                      },
+                                      expression:
+                                        "data.commercial_registration",
+                                    },
+                                  }),
+                                ],
+                                1
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.show
+                            ? _c(
+                                "v-col",
+                                { attrs: { cols: "12", sm: "6", md: "6" } },
+                                [
+                                  _c("v-text-field", {
+                                    attrs: { label: "Nif*", required: "" },
+                                    on: { keydown: _vm.check },
+                                    model: {
+                                      value: _vm.data.nif,
+                                      callback: function ($$v) {
+                                        _vm.$set(_vm.data, "nif", $$v)
+                                      },
+                                      expression: "data.nif",
+                                    },
+                                  }),
+                                ],
+                                1
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.show
+                            ? _c(
+                                "v-col",
+                                { attrs: { cols: "12", sm: "6", md: "6" } },
+                                [
+                                  _c("v-text-field", {
+                                    attrs: {
+                                      label: "Numero ar*",
+                                      required: "",
+                                    },
+                                    on: { keydown: _vm.check },
+                                    model: {
+                                      value: _vm.data.num_ar,
+                                      callback: function ($$v) {
+                                        _vm.$set(_vm.data, "num_ar", $$v)
+                                      },
+                                      expression: "data.num_ar",
+                                    },
+                                  }),
+                                ],
+                                1
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.show
+                            ? _c(
+                                "v-col",
+                                { attrs: { cols: "12", sm: "6", md: "6" } },
+                                [
+                                  _c("v-text-field", {
+                                    attrs: {
+                                      label: "Nom entreprise*",
+                                      required: "",
+                                    },
+                                    on: { keydown: _vm.check },
+                                    model: {
+                                      value: _vm.data.name_company,
+                                      callback: function ($$v) {
+                                        _vm.$set(_vm.data, "name_company", $$v)
+                                      },
+                                      expression: "data.name_company",
+                                    },
+                                  }),
+                                ],
+                                1
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.show
+                            ? _c(
+                                "v-col",
+                                { attrs: { cols: "12", sm: "6", md: "6" } },
+                                [
+                                  _c("v-text-field", {
+                                    attrs: {
+                                      label: "Nom contact*",
+                                      required: "",
+                                    },
+                                    on: { keydown: _vm.check },
+                                    model: {
+                                      value: _vm.data.contact_name,
+                                      callback: function ($$v) {
+                                        _vm.$set(_vm.data, "contact_name", $$v)
+                                      },
+                                      expression: "data.contact_name",
+                                    },
+                                  }),
+                                ],
+                                1
+                              )
+                            : _vm._e(),
                           _vm._v(" "),
                           _vm.hasError
                             ? _c(
