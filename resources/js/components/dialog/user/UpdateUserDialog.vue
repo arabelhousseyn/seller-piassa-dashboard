@@ -21,7 +21,6 @@
                                     <v-text-field
                                         v-model="data.profile.full_name"
                                         label="Nom complete"
-                                        required
                                     ></v-text-field>
                                 </v-col>
 
@@ -33,7 +32,7 @@
                                     <v-text-field
                                         v-model="data.email"
                                         label="Email"
-                                        required
+
                                     ></v-text-field>
                                 </v-col>
 
@@ -45,7 +44,7 @@
                                     <v-text-field
                                         v-model="data.phone"
                                         label="Telephone"
-                                        required
+
                                     ></v-text-field>
                                 </v-col>
 
@@ -79,6 +78,12 @@
                                     <v-chip color="primary" v-if="data.roles[0].name == 'A'">Atelier</v-chip>
                                 </v-col>
 
+                                <v-alert v-if="hasError" border="right" colored-border type="error" elevation="2">
+                                    <ul>
+                                        <li v-for="(error,index) in errors" :key="index"><span>{{error}}</span></li>
+                                    </ul>
+                                </v-alert>
+
                                 <v-col cols="12">
                                     <v-btn type="submit" color="success"><v-icon>mdi-pencil</v-icon> </v-btn>
                                 </v-col>
@@ -110,9 +115,18 @@ export default {
         selectedGender : null,
         selectedProvince : null,
         provinces : [],
+        data2 : {
+            phone : null,
+            province_id : null,
+            full_name : null,
+            gender : null,
+            role : null,
+        },
         items : ['Homme','Femme'],
         items2 : ['Particulier','Corporate','Atelier'],
-        items3 : []
+        items3 : [],
+        hasError : false,
+        errors : []
     }),
     methods : {
         close()
@@ -121,6 +135,74 @@ export default {
         },
         update()
         {
+            console.log('ds')
+            this.data2.full_name = this.data.profile.full_name
+            this.data2.phone = this.data.phone
+
+            if(this.selectedGender !== null)
+            {
+                if(this.selectedGender == "Homme")
+                {
+                    this.data2.gender = 'M'
+                }else if(this.selectedGender == "Femme")
+                {
+                    this.data2.gender = 'W'
+                }
+            }else{
+                this.data2.gender = this.data.profile.gender;
+            }
+
+            if(this.selectedRole !== null)
+            {
+                if(this.selectedRole == 'Particulier')
+                {
+                    this.data2.role = 'P';
+                }else if(this.selectedRole == 'Corporate')
+                {
+                    this.data2.role = 'C';
+                }else if(this.selectedRole == 'Atelier')
+                {
+                    this.data2.role = 'A';
+                }
+            }else{
+                this.data2.role = this.data.roles[0].name;
+            }
+
+            if(this.selectedProvince !== null)
+            {
+                for (const province of this.provinces) {
+                    if(province.name == this.selectedProvince)
+                    {
+                        this.data2.province_id = province.id
+                        break;
+                    }
+                }
+            }else{
+                this.data2.province_id = this.data.profile.province.id;
+            }
+
+            this.data2.email = this.data.email
+
+
+            axios.get('/sanctum/csrf-cookie').then(res => {
+                axios.put(`/api/users/${this.data.id}`,this.data2).then(e=>{
+                    console.log(e)
+                    if(e.status == 204)
+                    {
+                        this.$toast.open({
+                            message : "Opération effectué",
+                            type : 'success',
+                        })
+                        window.location.reload()
+                    }
+                }).catch(err =>{
+                    let errors = Object.values(err.response.data.errors)
+                    for (const error of errors) {
+                        this.errors.push(error[0])
+                        this.hasError = true
+                    }
+                })
+            })
 
         }
     },

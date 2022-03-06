@@ -646,6 +646,11 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['data', 'dialog'],
   data: function data() {
@@ -654,40 +659,125 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       selectedGender: null,
       selectedProvince: null,
       provinces: [],
+      data2: {
+        phone: null,
+        province_id: null,
+        full_name: null,
+        gender: null,
+        role: null
+      },
       items: ['Homme', 'Femme'],
       items2: ['Particulier', 'Corporate', 'Atelier'],
-      items3: []
+      items3: [],
+      hasError: false,
+      errors: []
     };
   },
   methods: {
     close: function close() {
       this.$emit('close3');
     },
-    update: function update() {}
-  },
-  mounted: function mounted() {
-    var _this = this;
+    update: function update() {
+      var _this = this;
 
-    axios.get('/sanctum/csrf-cookie').then(function (res) {
-      axios.get('/api/provinces').then(function (e) {
-        _this.provinces = e.data;
+      console.log('ds');
+      this.data2.full_name = this.data.profile.full_name;
+      this.data2.phone = this.data.phone;
 
-        var _iterator = _createForOfIteratorHelper(e.data),
+      if (this.selectedGender !== null) {
+        if (this.selectedGender == "Homme") {
+          this.data2.gender = 'M';
+        } else if (this.selectedGender == "Femme") {
+          this.data2.gender = 'W';
+        }
+      } else {
+        this.data2.gender = this.data.profile.gender;
+      }
+
+      if (this.selectedRole !== null) {
+        if (this.selectedRole == 'Particulier') {
+          this.data2.role = 'P';
+        } else if (this.selectedRole == 'Corporate') {
+          this.data2.role = 'C';
+        } else if (this.selectedRole == 'Atelier') {
+          this.data2.role = 'A';
+        }
+      } else {
+        this.data2.role = this.data.roles[0].name;
+      }
+
+      if (this.selectedProvince !== null) {
+        var _iterator = _createForOfIteratorHelper(this.provinces),
             _step;
 
         try {
           for (_iterator.s(); !(_step = _iterator.n()).done;) {
             var province = _step.value;
 
-            _this.items3.push(province.name);
+            if (province.name == this.selectedProvince) {
+              this.data2.province_id = province.id;
+              break;
+            }
           }
         } catch (err) {
           _iterator.e(err);
         } finally {
           _iterator.f();
         }
+      } else {
+        this.data2.province_id = this.data.profile.province.id;
+      }
+
+      this.data2.email = this.data.email;
+      axios.get('/sanctum/csrf-cookie').then(function (res) {
+        axios.put("/api/users/".concat(_this.data.id), _this.data2).then(function (e) {
+          console.log(e);
+
+          if (e.status == 204) {
+            _this.$toast.open({
+              message: "Opération effectué",
+              type: 'success'
+            });
+
+            window.location.reload();
+          }
+        })["catch"](function (err) {
+          var errors = Object.values(err.response.data.errors);
+
+          for (var _i = 0, _errors = errors; _i < _errors.length; _i++) {
+            var error = _errors[_i];
+
+            _this.errors.push(error[0]);
+
+            _this.hasError = true;
+          }
+        });
+      });
+    }
+  },
+  mounted: function mounted() {
+    var _this2 = this;
+
+    axios.get('/sanctum/csrf-cookie').then(function (res) {
+      axios.get('/api/provinces').then(function (e) {
+        _this2.provinces = e.data;
+
+        var _iterator2 = _createForOfIteratorHelper(e.data),
+            _step2;
+
+        try {
+          for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+            var province = _step2.value;
+
+            _this2.items3.push(province.name);
+          }
+        } catch (err) {
+          _iterator2.e(err);
+        } finally {
+          _iterator2.f();
+        }
       })["catch"](function (err) {
-        _this.$toast.open({
+        _this2.$toast.open({
           message: "ERROR",
           type: 'error'
         });
@@ -2164,10 +2254,7 @@ var render = function () {
                               { attrs: { cols: "12", sm: "6", md: "4" } },
                               [
                                 _c("v-text-field", {
-                                  attrs: {
-                                    label: "Nom complete",
-                                    required: "",
-                                  },
+                                  attrs: { label: "Nom complete" },
                                   model: {
                                     value: _vm.data.profile.full_name,
                                     callback: function ($$v) {
@@ -2189,7 +2276,7 @@ var render = function () {
                               { attrs: { cols: "12", sm: "6", md: "4" } },
                               [
                                 _c("v-text-field", {
-                                  attrs: { label: "Email", required: "" },
+                                  attrs: { label: "Email" },
                                   model: {
                                     value: _vm.data.email,
                                     callback: function ($$v) {
@@ -2207,7 +2294,7 @@ var render = function () {
                               { attrs: { cols: "12", sm: "6", md: "4" } },
                               [
                                 _c("v-text-field", {
-                                  attrs: { label: "Telephone", required: "" },
+                                  attrs: { label: "Telephone" },
                                   model: {
                                     value: _vm.data.phone,
                                     callback: function ($$v) {
@@ -2328,6 +2415,34 @@ var render = function () {
                               ],
                               1
                             ),
+                            _vm._v(" "),
+                            _vm.hasError
+                              ? _c(
+                                  "v-alert",
+                                  {
+                                    attrs: {
+                                      border: "right",
+                                      "colored-border": "",
+                                      type: "error",
+                                      elevation: "2",
+                                    },
+                                  },
+                                  [
+                                    _c(
+                                      "ul",
+                                      _vm._l(
+                                        _vm.errors,
+                                        function (error, index) {
+                                          return _c("li", { key: index }, [
+                                            _c("span", [_vm._v(_vm._s(error))]),
+                                          ])
+                                        }
+                                      ),
+                                      0
+                                    ),
+                                  ]
+                                )
+                              : _vm._e(),
                             _vm._v(" "),
                             _c(
                               "v-col",

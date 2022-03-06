@@ -10,7 +10,6 @@ class UpdateUserService{
 
     public static function update($request,$id)
     {
-
         $user = User::with('roles')->find($id);
         if($user->roles[0]->name !== $request->role)
         {
@@ -22,7 +21,11 @@ class UpdateUserService{
 
         if($user->phone == $request->phone)
         {
-            User::whereId($id)->update($request->only('email','phone'));
+            $rules = [
+                'email' => 'email:rfc,dns,filter',
+            ];
+            $validated0 = $request->validate($rules);
+            User::whereId($id)->update($validated0);
             $user->profile()->update($request->except('email','phone','role'));
             return response('',204);
         }
