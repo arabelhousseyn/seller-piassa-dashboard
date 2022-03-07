@@ -23,9 +23,7 @@
                                     vertical
                                 ></v-divider>
                                 <v-spacer></v-spacer>
-                                <v-btn color="primary">
-                                    <v-icon>mdi-plus</v-icon> Ajouter
-                                </v-btn>
+                               <create-vehicle-dialog />
                             </v-toolbar>
                             <v-toolbar flat>
                                 <v-text-field
@@ -101,8 +99,9 @@
 <script>
 import DeleteVehicleDialog from "../dialog/Vehicle/DeleteVehicleDialog";
 import UpdateVehicleDialog from "../dialog/Vehicle/UpdateVehicleDialog";
+import CreateVehicleDialog from "../dialog/Vehicle/CreateVehicleDialog";
 export default {
-    components: {UpdateVehicleDialog, DeleteVehicleDialog},
+    components: {CreateVehicleDialog, UpdateVehicleDialog, DeleteVehicleDialog},
     props : ['data'],
     data : ()=>({
        user_id : window.location.pathname.split('/').pop(),
