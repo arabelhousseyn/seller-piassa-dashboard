@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 use App\Models\{User,UserVehicle};
 class VehicleController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('check_chassis')->except('index','create','show','edit','destory','vehiclesByUser');
+    }
+
     /**
      * Display a listing of the resource.
      *
