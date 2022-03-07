@@ -69,7 +69,13 @@ class VehicleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rules = [
+            'sign_id' => 'exists:signs,id',
+            'year' => 'date_format:Y'
+        ];
+        $validate = $request->validate($rules);
+        UserVehicle::whereId($id)->update($validate);
+        return response('',204);
     }
 
     /**

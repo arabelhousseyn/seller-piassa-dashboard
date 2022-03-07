@@ -183,6 +183,12 @@ return [
         'contact_name' => [
             'required' => 'Nom contact requis.'
         ],
+        'sign_id' => [
+            'exists' => 'Marque n\'existe pas.'
+        ],
+        'year' => [
+            'date_format' => 'Format invalide.'
+        ]
     ],
 
     /*
