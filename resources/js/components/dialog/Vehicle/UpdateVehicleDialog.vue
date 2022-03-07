@@ -68,6 +68,12 @@
                                     <v-chip color="primary">{{data.sign.name}}</v-chip>
                                 </v-col>
 
+                                <v-alert v-if="hasError" border="right" colored-border type="error" elevation="2">
+                                    <ul>
+                                        <li v-for="(error,index) in errors" :key="index"><span>{{error}}</span></li>
+                                    </ul>
+                                </v-alert>
+
                                 <v-col cols="12"> <v-btn type="submit" color="success"><v-icon>mdi-pencil</v-icon></v-btn> </v-col>
                             </v-row>
                         </form>
@@ -101,7 +107,9 @@ export default {
             sign : null,
         },
         items : [],
-        signs : []
+        signs : [],
+        errors : [],
+        hasError : false,
     }),
     methods : {
         close()
@@ -127,8 +135,25 @@ export default {
                 }
             }
 
-
-
+            axios.get('/sanctum/csrf-cookie').then(res => {
+                axios.put(`/api/vehicles/${this.data.id}`,this.data2)
+                .then(e => {
+                    if(e.status == 204)
+                    {
+                        this.$toast.open({
+                            message : 'Opération effectué',
+                            type : 'success'
+                        })
+                        window.location.reload()
+                    }
+                }).catch(err =>{
+                    let errors = Object.values(err.response.data.errors)
+                    for (const error of errors) {
+                        this.errors.push(error[0])
+                        this.hasError = true
+                    }
+                })
+            })
         },
         fetchSigns()
         {

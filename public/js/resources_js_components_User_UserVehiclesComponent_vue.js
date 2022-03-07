@@ -396,6 +396,12 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['dialog', 'data'],
   data: function data() {
@@ -409,7 +415,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         sign: null
       },
       items: [],
-      signs: []
+      signs: [],
+      errors: [],
+      hasError: false
     };
   },
   methods: {
@@ -417,6 +425,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       this.$emit('close1');
     },
     update: function update() {
+      var _this = this;
+
       this.data2.model = this.data.model;
       this.data2.year = this.data.year;
       this.data2.motorization = this.data.motorization;
@@ -443,13 +453,36 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
           _iterator.f();
         }
       }
+
+      axios.get('/sanctum/csrf-cookie').then(function (res) {
+        axios.put("/api/vehicles/".concat(_this.data.id), _this.data2).then(function (e) {
+          if (e.status == 204) {
+            _this.$toast.open({
+              message: 'Opération effectué',
+              type: 'success'
+            });
+
+            window.location.reload();
+          }
+        })["catch"](function (err) {
+          var errors = Object.values(err.response.data.errors);
+
+          for (var _i = 0, _errors = errors; _i < _errors.length; _i++) {
+            var error = _errors[_i];
+
+            _this.errors.push(error[0]);
+
+            _this.hasError = true;
+          }
+        });
+      });
     },
     fetchSigns: function fetchSigns() {
-      var _this = this;
+      var _this2 = this;
 
       axios.get('/sanctum/csrf-cookie').then(function (res) {
         axios.get('/api/signs/all').then(function (e) {
-          _this.signs = e.data.data;
+          _this2.signs = e.data.data;
 
           var _iterator2 = _createForOfIteratorHelper(e.data.data),
               _step2;
@@ -458,7 +491,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
             for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
               var value = _step2.value;
 
-              _this.items.push(value.name);
+              _this2.items.push(value.name);
             }
           } catch (err) {
             _iterator2.e(err);
@@ -1262,6 +1295,34 @@ var render = function () {
                               ],
                               1
                             ),
+                            _vm._v(" "),
+                            _vm.hasError
+                              ? _c(
+                                  "v-alert",
+                                  {
+                                    attrs: {
+                                      border: "right",
+                                      "colored-border": "",
+                                      type: "error",
+                                      elevation: "2",
+                                    },
+                                  },
+                                  [
+                                    _c(
+                                      "ul",
+                                      _vm._l(
+                                        _vm.errors,
+                                        function (error, index) {
+                                          return _c("li", { key: index }, [
+                                            _c("span", [_vm._v(_vm._s(error))]),
+                                          ])
+                                        }
+                                      ),
+                                      0
+                                    ),
+                                  ]
+                                )
+                              : _vm._e(),
                             _vm._v(" "),
                             _c(
                               "v-col",
