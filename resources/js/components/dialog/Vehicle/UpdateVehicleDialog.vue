@@ -56,6 +56,18 @@
                                         v-model="data.chassis_number"
                                     ></v-text-field>
                                 </v-col>
+
+
+                                <v-col
+                                    cols="12"
+                                    sm="6"
+                                    md="6"
+                                >
+                                    <v-select v-model="selectedSign" :items="items"></v-select>
+
+                                    <v-chip color="primary">{{data.sign.name}}</v-chip>
+                                </v-col>
+
                                 <v-col cols="12"> <v-btn type="submit" color="success"><v-icon>mdi-pencil</v-icon></v-btn> </v-col>
                             </v-row>
                         </form>
@@ -80,12 +92,16 @@
 export default {
     props : ['dialog','data'],
     data : () =>({
+        selectedSign : null,
         data2 : {
             model : null,
             year : null,
             motorization : null,
             chassis_number : null,
-        }
+            sign : null,
+        },
+        items : [],
+        signs : []
     }),
     methods : {
         close()
@@ -98,9 +114,37 @@ export default {
             this.data2.year = this.data.year
             this.data2.motorization = this.data.motorization
             this.data2.chassis_number = this.data.chassis_number
+            if(this.selectedSign == null)
+            {
+                this.data2.sign = this.data.sign.id
+            }else{
+                for (const sign of this.signs) {
+                    if(sign.name == this.selectedSign)
+                    {
+                        this.data2.sign = sign.id
+                        break;
+                    }
+                }
+            }
 
 
+
+        },
+        fetchSigns()
+        {
+            axios.get('/sanctum/csrf-cookie').then(res => {
+                axios.get('/api/signs/all')
+                .then(e=>{
+                    this.signs = e.data.data
+                    for (const value of e.data.data) {
+                        this.items.push(value.name)
+                    }
+                })
+            })
         }
+    },
+    mounted() {
+        this.fetchSigns()
     }
 }
 </script>
