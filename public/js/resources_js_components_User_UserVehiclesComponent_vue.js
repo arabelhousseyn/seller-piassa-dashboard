@@ -112,6 +112,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -913,7 +914,8 @@ var render = function () {
                     headers: _vm.headers,
                     items: _vm.data == undefined ? _vm.data2 : _vm.data,
                     search: _vm.search,
-                    "sort-by": "created_at",
+                    "sort-by": "[created_at]",
+                    "sort-desc": [true],
                   },
                   scopedSlots: _vm._u(
                     [

@@ -9,7 +9,8 @@
                         :headers="headers"
                         :items="(data == undefined) ? data2 : data"
                         :search="search"
-                        sort-by="created_at"
+                        sort-by="[created_at]"
+                        :sort-desc="[true]"
                         class="elevation-1 mt-3"
                     >
                         <template v-slot:top>
