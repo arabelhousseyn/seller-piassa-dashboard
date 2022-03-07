@@ -69,7 +69,7 @@
                                     <v-list-item-icon><v-icon color="primary">mdi-paperclip</v-icon></v-list-item-icon>
                                     <v-list-item-content><v-list-item-title>Document</v-list-item-title></v-list-item-content>
                                 </v-list-item>
-                                <v-list-item link @click="$router.push('users/vehicles')">
+                                <v-list-item link @click="$router.push(`users/vehicles/${item.id}`)">
                                     <v-list-item-icon><v-icon color="primary">mdi-car</v-icon></v-list-item-icon>
                                     <v-list-item-content><v-list-item-title>Véhicules</v-list-item-title></v-list-item-content>
                                 </v-list-item>

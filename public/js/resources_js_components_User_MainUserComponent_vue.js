@@ -2304,7 +2304,7 @@ var render = function () {
                                     on: {
                                       click: function ($event) {
                                         return _vm.$router.push(
-                                          "users/vehicles"
+                                          "users/vehicles/" + item.id
                                         )
                                       },
                                     },
