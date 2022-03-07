@@ -1,14 +1,21 @@
 <template>
     <div class="user-vehicles-component">
-        welcome to user vehicles
+        {{ data }}
     </div>
 </template>
 
 <script>
 export default {
+    props : ['data'],
+    data : ()=>({
+       user_id : window.location.pathname.split('/').pop(),
+    }),
     mounted()
     {
-        console.log('created!')
+        if(this.data == undefined)
+        {
+            console.log('empty')
+        }
     }
 }
 </script>

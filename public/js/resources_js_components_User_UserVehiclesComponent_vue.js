@@ -18,8 +18,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ['data'],
+  data: function data() {
+    return {
+      user_id: window.location.pathname.split('/').pop()
+    };
+  },
   mounted: function mounted() {
-    console.log('created!');
+    if (this.data == undefined) {
+      console.log('empty');
+    }
   }
 });
 
@@ -110,7 +118,7 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "user-vehicles-component" }, [
-    _vm._v("\n    welcome to user vehicles\n"),
+    _vm._v("\n    " + _vm._s(_vm.data) + "\n"),
   ])
 }
 var staticRenderFns = []

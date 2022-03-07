@@ -26,6 +26,8 @@ const routes = [
                     },
                     {
                         path : 'vehicles/:id',
+                        name : 'vehicles',
+                        props : true,
                         component : () => import('../components/User/UserVehiclesComponent'),
                     }
                 ]

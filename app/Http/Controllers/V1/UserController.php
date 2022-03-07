@@ -21,7 +21,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::with('locations','profile.province','vehicle','carts','orders','commercial_info','roles')
+        $users = User::with('locations','profile.province','vehicle.sign','carts','orders','commercial_info','roles')
             ->withTrashed()->latest('id','desc')->get();
         return response(['data' => $users],200);
     }
