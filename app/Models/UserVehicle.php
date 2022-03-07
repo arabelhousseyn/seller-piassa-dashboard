@@ -19,11 +19,6 @@ class UserVehicle extends Model
         'chassis_number'
     ];
 
-    protected $hidden = [
-        'updated_at',
-        'deleted_at'
-    ];
-
     protected $casts = [
         'created_at' => 'date:Y-m-d H:i:s'
     ];
