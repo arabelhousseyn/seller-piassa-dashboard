@@ -61,7 +61,10 @@
 
                                 <v-list>
                                     <v-list-item-group>
-
+                                        <v-list-item v-if="item.deleted_at == null" link @click="destroy(item.id)">
+                                            <v-list-item-icon><v-icon color="red">mdi-delete</v-icon></v-list-item-icon>
+                                            <v-list-item-content><v-list-item-title>Supprimer</v-list-item-title></v-list-item-content>
+                                        </v-list-item>
                                     </v-list-item-group>
                                 </v-list>
                             </v-menu>
@@ -84,17 +87,22 @@
                         </template>
                     </v-data-table>
             </v-container>
+            <delete-vehicle-dialog @close="close" :dialog="dialog" :id="id" />
         </div>
     </div>
 </template>
 
 <script>
+import DeleteVehicleDialog from "../dialog/Vehicle/DeleteVehicleDialog";
 export default {
+    components: {DeleteVehicleDialog},
     props : ['data'],
     data : ()=>({
        user_id : window.location.pathname.split('/').pop(),
         data2 : undefined,
         search : null,
+        dialog : false,
+        dialog2 : false,
         headers: [
             {
                 text: 'Modèle',
@@ -109,6 +117,7 @@ export default {
             { text: 'Statu', value: 'deleted_at' },
             { text: 'actions', value: 'actions', sortable: false },
         ],
+        id : null,
     }),
     methods : {
         reset()
@@ -116,6 +125,11 @@ export default {
             this.init()
         },
 
+        close()
+        {
+          this.dialog = false
+          this.id = null
+        },
         init()
         {
             axios.get('/sanctum/csrf-cookie').then(res =>{
@@ -127,6 +141,16 @@ export default {
                         console.log(err)
                     })
             })
+        },
+        destroy(id)
+        {
+            this.id= id
+            this.dialog = true
+        },
+        restore(id)
+        {
+            this.id= id
+            this.dialog2 = true
         }
     },
     mounted()

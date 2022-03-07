@@ -80,12 +80,33 @@ class VehicleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $user_vehicle = UserVehicle::withTrashed()->findOrFail($id);
+            if(!$user_vehicle->trashed())
+            {
+                $user_vehicle->delete();
+                return response('',204);
+            }
+            $data = [
+                'data' => [
+                    'message' => __('messages.vehicle_delete_error')
+                ]
+            ];
+            return response($data,422);
+        }catch (\Exception $e)
+        {
+            $data = [
+                'data' => [
+                    'message' => __('messages.vehicle_not_found')
+                ]
+            ];
+            return response($data,422);
+        }
     }
 
     public function vehiclesByUser($user_id)
     {
-        $user = User::with('vehicle.sign')->find($user_id);
+        $user = User::withTrashed()->with('vehicle.sign')->find($user_id);
         return response(['data' => $user->vehicle],200);
     }
 }

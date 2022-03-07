@@ -173,7 +173,7 @@ class UserController extends Controller
 
     public function updateCommercialInfo(Request $request,$user_id)
     {
-        $user = User::find($user_id);
+        $user = User::withTrashed()->find($user_id);
         $user->commercial_info()->update($request->all());
         return response('',204);
     }
