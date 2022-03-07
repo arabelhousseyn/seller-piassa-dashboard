@@ -1033,8 +1033,44 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['dialog', 'commercial_info'],
+  data: function data() {
+    return {
+      data: {
+        commercial_registration: null,
+        nif: null,
+        num_ar: null,
+        name_company: null,
+        contact_name: null
+      }
+    };
+  },
   methods: {
-    update: function update() {},
+    update: function update() {
+      var _this = this;
+
+      this.data.commercial_registration = this.commercial_info.commercial_registration;
+      this.data.nif = this.commercial_info.nif;
+      this.data.num_ar = this.commercial_info.num_ar;
+      this.data.name_company = this.commercial_info.name_company;
+      this.data.contact_name = this.commercial_info.contact_name;
+      axios.get('/sanctum/csrf-cookie').then(function (res) {
+        axios.put("/api/users/update-commercial-info/".concat(_this.commercial_info.user_id), _this.data).then(function (e) {
+          if (e.status == 204) {
+            _this.$toast.open({
+              message: 'Opération effectué',
+              type: 'success'
+            });
+
+            window.location.reload();
+          }
+        })["catch"](function (err) {
+          _this.$toast.open({
+            message: 'ERROR',
+            type: 'error'
+          });
+        });
+      });
+    },
     close: function close() {
       this.$emit('close5');
     }

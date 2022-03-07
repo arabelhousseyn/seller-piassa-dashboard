@@ -102,10 +102,41 @@
 <script>
 export default {
     props : ['dialog','commercial_info'],
+    data : ()=>({
+        data : {
+            commercial_registration : null,
+            nif : null,
+            num_ar : null,
+            name_company : null,
+            contact_name : null
+        }
+    }),
     methods : {
         update()
         {
-
+            this.data.commercial_registration = this.commercial_info.commercial_registration
+            this.data.nif = this.commercial_info.nif
+            this.data.num_ar = this.commercial_info.num_ar
+            this.data.name_company = this.commercial_info.name_company
+            this.data.contact_name = this.commercial_info.contact_name
+            axios.get('/sanctum/csrf-cookie').then(res =>{
+                axios.put(`/api/users/update-commercial-info/${this.commercial_info.user_id}`,this.data)
+                .then(e=>{
+                    if(e.status == 204)
+                    {
+                        this.$toast.open({
+                            message : 'Opération effectué',
+                            type : 'success'
+                        })
+                        window.location.reload()
+                    }
+                }).catch(err=>{
+                    this.$toast.open({
+                        message : 'ERROR',
+                        type : 'error'
+                    })
+                })
+            })
         },
         close()
         {

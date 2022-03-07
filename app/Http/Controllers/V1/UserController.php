@@ -9,10 +9,8 @@ use App\Services\UpdateUserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use mysql_xdevapi\Exception;
 use Spatie\Permission\Models\Role;
 use App\Models\{User};
-use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -171,5 +169,12 @@ class UserController extends Controller
             'model_type' => get_class($user),
             'model_id' => $user->id
         ]);
+    }
+
+    public function updateCommercialInfo(Request $request,$user_id)
+    {
+        $user = User::find($user_id);
+        $user->commercial_info()->update($request->all());
+        return response('',204);
     }
 }
