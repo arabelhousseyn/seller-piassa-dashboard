@@ -920,6 +920,129 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/user/UserCommercialInfo.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/user/UserCommercialInfo.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ['dialog', 'commercial_info'],
+  methods: {
+    update: function update() {},
+    close: function close() {
+      this.$emit('close5');
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/user/UserProfileDialog.vue?vue&type=script&lang=js&":
 /*!************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/user/UserProfileDialog.vue?vue&type=script&lang=js& ***!
@@ -1014,6 +1137,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_dialog_user_UserProfileDialog__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/dialog/user/UserProfileDialog */ "./resources/js/components/dialog/user/UserProfileDialog.vue");
 /* harmony import */ var _components_dialog_user_UpdateUserDialog__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/dialog/user/UpdateUserDialog */ "./resources/js/components/dialog/user/UpdateUserDialog.vue");
 /* harmony import */ var _components_dialog_user_SecurityDialog__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/dialog/user/SecurityDialog */ "./resources/js/components/dialog/user/SecurityDialog.vue");
+/* harmony import */ var _components_dialog_user_UserCommercialInfo__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/dialog/user/UserCommercialInfo */ "./resources/js/components/dialog/user/UserCommercialInfo.vue");
 //
 //
 //
@@ -1154,6 +1278,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+
 
 
 
@@ -1162,6 +1288,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
+    UserCommercialInfo: _components_dialog_user_UserCommercialInfo__WEBPACK_IMPORTED_MODULE_6__["default"],
     SecurityDialog: _components_dialog_user_SecurityDialog__WEBPACK_IMPORTED_MODULE_5__["default"],
     UpdateUserDialog: _components_dialog_user_UpdateUserDialog__WEBPACK_IMPORTED_MODULE_4__["default"],
     UserProfileDialog: _components_dialog_user_UserProfileDialog__WEBPACK_IMPORTED_MODULE_3__["default"],
@@ -1176,10 +1303,12 @@ __webpack_require__.r(__webpack_exports__);
       dialog2: false,
       dialog3: false,
       dialog4: false,
+      dialog5: false,
       id: null,
       users: [],
       profile: [],
       data: [],
+      info: [],
       loading: true,
       selected: null,
       search: null,
@@ -1239,6 +1368,9 @@ __webpack_require__.r(__webpack_exports__);
       this.id = null;
       this.dialog4 = false;
     },
+    close5: function close5() {
+      this.dialog5 = false;
+    },
     init: function init() {
       var _this = this;
 
@@ -1265,6 +1397,10 @@ __webpack_require__.r(__webpack_exports__);
     security: function security(id) {
       this.dialog4 = true;
       this.id = id;
+    },
+    commercial_info: function commercial_info(info) {
+      this.dialog5 = true;
+      this.info = info;
     }
   },
   mounted: function mounted() {
@@ -1464,6 +1600,44 @@ component.options.__file = "resources/js/components/dialog/user/UpdateUserDialog
 
 /***/ }),
 
+/***/ "./resources/js/components/dialog/user/UserCommercialInfo.vue":
+/*!********************************************************************!*\
+  !*** ./resources/js/components/dialog/user/UserCommercialInfo.vue ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _UserCommercialInfo_vue_vue_type_template_id_50b651eb___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UserCommercialInfo.vue?vue&type=template&id=50b651eb& */ "./resources/js/components/dialog/user/UserCommercialInfo.vue?vue&type=template&id=50b651eb&");
+/* harmony import */ var _UserCommercialInfo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UserCommercialInfo.vue?vue&type=script&lang=js& */ "./resources/js/components/dialog/user/UserCommercialInfo.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _UserCommercialInfo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _UserCommercialInfo_vue_vue_type_template_id_50b651eb___WEBPACK_IMPORTED_MODULE_0__.render,
+  _UserCommercialInfo_vue_vue_type_template_id_50b651eb___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/dialog/user/UserCommercialInfo.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/dialog/user/UserProfileDialog.vue":
 /*!*******************************************************************!*\
   !*** ./resources/js/components/dialog/user/UserProfileDialog.vue ***!
@@ -1615,6 +1789,21 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/dialog/user/UserCommercialInfo.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/components/dialog/user/UserCommercialInfo.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_UserCommercialInfo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./UserCommercialInfo.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/user/UserCommercialInfo.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_UserCommercialInfo_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/js/components/dialog/user/UserProfileDialog.vue?vue&type=script&lang=js&":
 /*!********************************************************************************************!*\
   !*** ./resources/js/components/dialog/user/UserProfileDialog.vue?vue&type=script&lang=js& ***!
@@ -1721,6 +1910,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UpdateUserDialog_vue_vue_type_template_id_57d4a844___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UpdateUserDialog_vue_vue_type_template_id_57d4a844___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./UpdateUserDialog.vue?vue&type=template&id=57d4a844& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/user/UpdateUserDialog.vue?vue&type=template&id=57d4a844&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/dialog/user/UserCommercialInfo.vue?vue&type=template&id=50b651eb&":
+/*!***************************************************************************************************!*\
+  !*** ./resources/js/components/dialog/user/UserCommercialInfo.vue?vue&type=template&id=50b651eb& ***!
+  \***************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UserCommercialInfo_vue_vue_type_template_id_50b651eb___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UserCommercialInfo_vue_vue_type_template_id_50b651eb___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UserCommercialInfo_vue_vue_type_template_id_50b651eb___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./UserCommercialInfo.vue?vue&type=template&id=50b651eb& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/user/UserCommercialInfo.vue?vue&type=template&id=50b651eb&");
 
 
 /***/ }),
@@ -2454,7 +2659,7 @@ var render = function () {
                     _c(
                       "form",
                       {
-                        attrs: { method: "post" },
+                        attrs: { method: "put" },
                         on: {
                           submit: function ($event) {
                             $event.preventDefault()
@@ -2923,6 +3128,257 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/user/UserCommercialInfo.vue?vue&type=template&id=50b651eb&":
+/*!******************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/user/UserCommercialInfo.vue?vue&type=template&id=50b651eb& ***!
+  \******************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "user-commercial-info" },
+    [
+      _c(
+        "v-dialog",
+        {
+          attrs: { persistent: "", "max-width": "600px" },
+          scopedSlots: _vm._u([
+            {
+              key: "activator",
+              fn: function (ref) {
+                var on = ref.on
+                var attrs = ref.attrs
+                return [
+                  _c(
+                    "v-btn",
+                    _vm._g(
+                      _vm._b(
+                        { attrs: { color: "primary", dark: "" } },
+                        "v-btn",
+                        attrs,
+                        false
+                      ),
+                      on
+                    ),
+                    [_vm._v("\n                Open Dialog\n            ")]
+                  ),
+                ]
+              },
+            },
+          ]),
+          model: {
+            value: _vm.dialog,
+            callback: function ($$v) {
+              _vm.dialog = $$v
+            },
+            expression: "dialog",
+          },
+        },
+        [
+          _vm._v(" "),
+          _c(
+            "v-card",
+            [
+              _c("v-card-title", [
+                _c("span", { staticClass: "text-h5" }, [_vm._v("Document")]),
+              ]),
+              _vm._v(" "),
+              _c(
+                "v-card-text",
+                [
+                  _c("v-container", [
+                    _c(
+                      "form",
+                      {
+                        attrs: { method: "put" },
+                        on: {
+                          submit: function ($event) {
+                            $event.preventDefault()
+                            return _vm.update.apply(null, arguments)
+                          },
+                        },
+                      },
+                      [
+                        _c(
+                          "v-row",
+                          [
+                            _c(
+                              "v-col",
+                              { attrs: { cols: "12", sm: "6", md: "4" } },
+                              [
+                                _c("v-text-field", {
+                                  attrs: { label: "Registre commerce" },
+                                  model: {
+                                    value:
+                                      _vm.commercial_info
+                                        .commercial_registration,
+                                    callback: function ($$v) {
+                                      _vm.$set(
+                                        _vm.commercial_info,
+                                        "commercial_registration",
+                                        $$v
+                                      )
+                                    },
+                                    expression:
+                                      "commercial_info.commercial_registration",
+                                  },
+                                }),
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-col",
+                              { attrs: { cols: "12", sm: "6", md: "4" } },
+                              [
+                                _c("v-text-field", {
+                                  attrs: { label: "Nif" },
+                                  model: {
+                                    value: _vm.commercial_info.nif,
+                                    callback: function ($$v) {
+                                      _vm.$set(_vm.commercial_info, "nif", $$v)
+                                    },
+                                    expression: "commercial_info.nif",
+                                  },
+                                }),
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-col",
+                              { attrs: { cols: "12", sm: "6", md: "4" } },
+                              [
+                                _c("v-text-field", {
+                                  attrs: { label: "Numero AR" },
+                                  model: {
+                                    value: _vm.commercial_info.num_ar,
+                                    callback: function ($$v) {
+                                      _vm.$set(
+                                        _vm.commercial_info,
+                                        "num_ar",
+                                        $$v
+                                      )
+                                    },
+                                    expression: "commercial_info.num_ar",
+                                  },
+                                }),
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-col",
+                              { attrs: { cols: "12", sm: "6", md: "4" } },
+                              [
+                                _c("v-text-field", {
+                                  attrs: { label: "Nom entreprise" },
+                                  model: {
+                                    value: _vm.commercial_info.name_company,
+                                    callback: function ($$v) {
+                                      _vm.$set(
+                                        _vm.commercial_info,
+                                        "name_company",
+                                        $$v
+                                      )
+                                    },
+                                    expression: "commercial_info.name_company",
+                                  },
+                                }),
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-col",
+                              { attrs: { cols: "12", sm: "6", md: "4" } },
+                              [
+                                _c("v-text-field", {
+                                  attrs: { label: "Nom contact" },
+                                  model: {
+                                    value: _vm.commercial_info.contact_name,
+                                    callback: function ($$v) {
+                                      _vm.$set(
+                                        _vm.commercial_info,
+                                        "contact_name",
+                                        $$v
+                                      )
+                                    },
+                                    expression: "commercial_info.contact_name",
+                                  },
+                                }),
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-col",
+                              { attrs: { cols: "12" } },
+                              [
+                                _c(
+                                  "v-btn",
+                                  {
+                                    attrs: { type: "submit", color: "success" },
+                                  },
+                                  [_c("v-icon", [_vm._v("mdi-pencil")])],
+                                  1
+                                ),
+                              ],
+                              1
+                            ),
+                          ],
+                          1
+                        ),
+                      ],
+                      1
+                    ),
+                  ]),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-card-actions",
+                [
+                  _c("v-spacer"),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { color: "blue darken-1", text: "" },
+                      on: { click: _vm.close },
+                    },
+                    [_vm._v("\n                    Fermer\n                ")]
+                  ),
+                ],
+                1
+              ),
+            ],
+            1
+          ),
+        ],
+        1
+      ),
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/user/UserProfileDialog.vue?vue&type=template&id=05b7f2ce&":
 /*!*****************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/user/UserProfileDialog.vue?vue&type=template&id=05b7f2ce& ***!
@@ -3315,7 +3771,13 @@ var render = function () {
                                       "v-list-item",
                                       {
                                         attrs: { link: "" },
-                                        on: { click: function () {} },
+                                        on: {
+                                          click: function ($event) {
+                                            return _vm.commercial_info(
+                                              item.commercial_info
+                                            )
+                                          },
+                                        },
                                       },
                                       [
                                         _c(
@@ -3334,7 +3796,7 @@ var render = function () {
                                           "v-list-item-content",
                                           [
                                             _c("v-list-item-title", [
-                                              _vm._v("Registre commerce"),
+                                              _vm._v("Document"),
                                             ]),
                                           ],
                                           1
@@ -3651,6 +4113,13 @@ var render = function () {
             ? _c("security-dialog", {
                 attrs: { dialog: _vm.dialog4, user_id: _vm.id },
                 on: { close4: _vm.close4 },
+              })
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.dialog5
+            ? _c("user-commercial-info", {
+                attrs: { dialog: _vm.dialog5, commercial_info: _vm.info },
+                on: { close5: _vm.close5 },
               })
             : _vm._e(),
         ],

@@ -65,9 +65,9 @@
                                    <v-list-item-icon><v-icon color="primary">mdi-pencil</v-icon></v-list-item-icon>
                                    <v-list-item-content><v-list-item-title>Modifier</v-list-item-title></v-list-item-content>
                                </v-list-item>
-                               <v-list-item v-if="item.roles[0].name == 'C'" link @click="()=>{}">
+                               <v-list-item v-if="item.roles[0].name == 'C'" link @click="commercial_info(item.commercial_info)">
                                    <v-list-item-icon><v-icon color="primary">mdi-paperclip</v-icon></v-list-item-icon>
-                                   <v-list-item-content><v-list-item-title>Registre commerce</v-list-item-title></v-list-item-content>
+                                   <v-list-item-content><v-list-item-title>Document</v-list-item-title></v-list-item-content>
                                </v-list-item>
                                <v-list-item link @click="()=>{}">
                                    <v-list-item-icon><v-icon color="primary">mdi-car</v-icon></v-list-item-icon>
@@ -134,6 +134,7 @@
             <user-profile-dialog v-if="dialog2" :dialog="dialog2" @close2="close2" :profile="profile" />
             <update-user-dialog v-if="dialog3" :dialog="dialog3" @close3="close3" :data="data" />
             <security-dialog v-if="dialog4" :dialog="dialog4" @close4="close4" :user_id="id" />
+            <user-commercial-info v-if="dialog5" :dialog="dialog5" @close5="close5" :commercial_info="info" />
         </v-container>
     </div>
 </template>
@@ -145,8 +146,10 @@ import CreateUserDialog from "../components/dialog/user/CreateUserDialog";
 import UserProfileDialog from "../components/dialog/user/UserProfileDialog";
 import UpdateUserDialog from "../components/dialog/user/UpdateUserDialog";
 import SecurityDialog from "../components/dialog/user/SecurityDialog";
+import UserCommercialInfo from "../components/dialog/user/UserCommercialInfo";
 export default {
     components: {
+        UserCommercialInfo,
         SecurityDialog,
         UpdateUserDialog, UserProfileDialog, CreateUserDialog, RestoreUserDialog, DeleteUserDialog},
     data : ()=>({
@@ -155,10 +158,12 @@ export default {
         dialog2 : false,
         dialog3 : false,
         dialog4 : false,
+        dialog5 : false,
         id : null,
         users : [],
         profile : [],
         data : [],
+        info : [],
         loading : true,
         selected : null,
         search : null,
@@ -216,6 +221,10 @@ export default {
             this.id = null
             this.dialog4 = false
         },
+        close5()
+        {
+          this.dialog5 = false
+        },
         init()
         {
             axios.get('/sanctum/csrf-cookie').then(res =>{
@@ -242,6 +251,11 @@ export default {
         {
             this.dialog4 = true
             this.id = id
+        },
+        commercial_info(info)
+        {
+            this.dialog5 = true
+            this.info = info
         }
     },
     mounted() {
