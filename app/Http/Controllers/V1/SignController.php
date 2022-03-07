@@ -14,7 +14,8 @@ class SignController extends Controller
      */
     public function index()
     {
-        //
+        $signs = Sign::withTrashed()->get();
+        return response(['data' => $signs],200);
     }
 
     /**
