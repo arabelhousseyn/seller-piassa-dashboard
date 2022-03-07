@@ -266,6 +266,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ['user_id'],
   data: function data() {
     return {
       dialog: false
@@ -933,7 +934,9 @@ var render = function () {
                                 _vm._v(" "),
                                 _c("v-spacer"),
                                 _vm._v(" "),
-                                _c("create-vehicle-dialog"),
+                                _c("create-vehicle-dialog", {
+                                  attrs: { user_id: _vm.user_id },
+                                }),
                               ],
                               1
                             ),
@@ -1155,7 +1158,7 @@ var render = function () {
                     ],
                     null,
                     false,
-                    3080967493
+                    1937653289
                   ),
                 }),
               ],

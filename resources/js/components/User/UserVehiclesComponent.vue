@@ -23,7 +23,7 @@
                                     vertical
                                 ></v-divider>
                                 <v-spacer></v-spacer>
-                               <create-vehicle-dialog />
+                               <create-vehicle-dialog :user_id="user_id" />
                             </v-toolbar>
                             <v-toolbar flat>
                                 <v-text-field

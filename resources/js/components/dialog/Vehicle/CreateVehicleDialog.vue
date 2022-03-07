@@ -53,6 +53,7 @@
 
 <script>
 export default {
+    props : ['user_id'],
     data : ()=>({
         dialog : false,
     })
