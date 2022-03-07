@@ -465,7 +465,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
             window.location.reload();
           }
         })["catch"](function (err) {
-          console.log(err.response.data);
           var errors = Object.values(err.response.data.errors);
 
           for (var _i = 0, _errors = errors; _i < _errors.length; _i++) {
