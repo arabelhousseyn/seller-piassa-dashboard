@@ -17,16 +17,140 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['data'],
   data: function data() {
     return {
-      user_id: window.location.pathname.split('/').pop()
+      user_id: window.location.pathname.split('/').pop(),
+      data2: undefined,
+      search: null,
+      headers: [{
+        text: 'Modèle',
+        align: 'start',
+        sortable: true,
+        value: 'model'
+      }, {
+        text: 'Année',
+        value: 'year'
+      }, {
+        text: 'Motorisation',
+        value: 'motorization'
+      }, {
+        text: 'Numéro de châssis',
+        value: 'chassis_number'
+      }, {
+        text: 'Créé à',
+        value: 'created_at'
+      }, {
+        text: 'actions',
+        value: 'actions',
+        sortable: false
+      }]
     };
+  },
+  methods: {
+    reset: function reset() {
+      this.init();
+    },
+    init: function init() {
+      var _this = this;
+
+      axios.get('/sanctum/csrf-cookie').then(function (res) {
+        axios.get("/api/users/vehicles/".concat(_this.user_id)).then(function (e) {
+          _this.data2 = e.data.data;
+        })["catch"](function (err) {
+          console.log(err);
+        });
+      });
+    }
   },
   mounted: function mounted() {
     if (this.data == undefined) {
-      console.log('empty');
+      this.init();
     }
   }
 });
@@ -118,7 +242,218 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "user-vehicles-component" }, [
-    _vm._v("\n    " + _vm._s(_vm.data) + "\n"),
+    _vm.data2 !== undefined || _vm.data !== undefined
+      ? _c(
+          "div",
+          [
+            _c(
+              "v-container",
+              { attrs: { fluid: "" } },
+              [
+                _c(
+                  "v-btn",
+                  { attrs: { color: "primary" } },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticStyle: {
+                          "text-decoration": "none",
+                          color: "white",
+                        },
+                        attrs: { to: "/home/users" },
+                      },
+                      [
+                        _c("v-icon", [_vm._v("mdi-subdirectory-arrow-left")]),
+                        _vm._v(" Retour "),
+                      ],
+                      1
+                    ),
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("v-data-table", {
+                  staticClass: "elevation-1 mt-3",
+                  attrs: {
+                    headers: _vm.headers,
+                    items: _vm.data == undefined ? _vm.data2 : _vm.data,
+                    search: _vm.search,
+                    "sort-by": "created_at",
+                  },
+                  scopedSlots: _vm._u(
+                    [
+                      {
+                        key: "top",
+                        fn: function () {
+                          return [
+                            _c(
+                              "v-toolbar",
+                              { attrs: { flat: "" } },
+                              [
+                                _c("v-toolbar-title", [_vm._v("Vehicles")]),
+                                _vm._v(" "),
+                                _c("v-divider", {
+                                  staticClass: "mx-4",
+                                  attrs: { inset: "", vertical: "" },
+                                }),
+                                _vm._v(" "),
+                                _c("v-spacer"),
+                                _vm._v(" "),
+                                _c(
+                                  "v-btn",
+                                  { attrs: { color: "primary" } },
+                                  [
+                                    _c("v-icon", [_vm._v("mdi-plus")]),
+                                    _vm._v(
+                                      " Ajouter\n                            "
+                                    ),
+                                  ],
+                                  1
+                                ),
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-toolbar",
+                              { attrs: { flat: "" } },
+                              [
+                                _c("v-text-field", {
+                                  attrs: {
+                                    "append-icon": "mdi-magnify",
+                                    label: "Recherche",
+                                    "single-line": "",
+                                    "hide-details": "",
+                                  },
+                                  model: {
+                                    value: _vm.search,
+                                    callback: function ($$v) {
+                                      _vm.search = $$v
+                                    },
+                                    expression: "search",
+                                  },
+                                }),
+                              ],
+                              1
+                            ),
+                          ]
+                        },
+                        proxy: true,
+                      },
+                      {
+                        key: "item.actions",
+                        fn: function (ref) {
+                          var item = ref.item
+                          return [
+                            _c(
+                              "v-menu",
+                              {
+                                attrs: { bottom: "", "min-width": "200" },
+                                scopedSlots: _vm._u(
+                                  [
+                                    {
+                                      key: "activator",
+                                      fn: function (ref) {
+                                        var on = ref.on
+                                        var attrs = ref.attrs
+                                        return [
+                                          _c(
+                                            "v-btn",
+                                            _vm._g(
+                                              _vm._b(
+                                                {
+                                                  attrs: {
+                                                    dark: "",
+                                                    color: "primary",
+                                                    fab: "",
+                                                    small: "",
+                                                    text: "",
+                                                  },
+                                                },
+                                                "v-btn",
+                                                attrs,
+                                                false
+                                              ),
+                                              on
+                                            ),
+                                            [
+                                              _c("v-icon", [
+                                                _vm._v("mdi-dots-horizontal"),
+                                              ]),
+                                            ],
+                                            1
+                                          ),
+                                        ]
+                                      },
+                                    },
+                                  ],
+                                  null,
+                                  true
+                                ),
+                              },
+                              [
+                                _vm._v(" "),
+                                _c("v-list", [_c("v-list-item-group")], 1),
+                              ],
+                              1
+                            ),
+                          ]
+                        },
+                      },
+                      {
+                        key: "item.deleted_at",
+                        fn: function (ref) {
+                          var item = ref.item
+                          return [
+                            item.deleted_at == null
+                              ? _c(
+                                  "v-chip",
+                                  { attrs: { dark: "", color: "green" } },
+                                  [
+                                    _vm._v(
+                                      "\n                            Active\n                        "
+                                    ),
+                                  ]
+                                )
+                              : _c(
+                                  "v-chip",
+                                  { attrs: { dark: "", color: "red" } },
+                                  [
+                                    _vm._v(
+                                      "\n                            Supprimé\n                        "
+                                    ),
+                                  ]
+                                ),
+                          ]
+                        },
+                      },
+                      {
+                        key: "no-data",
+                        fn: function () {
+                          return [
+                            _c("v-btn", { attrs: { color: "primary" } }, [
+                              _vm._v(
+                                "\n                            Reset\n                        "
+                              ),
+                            ]),
+                          ]
+                        },
+                        proxy: true,
+                      },
+                    ],
+                    null,
+                    false,
+                    136173544
+                  ),
+                }),
+              ],
+              1
+            ),
+          ],
+          1
+        )
+      : _vm._e(),
   ])
 }
 var staticRenderFns = []
