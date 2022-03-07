@@ -61,6 +61,11 @@
 
                                 <v-list>
                                     <v-list-item-group>
+                                        <v-list-item link @click="update(item)">
+                                            <v-list-item-icon><v-icon color="primary">mdi-pencil</v-icon></v-list-item-icon>
+                                            <v-list-item-content><v-list-item-title>Modifier</v-list-item-title></v-list-item-content>
+                                        </v-list-item>
+
                                         <v-list-item v-if="item.deleted_at == null" link @click="destroy(item.id)">
                                             <v-list-item-icon><v-icon color="red">mdi-delete</v-icon></v-list-item-icon>
                                             <v-list-item-content><v-list-item-title>Supprimer</v-list-item-title></v-list-item-content>
@@ -88,21 +93,23 @@
                     </v-data-table>
             </v-container>
             <delete-vehicle-dialog @close="close" :dialog="dialog" :id="id" />
+            <update-vehicle-dialog v-if="dialog1" @close1="close1" :dialog="dialog1" :data="vehicle" />
         </div>
     </div>
 </template>
 
 <script>
 import DeleteVehicleDialog from "../dialog/Vehicle/DeleteVehicleDialog";
+import UpdateVehicleDialog from "../dialog/Vehicle/UpdateVehicleDialog";
 export default {
-    components: {DeleteVehicleDialog},
+    components: {UpdateVehicleDialog, DeleteVehicleDialog},
     props : ['data'],
     data : ()=>({
        user_id : window.location.pathname.split('/').pop(),
         data2 : undefined,
         search : null,
         dialog : false,
-        dialog2 : false,
+        dialog1 : false,
         headers: [
             {
                 text: 'Modèle',
@@ -113,11 +120,13 @@ export default {
             { text: 'Année', value: 'year' },
             { text: 'Motorisation', value: 'motorization' },
             { text: 'Numéro de châssis', value: 'chassis_number' },
+            { text: 'Marque', value: 'sign.name' },
             { text: 'Créé à', value: 'created_at' },
             { text: 'Statu', value: 'deleted_at' },
             { text: 'actions', value: 'actions', sortable: false },
         ],
         id : null,
+        vehicle : []
     }),
     methods : {
         reset()
@@ -129,6 +138,11 @@ export default {
         {
           this.dialog = false
           this.id = null
+        },
+        close1()
+        {
+          this.dialog1 = false
+          this.vehicle = []
         },
         init()
         {
@@ -147,10 +161,10 @@ export default {
             this.id= id
             this.dialog = true
         },
-        restore(id)
+        update(data)
         {
-            this.id= id
-            this.dialog2 = true
+            this.dialog1 = true
+            this.vehicle = data
         }
     },
     mounted()

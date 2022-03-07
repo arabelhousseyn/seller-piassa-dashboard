@@ -12,6 +12,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _dialog_Vehicle_DeleteVehicleDialog__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../dialog/Vehicle/DeleteVehicleDialog */ "./resources/js/components/dialog/Vehicle/DeleteVehicleDialog.vue");
+/* harmony import */ var _dialog_Vehicle_UpdateVehicleDialog__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../dialog/Vehicle/UpdateVehicleDialog */ "./resources/js/components/dialog/Vehicle/UpdateVehicleDialog.vue");
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -107,8 +114,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
+    UpdateVehicleDialog: _dialog_Vehicle_UpdateVehicleDialog__WEBPACK_IMPORTED_MODULE_1__["default"],
     DeleteVehicleDialog: _dialog_Vehicle_DeleteVehicleDialog__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   props: ['data'],
@@ -118,7 +127,7 @@ __webpack_require__.r(__webpack_exports__);
       data2: undefined,
       search: null,
       dialog: false,
-      dialog2: false,
+      dialog1: false,
       headers: [{
         text: 'Modèle',
         align: 'start',
@@ -134,6 +143,9 @@ __webpack_require__.r(__webpack_exports__);
         text: 'Numéro de châssis',
         value: 'chassis_number'
       }, {
+        text: 'Marque',
+        value: 'sign.name'
+      }, {
         text: 'Créé à',
         value: 'created_at'
       }, {
@@ -144,7 +156,8 @@ __webpack_require__.r(__webpack_exports__);
         value: 'actions',
         sortable: false
       }],
-      id: null
+      id: null,
+      vehicle: []
     };
   },
   methods: {
@@ -154,6 +167,10 @@ __webpack_require__.r(__webpack_exports__);
     close: function close() {
       this.dialog = false;
       this.id = null;
+    },
+    close1: function close1() {
+      this.dialog1 = false;
+      this.vehicle = [];
     },
     init: function init() {
       var _this = this;
@@ -170,9 +187,9 @@ __webpack_require__.r(__webpack_exports__);
       this.id = id;
       this.dialog = true;
     },
-    restore: function restore(id) {
-      this.id = id;
-      this.dialog2 = true;
+    update: function update(data) {
+      this.dialog1 = true;
+      this.vehicle = data;
     }
   },
   mounted: function mounted() {
@@ -273,6 +290,121 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Vehicle/UpdateVehicleDialog.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Vehicle/UpdateVehicleDialog.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ['dialog', 'data'],
+  data: function data() {
+    return {
+      data2: {
+        model: null,
+        year: null,
+        motorization: null,
+        chassis_number: null
+      }
+    };
+  },
+  methods: {
+    close: function close() {
+      this.$emit('close1');
+    },
+    update: function update() {
+      this.data2.model = this.data.model;
+      this.data2.year = this.data.year;
+      this.data2.motorization = this.data.motorization;
+      this.data2.chassis_number = this.data.chassis_number;
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./resources/js/components/User/UserVehiclesComponent.vue":
 /*!****************************************************************!*\
   !*** ./resources/js/components/User/UserVehiclesComponent.vue ***!
@@ -349,6 +481,44 @@ component.options.__file = "resources/js/components/dialog/Vehicle/DeleteVehicle
 
 /***/ }),
 
+/***/ "./resources/js/components/dialog/Vehicle/UpdateVehicleDialog.vue":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/dialog/Vehicle/UpdateVehicleDialog.vue ***!
+  \************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _UpdateVehicleDialog_vue_vue_type_template_id_c39d1728___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UpdateVehicleDialog.vue?vue&type=template&id=c39d1728& */ "./resources/js/components/dialog/Vehicle/UpdateVehicleDialog.vue?vue&type=template&id=c39d1728&");
+/* harmony import */ var _UpdateVehicleDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UpdateVehicleDialog.vue?vue&type=script&lang=js& */ "./resources/js/components/dialog/Vehicle/UpdateVehicleDialog.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _UpdateVehicleDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _UpdateVehicleDialog_vue_vue_type_template_id_c39d1728___WEBPACK_IMPORTED_MODULE_0__.render,
+  _UpdateVehicleDialog_vue_vue_type_template_id_c39d1728___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/dialog/Vehicle/UpdateVehicleDialog.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/User/UserVehiclesComponent.vue?vue&type=script&lang=js&":
 /*!*****************************************************************************************!*\
   !*** ./resources/js/components/User/UserVehiclesComponent.vue?vue&type=script&lang=js& ***!
@@ -376,6 +546,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteVehicleDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./DeleteVehicleDialog.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Vehicle/DeleteVehicleDialog.vue?vue&type=script&lang=js&");
  /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteVehicleDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/dialog/Vehicle/UpdateVehicleDialog.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************!*\
+  !*** ./resources/js/components/dialog/Vehicle/UpdateVehicleDialog.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_UpdateVehicleDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./UpdateVehicleDialog.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Vehicle/UpdateVehicleDialog.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_UpdateVehicleDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
@@ -407,6 +592,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteVehicleDialog_vue_vue_type_template_id_2713706c___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteVehicleDialog_vue_vue_type_template_id_2713706c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./DeleteVehicleDialog.vue?vue&type=template&id=2713706c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Vehicle/DeleteVehicleDialog.vue?vue&type=template&id=2713706c&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/dialog/Vehicle/UpdateVehicleDialog.vue?vue&type=template&id=c39d1728&":
+/*!*******************************************************************************************************!*\
+  !*** ./resources/js/components/dialog/Vehicle/UpdateVehicleDialog.vue?vue&type=template&id=c39d1728& ***!
+  \*******************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UpdateVehicleDialog_vue_vue_type_template_id_c39d1728___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UpdateVehicleDialog_vue_vue_type_template_id_c39d1728___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UpdateVehicleDialog_vue_vue_type_template_id_c39d1728___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./UpdateVehicleDialog.vue?vue&type=template&id=c39d1728& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Vehicle/UpdateVehicleDialog.vue?vue&type=template&id=c39d1728&");
 
 
 /***/ }),
@@ -585,6 +786,44 @@ var render = function () {
                                     _c(
                                       "v-list-item-group",
                                       [
+                                        _c(
+                                          "v-list-item",
+                                          {
+                                            attrs: { link: "" },
+                                            on: {
+                                              click: function ($event) {
+                                                return _vm.update(item)
+                                              },
+                                            },
+                                          },
+                                          [
+                                            _c(
+                                              "v-list-item-icon",
+                                              [
+                                                _c(
+                                                  "v-icon",
+                                                  {
+                                                    attrs: { color: "primary" },
+                                                  },
+                                                  [_vm._v("mdi-pencil")]
+                                                ),
+                                              ],
+                                              1
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "v-list-item-content",
+                                              [
+                                                _c("v-list-item-title", [
+                                                  _vm._v("Modifier"),
+                                                ]),
+                                              ],
+                                              1
+                                            ),
+                                          ],
+                                          1
+                                        ),
+                                        _vm._v(" "),
                                         item.deleted_at == null
                                           ? _c(
                                               "v-list-item",
@@ -679,7 +918,7 @@ var render = function () {
                     ],
                     null,
                     false,
-                    2301177728
+                    739252804
                   ),
                 }),
               ],
@@ -690,6 +929,13 @@ var render = function () {
               attrs: { dialog: _vm.dialog, id: _vm.id },
               on: { close: _vm.close },
             }),
+            _vm._v(" "),
+            _vm.dialog1
+              ? _c("update-vehicle-dialog", {
+                  attrs: { dialog: _vm.dialog1, data: _vm.vehicle },
+                  on: { close1: _vm.close1 },
+                })
+              : _vm._e(),
           ],
           1
         )
@@ -772,6 +1018,197 @@ var render = function () {
                     : _c("v-progress-circular", {
                         attrs: { indeterminate: "", color: "primary" },
                       }),
+                ],
+                1
+              ),
+            ],
+            1
+          ),
+        ],
+        1
+      ),
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Vehicle/UpdateVehicleDialog.vue?vue&type=template&id=c39d1728&":
+/*!**********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Vehicle/UpdateVehicleDialog.vue?vue&type=template&id=c39d1728& ***!
+  \**********************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "update-vehicle-user" },
+    [
+      _c(
+        "v-dialog",
+        {
+          attrs: { persistent: "", "max-width": "600px" },
+          model: {
+            value: _vm.dialog,
+            callback: function ($$v) {
+              _vm.dialog = $$v
+            },
+            expression: "dialog",
+          },
+        },
+        [
+          _c(
+            "v-card",
+            [
+              _c("v-card-title", [
+                _c("span", { staticClass: "text-h5" }, [
+                  _vm._v("Modification"),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c(
+                "v-card-text",
+                [
+                  _c("v-container", [
+                    _c(
+                      "form",
+                      {
+                        attrs: { method: "put" },
+                        on: {
+                          submit: function ($event) {
+                            $event.preventDefault()
+                            return _vm.update.apply(null, arguments)
+                          },
+                        },
+                      },
+                      [
+                        _c(
+                          "v-row",
+                          [
+                            _c(
+                              "v-col",
+                              { attrs: { cols: "12", sm: "6", md: "4" } },
+                              [
+                                _c("v-text-field", {
+                                  attrs: { label: "Modèle" },
+                                  model: {
+                                    value: _vm.data.model,
+                                    callback: function ($$v) {
+                                      _vm.$set(_vm.data, "model", $$v)
+                                    },
+                                    expression: "data.model",
+                                  },
+                                }),
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-col",
+                              { attrs: { cols: "12", sm: "6", md: "4" } },
+                              [
+                                _c("v-text-field", {
+                                  attrs: { label: "Année" },
+                                  model: {
+                                    value: _vm.data.year,
+                                    callback: function ($$v) {
+                                      _vm.$set(_vm.data, "year", $$v)
+                                    },
+                                    expression: "data.year",
+                                  },
+                                }),
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-col",
+                              { attrs: { cols: "12", sm: "6", md: "4" } },
+                              [
+                                _c("v-text-field", {
+                                  attrs: { label: "Motorisation" },
+                                  model: {
+                                    value: _vm.data.motorization,
+                                    callback: function ($$v) {
+                                      _vm.$set(_vm.data, "motorization", $$v)
+                                    },
+                                    expression: "data.motorization",
+                                  },
+                                }),
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-col",
+                              { attrs: { cols: "12", sm: "6", md: "6" } },
+                              [
+                                _c("v-text-field", {
+                                  attrs: { label: "Numéro de châssis" },
+                                  model: {
+                                    value: _vm.data.chassis_number,
+                                    callback: function ($$v) {
+                                      _vm.$set(_vm.data, "chassis_number", $$v)
+                                    },
+                                    expression: "data.chassis_number",
+                                  },
+                                }),
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-col",
+                              { attrs: { cols: "12" } },
+                              [
+                                _c(
+                                  "v-btn",
+                                  {
+                                    attrs: { type: "submit", color: "success" },
+                                  },
+                                  [_c("v-icon", [_vm._v("mdi-pencil")])],
+                                  1
+                                ),
+                              ],
+                              1
+                            ),
+                          ],
+                          1
+                        ),
+                      ],
+                      1
+                    ),
+                  ]),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-card-actions",
+                [
+                  _c("v-spacer"),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { color: "blue darken-1", text: "" },
+                      on: { click: _vm.close },
+                    },
+                    [_vm._v("\n                    Fermer\n                ")]
+                  ),
                 ],
                 1
               ),
