@@ -37,6 +37,50 @@
                                     </v-col>
                                 </v-row>
                             </v-container>
+                            <span v-if="info.commercial_registration !== undefined" class="text-h5 font-weight-bold">Document</span>
+                            <v-container v-if="info.commercial_registration !== undefined">
+                                <v-row>
+                                    <v-col
+                                        cols="12"
+                                        sm="6"
+                                        md="6"
+                                    >
+                                        <p><span class="font-weight-bold text-h6">Registre commerce : </span> <span>{{info.commercial_registration}}</span></p>
+                                    </v-col>
+
+                                    <v-col
+                                        cols="12"
+                                        sm="6"
+                                        md="6"
+                                    >
+                                        <p><span class="font-weight-bold text-h6">Nif : </span> <span v-if="info.nif == null ">/</span> <span>{{info.nif}}</span> </p>
+                                    </v-col>
+
+                                    <v-col
+                                        cols="12"
+                                        sm="6"
+                                        md="6"
+                                    >
+                                        <p><span class="font-weight-bold text-h6">Numero AR : </span> <span class="text-h6 font-weight-bold" v-if="info.num_ar == null ">/</span> <span>{{info.num_ar}}</span> </p>
+                                    </v-col>
+
+                                    <v-col
+                                        cols="12"
+                                        sm="6"
+                                        md="6"
+                                    >
+                                        <p><span class="font-weight-bold text-h6">Nom entreprise : </span> <span>{{info.name_company}}</span></p>
+                                    </v-col>
+
+                                    <v-col
+                                        cols="12"
+                                        sm="6"
+                                        md="6"
+                                    >
+                                        <p><span class="font-weight-bold text-h6">Nom contact : </span> <span>{{info.contact_name}}</span></p>
+                                    </v-col>
+                                </v-row>
+                            </v-container>
                         </v-card-text>
                         <v-card-actions>
                             <v-spacer></v-spacer>
@@ -57,7 +101,7 @@
 
 <script>
 export default {
-    props : ['dialog','profile'],
+    props : ['dialog','profile','info'],
     methods : {
         close()
         {

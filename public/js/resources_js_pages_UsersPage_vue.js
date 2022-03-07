@@ -1146,8 +1146,52 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['dialog', 'profile'],
+  props: ['dialog', 'profile', 'info'],
   methods: {
     close: function close() {
       this.$emit('close2');
@@ -1394,6 +1438,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     close2: function close2() {
       this.profile = [];
+      this.info = [];
       this.dialog2 = false;
     },
     close3: function close3() {
@@ -1425,6 +1470,7 @@ __webpack_require__.r(__webpack_exports__);
     openProfile: function openProfile(data) {
       this.dialog2 = true;
       this.profile = data.profile;
+      this.info = data.commercial_info;
     },
     update: function update(data) {
       this.dialog3 = true;
@@ -3544,6 +3590,166 @@ var render = function () {
                           ],
                           1
                         ),
+                        _vm._v(" "),
+                        _vm.info.commercial_registration !== undefined
+                          ? _c(
+                              "span",
+                              { staticClass: "text-h5 font-weight-bold" },
+                              [_vm._v("Document")]
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.info.commercial_registration !== undefined
+                          ? _c(
+                              "v-container",
+                              [
+                                _c(
+                                  "v-row",
+                                  [
+                                    _c(
+                                      "v-col",
+                                      {
+                                        attrs: { cols: "12", sm: "6", md: "6" },
+                                      },
+                                      [
+                                        _c("p", [
+                                          _c(
+                                            "span",
+                                            {
+                                              staticClass:
+                                                "font-weight-bold text-h6",
+                                            },
+                                            [_vm._v("Registre commerce : ")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c("span", [
+                                            _vm._v(
+                                              _vm._s(
+                                                _vm.info.commercial_registration
+                                              )
+                                            ),
+                                          ]),
+                                        ]),
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-col",
+                                      {
+                                        attrs: { cols: "12", sm: "6", md: "6" },
+                                      },
+                                      [
+                                        _c("p", [
+                                          _c(
+                                            "span",
+                                            {
+                                              staticClass:
+                                                "font-weight-bold text-h6",
+                                            },
+                                            [_vm._v("Nif : ")]
+                                          ),
+                                          _vm._v(" "),
+                                          _vm.info.nif == null
+                                            ? _c("span", [_vm._v("/")])
+                                            : _vm._e(),
+                                          _vm._v(" "),
+                                          _c("span", [
+                                            _vm._v(_vm._s(_vm.info.nif)),
+                                          ]),
+                                        ]),
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-col",
+                                      {
+                                        attrs: { cols: "12", sm: "6", md: "6" },
+                                      },
+                                      [
+                                        _c("p", [
+                                          _c(
+                                            "span",
+                                            {
+                                              staticClass:
+                                                "font-weight-bold text-h6",
+                                            },
+                                            [_vm._v("Numero AR : ")]
+                                          ),
+                                          _vm._v(" "),
+                                          _vm.info.num_ar == null
+                                            ? _c(
+                                                "span",
+                                                {
+                                                  staticClass:
+                                                    "text-h6 font-weight-bold",
+                                                },
+                                                [_vm._v("/")]
+                                              )
+                                            : _vm._e(),
+                                          _vm._v(" "),
+                                          _c("span", [
+                                            _vm._v(_vm._s(_vm.info.num_ar)),
+                                          ]),
+                                        ]),
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-col",
+                                      {
+                                        attrs: { cols: "12", sm: "6", md: "6" },
+                                      },
+                                      [
+                                        _c("p", [
+                                          _c(
+                                            "span",
+                                            {
+                                              staticClass:
+                                                "font-weight-bold text-h6",
+                                            },
+                                            [_vm._v("Nom entreprise : ")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c("span", [
+                                            _vm._v(
+                                              _vm._s(_vm.info.name_company)
+                                            ),
+                                          ]),
+                                        ]),
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-col",
+                                      {
+                                        attrs: { cols: "12", sm: "6", md: "6" },
+                                      },
+                                      [
+                                        _c("p", [
+                                          _c(
+                                            "span",
+                                            {
+                                              staticClass:
+                                                "font-weight-bold text-h6",
+                                            },
+                                            [_vm._v("Nom contact : ")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c("span", [
+                                            _vm._v(
+                                              _vm._s(_vm.info.contact_name)
+                                            ),
+                                          ]),
+                                        ]),
+                                      ]
+                                    ),
+                                  ],
+                                  1
+                                ),
+                              ],
+                              1
+                            )
+                          : _vm._e(),
                       ],
                       1
                     ),
@@ -4133,7 +4339,11 @@ var render = function () {
           _vm._v(" "),
           _vm.dialog2
             ? _c("user-profile-dialog", {
-                attrs: { dialog: _vm.dialog2, profile: _vm.profile },
+                attrs: {
+                  dialog: _vm.dialog2,
+                  info: _vm.info,
+                  profile: _vm.profile,
+                },
                 on: { close2: _vm.close2 },
               })
             : _vm._e(),

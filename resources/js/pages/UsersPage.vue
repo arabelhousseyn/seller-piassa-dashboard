@@ -131,7 +131,7 @@
             </v-data-table>
             <delete-user-dialog @close="close" :dialog="dialog" :id="selected" />
             <restore-user-dialog @close1="close1" :dialog1="dialog1" :id="selected" />
-            <user-profile-dialog v-if="dialog2" :dialog="dialog2" @close2="close2" :profile="profile" />
+            <user-profile-dialog v-if="dialog2" :dialog="dialog2" @close2="close2" :info="info" :profile="profile" />
             <update-user-dialog v-if="dialog3" :dialog="dialog3" @close3="close3" :data="data" />
             <security-dialog v-if="dialog4" :dialog="dialog4" @close4="close4" :user_id="id" />
             <user-commercial-info v-if="dialog5" :dialog="dialog5" @close5="close5" :commercial_info="info" />
@@ -209,6 +209,7 @@ export default {
         close2()
         {
             this.profile = []
+            this.info = []
             this.dialog2 = false
         },
         close3()
@@ -241,6 +242,7 @@ export default {
         {
             this.dialog2 = true
             this.profile = data.profile
+            this.info = data.commercial_info
         },
         update(data)
         {
