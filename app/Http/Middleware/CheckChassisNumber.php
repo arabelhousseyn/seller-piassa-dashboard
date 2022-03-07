@@ -28,7 +28,7 @@ class CheckChassisNumber
                     'message' => [
                         'errors' => [
                             'chassis_number' => [
-                                __('message.chassis_error')
+                                __('messages.chassis_error')
                             ]
                         ]
                     ]

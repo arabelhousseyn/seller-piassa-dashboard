@@ -13,4 +13,5 @@ return[
     'gender' => 'Le sexe non valide.',
     'vehicle_delete_error' => 'Véhicule déjà supprimé',
     'vehicle_not_found' => 'Véhicule non trouvé',
+    'chassis_error' => 'N° châssis incorrect.'
 ];
