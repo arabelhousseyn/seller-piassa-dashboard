@@ -1,9 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import store from "../store";
 
 Vue.use(VueRouter)
-//component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+
 const routes = [
     {
         path : '/',
