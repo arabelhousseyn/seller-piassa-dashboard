@@ -147,6 +147,7 @@ export default {
                         window.location.reload()
                     }
                 }).catch(err =>{
+                    console.log(err.response.data)
                     let errors = Object.values(err.response.data.errors)
                     for (const error of errors) {
                         this.errors.push(error[0])
