@@ -126,6 +126,9 @@ __webpack_require__.r(__webpack_exports__);
         text: 'Créé à',
         value: 'created_at'
       }, {
+        text: 'Statu',
+        value: 'deleted_at'
+      }, {
         text: 'actions',
         value: 'actions',
         sortable: false

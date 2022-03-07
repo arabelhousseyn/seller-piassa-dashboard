@@ -106,6 +106,7 @@ export default {
             { text: 'Motorisation', value: 'motorization' },
             { text: 'Numéro de châssis', value: 'chassis_number' },
             { text: 'Créé à', value: 'created_at' },
+            { text: 'Statu', value: 'deleted_at' },
             { text: 'actions', value: 'actions', sortable: false },
         ],
     }),
