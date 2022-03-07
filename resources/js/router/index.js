@@ -19,7 +19,17 @@ const routes = [
             },
             {
                 path : 'users',
-                component : () => import('../pages/UsersPage')
+                component : () => import('../pages/UsersPage'),
+                children : [
+                    {
+                        path : '/',
+                        component : () => import('../components/User/MainUserComponent'),
+                    },
+                    {
+                        path : 'vehicles/:id',
+                        component : () => import('../components/User/UserVehiclesComponent'),
+                    }
+                ]
             },
             {
                 path : 'sellers',
