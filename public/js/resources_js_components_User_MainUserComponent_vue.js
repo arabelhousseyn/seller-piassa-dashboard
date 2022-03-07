@@ -2339,7 +2339,13 @@ var render = function () {
                                   "v-list-item",
                                   {
                                     attrs: { link: "" },
-                                    on: { click: function () {} },
+                                    on: {
+                                      click: function ($event) {
+                                        return _vm.$router.push(
+                                          "users/cart/" + item.id
+                                        )
+                                      },
+                                    },
                                   },
                                   [
                                     _c(
@@ -2371,7 +2377,13 @@ var render = function () {
                                   "v-list-item",
                                   {
                                     attrs: { link: "" },
-                                    on: { click: function () {} },
+                                    on: {
+                                      click: function ($event) {
+                                        return _vm.$router.push(
+                                          "users/orders/" + item.id
+                                        )
+                                      },
+                                    },
                                   },
                                   [
                                     _c(
