@@ -184,10 +184,22 @@ return [
             'required' => 'Nom contact requis.'
         ],
         'sign_id' => [
+            'required' => 'Marque requis.',
             'exists' => 'Marque n\'existe pas.'
         ],
         'year' => [
+            'required' => 'Année requis.',
             'date_format' => 'Format invalide.'
+        ],
+        'user_id' => [
+            'required' => 'Utilisateur requis.',
+            'exists' => 'Utilisateur n\'existe pas.'
+        ],
+        'motorisation' => [
+            'required' => 'Motorisation requis.'
+        ],
+        'chassis_number' => [
+            'required' => 'N° châssis requis.'
         ]
     ],
 
