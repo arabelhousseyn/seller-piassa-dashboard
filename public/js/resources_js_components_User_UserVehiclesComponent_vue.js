@@ -412,7 +412,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         year: null,
         motorization: null,
         chassis_number: null,
-        sign: null
+        sign_id: null
       },
       items: [],
       signs: [],
@@ -433,7 +433,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       this.data2.chassis_number = this.data.chassis_number;
 
       if (this.selectedSign == null) {
-        this.data2.sign = this.data.sign.id;
+        this.data2.sign_id = this.data.sign.id;
       } else {
         var _iterator = _createForOfIteratorHelper(this.signs),
             _step;
@@ -443,7 +443,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
             var sign = _step.value;
 
             if (sign.name == this.selectedSign) {
-              this.data2.sign = sign.id;
+              this.data2.sign_id = sign.id;
               break;
             }
           }

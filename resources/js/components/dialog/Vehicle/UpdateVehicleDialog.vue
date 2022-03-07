@@ -104,7 +104,7 @@ export default {
             year : null,
             motorization : null,
             chassis_number : null,
-            sign : null,
+            sign_id : null,
         },
         items : [],
         signs : [],
@@ -124,12 +124,12 @@ export default {
             this.data2.chassis_number = this.data.chassis_number
             if(this.selectedSign == null)
             {
-                this.data2.sign = this.data.sign.id
+                this.data2.sign_id = this.data.sign.id
             }else{
                 for (const sign of this.signs) {
                     if(sign.name == this.selectedSign)
                     {
-                        this.data2.sign = sign.id
+                        this.data2.sign_id = sign.id
                         break;
                     }
                 }
