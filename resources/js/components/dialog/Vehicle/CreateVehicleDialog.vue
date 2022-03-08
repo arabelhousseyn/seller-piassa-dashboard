@@ -21,20 +21,77 @@
                 </v-card-title>
                 <v-card-text>
                     <v-container>
-                        <v-row>
-                            <v-col
-                                cols="12"
-                                sm="6"
-                                md="4"
-                            >
-                                <v-text-field
-                                    label="Legal first name*"
-                                    required
-                                ></v-text-field>
-                            </v-col>
-                        </v-row>
+                        <form @submit.prevent="store" method="post">
+                            <v-row>
+                                <v-col
+                                    cols="12"
+                                    sm="6"
+                                    md="4"
+                                >
+                                    <v-text-field
+                                        label="Modèle*"
+                                        v-model="data.model"
+                                        required
+                                    ></v-text-field>
+                                </v-col>
+
+                                <v-col
+                                    cols="12"
+                                    sm="6"
+                                    md="4"
+                                >
+                                    <v-text-field
+                                        label="N° châssis*"
+                                        v-model="data.chassis_number"
+                                        required
+                                    ></v-text-field>
+                                </v-col>
+
+                                <v-col
+                                    cols="12"
+                                    sm="6"
+                                    md="4"
+                                >
+                                    <v-text-field
+                                        label="Année*"
+                                        v-model="data.year"
+                                        required
+                                    ></v-text-field>
+                                </v-col>
+
+                                <v-col
+                                    cols="12"
+                                    sm="6"
+                                    md="6"
+                                >
+                                    <v-text-field
+                                        label="Motorisation*"
+                                        v-model="data.motorization"
+                                        required
+                                    ></v-text-field>
+                                </v-col>
+
+                                <v-col
+                                    cols="12"
+                                    sm="6"
+                                    md="6"
+                                >
+                                    <v-select v-model="selectedSign" placeholder="Marque" :items="items"></v-select>
+                                </v-col>
+
+                                <v-alert v-if="hasError" border="right" colored-border type="error" elevation="2">
+                                    <ul>
+                                        <li v-for="(error,index) in errors" :key="index"><span>{{error}}</span></li>
+                                    </ul>
+                                </v-alert>
+
+                                <v-col cols="12">
+                                    <v-btn type="submit" :disabled="disable" color="primary"><v-icon>mdi-check</v-icon></v-btn>
+                                </v-col>
+                            </v-row>
+                        </form>
                     </v-container>
-                    <small>*indicates required field</small>
+                    <small>*Indique le champ obligatoire</small>
                 </v-card-text>
                 <v-card-actions>
                     <v-spacer></v-spacer>
@@ -56,6 +113,45 @@ export default {
     props : ['user_id'],
     data : ()=>({
         dialog : false,
-    })
+        selectedSign : null,
+        data : {
+            user_id : null,
+            sign_id : null,
+            model : null,
+            chassis_number : null,
+            year : null,
+            motorization : null
+        },
+        disable : true,
+        items : [],
+        signs : [],
+        errors : [],
+        hasError : false,
+    }),
+    methods : {
+        store()
+        {
+
+        },
+        check()
+        {
+
+        },
+        fetchSigns()
+        {
+            axios.get('/sanctum/csrf-cookie').then(res => {
+                axios.get('/api/signs/all')
+                    .then(e=>{
+                        this.signs = e.data.data
+                        for (const value of e.data.data) {
+                            this.items.push(value.name)
+                        }
+                    })
+            })
+        }
+    },
+    mounted() {
+        this.fetchSigns()
+    }
 }
 </script>

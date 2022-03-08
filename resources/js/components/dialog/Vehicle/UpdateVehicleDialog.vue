@@ -63,7 +63,7 @@
                                     sm="6"
                                     md="6"
                                 >
-                                    <v-select v-model="selectedSign" :items="items"></v-select>
+                                    <v-select placeholder="Marque" v-model="selectedSign" :items="items"></v-select>
 
                                     <v-chip color="primary">{{data.sign.name}}</v-chip>
                                 </v-col>
