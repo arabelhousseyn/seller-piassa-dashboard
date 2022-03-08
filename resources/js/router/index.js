@@ -58,7 +58,13 @@ const routes = [
             },
             {
                 path : 'sellers',
-                component : () => import('../pages/SellersPage')
+                component : () => import('../pages/SellersPage'),
+                children: [
+                    {
+                        path : '/',
+                        component : () => import('../components/Seller/MainSellerComponent')
+                    }
+                ]
             },
             {
                 path : 'shippers',
