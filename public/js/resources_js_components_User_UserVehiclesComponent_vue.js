@@ -1491,27 +1491,6 @@ var render = function () {
                               "v-col",
                               { attrs: { cols: "12", sm: "6", md: "6" } },
                               [
-                                _c("v-text-field", {
-                                  attrs: {
-                                    label: "Motorisation*",
-                                    required: "",
-                                  },
-                                  model: {
-                                    value: _vm.data.motorization,
-                                    callback: function ($$v) {
-                                      _vm.$set(_vm.data, "motorization", $$v)
-                                    },
-                                    expression: "data.motorization",
-                                  },
-                                }),
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "v-col",
-                              { attrs: { cols: "12", sm: "6", md: "6" } },
-                              [
                                 _c("v-select", {
                                   attrs: {
                                     placeholder: "Marque",
@@ -1523,6 +1502,27 @@ var render = function () {
                                       _vm.selectedSign = $$v
                                     },
                                     expression: "selectedSign",
+                                  },
+                                }),
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-col",
+                              { attrs: { cols: "12", sm: "6", md: "6" } },
+                              [
+                                _c("v-text-field", {
+                                  attrs: {
+                                    label: "Motorisation*",
+                                    required: "",
+                                  },
+                                  model: {
+                                    value: _vm.data.motorization,
+                                    callback: function ($$v) {
+                                      _vm.$set(_vm.data, "motorization", $$v)
+                                    },
+                                    expression: "data.motorization",
                                   },
                                 }),
                               ],

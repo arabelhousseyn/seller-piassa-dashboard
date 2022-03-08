@@ -64,11 +64,7 @@
                                     sm="6"
                                     md="6"
                                 >
-                                    <v-text-field
-                                        label="Motorisation*"
-                                        v-model="data.motorization"
-                                        required
-                                    ></v-text-field>
+                                    <v-select v-model="selectedSign" placeholder="Marque" :items="items"></v-select>
                                 </v-col>
 
                                 <v-col
@@ -76,7 +72,11 @@
                                     sm="6"
                                     md="6"
                                 >
-                                    <v-select v-model="selectedSign" placeholder="Marque" :items="items"></v-select>
+                                    <v-text-field
+                                        label="Motorisation*"
+                                        v-model="data.motorization"
+                                        required
+                                    ></v-text-field>
                                 </v-col>
 
                                 <v-alert v-if="hasError" border="right" colored-border type="error" elevation="2">
