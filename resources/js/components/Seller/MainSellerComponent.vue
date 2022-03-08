@@ -68,17 +68,12 @@
                                     <v-list-item-content><v-list-item-title>Modifier</v-list-item-title></v-list-item-content>
                                 </v-list-item>
                                 <v-list-item link @click="()=>{}">
-                                    <v-list-item-icon><v-icon color="primary">mdi-car</v-icon></v-list-item-icon>
-                                    <v-list-item-content><v-list-item-title>Véhicules</v-list-item-title></v-list-item-content>
+                                    <v-list-item-icon><v-icon color="primary">mdi-phone</v-icon></v-list-item-icon>
+                                    <v-list-item-content><v-list-item-title>Téléphones</v-list-item-title></v-list-item-content>
                                 </v-list-item>
                                 <v-list-item link @click="()=>{}">
-                                    <v-list-item-icon><v-icon color="primary">mdi-cart-outline</v-icon></v-list-item-icon>
-                                    <v-list-item-content><v-list-item-title>Panier actuel</v-list-item-title></v-list-item-content>
-                                </v-list-item>
-
-                                <v-list-item link @click="()=>{}">
-                                    <v-list-item-icon><v-icon color="primary">mdi-cart</v-icon></v-list-item-icon>
-                                    <v-list-item-content><v-list-item-title>Commandes</v-list-item-title></v-list-item-content>
+                                    <v-list-item-icon><v-icon color="primary">mdi-bag-checked</v-icon></v-list-item-icon>
+                                    <v-list-item-content><v-list-item-title>Travaux</v-list-item-title></v-list-item-content>
                                 </v-list-item>
 
                                 <v-list-item v-if="item.deleted_at == null" link @click="()=>{}">

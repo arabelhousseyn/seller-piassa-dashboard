@@ -122,11 +122,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -476,7 +471,7 @@ var render = function () {
                                         _c(
                                           "v-icon",
                                           { attrs: { color: "primary" } },
-                                          [_vm._v("mdi-car")]
+                                          [_vm._v("mdi-phone")]
                                         ),
                                       ],
                                       1
@@ -486,7 +481,7 @@ var render = function () {
                                       "v-list-item-content",
                                       [
                                         _c("v-list-item-title", [
-                                          _vm._v("Véhicules"),
+                                          _vm._v("Téléphones"),
                                         ]),
                                       ],
                                       1
@@ -508,7 +503,7 @@ var render = function () {
                                         _c(
                                           "v-icon",
                                           { attrs: { color: "primary" } },
-                                          [_vm._v("mdi-cart-outline")]
+                                          [_vm._v("mdi-bag-checked")]
                                         ),
                                       ],
                                       1
@@ -518,39 +513,7 @@ var render = function () {
                                       "v-list-item-content",
                                       [
                                         _c("v-list-item-title", [
-                                          _vm._v("Panier actuel"),
-                                        ]),
-                                      ],
-                                      1
-                                    ),
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-list-item",
-                                  {
-                                    attrs: { link: "" },
-                                    on: { click: function () {} },
-                                  },
-                                  [
-                                    _c(
-                                      "v-list-item-icon",
-                                      [
-                                        _c(
-                                          "v-icon",
-                                          { attrs: { color: "primary" } },
-                                          [_vm._v("mdi-cart")]
-                                        ),
-                                      ],
-                                      1
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "v-list-item-content",
-                                      [
-                                        _c("v-list-item-title", [
-                                          _vm._v("Commandes"),
+                                          _vm._v("Travaux"),
                                         ]),
                                       ],
                                       1
