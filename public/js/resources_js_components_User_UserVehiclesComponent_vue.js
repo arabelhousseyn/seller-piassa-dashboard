@@ -1458,6 +1458,28 @@ var render = function () {
                             _vm._v(" "),
                             _c(
                               "v-col",
+                              { attrs: { cols: "12", sm: "6", md: "6" } },
+                              [
+                                _c("v-select", {
+                                  attrs: {
+                                    placeholder: "Marque",
+                                    items: _vm.items,
+                                  },
+                                  on: { change: _vm.check },
+                                  model: {
+                                    value: _vm.selectedSign,
+                                    callback: function ($$v) {
+                                      _vm.selectedSign = $$v
+                                    },
+                                    expression: "selectedSign",
+                                  },
+                                }),
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-col",
                               { attrs: { cols: "12", sm: "6", md: "4" } },
                               [
                                 _c("v-text-field", {
@@ -1488,28 +1510,6 @@ var render = function () {
                                       _vm.$set(_vm.data, "year", $$v)
                                     },
                                     expression: "data.year",
-                                  },
-                                }),
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "v-col",
-                              { attrs: { cols: "12", sm: "6", md: "6" } },
-                              [
-                                _c("v-select", {
-                                  attrs: {
-                                    placeholder: "Marque",
-                                    items: _vm.items,
-                                  },
-                                  on: { change: _vm.check },
-                                  model: {
-                                    value: _vm.selectedSign,
-                                    callback: function ($$v) {
-                                      _vm.selectedSign = $$v
-                                    },
-                                    expression: "selectedSign",
                                   },
                                 }),
                               ],

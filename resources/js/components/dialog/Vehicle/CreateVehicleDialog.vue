@@ -39,6 +39,14 @@
                                 <v-col
                                     cols="12"
                                     sm="6"
+                                    md="6"
+                                >
+                                    <v-select @change="check" v-model="selectedSign" placeholder="Marque" :items="items"></v-select>
+                                </v-col>
+
+                                <v-col
+                                    cols="12"
+                                    sm="6"
                                     md="4"
                                 >
                                     <v-text-field
@@ -60,14 +68,6 @@
                                         v-model="data.year"
                                         required
                                     ></v-text-field>
-                                </v-col>
-
-                                <v-col
-                                    cols="12"
-                                    sm="6"
-                                    md="6"
-                                >
-                                    <v-select @change="check" v-model="selectedSign" placeholder="Marque" :items="items"></v-select>
                                 </v-col>
 
                                 <v-col
@@ -142,6 +142,7 @@ export default {
                     break;
                 }
             }
+
             axios.get('/sanctum/csrf-cookie').then(res => {
                 axios.post('/api/vehicles',this.data)
                 .then(e => {
