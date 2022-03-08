@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import {next} from "lodash/seq";
 
 Vue.use(VueRouter)
 
@@ -11,6 +12,14 @@ const routes = [
     {
         path : '/home',
         component: () => import('../pages/DashboardPage'),
+        beforeEnter: (to, from,next) => {
+            if(localStorage.getItem('isAuth'))
+            {
+                next()
+            }else{
+                next('/')
+            }
+        },
         children : [
             {
                 path : '/',
