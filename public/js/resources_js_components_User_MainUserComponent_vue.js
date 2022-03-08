@@ -2341,9 +2341,13 @@ var render = function () {
                                     attrs: { link: "" },
                                     on: {
                                       click: function ($event) {
-                                        return _vm.$router.push(
-                                          "users/orders/" + item.id
-                                        )
+                                        return _vm.$router.push({
+                                          name: "orders",
+                                          params: {
+                                            id: item.id,
+                                            data: item.orders,
+                                          },
+                                        })
                                       },
                                     },
                                   },

@@ -74,7 +74,7 @@
                                     <v-list-item-content><v-list-item-title>Véhicules</v-list-item-title></v-list-item-content>
                                 </v-list-item>
 
-                                <v-list-item link @click="$router.push(`users/orders/${item.id}`)">
+                                <v-list-item link @click="$router.push({name :'orders', params : {id : item.id,data : item.orders}})">
                                     <v-list-item-icon><v-icon color="primary">mdi-cart</v-icon></v-list-item-icon>
                                     <v-list-item-content><v-list-item-title>Commandes</v-list-item-title></v-list-item-content>
                                 </v-list-item>

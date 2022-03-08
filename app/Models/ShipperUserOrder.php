@@ -29,4 +29,9 @@ class ShipperUserOrder extends Model
     {
         return $this->hasOne(ShipperUserOrderCommission::class);
     }
+
+    public function shipper()
+    {
+        return $this->belongsTo(Shipper::class,'shipper_id')->withDefault();
+    }
 }
