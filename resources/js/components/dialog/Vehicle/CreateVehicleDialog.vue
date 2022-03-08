@@ -39,7 +39,7 @@
                                 <v-col
                                     cols="12"
                                     sm="6"
-                                    md="6"
+                                    md="4"
                                 >
                                     <v-select @change="check" v-model="selectedSign" placeholder="Marque" :items="items"></v-select>
                                 </v-col>
@@ -60,7 +60,7 @@
                                 <v-col
                                     cols="12"
                                     sm="6"
-                                    md="4"
+                                    md="6"
                                 >
                                     <v-text-field
                                         @keydown="check"
@@ -135,6 +135,8 @@ export default {
     methods : {
         store()
         {
+            this.disable = true
+            this.data.user_id = this.user_id
             for (const sign of this.signs) {
                 if(sign.name == this.selectedSign)
                 {
@@ -152,6 +154,7 @@ export default {
                             message : 'Opération effectué',
                             type : 'success'
                         })
+                        window.location.reload()
                     }
                 })
                 .catch(err => {
@@ -159,6 +162,7 @@ export default {
                     for (const error of errors) {
                         this.errors.push(error[0])
                         this.hasError = true
+                        this.disable = false
                     }
                 })
             })

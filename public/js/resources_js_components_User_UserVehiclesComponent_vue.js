@@ -358,6 +358,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     store: function store() {
       var _this = this;
 
+      this.disable = true;
+      this.data.user_id = this.user_id;
+
       var _iterator = _createForOfIteratorHelper(this.signs),
           _step;
 
@@ -383,6 +386,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
               message: 'Opération effectué',
               type: 'success'
             });
+
+            window.location.reload();
           }
         })["catch"](function (err) {
           var errors = Object.values(err.response.data.errors);
@@ -393,6 +398,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
             _this.errors.push(error[0]);
 
             _this.hasError = true;
+            _this.disable = false;
           }
         });
       });
@@ -1458,7 +1464,7 @@ var render = function () {
                             _vm._v(" "),
                             _c(
                               "v-col",
-                              { attrs: { cols: "12", sm: "6", md: "6" } },
+                              { attrs: { cols: "12", sm: "6", md: "4" } },
                               [
                                 _c("v-select", {
                                   attrs: {
@@ -1499,7 +1505,7 @@ var render = function () {
                             _vm._v(" "),
                             _c(
                               "v-col",
-                              { attrs: { cols: "12", sm: "6", md: "4" } },
+                              { attrs: { cols: "12", sm: "6", md: "6" } },
                               [
                                 _c("v-text-field", {
                                   attrs: { label: "Année*", required: "" },
