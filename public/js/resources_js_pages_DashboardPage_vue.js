@@ -1344,7 +1344,7 @@ var render = function () {
                       staticStyle: { "border-right": "4px solid" },
                       on: {
                         click: function () {
-                          this$1.$router.push("/")
+                          this$1.$router.push("/").catch(function (err) {})
                         },
                       },
                     },
@@ -1392,7 +1392,9 @@ var render = function () {
                           staticStyle: { "border-right": "4px solid" },
                           on: {
                             click: function () {
-                              this$1.$router.push("/home/users")
+                              this$1.$router
+                                .push("/home/users")
+                                .catch(function (err) {})
                             },
                           },
                         },
@@ -1412,7 +1414,9 @@ var render = function () {
                           staticStyle: { "border-right": "4px solid" },
                           on: {
                             click: function () {
-                              this$1.$router.push("/home/sellers")
+                              this$1.$router
+                                .push("/home/sellers")
+                                .catch(function (err) {})
                             },
                           },
                         },
@@ -1432,7 +1436,9 @@ var render = function () {
                           staticStyle: { "border-right": "4px solid" },
                           on: {
                             click: function () {
-                              this$1.$router.push("/home/shippers")
+                              this$1.$router
+                                .push("/home/shippers")
+                                .catch(function (err) {})
                             },
                           },
                         },
