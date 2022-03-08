@@ -21,13 +21,32 @@ __webpack_require__.r(__webpack_exports__);
   props: ['data'],
   data: function data() {
     return {
+      user_id: window.location.pathname.split('/').pop(),
       data2: undefined
     };
   },
   methods: {
-    fetchOrders: function fetchOrders() {}
+    init: function init() {
+      var _this = this;
+
+      axios.get('/sanctum/csrf-cookie').then(function (res) {
+        axios.get("/api/users/orders/".concat(_this.user_id)).then(function (e) {
+          _this.data2 = e.data.data;
+        })["catch"](function (err) {
+          if (err.response.status == 404) {
+            _this.$router.push('/home/users');
+          }
+
+          console.log(err);
+        });
+      });
+    }
   },
-  mounted: function mounted() {}
+  mounted: function mounted() {
+    if (this.data == undefined) {
+      this.init();
+    }
+  }
 });
 
 /***/ }),
@@ -117,7 +136,13 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "user-order" }, [
-    _vm._v("\n    welcome to user orders\n    " + _vm._s(_vm.data) + "\n"),
+    _vm._v(
+      "\n    welcome to user orders\n    " +
+        _vm._s(_vm.data) +
+        " " +
+        _vm._s(_vm.data2) +
+        "\n"
+    ),
   ])
 }
 var staticRenderFns = []
