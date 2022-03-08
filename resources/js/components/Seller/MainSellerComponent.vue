@@ -1,6 +1,7 @@
 <template>
     <div class="sellers-data-table">
         <v-container fluid>
+            <bread-crumbs-component title1="Vendeurs" link="/home/sellers" icon="mdi mdi-chevron-right" />
             <v-data-table
                 :loading="loading"
                 loading-text="Chargement... veuillez patienter"
@@ -110,7 +111,9 @@
 </template>
 
 <script>
+import BreadCrumbsComponent from "../BreadCrumbsComponent";
 export default {
+    components: {BreadCrumbsComponent},
     data : ()=>({
         sellers : [],
         loading : true,

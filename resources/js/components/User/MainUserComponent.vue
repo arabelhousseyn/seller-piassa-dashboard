@@ -1,6 +1,7 @@
 <template>
     <div class="users-data-table">
         <v-container fluid>
+            <bread-crumbs-component title1="Utilisateurs" link="/home/users" icon="mdi mdi-chevron-right" />
             <v-data-table
                 :loading="loading"
                 loading-text="Chargement... veuillez patienter"
@@ -143,8 +144,10 @@ import UserProfileDialog from "../dialog/user/UserProfileDialog";
 import UpdateUserDialog from "../dialog/user/UpdateUserDialog";
 import SecurityDialog from "../dialog/user/SecurityDialog";
 import UserCommercialInfo from "../dialog/user/UserCommercialInfo";
+import BreadCrumbsComponent from "../BreadCrumbsComponent";
 export default {
     components: {
+        BreadCrumbsComponent,
         UserCommercialInfo,
         SecurityDialog,
         UpdateUserDialog, UserProfileDialog, CreateUserDialog, RestoreUserDialog, DeleteUserDialog},
