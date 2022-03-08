@@ -29,6 +29,7 @@
                                     md="4"
                                 >
                                     <v-text-field
+                                        @keydown="check"
                                         label="Modèle*"
                                         v-model="data.model"
                                         required
@@ -41,6 +42,7 @@
                                     md="4"
                                 >
                                     <v-text-field
+                                        @keydown="check"
                                         label="N° châssis*"
                                         v-model="data.chassis_number"
                                         required
@@ -53,6 +55,7 @@
                                     md="4"
                                 >
                                     <v-text-field
+                                        @keydown="check"
                                         label="Année*"
                                         v-model="data.year"
                                         required
@@ -64,7 +67,7 @@
                                     sm="6"
                                     md="6"
                                 >
-                                    <v-select v-model="selectedSign" placeholder="Marque" :items="items"></v-select>
+                                    <v-select @change="check" v-model="selectedSign" placeholder="Marque" :items="items"></v-select>
                                 </v-col>
 
                                 <v-col
@@ -73,6 +76,7 @@
                                     md="6"
                                 >
                                     <v-text-field
+                                        @keydown="check"
                                         label="Motorisation*"
                                         v-model="data.motorization"
                                         required

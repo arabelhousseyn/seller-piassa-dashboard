@@ -329,6 +329,10 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['user_id'],
   data: function data() {
@@ -1439,6 +1443,7 @@ var render = function () {
                               [
                                 _c("v-text-field", {
                                   attrs: { label: "Modèle*", required: "" },
+                                  on: { keydown: _vm.check },
                                   model: {
                                     value: _vm.data.model,
                                     callback: function ($$v) {
@@ -1457,6 +1462,7 @@ var render = function () {
                               [
                                 _c("v-text-field", {
                                   attrs: { label: "N° châssis*", required: "" },
+                                  on: { keydown: _vm.check },
                                   model: {
                                     value: _vm.data.chassis_number,
                                     callback: function ($$v) {
@@ -1475,6 +1481,7 @@ var render = function () {
                               [
                                 _c("v-text-field", {
                                   attrs: { label: "Année*", required: "" },
+                                  on: { keydown: _vm.check },
                                   model: {
                                     value: _vm.data.year,
                                     callback: function ($$v) {
@@ -1496,6 +1503,7 @@ var render = function () {
                                     placeholder: "Marque",
                                     items: _vm.items,
                                   },
+                                  on: { change: _vm.check },
                                   model: {
                                     value: _vm.selectedSign,
                                     callback: function ($$v) {
@@ -1517,6 +1525,7 @@ var render = function () {
                                     label: "Motorisation*",
                                     required: "",
                                   },
+                                  on: { keydown: _vm.check },
                                   model: {
                                     value: _vm.data.motorization,
                                     callback: function ($$v) {
