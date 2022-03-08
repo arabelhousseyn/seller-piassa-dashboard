@@ -22,7 +22,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::with('locations','profile.province','vehicle.sign','carts','orders.items.item.request.request.informations',
-            'orders.invoice','orders.shipperUserOrder.shipper.profile','commercial_info','roles')
+            'orders.items.item.request.request.vehicle','orders.invoice','orders.shipperUserOrder.shipper.profile','commercial_info','roles')
             ->withTrashed()->latest('id','desc')->get();
         return response(['data' => $users],200);
     }
@@ -183,7 +183,7 @@ class UserController extends Controller
     {
         try {
             $user = User::withTrashed()->with('orders.items.item.request.request.informations',
-                'orders.invoice','orders.shipperUserOrder.shipper.profile')->findOrFail($user_id);
+                'orders.invoice','orders.items.item.request.request.vehicle','orders.shipperUserOrder.shipper.profile')->findOrFail($user_id);
             return response(['data' => $user->orders],200);
         }catch (\Exception $e)
         {
