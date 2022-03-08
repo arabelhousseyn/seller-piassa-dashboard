@@ -30,6 +30,7 @@ const routes = [
                         props : true,
                         component : () => import('../components/User/UserVehiclesComponent'),
                     }
+
                 ]
             },
             {

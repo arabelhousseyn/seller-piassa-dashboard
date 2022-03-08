@@ -173,6 +173,7 @@ export default {
         {
             this.init()
         }
+        console.log(this.user_id)
     }
 }
 </script>

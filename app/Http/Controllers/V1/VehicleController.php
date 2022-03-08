@@ -123,7 +123,12 @@ class VehicleController extends Controller
 
     public function vehiclesByUser($user_id)
     {
-        $user = User::withTrashed()->with('vehicle.sign')->find($user_id);
-        return response(['data' => $user->vehicle],200);
+        try {
+            $user = User::withTrashed()->with('vehicle.sign')->findOrFail($user_id);
+            return response(['data' => $user->vehicle],200);
+        }catch (\Exception $e)
+        {
+            return response(['message' => 'not found'],404);
+        }
     }
 }

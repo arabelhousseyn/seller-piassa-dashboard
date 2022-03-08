@@ -198,6 +198,8 @@ __webpack_require__.r(__webpack_exports__);
     if (this.data == undefined) {
       this.init();
     }
+
+    console.log(this.user_id);
   }
 });
 
