@@ -167,7 +167,7 @@ export default {
         {
             this.hasError = false
             this.errors = []
-            this.disable = (this.data.sign_id == null || this.data.model == null || this.data.chassis_number == null
+            this.disable = (this.selectedSign == null || this.data.model == null || this.data.chassis_number == null
              || this.data.year == null || this.data.motorization == null) ? true : false
         },
         fetchSigns()
