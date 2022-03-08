@@ -152,6 +152,10 @@ export default {
                         this.data2 = e.data.data
                     })
                     .catch(err =>{
+                        if(err.response.status == 404)
+                        {
+                            this.$router.push('/home/users')
+                        }
                         console.log(err)
                     })
             })
@@ -173,7 +177,6 @@ export default {
         {
             this.init()
         }
-        console.log(this.user_id)
     }
 }
 </script>

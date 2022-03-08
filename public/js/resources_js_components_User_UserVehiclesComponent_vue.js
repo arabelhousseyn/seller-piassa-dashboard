@@ -181,6 +181,10 @@ __webpack_require__.r(__webpack_exports__);
         axios.get("/api/users/vehicles/".concat(_this.user_id)).then(function (e) {
           _this.data2 = e.data.data;
         })["catch"](function (err) {
+          if (err.response.status == 404) {
+            _this.$router.push('/home/users');
+          }
+
           console.log(err);
         });
       });
@@ -198,8 +202,6 @@ __webpack_require__.r(__webpack_exports__);
     if (this.data == undefined) {
       this.init();
     }
-
-    console.log(this.user_id);
   }
 });
 
