@@ -7,7 +7,15 @@ Vue.use(VueRouter)
 const routes = [
     {
         path : '/',
-        component: () => import('../pages/LoginPage')
+        component: () => import('../pages/LoginPage'),
+        beforeEnter: (to, from,next) => {
+            if(localStorage.getItem('isAuth') == undefined)
+            {
+                next()
+            }else{
+                next('/home')
+            }
+        },
     },
     {
         path : '/home',
@@ -64,6 +72,8 @@ const routes = [
     }
 
 ]
+
+
 
 export default new VueRouter({
     mode: 'history',
