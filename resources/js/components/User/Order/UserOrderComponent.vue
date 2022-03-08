@@ -6,6 +6,18 @@
 </template>
 <script>
 export default {
-    props :['data']
+    props :['data'],
+    data : ()=>({
+        data2 : undefined,
+    }),
+    methods : {
+      fetchOrders()
+      {
+
+      }
+    },
+    mounted() {
+
+    }
 }
 </script>

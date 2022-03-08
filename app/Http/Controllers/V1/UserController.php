@@ -178,4 +178,16 @@ class UserController extends Controller
         $user->commercial_info()->update($request->all());
         return response('',204);
     }
+
+    public function fetchOrderByUser($user_id)
+    {
+        try {
+            $user = User::withTrashed()->with('orders.items.item.request.request.informations',
+                'orders.invoice','orders.shipperUserOrder.shipper.profile')->findOrFail($user_id);
+            return response(['data' => $user->orders],200);
+        }catch (\Exception $e)
+        {
+            return response(['message' => 'not found'],404);
+        }
+    }
 }

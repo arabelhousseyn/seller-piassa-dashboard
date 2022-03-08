@@ -35,6 +35,9 @@ Route::middleware('auth:sanctum')->group(function (){
         Route::prefix('vehicles')->group(function (){
             Route::get('/{user_id}',[VehicleController::class,'vehiclesByUser'])->whereNumber('user_id');
         });
+        Route::prefix('orders')->group(function (){
+            Route::get('/{user_id}',[UserController::class,'fetchOrderByUser'])->whereNumber('user_id');
+        });
     });
 
     // signs
