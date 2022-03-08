@@ -351,32 +351,73 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     };
   },
   methods: {
-    store: function store() {},
+    store: function store() {
+      var _this = this;
+
+      var _iterator = _createForOfIteratorHelper(this.signs),
+          _step;
+
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var sign = _step.value;
+
+          if (sign.name == this.selectedSign) {
+            this.data.sign_id = sign.id;
+            break;
+          }
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+
+      axios.get('/sanctum/csrf-cookie').then(function (res) {
+        axios.post('/api/vehicles', _this.data).then(function (e) {
+          if (e.status == 204) {
+            _this.$toast.open({
+              message: 'Opération effectué',
+              type: 'success'
+            });
+          }
+        })["catch"](function (err) {
+          var errors = Object.values(err.response.data.errors);
+
+          for (var _i = 0, _errors = errors; _i < _errors.length; _i++) {
+            var error = _errors[_i];
+
+            _this.errors.push(error[0]);
+
+            _this.hasError = true;
+          }
+        });
+      });
+    },
     check: function check() {
       this.hasError = false;
       this.errors = [];
       this.disable = this.data.sign_id == null || this.data.model == null || this.data.chassis_number == null || this.data.year == null || this.data.motorization == null ? true : false;
     },
     fetchSigns: function fetchSigns() {
-      var _this = this;
+      var _this2 = this;
 
       axios.get('/sanctum/csrf-cookie').then(function (res) {
         axios.get('/api/signs/all').then(function (e) {
-          _this.signs = e.data.data;
+          _this2.signs = e.data.data;
 
-          var _iterator = _createForOfIteratorHelper(e.data.data),
-              _step;
+          var _iterator2 = _createForOfIteratorHelper(e.data.data),
+              _step2;
 
           try {
-            for (_iterator.s(); !(_step = _iterator.n()).done;) {
-              var value = _step.value;
+            for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+              var value = _step2.value;
 
-              _this.items.push(value.name);
+              _this2.items.push(value.name);
             }
           } catch (err) {
-            _iterator.e(err);
+            _iterator2.e(err);
           } finally {
-            _iterator.f();
+            _iterator2.f();
           }
         });
       });

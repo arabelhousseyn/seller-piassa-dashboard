@@ -131,6 +131,32 @@ export default {
     methods : {
         store()
         {
+            for (const sign of this.signs) {
+                if(sign.name == this.selectedSign)
+                {
+                    this.data.sign_id = sign.id
+                    break;
+                }
+            }
+            axios.get('/sanctum/csrf-cookie').then(res => {
+                axios.post('/api/vehicles',this.data)
+                .then(e => {
+                    if(e.status == 204)
+                    {
+                        this.$toast.open({
+                            message : 'Opération effectué',
+                            type : 'success'
+                        })
+                    }
+                })
+                .catch(err => {
+                    let errors = Object.values(err.response.data.errors)
+                    for (const error of errors) {
+                        this.errors.push(error[0])
+                        this.hasError = true
+                    }
+                })
+            })
 
         },
         check()
