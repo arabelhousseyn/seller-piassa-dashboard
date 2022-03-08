@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\V1;
 
 use App\Http\Controllers\Controller;
+use App\Models\{Seller};
 use Illuminate\Http\Request;
 
 class SellerController extends Controller
@@ -14,7 +15,8 @@ class SellerController extends Controller
      */
     public function index()
     {
-        //
+        $sellers = Seller::withTrashed()->with('profile','jobs','phones')->latest('created_at')->get();
+        return response(['data' => $sellers],200);
     }
 
     /**
