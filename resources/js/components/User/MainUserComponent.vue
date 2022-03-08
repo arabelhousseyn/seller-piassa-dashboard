@@ -73,10 +73,6 @@
                                     <v-list-item-icon><v-icon color="primary">mdi-car</v-icon></v-list-item-icon>
                                     <v-list-item-content><v-list-item-title>Véhicules</v-list-item-title></v-list-item-content>
                                 </v-list-item>
-                                <v-list-item link @click="$router.push(`users/cart/${item.id}`)">
-                                    <v-list-item-icon><v-icon color="primary">mdi-cart-outline</v-icon></v-list-item-icon>
-                                    <v-list-item-content><v-list-item-title>Panier actuel</v-list-item-title></v-list-item-content>
-                                </v-list-item>
 
                                 <v-list-item link @click="$router.push(`users/orders/${item.id}`)">
                                     <v-list-item-icon><v-icon color="primary">mdi-cart</v-icon></v-list-item-icon>
