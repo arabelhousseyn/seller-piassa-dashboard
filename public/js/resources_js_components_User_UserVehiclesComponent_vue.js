@@ -352,7 +352,11 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   },
   methods: {
     store: function store() {},
-    check: function check() {},
+    check: function check() {
+      this.hasError = false;
+      this.errors = [];
+      this.disable = this.data.sign_id == null || this.data.model == null || this.data.chassis_number == null || this.data.year == null || this.data.motorization == null ? true : false;
+    },
     fetchSigns: function fetchSigns() {
       var _this = this;
 
