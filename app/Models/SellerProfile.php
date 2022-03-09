@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
+use Illuminate\Database\Eloquent\Casts\Attribute;
 class SellerProfile extends Model
 {
     use HasFactory, SoftDeletes;
@@ -26,8 +26,16 @@ class SellerProfile extends Model
         'deleted_at'
     ];
 
+
     public function province()
     {
         return $this->belongsTo(Province::class,'province_id')->withDefault();
+    }
+
+    public function location(): Attribute
+    {
+        return new Attribute(
+            get: fn ($value) => explode(',',$value),
+        );
     }
 }

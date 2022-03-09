@@ -38,7 +38,13 @@
                                     </v-col>
 
                                     <v-col cols="12">
-                                        welcome
+                                        <GmapMap
+                                            :center="{lat:profile.location[0], lng:profile.location[1]}"
+                                            :zoom="7"
+                                            map-type-id="terrain"
+                                            style="width: 500px; height: 300px"
+                                        >
+                                        </GmapMap>
                                     </v-col>
                                 </v-row>
                             </v-container>

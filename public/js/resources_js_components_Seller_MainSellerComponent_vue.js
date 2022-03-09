@@ -294,6 +294,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['dialog', 'profile'],
   methods: {
@@ -1104,11 +1110,27 @@ var render = function () {
                                   ]
                                 ),
                                 _vm._v(" "),
-                                _c("v-col", { attrs: { cols: "12" } }, [
-                                  _vm._v(
-                                    "\n                                    welcome\n                                "
-                                  ),
-                                ]),
+                                _c(
+                                  "v-col",
+                                  { attrs: { cols: "12" } },
+                                  [
+                                    _c("GmapMap", {
+                                      staticStyle: {
+                                        width: "500px",
+                                        height: "300px",
+                                      },
+                                      attrs: {
+                                        center: {
+                                          lat: _vm.profile.location[0],
+                                          lng: _vm.profile.location[1],
+                                        },
+                                        zoom: 7,
+                                        "map-type-id": "terrain",
+                                      },
+                                    }),
+                                  ],
+                                  1
+                                ),
                               ],
                               1
                             ),
