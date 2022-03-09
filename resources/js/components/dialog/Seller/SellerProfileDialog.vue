@@ -39,11 +39,19 @@
 
                                     <v-col cols="12">
                                         <GmapMap
-                                            :center="{lat:profile.location[0], lng:profile.location[1]}"
-                                            :zoom="7"
+                                            disableDefaultUi="true"
+                                            :center="{lat:parseInt(profile.location[0]), lng:parseInt(profile.location[1])}"
+                                            :zoom="9"
                                             map-type-id="terrain"
                                             style="width: 500px; height: 300px"
                                         >
+                                            <GmapMarker
+                                                :position="{lat:parseInt(profile.location[0]), lng:parseInt(profile.location[1])}"
+                                                :clickable="true"
+                                                @click="showTitle"
+                                            >
+                                                <GmapInfoWindow v-if="show">Position</GmapInfoWindow>
+                                            </GmapMarker>
                                         </GmapMap>
                                     </v-col>
                                 </v-row>
@@ -69,10 +77,17 @@
 <script>
 export default {
     props : ['dialog','profile'],
+    data : ()=>({
+        show : true,
+    }),
     methods : {
         close()
         {
             this.$emit('close')
+        },
+        showTitle()
+        {
+            this.show = true
         }
     }
 }

@@ -300,11 +300,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['dialog', 'profile'],
+  data: function data() {
+    return {
+      show: true
+    };
+  },
   methods: {
     close: function close() {
       this.$emit('close');
+    },
+    showTitle: function showTitle() {
+      this.show = true;
     }
   }
 });
@@ -1114,20 +1130,56 @@ var render = function () {
                                   "v-col",
                                   { attrs: { cols: "12" } },
                                   [
-                                    _c("GmapMap", {
-                                      staticStyle: {
-                                        width: "500px",
-                                        height: "300px",
-                                      },
-                                      attrs: {
-                                        center: {
-                                          lat: _vm.profile.location[0],
-                                          lng: _vm.profile.location[1],
+                                    _c(
+                                      "GmapMap",
+                                      {
+                                        staticStyle: {
+                                          width: "500px",
+                                          height: "300px",
                                         },
-                                        zoom: 7,
-                                        "map-type-id": "terrain",
+                                        attrs: {
+                                          disableDefaultUi: "true",
+                                          center: {
+                                            lat: parseInt(
+                                              _vm.profile.location[0]
+                                            ),
+                                            lng: parseInt(
+                                              _vm.profile.location[1]
+                                            ),
+                                          },
+                                          zoom: 9,
+                                          "map-type-id": "terrain",
+                                        },
                                       },
-                                    }),
+                                      [
+                                        _c(
+                                          "GmapMarker",
+                                          {
+                                            attrs: {
+                                              position: {
+                                                lat: parseInt(
+                                                  _vm.profile.location[0]
+                                                ),
+                                                lng: parseInt(
+                                                  _vm.profile.location[1]
+                                                ),
+                                              },
+                                              clickable: true,
+                                            },
+                                            on: { click: _vm.showTitle },
+                                          },
+                                          [
+                                            _vm.show
+                                              ? _c("GmapInfoWindow", [
+                                                  _vm._v("Position"),
+                                                ])
+                                              : _vm._e(),
+                                          ],
+                                          1
+                                        ),
+                                      ],
+                                      1
+                                    ),
                                   ],
                                   1
                                 ),
