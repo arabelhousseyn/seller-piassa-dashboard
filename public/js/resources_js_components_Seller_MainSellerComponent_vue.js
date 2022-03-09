@@ -290,6 +290,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['dialog', 'profile'],
   methods: {
@@ -1099,6 +1103,12 @@ var render = function () {
                                     ]),
                                   ]
                                 ),
+                                _vm._v(" "),
+                                _c("v-col", { attrs: { cols: "12" } }, [
+                                  _vm._v(
+                                    "\n                                    welcome\n                                "
+                                  ),
+                                ]),
                               ],
                               1
                             ),

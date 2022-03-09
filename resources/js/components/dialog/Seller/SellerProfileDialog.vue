@@ -36,6 +36,10 @@
                                     >
                                         <p><span class="font-weight-bold text-h6">Willaya : </span> <span>{{profile.province.name}}</span></p>
                                     </v-col>
+
+                                    <v-col cols="12">
+                                        welcome
+                                    </v-col>
                                 </v-row>
                             </v-container>
                         </v-card-text>
