@@ -60,7 +60,7 @@
 
                         <v-list>
                             <v-list-item-group>
-                                <v-list-item link @click="()=>{}">
+                                <v-list-item link @click="fetchProfile(item.profile)">
                                     <v-list-item-icon><v-icon color="primary">mdi-account</v-icon></v-list-item-icon>
                                     <v-list-item-content><v-list-item-title>Compte</v-list-item-title></v-list-item-content>
                                 </v-list-item>
@@ -107,17 +107,20 @@
                 </template>
             </v-data-table>
         </v-container>
+        <seller-profile-dialog v-if="dialog" :dialog="dialog" :profile="profile" @close="close" />
     </div>
 </template>
 
 <script>
 import BreadCrumbsComponent from "../BreadCrumbsComponent";
+import SellerProfileDialog from "../dialog/Seller/SellerProfileDialog";
 export default {
-    components: {BreadCrumbsComponent},
+    components: {SellerProfileDialog, BreadCrumbsComponent},
     data : ()=>({
         sellers : [],
         loading : true,
         search : null,
+        dialog : false,
         headers: [
             {
                 text: 'Téléphone',
@@ -130,11 +133,22 @@ export default {
             { text: 'Statu', value: 'deleted_at' },
             { text: 'actions', value: 'actions', sortable: false },
         ],
+        profile : [],
     }),
     methods : {
         reset()
         {
             this.init()
+        },
+        fetchProfile(data)
+        {
+            this.dialog = true
+            this.profile = data
+        },
+        close()
+        {
+          this.dialog = false
+          this.profile = []
         },
         init()
         {
