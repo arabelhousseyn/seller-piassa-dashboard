@@ -307,20 +307,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['dialog', 'profile'],
-  data: function data() {
-    return {
-      show: true
-    };
-  },
   methods: {
     close: function close() {
       this.$emit('close');
-    },
-    showTitle: function showTitle() {
-      this.show = true;
     }
   }
 });
@@ -1166,14 +1157,11 @@ var render = function () {
                                               },
                                               clickable: true,
                                             },
-                                            on: { click: _vm.showTitle },
                                           },
                                           [
-                                            _vm.show
-                                              ? _c("GmapInfoWindow", [
-                                                  _vm._v("Position"),
-                                                ])
-                                              : _vm._e(),
+                                            _c("GmapInfoWindow", [
+                                              _vm._v("Position"),
+                                            ]),
                                           ],
                                           1
                                         ),

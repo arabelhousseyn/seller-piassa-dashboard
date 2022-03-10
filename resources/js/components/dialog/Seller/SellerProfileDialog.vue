@@ -48,9 +48,8 @@
                                             <GmapMarker
                                                 :position="{lat:parseInt(profile.location[0]), lng:parseInt(profile.location[1])}"
                                                 :clickable="true"
-                                                @click="showTitle"
                                             >
-                                                <GmapInfoWindow v-if="show">Position</GmapInfoWindow>
+                                                <GmapInfoWindow>Position</GmapInfoWindow>
                                             </GmapMarker>
                                         </GmapMap>
                                     </v-col>
@@ -77,17 +76,10 @@
 <script>
 export default {
     props : ['dialog','profile'],
-    data : ()=>({
-        show : true,
-    }),
     methods : {
         close()
         {
             this.$emit('close')
-        },
-        showTitle()
-        {
-            this.show = true
         }
     }
 }
