@@ -72,8 +72,7 @@
                                         @keydown="check"
                                         v-model="data.email"
                                         type="email"
-                                        label="Email*"
-                                        required
+                                        label="Email"
                                     ></v-text-field>
                                 </v-col>
 

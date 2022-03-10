@@ -490,7 +490,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -1671,11 +1670,7 @@ var render = function () {
                               { attrs: { cols: "12", sm: "6", md: "4" } },
                               [
                                 _c("v-text-field", {
-                                  attrs: {
-                                    type: "email",
-                                    label: "Email*",
-                                    required: "",
-                                  },
+                                  attrs: { type: "email", label: "Email" },
                                   on: { keydown: _vm.check },
                                   model: {
                                     value: _vm.data.email,
