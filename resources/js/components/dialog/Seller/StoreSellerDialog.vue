@@ -160,7 +160,6 @@ export default {
         selectedProvince : null,
         data : {
             phone : null,
-            email : null,
             first_name : null,
             last_name : null,
             province_id : null,
@@ -193,13 +192,38 @@ export default {
         {
             this.hasError = false
             this.errors = []
-           this.disabled = (this.data.phone == null || this.data.email == null || this.data.commercial_name == null
+           this.disabled = (this.data.phone == null || this.data.commercial_name == null
             || this.data.first_name == null || this.data.last_name == null || this.selectedProvince == null) ? true : false
 
         },
         store()
         {
+            this.disabled = true
+            for (const province of this.provinces) {
+                if(province.name == this.selectedProvince)
+                {
+                    this.data.province_id = province.id
+                    break;
+                }
+            }
 
+
+            axios.get('/sanctum/csrf-cookie').then(res => {
+                axios.post('/api/sellers',this.data).then(e=>{
+                    this.$toast.open({
+                        message : "Opération effectué",
+                        type : 'success',
+                    })
+                    window.location.reload()
+                }).catch(err =>{
+                    let errors = Object.values(err.response.data.errors)
+                    for (const error of errors) {
+                        this.errors.push(error[0])
+                        this.hasError = true
+                        this.disabled = false
+                    }
+                })
+            })
         }
     },
     mounted() {

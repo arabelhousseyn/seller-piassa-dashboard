@@ -497,7 +497,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       selectedProvince: null,
       data: {
         phone: null,
-        email: null,
         first_name: null,
         last_name: null,
         province_id: null,
@@ -543,9 +542,53 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     check: function check() {
       this.hasError = false;
       this.errors = [];
-      this.disabled = this.data.phone == null || this.data.email == null || this.data.commercial_name == null || this.data.first_name == null || this.data.last_name == null || this.selectedProvince == null ? true : false;
+      this.disabled = this.data.phone == null || this.data.commercial_name == null || this.data.first_name == null || this.data.last_name == null || this.selectedProvince == null ? true : false;
     },
-    store: function store() {}
+    store: function store() {
+      var _this2 = this;
+
+      this.disabled = true;
+
+      var _iterator2 = _createForOfIteratorHelper(this.provinces),
+          _step2;
+
+      try {
+        for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+          var province = _step2.value;
+
+          if (province.name == this.selectedProvince) {
+            this.data.province_id = province.id;
+            break;
+          }
+        }
+      } catch (err) {
+        _iterator2.e(err);
+      } finally {
+        _iterator2.f();
+      }
+
+      axios.get('/sanctum/csrf-cookie').then(function (res) {
+        axios.post('/api/sellers', _this2.data).then(function (e) {
+          _this2.$toast.open({
+            message: "Opération effectué",
+            type: 'success'
+          });
+
+          window.location.reload();
+        })["catch"](function (err) {
+          var errors = Object.values(err.response.data.errors);
+
+          for (var _i = 0, _errors = errors; _i < _errors.length; _i++) {
+            var error = _errors[_i];
+
+            _this2.errors.push(error[0]);
+
+            _this2.hasError = true;
+            _this2.disabled = false;
+          }
+        });
+      });
+    }
   },
   mounted: function mounted() {
     this.init();
