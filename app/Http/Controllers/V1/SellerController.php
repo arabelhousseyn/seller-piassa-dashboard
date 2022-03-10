@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreSellerRequest;
 use App\Models\{Seller};
 use Illuminate\Http\Request;
 
@@ -35,9 +36,12 @@ class SellerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreSellerRequest $request)
     {
-        //
+        if($request->validated())
+        {
+
+        }
     }
 
     /**

@@ -462,6 +462,35 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -1654,6 +1683,56 @@ var render = function () {
                                       _vm.$set(_vm.data, "email", $$v)
                                     },
                                     expression: "data.email",
+                                  },
+                                }),
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-col",
+                              { attrs: { cols: "12", sm: "6", md: "4" } },
+                              [
+                                _c("v-text-field", {
+                                  attrs: {
+                                    type: "password",
+                                    label: "Mote de passe*",
+                                    required: "",
+                                  },
+                                  on: { keydown: _vm.check },
+                                  model: {
+                                    value: _vm.data.password,
+                                    callback: function ($$v) {
+                                      _vm.$set(_vm.data, "password", $$v)
+                                    },
+                                    expression: "data.password",
+                                  },
+                                }),
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-col",
+                              { attrs: { cols: "12", sm: "6", md: "4" } },
+                              [
+                                _c("v-text-field", {
+                                  attrs: {
+                                    type: "password",
+                                    label: "Confirmation mote de passe*",
+                                    required: "",
+                                  },
+                                  on: { keydown: _vm.check },
+                                  model: {
+                                    value: _vm.data.password_confirmation,
+                                    callback: function ($$v) {
+                                      _vm.$set(
+                                        _vm.data,
+                                        "password_confirmation",
+                                        $$v
+                                      )
+                                    },
+                                    expression: "data.password_confirmation",
                                   },
                                 }),
                               ],

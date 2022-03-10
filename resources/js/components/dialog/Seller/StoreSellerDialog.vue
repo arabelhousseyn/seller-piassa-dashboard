@@ -84,6 +84,35 @@
                                 >
                                     <v-text-field
                                         @keydown="check"
+                                        v-model="data.password"
+                                        type="password"
+                                        label="Mote de passe*"
+                                        required
+                                    ></v-text-field>
+                                </v-col>
+
+
+                                <v-col
+                                    cols="12"
+                                    sm="6"
+                                    md="4"
+                                >
+                                    <v-text-field
+                                        @keydown="check"
+                                        v-model="data.password_confirmation"
+                                        type="password"
+                                        label="Confirmation mote de passe*"
+                                        required
+                                    ></v-text-field>
+                                </v-col>
+
+                                <v-col
+                                    cols="12"
+                                    sm="6"
+                                    md="4"
+                                >
+                                    <v-text-field
+                                        @keydown="check"
                                         v-model="data.commercial_name"
                                         label="Nom commercial*"
                                         required
