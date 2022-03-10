@@ -200,6 +200,15 @@ return [
         ],
         'chassis_number' => [
             'required' => 'N° châssis requis.'
+        ],
+        'commercial_name' => [
+            'required' => 'Nom commercial requis.'
+        ],
+        'first_name' => [
+            'required' => 'Nom requis.'
+        ],
+        'last_name' => [
+            'required' => 'Prénom requis.'
         ]
     ],
 

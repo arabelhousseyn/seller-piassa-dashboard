@@ -4,6 +4,7 @@ namespace App\Http\Controllers\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreSellerRequest;
+use Illuminate\Support\Facades\Hash;
 use App\Models\{Seller};
 use Illuminate\Http\Request;
 
@@ -40,7 +41,11 @@ class SellerController extends Controller
     {
         if($request->validated())
         {
-
+            $hash_password = Hash::make($request->password_confirmation);
+            $password = ['password' => $hash_password];
+            $seller = Seller::create(array_merge($password,$request->only('phone','email')));
+            $seller->profile()->create($request->except('phone','email'));
+            return response('',204);
         }
     }
 
