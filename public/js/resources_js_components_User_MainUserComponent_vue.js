@@ -630,36 +630,39 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       } else {
         this.disabled = this.data.phone == null || this.data.password == null || this.data.password_confirmation == null || this.data.full_name == null || this.selectedProvince == null || this.selectedGender == null || this.selectedRole == null || this.data.commercial_registration == null || this.data.name_company == null || this.data.contact_name == null ? true : false;
       }
+    },
+    init: function init() {
+      var _this2 = this;
+
+      axios.get('/sanctum/csrf-cookie').then(function (res) {
+        axios.get('/api/provinces').then(function (e) {
+          _this2.provinces = e.data;
+
+          var _iterator2 = _createForOfIteratorHelper(e.data),
+              _step2;
+
+          try {
+            for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+              var province = _step2.value;
+
+              _this2.items2.push(province.name);
+            }
+          } catch (err) {
+            _iterator2.e(err);
+          } finally {
+            _iterator2.f();
+          }
+        })["catch"](function (err) {
+          _this2.$toast.open({
+            message: "ERROR",
+            type: 'error'
+          });
+        });
+      });
     }
   },
   mounted: function mounted() {
-    var _this2 = this;
-
-    axios.get('/sanctum/csrf-cookie').then(function (res) {
-      axios.get('/api/provinces').then(function (e) {
-        _this2.provinces = e.data;
-
-        var _iterator2 = _createForOfIteratorHelper(e.data),
-            _step2;
-
-        try {
-          for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-            var province = _step2.value;
-
-            _this2.items2.push(province.name);
-          }
-        } catch (err) {
-          _iterator2.e(err);
-        } finally {
-          _iterator2.f();
-        }
-      })["catch"](function (err) {
-        _this2.$toast.open({
-          message: "ERROR",
-          type: 'error'
-        });
-      });
-    });
+    this.init();
   }
 });
 

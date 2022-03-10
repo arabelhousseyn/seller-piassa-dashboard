@@ -291,22 +291,27 @@ export default {
                 || this.data.commercial_registration == null || this.data.name_company == null
                 || this.data.contact_name == null) ? true : false
             }
+        },
+
+        init()
+        {
+            axios.get('/sanctum/csrf-cookie').then(res =>{
+                axios.get('/api/provinces').then(e=>{
+                    this.provinces = e.data
+                    for (const province of e.data) {
+                        this.items2.push(province.name)
+                    }
+                }).catch(err =>{
+                    this.$toast.open({
+                        message : "ERROR",
+                        type : 'error'
+                    })
+                })
+            })
         }
     },
     mounted() {
-        axios.get('/sanctum/csrf-cookie').then(res =>{
-            axios.get('/api/provinces').then(e=>{
-                this.provinces = e.data
-                for (const province of e.data) {
-                    this.items2.push(province.name)
-                }
-            }).catch(err =>{
-                this.$toast.open({
-                    message : "ERROR",
-                    type : 'error'
-                })
-            })
-        })
+        this.init()
     }
 }
 </script>

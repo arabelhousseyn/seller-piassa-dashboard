@@ -22,9 +22,7 @@
                             vertical
                         ></v-divider>
                         <v-spacer></v-spacer>
-                        <v-btn color="primary">
-                            <v-icon>mdi-plus</v-icon> Ajouter
-                        </v-btn>
+                        <store-seller-dialog />
                     </v-toolbar>
                     <v-toolbar flat>
                         <v-text-field
@@ -114,8 +112,9 @@
 <script>
 import BreadCrumbsComponent from "../BreadCrumbsComponent";
 import SellerProfileDialog from "../dialog/Seller/SellerProfileDialog";
+import StoreSellerDialog from "../dialog/Seller/StoreSellerDialog";
 export default {
-    components: {SellerProfileDialog, BreadCrumbsComponent},
+    components: {StoreSellerDialog, SellerProfileDialog, BreadCrumbsComponent},
     data : ()=>({
         sellers : [],
         loading : true,
