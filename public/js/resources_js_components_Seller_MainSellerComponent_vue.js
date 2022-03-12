@@ -40,6 +40,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _BreadCrumbsComponent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../BreadCrumbsComponent */ "./resources/js/components/BreadCrumbsComponent.vue");
 /* harmony import */ var _dialog_Seller_SellerProfileDialog__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../dialog/Seller/SellerProfileDialog */ "./resources/js/components/dialog/Seller/SellerProfileDialog.vue");
 /* harmony import */ var _dialog_Seller_StoreSellerDialog__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../dialog/Seller/StoreSellerDialog */ "./resources/js/components/dialog/Seller/StoreSellerDialog.vue");
+/* harmony import */ var _dialog_Seller_SellerDeleteDialog__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../dialog/Seller/SellerDeleteDialog */ "./resources/js/components/dialog/Seller/SellerDeleteDialog.vue");
 //
 //
 //
@@ -155,11 +156,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+
 
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
+    SellerDeleteDialog: _dialog_Seller_SellerDeleteDialog__WEBPACK_IMPORTED_MODULE_3__["default"],
     StoreSellerDialog: _dialog_Seller_StoreSellerDialog__WEBPACK_IMPORTED_MODULE_2__["default"],
     SellerProfileDialog: _dialog_Seller_SellerProfileDialog__WEBPACK_IMPORTED_MODULE_1__["default"],
     BreadCrumbsComponent: _BreadCrumbsComponent__WEBPACK_IMPORTED_MODULE_0__["default"]
@@ -170,6 +174,8 @@ __webpack_require__.r(__webpack_exports__);
       loading: true,
       search: null,
       dialog: false,
+      dialog1: false,
+      seller_id: null,
       headers: [{
         text: 'Téléphone',
         align: 'start',
@@ -204,6 +210,10 @@ __webpack_require__.r(__webpack_exports__);
       this.dialog = false;
       this.profile = [];
     },
+    close1: function close1() {
+      this.dialog1 = false;
+      this.seller_id = null;
+    },
     init: function init() {
       var _this = this;
 
@@ -218,10 +228,103 @@ __webpack_require__.r(__webpack_exports__);
           });
         });
       });
+    },
+    destory: function destory(seller_id) {
+      this.dialog1 = true;
+      this.seller_id = seller_id;
     }
   },
   mounted: function mounted() {
     this.init();
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Seller/SellerDeleteDialog.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Seller/SellerDeleteDialog.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ['dialog', 'id'],
+  data: function data() {
+    return {
+      load: false
+    };
+  },
+  methods: {
+    destroy: function destroy() {
+      var _this = this;
+
+      this.load = true;
+      axios.get('/sanctum/csrf-cookie').then(function (res) {
+        axios["delete"]("/api/sellers/".concat(_this.id)).then(function (e) {
+          if (e.status == 204) {
+            _this.$toast.open({
+              message: 'Opération effectué',
+              type: 'success'
+            });
+
+            _this.load = false;
+            window.location.reload();
+          }
+        })["catch"](function (err) {
+          _this.$toast.open({
+            message: 'ERROR',
+            type: 'error'
+          });
+        });
+      });
+    },
+    close: function close() {
+      this.$emit('close');
+    }
   }
 });
 
@@ -677,6 +780,44 @@ component.options.__file = "resources/js/components/Seller/MainSellerComponent.v
 
 /***/ }),
 
+/***/ "./resources/js/components/dialog/Seller/SellerDeleteDialog.vue":
+/*!**********************************************************************!*\
+  !*** ./resources/js/components/dialog/Seller/SellerDeleteDialog.vue ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _SellerDeleteDialog_vue_vue_type_template_id_6df01d74___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SellerDeleteDialog.vue?vue&type=template&id=6df01d74& */ "./resources/js/components/dialog/Seller/SellerDeleteDialog.vue?vue&type=template&id=6df01d74&");
+/* harmony import */ var _SellerDeleteDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SellerDeleteDialog.vue?vue&type=script&lang=js& */ "./resources/js/components/dialog/Seller/SellerDeleteDialog.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _SellerDeleteDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _SellerDeleteDialog_vue_vue_type_template_id_6df01d74___WEBPACK_IMPORTED_MODULE_0__.render,
+  _SellerDeleteDialog_vue_vue_type_template_id_6df01d74___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/dialog/Seller/SellerDeleteDialog.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/dialog/Seller/SellerProfileDialog.vue":
 /*!***********************************************************************!*\
   !*** ./resources/js/components/dialog/Seller/SellerProfileDialog.vue ***!
@@ -783,6 +924,21 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/dialog/Seller/SellerDeleteDialog.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************!*\
+  !*** ./resources/js/components/dialog/Seller/SellerDeleteDialog.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SellerDeleteDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./SellerDeleteDialog.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Seller/SellerDeleteDialog.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SellerDeleteDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/js/components/dialog/Seller/SellerProfileDialog.vue?vue&type=script&lang=js&":
 /*!************************************************************************************************!*\
   !*** ./resources/js/components/dialog/Seller/SellerProfileDialog.vue?vue&type=script&lang=js& ***!
@@ -841,6 +997,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MainSellerComponent_vue_vue_type_template_id_0a91e6c0___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MainSellerComponent_vue_vue_type_template_id_0a91e6c0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./MainSellerComponent.vue?vue&type=template&id=0a91e6c0& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Seller/MainSellerComponent.vue?vue&type=template&id=0a91e6c0&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/dialog/Seller/SellerDeleteDialog.vue?vue&type=template&id=6df01d74&":
+/*!*****************************************************************************************************!*\
+  !*** ./resources/js/components/dialog/Seller/SellerDeleteDialog.vue?vue&type=template&id=6df01d74& ***!
+  \*****************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SellerDeleteDialog_vue_vue_type_template_id_6df01d74___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SellerDeleteDialog_vue_vue_type_template_id_6df01d74___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SellerDeleteDialog_vue_vue_type_template_id_6df01d74___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./SellerDeleteDialog.vue?vue&type=template&id=6df01d74& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Seller/SellerDeleteDialog.vue?vue&type=template&id=6df01d74&");
 
 
 /***/ }),
@@ -1244,7 +1416,11 @@ var render = function () {
                                       "v-list-item",
                                       {
                                         attrs: { link: "" },
-                                        on: { click: function () {} },
+                                        on: {
+                                          click: function ($event) {
+                                            return _vm.destory(item.id)
+                                          },
+                                        },
                                       },
                                       [
                                         _c(
@@ -1356,6 +1532,100 @@ var render = function () {
             on: { close: _vm.close },
           })
         : _vm._e(),
+      _vm._v(" "),
+      _c("seller-delete-dialog", {
+        attrs: { dialog: _vm.dialog1, id: _vm.seller_id },
+        on: { close: _vm.close1 },
+      }),
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Seller/SellerDeleteDialog.vue?vue&type=template&id=6df01d74&":
+/*!********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Seller/SellerDeleteDialog.vue?vue&type=template&id=6df01d74& ***!
+  \********************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "delete_seller_dialog" },
+    [
+      _c(
+        "v-dialog",
+        {
+          attrs: { persistent: "", "max-width": "290" },
+          model: {
+            value: _vm.dialog,
+            callback: function ($$v) {
+              _vm.dialog = $$v
+            },
+            expression: "dialog",
+          },
+        },
+        [
+          _c(
+            "v-card",
+            [
+              _c("v-card-title", { staticClass: "text-h5" }, [
+                _vm._v(
+                  "\n                Etes-vous sûr que vous voulez supprimer !\n            "
+                ),
+              ]),
+              _vm._v(" "),
+              _c(
+                "v-card-actions",
+                [
+                  _c("v-spacer"),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { color: "grey darken-1", text: "" },
+                      on: { click: _vm.close },
+                    },
+                    [_c("v-icon", [_vm._v("mdi-cancel")])],
+                    1
+                  ),
+                  _vm._v(" "),
+                  !_vm.load
+                    ? _c(
+                        "v-btn",
+                        {
+                          attrs: { color: "red darken-1", text: "" },
+                          on: { click: _vm.destroy },
+                        },
+                        [_c("v-icon", [_vm._v("mdi-delete")])],
+                        1
+                      )
+                    : _c("v-progress-circular", {
+                        attrs: { indeterminate: "", color: "primary" },
+                      }),
+                ],
+                1
+              ),
+            ],
+            1
+          ),
+        ],
+        1
+      ),
     ],
     1
   )

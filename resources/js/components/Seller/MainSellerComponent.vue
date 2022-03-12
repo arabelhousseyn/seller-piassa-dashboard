@@ -79,7 +79,7 @@
                                     <v-list-item-content><v-list-item-title>Travaux</v-list-item-title></v-list-item-content>
                                 </v-list-item>
 
-                                <v-list-item v-if="item.deleted_at == null" link @click="()=>{}">
+                                <v-list-item v-if="item.deleted_at == null" link @click="destory(item.id)">
                                     <v-list-item-icon><v-icon color="red">mdi-delete</v-icon></v-list-item-icon>
                                     <v-list-item-content><v-list-item-title>Supprimer</v-list-item-title></v-list-item-content>
                                 </v-list-item>
@@ -110,6 +110,7 @@
             </v-data-table>
         </v-container>
         <seller-profile-dialog v-if="dialog" :dialog="dialog" :profile="profile" @close="close" />
+        <seller-delete-dialog @close="close1" :dialog="dialog1" :id="seller_id" />
     </div>
 </template>
 
@@ -117,13 +118,16 @@
 import BreadCrumbsComponent from "../BreadCrumbsComponent";
 import SellerProfileDialog from "../dialog/Seller/SellerProfileDialog";
 import StoreSellerDialog from "../dialog/Seller/StoreSellerDialog";
+import SellerDeleteDialog from "../dialog/Seller/SellerDeleteDialog";
 export default {
-    components: {StoreSellerDialog, SellerProfileDialog, BreadCrumbsComponent},
+    components: {SellerDeleteDialog, StoreSellerDialog, SellerProfileDialog, BreadCrumbsComponent},
     data : ()=>({
         sellers : [],
         loading : true,
         search : null,
         dialog : false,
+        dialog1 : false,
+        seller_id : null,
         headers: [
             {
                 text: 'Téléphone',
@@ -153,6 +157,11 @@ export default {
           this.dialog = false
           this.profile = []
         },
+        close1()
+        {
+          this.dialog1 = false
+          this.seller_id = null
+        },
         init()
         {
             axios.get('/sanctum/csrf-cookie').then(res =>{
@@ -164,6 +173,11 @@ export default {
                     this.$toast.open({message : 'Erreur dans serveur veuillez réessayer',type : 'error'})
                 })
             })
+        },
+        destory(seller_id)
+        {
+            this.dialog1 = true
+            this.seller_id = seller_id
         }
     },
     mounted() {
