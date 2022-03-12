@@ -2,22 +2,22 @@
 
 namespace App\Services;
 
-use App\Models\User;
+use App\Models\Seller;
 
 class UpdateSellerService{
 
     public static function update($request,$id)
     {
-        $user = User::with('roles')->find($id);
+        $seller = Seller::find($id);
 
-        if($user->phone == $request->phone)
+        if($seller->phone == $request->phone)
         {
             $rules = [
                 'email' => 'email:rfc,dns,filter',
             ];
             $validated0 = $request->validate($rules);
-            User::whereId($id)->update($validated0);
-            $user->profile()->update($request->except('email','phone'));
+            Seller::whereId($id)->update($validated0);
+            $seller->profile()->update($request->except('email','phone'));
             return response('',204);
         }
 
@@ -25,8 +25,8 @@ class UpdateSellerService{
             'phone' => 'digits:10|unique:users,phone'
         ];
         $validated = $request->validate($rules);
-        User::whereId($id)->update($validated);
-        $user->profile()->update($request->except('email','phone'));
+        Seller::whereId($id)->update($validated);
+        $seller->profile()->update($request->except('email','phone'));
         return response('',204);
     }
 }
