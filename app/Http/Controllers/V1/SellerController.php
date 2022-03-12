@@ -4,6 +4,8 @@ namespace App\Http\Controllers\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreSellerRequest;
+use App\Http\Requests\UpdateSellerRequest;
+use App\Services\UpdateSellerService;
 use Illuminate\Support\Facades\Hash;
 use App\Models\{Seller};
 use Illuminate\Http\Request;
@@ -80,7 +82,7 @@ class SellerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return UpdateSellerService::update($request,$id);
     }
 
     /**
