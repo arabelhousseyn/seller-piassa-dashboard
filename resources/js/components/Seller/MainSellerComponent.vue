@@ -83,7 +83,7 @@
                                     <v-list-item-icon><v-icon color="red">mdi-delete</v-icon></v-list-item-icon>
                                     <v-list-item-content><v-list-item-title>Supprimer</v-list-item-title></v-list-item-content>
                                 </v-list-item>
-                                <v-list-item v-else link @click="()=>{}">
+                                <v-list-item v-else link @click="restore(item.id)">
                                     <v-list-item-icon><v-icon color="green">mdi-restore</v-icon></v-list-item-icon>
                                     <v-list-item-content><v-list-item-title>Restaurer</v-list-item-title></v-list-item-content>
                                 </v-list-item>
@@ -111,6 +111,7 @@
         </v-container>
         <seller-profile-dialog v-if="dialog" :dialog="dialog" :profile="profile" @close="close" />
         <seller-delete-dialog @close="close1" :dialog="dialog1" :id="seller_id" />
+        <seller-restore-dialog @close="close2" :dialog="dialog2" :id="seller_id" />
     </div>
 </template>
 
@@ -119,14 +120,16 @@ import BreadCrumbsComponent from "../BreadCrumbsComponent";
 import SellerProfileDialog from "../dialog/Seller/SellerProfileDialog";
 import StoreSellerDialog from "../dialog/Seller/StoreSellerDialog";
 import SellerDeleteDialog from "../dialog/Seller/SellerDeleteDialog";
+import SellerRestoreDialog from "../dialog/Seller/SellerRestoreDialog";
 export default {
-    components: {SellerDeleteDialog, StoreSellerDialog, SellerProfileDialog, BreadCrumbsComponent},
+    components: {SellerRestoreDialog, SellerDeleteDialog, StoreSellerDialog, SellerProfileDialog, BreadCrumbsComponent},
     data : ()=>({
         sellers : [],
         loading : true,
         search : null,
         dialog : false,
         dialog1 : false,
+        dialog2 : false,
         seller_id : null,
         headers: [
             {
@@ -162,6 +165,11 @@ export default {
           this.dialog1 = false
           this.seller_id = null
         },
+        close2()
+        {
+            this.dialog2 = false
+            this.seller_id = null
+        },
         init()
         {
             axios.get('/sanctum/csrf-cookie').then(res =>{
@@ -177,6 +185,11 @@ export default {
         destory(seller_id)
         {
             this.dialog1 = true
+            this.seller_id = seller_id
+        },
+        restore(seller_id)
+        {
+            this.dialog2 = true
             this.seller_id = seller_id
         }
     },
