@@ -240,7 +240,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     close4: function close4() {
       this.dialog4 = false;
-      this.id = null;
+      this.seller_id = null;
     },
     init: function init() {
       var _this = this;
@@ -271,7 +271,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     security: function security(user_id) {
       this.dialog4 = true;
-      this.id = user_id;
+      this.seller_id = user_id;
     }
   },
   mounted: function mounted() {
@@ -2066,7 +2066,17 @@ var render = function () {
                                   "v-list-item",
                                   {
                                     attrs: { link: "" },
-                                    on: { click: function () {} },
+                                    on: {
+                                      click: function ($event) {
+                                        return _vm.$router.push({
+                                          name: "sellerPhones",
+                                          params: {
+                                            id: item.id,
+                                            phones: item.phones,
+                                          },
+                                        })
+                                      },
+                                    },
                                   },
                                   [
                                     _c(
@@ -2270,7 +2280,7 @@ var render = function () {
         : _vm._e(),
       _vm._v(" "),
       _c("seller-security-dialog", {
-        attrs: { dialog: _vm.dialog4, user_id: _vm.id },
+        attrs: { dialog: _vm.dialog4, user_id: _vm.seller_id },
         on: { close: _vm.close4 },
       }),
     ],

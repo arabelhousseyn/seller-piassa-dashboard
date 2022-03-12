@@ -70,7 +70,7 @@
                                     <v-list-item-icon><v-icon color="primary">mdi-security</v-icon></v-list-item-icon>
                                     <v-list-item-content><v-list-item-title>Sécurité</v-list-item-title></v-list-item-content>
                                 </v-list-item>
-                                <v-list-item link @click="()=>{}">
+                                <v-list-item link @click="$router.push({name : 'sellerPhones', params : {id : item.id,phones : item.phones} })">
                                     <v-list-item-icon><v-icon color="primary">mdi-phone</v-icon></v-list-item-icon>
                                     <v-list-item-content><v-list-item-title>Téléphones</v-list-item-title></v-list-item-content>
                                 </v-list-item>
@@ -113,7 +113,7 @@
         <seller-delete-dialog @close="close1" :dialog="dialog1" :id="seller_id" />
         <seller-restore-dialog @close="close2" :dialog="dialog2" :id="seller_id" />
         <update-seller-dialog v-if="dialog3" @close="close3" :dialog="dialog3" :data="data" />
-        <seller-security-dialog @close="close4" :dialog="dialog4" :user_id="id" />
+        <seller-security-dialog @close="close4" :dialog="dialog4" :user_id="seller_id" />
     </div>
 </template>
 
@@ -188,7 +188,7 @@ export default {
         close4()
         {
           this.dialog4 = false
-          this.id = null
+          this.seller_id = null
         },
         init()
         {
@@ -220,7 +220,7 @@ export default {
         security(user_id)
         {
             this.dialog4 = true
-            this.id = user_id
+            this.seller_id = user_id
         }
     },
     mounted() {

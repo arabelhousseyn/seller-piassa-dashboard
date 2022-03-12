@@ -63,6 +63,12 @@ const routes = [
                     {
                         path : '/',
                         component : () => import('../components/Seller/MainSellerComponent')
+                    },
+                    {
+                        path: 'phones/:id',
+                        name: 'sellerPhones',
+                        props: true,
+                        component : () => import('../components/Seller/SellerPhonesComponent')
                     }
                 ]
             },
