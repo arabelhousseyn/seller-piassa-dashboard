@@ -7,6 +7,18 @@
 
 <script>
 export default {
-    props : ['phones']
+    props : ['phones'],
+    data : ()=>({
+        data : [],
+    }),
+    methods : {
+       init()
+       {
+
+       }
+    },
+    mounted() {
+        this.init()
+    }
 }
 </script>

@@ -142,4 +142,15 @@ class SellerController extends Controller
             return response($data,422);
         }
     }
+
+    public function sellerPhones($seller_id)
+    {
+        try {
+            $seller = Seller::withTrashed()->with('phones')->findOrFail($seller_id);
+            return response(['data' => $seller],200);
+        }catch (\Exception $exception)
+        {
+            return response(['message' => 'not found'],404);
+        }
+    }
 }

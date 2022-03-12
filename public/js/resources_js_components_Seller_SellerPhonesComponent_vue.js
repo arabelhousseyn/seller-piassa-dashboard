@@ -19,7 +19,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['phones']
+  props: ['phones'],
+  data: function data() {
+    return {
+      data: []
+    };
+  },
+  methods: {
+    init: function init() {}
+  },
+  mounted: function mounted() {
+    this.init();
+  }
 });
 
 /***/ }),
