@@ -91,6 +91,53 @@ class SellerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $user = Seller::withTrashed()->findOrFail($id);
+            if(!$user->trashed())
+            {
+                $user->delete();
+                return response('',204);
+            }
+            $data = [
+                'data' => [
+                    'message' => __('messages.user_delete_error')
+                ]
+            ];
+            return response($data,422);
+        }catch (\Exception $e)
+        {
+            $data = [
+                'data' => [
+                    'message' => __('messages.user_not_found')
+                ]
+            ];
+            return response($data,422);
+        }
+    }
+
+    public function restore($id)
+    {
+        try {
+            $user = Seller::withTrashed()->findOrFail($id);
+            if($user->trashed())
+            {
+                $user->restore();
+                return response('',204);
+            }
+            $data = [
+                'data' => [
+                    'message' => __('messages.user_not_deleted')
+                ]
+            ];
+            return response($data,422);
+        }catch (\Exception $e)
+        {
+            $data = [
+                'data' => [
+                    'message' => __('messages.user_not_found')
+                ]
+            ];
+            return response($data,422);
+        }
     }
 }

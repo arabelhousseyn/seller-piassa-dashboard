@@ -46,6 +46,12 @@ Route::middleware('auth:sanctum')->group(function (){
         Route::get('all','signs');
     });
 
+    // sellers
+
+    Route::controller(SellerController::class)->prefix('sellers')->group(function (){
+        Route::put('restore/{id}','restore')->whereNumber('id');
+    });
+
     //resources
     Route::apiResources([
         'users' => UserController::class,
