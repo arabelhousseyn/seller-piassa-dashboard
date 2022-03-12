@@ -62,7 +62,7 @@
                                     <v-list-item-icon><v-icon color="primary">mdi-account</v-icon></v-list-item-icon>
                                     <v-list-item-content><v-list-item-title>Compte</v-list-item-title></v-list-item-content>
                                 </v-list-item>
-                                <v-list-item link @click="()=>{}">
+                                <v-list-item link @click="update(item)">
                                     <v-list-item-icon><v-icon color="primary">mdi-pencil</v-icon></v-list-item-icon>
                                     <v-list-item-content><v-list-item-title>Modifier</v-list-item-title></v-list-item-content>
                                 </v-list-item>
@@ -112,6 +112,7 @@
         <seller-profile-dialog v-if="dialog" :dialog="dialog" :profile="profile" @close="close" />
         <seller-delete-dialog @close="close1" :dialog="dialog1" :id="seller_id" />
         <seller-restore-dialog @close="close2" :dialog="dialog2" :id="seller_id" />
+        <update-seller-dialog v-if="dialog3" @close="close3" :dialog="dialog3" :data="data" />
     </div>
 </template>
 
@@ -121,8 +122,11 @@ import SellerProfileDialog from "../dialog/Seller/SellerProfileDialog";
 import StoreSellerDialog from "../dialog/Seller/StoreSellerDialog";
 import SellerDeleteDialog from "../dialog/Seller/SellerDeleteDialog";
 import SellerRestoreDialog from "../dialog/Seller/SellerRestoreDialog";
+import UpdateSellerDialog from "../dialog/Seller/UpdateSellerDialog";
 export default {
-    components: {SellerRestoreDialog, SellerDeleteDialog, StoreSellerDialog, SellerProfileDialog, BreadCrumbsComponent},
+    components: {
+        UpdateSellerDialog,
+        SellerRestoreDialog, SellerDeleteDialog, StoreSellerDialog, SellerProfileDialog, BreadCrumbsComponent},
     data : ()=>({
         sellers : [],
         loading : true,
@@ -130,6 +134,7 @@ export default {
         dialog : false,
         dialog1 : false,
         dialog2 : false,
+        dialog3 : false,
         seller_id : null,
         headers: [
             {
@@ -144,6 +149,7 @@ export default {
             { text: 'actions', value: 'actions', sortable: false },
         ],
         profile : [],
+        data : [],
     }),
     methods : {
         reset()
@@ -170,6 +176,11 @@ export default {
             this.dialog2 = false
             this.seller_id = null
         },
+        close3()
+        {
+            this.dialog3 = false
+            this.data = []
+        },
         init()
         {
             axios.get('/sanctum/csrf-cookie').then(res =>{
@@ -191,6 +202,11 @@ export default {
         {
             this.dialog2 = true
             this.seller_id = seller_id
+        },
+        update(data)
+        {
+            this.dialog3 = true
+            this.data = data
         }
     },
     mounted() {

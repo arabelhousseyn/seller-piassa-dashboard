@@ -135,7 +135,6 @@ export default {
         },
         update()
         {
-            console.log('ds')
             this.data2.full_name = this.data.profile.full_name
             this.data2.phone = this.data.phone
 
@@ -186,7 +185,6 @@ export default {
 
             axios.get('/sanctum/csrf-cookie').then(res => {
                 axios.put(`/api/users/${this.data.id}`,this.data2).then(e=>{
-                    console.log(e)
                     if(e.status == 204)
                     {
                         this.$toast.open({

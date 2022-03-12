@@ -1132,7 +1132,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     update: function update() {
       var _this = this;
 
-      console.log('ds');
       this.data2.full_name = this.data.profile.full_name;
       this.data2.phone = this.data.phone;
 
@@ -1183,8 +1182,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       this.data2.email = this.data.email;
       axios.get('/sanctum/csrf-cookie').then(function (res) {
         axios.put("/api/users/".concat(_this.data.id), _this.data2).then(function (e) {
-          console.log(e);
-
           if (e.status == 204) {
             _this.$toast.open({
               message: "Opération effectué",
