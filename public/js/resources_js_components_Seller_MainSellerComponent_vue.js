@@ -43,6 +43,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _dialog_Seller_SellerDeleteDialog__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../dialog/Seller/SellerDeleteDialog */ "./resources/js/components/dialog/Seller/SellerDeleteDialog.vue");
 /* harmony import */ var _dialog_Seller_SellerRestoreDialog__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../dialog/Seller/SellerRestoreDialog */ "./resources/js/components/dialog/Seller/SellerRestoreDialog.vue");
 /* harmony import */ var _dialog_Seller_UpdateSellerDialog__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../dialog/Seller/UpdateSellerDialog */ "./resources/js/components/dialog/Seller/UpdateSellerDialog.vue");
+/* harmony import */ var _dialog_Seller_SellerSecurityDialog__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../dialog/Seller/SellerSecurityDialog */ "./resources/js/components/dialog/Seller/SellerSecurityDialog.vue");
 //
 //
 //
@@ -161,6 +162,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+
 
 
 
@@ -169,6 +172,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
+    SellerSecurityDialog: _dialog_Seller_SellerSecurityDialog__WEBPACK_IMPORTED_MODULE_6__["default"],
     UpdateSellerDialog: _dialog_Seller_UpdateSellerDialog__WEBPACK_IMPORTED_MODULE_5__["default"],
     SellerRestoreDialog: _dialog_Seller_SellerRestoreDialog__WEBPACK_IMPORTED_MODULE_4__["default"],
     SellerDeleteDialog: _dialog_Seller_SellerDeleteDialog__WEBPACK_IMPORTED_MODULE_3__["default"],
@@ -185,6 +189,7 @@ __webpack_require__.r(__webpack_exports__);
       dialog1: false,
       dialog2: false,
       dialog3: false,
+      dialog4: false,
       seller_id: null,
       headers: [{
         text: 'Téléphone',
@@ -233,6 +238,10 @@ __webpack_require__.r(__webpack_exports__);
       this.dialog3 = false;
       this.data = [];
     },
+    close4: function close4() {
+      this.dialog4 = false;
+      this.id = null;
+    },
     init: function init() {
       var _this = this;
 
@@ -259,6 +268,10 @@ __webpack_require__.r(__webpack_exports__);
     update: function update(data) {
       this.dialog3 = true;
       this.data = data;
+    },
+    security: function security(user_id) {
+      this.dialog4 = true;
+      this.id = user_id;
     }
   },
   mounted: function mounted() {
@@ -536,6 +549,138 @@ __webpack_require__.r(__webpack_exports__);
     },
     close: function close() {
       this.$emit('close');
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Seller/SellerSecurityDialog.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Seller/SellerSecurityDialog.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ['dialog', 'user_id'],
+  data: function data() {
+    return {
+      data: {
+        password: null,
+        password_confirmation: null
+      },
+      errors: [],
+      hasError: false,
+      disable: true
+    };
+  },
+  methods: {
+    close: function close() {
+      this.$emit('close');
+    },
+    changePassword: function changePassword() {
+      var _this = this;
+
+      axios.get('/sanctum/csrf-cookie').then(function (res) {
+        axios.put("/api/sellers/change-password/".concat(_this.user_id), _this.data).then(function (e) {
+          _this.$toast.open({
+            message: "Opération effectué",
+            type: 'success'
+          });
+
+          window.location.reload();
+        })["catch"](function (err) {
+          var errors = Object.values(err.response.data.errors);
+
+          for (var _i = 0, _errors = errors; _i < _errors.length; _i++) {
+            var error = _errors[_i];
+
+            _this.errors.push(error[0]);
+
+            _this.hasError = true;
+          }
+        });
+      });
+    },
+    check: function check() {
+      this.hasError = false;
+      this.errors = [];
+      this.disable = this.data.password == null || this.data.password_confirmation == null ? true : false;
     }
   }
 });
@@ -1249,6 +1394,44 @@ component.options.__file = "resources/js/components/dialog/Seller/SellerRestoreD
 
 /***/ }),
 
+/***/ "./resources/js/components/dialog/Seller/SellerSecurityDialog.vue":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/dialog/Seller/SellerSecurityDialog.vue ***!
+  \************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _SellerSecurityDialog_vue_vue_type_template_id_20367c4a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SellerSecurityDialog.vue?vue&type=template&id=20367c4a& */ "./resources/js/components/dialog/Seller/SellerSecurityDialog.vue?vue&type=template&id=20367c4a&");
+/* harmony import */ var _SellerSecurityDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SellerSecurityDialog.vue?vue&type=script&lang=js& */ "./resources/js/components/dialog/Seller/SellerSecurityDialog.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _SellerSecurityDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _SellerSecurityDialog_vue_vue_type_template_id_20367c4a___WEBPACK_IMPORTED_MODULE_0__.render,
+  _SellerSecurityDialog_vue_vue_type_template_id_20367c4a___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/dialog/Seller/SellerSecurityDialog.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/dialog/Seller/StoreSellerDialog.vue":
 /*!*********************************************************************!*\
   !*** ./resources/js/components/dialog/Seller/StoreSellerDialog.vue ***!
@@ -1400,6 +1583,21 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/dialog/Seller/SellerSecurityDialog.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************!*\
+  !*** ./resources/js/components/dialog/Seller/SellerSecurityDialog.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SellerSecurityDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./SellerSecurityDialog.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Seller/SellerSecurityDialog.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SellerSecurityDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/js/components/dialog/Seller/StoreSellerDialog.vue?vue&type=script&lang=js&":
 /*!**********************************************************************************************!*\
   !*** ./resources/js/components/dialog/Seller/StoreSellerDialog.vue?vue&type=script&lang=js& ***!
@@ -1506,6 +1704,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SellerRestoreDialog_vue_vue_type_template_id_a3ffa1da___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SellerRestoreDialog_vue_vue_type_template_id_a3ffa1da___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./SellerRestoreDialog.vue?vue&type=template&id=a3ffa1da& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Seller/SellerRestoreDialog.vue?vue&type=template&id=a3ffa1da&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/dialog/Seller/SellerSecurityDialog.vue?vue&type=template&id=20367c4a&":
+/*!*******************************************************************************************************!*\
+  !*** ./resources/js/components/dialog/Seller/SellerSecurityDialog.vue?vue&type=template&id=20367c4a& ***!
+  \*******************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SellerSecurityDialog_vue_vue_type_template_id_20367c4a___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SellerSecurityDialog_vue_vue_type_template_id_20367c4a___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SellerSecurityDialog_vue_vue_type_template_id_20367c4a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./SellerSecurityDialog.vue?vue&type=template&id=20367c4a& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Seller/SellerSecurityDialog.vue?vue&type=template&id=20367c4a&");
 
 
 /***/ }),
@@ -1816,7 +2030,11 @@ var render = function () {
                                   "v-list-item",
                                   {
                                     attrs: { link: "" },
-                                    on: { click: function () {} },
+                                    on: {
+                                      click: function ($event) {
+                                        return _vm.security(item.id)
+                                      },
+                                    },
                                   },
                                   [
                                     _c(
@@ -2050,6 +2268,11 @@ var render = function () {
             on: { close: _vm.close3 },
           })
         : _vm._e(),
+      _vm._v(" "),
+      _c("seller-security-dialog", {
+        attrs: { dialog: _vm.dialog4, user_id: _vm.id },
+        on: { close: _vm.close4 },
+      }),
     ],
     1
   )
@@ -2450,6 +2673,209 @@ var render = function () {
                     : _c("v-progress-circular", {
                         attrs: { indeterminate: "", color: "primary" },
                       }),
+                ],
+                1
+              ),
+            ],
+            1
+          ),
+        ],
+        1
+      ),
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Seller/SellerSecurityDialog.vue?vue&type=template&id=20367c4a&":
+/*!**********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Seller/SellerSecurityDialog.vue?vue&type=template&id=20367c4a& ***!
+  \**********************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "security" },
+    [
+      _c(
+        "v-dialog",
+        {
+          attrs: { persistent: "", "max-width": "600px" },
+          model: {
+            value: _vm.dialog,
+            callback: function ($$v) {
+              _vm.dialog = $$v
+            },
+            expression: "dialog",
+          },
+        },
+        [
+          _c(
+            "v-card",
+            [
+              _c("v-card-title", [
+                _c("span", { staticClass: "text-h5" }, [
+                  _vm._v("Modification mote de passe"),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c(
+                "v-card-text",
+                [
+                  _c("v-container", [
+                    _c(
+                      "form",
+                      {
+                        attrs: { method: "put" },
+                        on: {
+                          submit: function ($event) {
+                            $event.preventDefault()
+                            return _vm.changePassword.apply(null, arguments)
+                          },
+                        },
+                      },
+                      [
+                        _c(
+                          "v-row",
+                          [
+                            _c(
+                              "v-col",
+                              { attrs: { cols: "12", sm: "6", md: "6" } },
+                              [
+                                _c("v-text-field", {
+                                  attrs: {
+                                    label: "Mote de passe*",
+                                    type: "password",
+                                    required: "",
+                                  },
+                                  on: { keydown: _vm.check },
+                                  model: {
+                                    value: _vm.data.password,
+                                    callback: function ($$v) {
+                                      _vm.$set(_vm.data, "password", $$v)
+                                    },
+                                    expression: "data.password",
+                                  },
+                                }),
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-col",
+                              { attrs: { cols: "12", sm: "6", md: "6" } },
+                              [
+                                _c("v-text-field", {
+                                  attrs: {
+                                    label: "Confirmation mote de passe*",
+                                    type: "password",
+                                    required: "",
+                                  },
+                                  on: { keydown: _vm.check },
+                                  model: {
+                                    value: _vm.data.password_confirmation,
+                                    callback: function ($$v) {
+                                      _vm.$set(
+                                        _vm.data,
+                                        "password_confirmation",
+                                        $$v
+                                      )
+                                    },
+                                    expression: "data.password_confirmation",
+                                  },
+                                }),
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _vm.hasError
+                              ? _c(
+                                  "v-alert",
+                                  {
+                                    attrs: {
+                                      border: "right",
+                                      "colored-border": "",
+                                      type: "error",
+                                      elevation: "2",
+                                    },
+                                  },
+                                  [
+                                    _c(
+                                      "ul",
+                                      _vm._l(
+                                        _vm.errors,
+                                        function (error, index) {
+                                          return _c("li", { key: index }, [
+                                            _c("span", [_vm._v(_vm._s(error))]),
+                                          ])
+                                        }
+                                      ),
+                                      0
+                                    ),
+                                  ]
+                                )
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _c(
+                              "v-col",
+                              { attrs: { cols: "12" } },
+                              [
+                                _c(
+                                  "v-btn",
+                                  {
+                                    attrs: {
+                                      disabled: _vm.disable,
+                                      type: "submit",
+                                      color: "success",
+                                    },
+                                  },
+                                  [_c("v-icon", [_vm._v("mdi-check")])],
+                                  1
+                                ),
+                              ],
+                              1
+                            ),
+                          ],
+                          1
+                        ),
+                      ],
+                      1
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("small", [_vm._v("*indique le champ obligatoire")]),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-card-actions",
+                [
+                  _c("v-spacer"),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { color: "blue darken-1", text: "" },
+                      on: { click: _vm.close },
+                    },
+                    [_vm._v("\n                    Fermer\n                ")]
+                  ),
                 ],
                 1
               ),

@@ -66,7 +66,7 @@
                                     <v-list-item-icon><v-icon color="primary">mdi-pencil</v-icon></v-list-item-icon>
                                     <v-list-item-content><v-list-item-title>Modifier</v-list-item-title></v-list-item-content>
                                 </v-list-item>
-                                <v-list-item link @click="()=>{}">
+                                <v-list-item link @click="security(item.id)">
                                     <v-list-item-icon><v-icon color="primary">mdi-security</v-icon></v-list-item-icon>
                                     <v-list-item-content><v-list-item-title>Sécurité</v-list-item-title></v-list-item-content>
                                 </v-list-item>
@@ -113,6 +113,7 @@
         <seller-delete-dialog @close="close1" :dialog="dialog1" :id="seller_id" />
         <seller-restore-dialog @close="close2" :dialog="dialog2" :id="seller_id" />
         <update-seller-dialog v-if="dialog3" @close="close3" :dialog="dialog3" :data="data" />
+        <seller-security-dialog @close="close4" :dialog="dialog4" :user_id="id" />
     </div>
 </template>
 
@@ -123,8 +124,10 @@ import StoreSellerDialog from "../dialog/Seller/StoreSellerDialog";
 import SellerDeleteDialog from "../dialog/Seller/SellerDeleteDialog";
 import SellerRestoreDialog from "../dialog/Seller/SellerRestoreDialog";
 import UpdateSellerDialog from "../dialog/Seller/UpdateSellerDialog";
+import SellerSecurityDialog from "../dialog/Seller/SellerSecurityDialog";
 export default {
     components: {
+        SellerSecurityDialog,
         UpdateSellerDialog,
         SellerRestoreDialog, SellerDeleteDialog, StoreSellerDialog, SellerProfileDialog, BreadCrumbsComponent},
     data : ()=>({
@@ -135,6 +138,7 @@ export default {
         dialog1 : false,
         dialog2 : false,
         dialog3 : false,
+        dialog4 : false,
         seller_id : null,
         headers: [
             {
@@ -181,6 +185,11 @@ export default {
             this.dialog3 = false
             this.data = []
         },
+        close4()
+        {
+          this.dialog4 = false
+          this.id = null
+        },
         init()
         {
             axios.get('/sanctum/csrf-cookie').then(res =>{
@@ -207,6 +216,11 @@ export default {
         {
             this.dialog3 = true
             this.data = data
+        },
+        security(user_id)
+        {
+            this.dialog4 = true
+            this.id = user_id
         }
     },
     mounted() {
