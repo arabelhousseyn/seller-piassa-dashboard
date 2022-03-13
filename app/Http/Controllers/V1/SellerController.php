@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreSellerPhoneRequest;
 use App\Http\Requests\StoreSellerRequest;
 use App\Http\Requests\UpdateSellerRequest;
 use App\Services\UpdateSellerService;
@@ -151,6 +152,21 @@ class SellerController extends Controller
         }catch (\Exception $exception)
         {
             return response(['message' => 'not found'],404);
+        }
+    }
+
+    public function storeSellerPhones(StoreSellerPhoneRequest $request,$id)
+    {
+        if($request->validated())
+        {
+            try {
+                $seller = Seller::findOrFail($id);
+                $seller->phones()->create($request->only('name','phone'));
+                return response('',204);
+            }catch (\Exception $e)
+            {
+                return response(['message' => 'not found'],404);
+            }
         }
     }
 }

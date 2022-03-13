@@ -209,6 +209,9 @@ return [
         ],
         'last_name' => [
             'required' => 'Prénom requis.'
+        ],
+        'name' => [
+            'required' => 'Nom requis.'
         ]
     ],
 
