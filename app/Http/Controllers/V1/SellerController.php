@@ -20,7 +20,7 @@ class SellerController extends Controller
      */
     public function index()
     {
-        $sellers = Seller::withTrashed()->with('profile.province','jobs','phones')->latest('created_at')->get();
+        $sellers = Seller::withTrashed()->with('profile.province','jobs.type','jobs.sign','phones')->latest('created_at')->get();
         return response(['data' => $sellers],200);
     }
 

@@ -2108,7 +2108,17 @@ var render = function () {
                                   "v-list-item",
                                   {
                                     attrs: { link: "" },
-                                    on: { click: function () {} },
+                                    on: {
+                                      click: function ($event) {
+                                        return _vm.$router.push({
+                                          name: "sellerJobs",
+                                          params: {
+                                            id: item.id,
+                                            jobs: item.jobs,
+                                          },
+                                        })
+                                      },
+                                    },
                                   },
                                   [
                                     _c(

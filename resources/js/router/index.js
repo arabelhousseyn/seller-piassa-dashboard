@@ -69,6 +69,12 @@ const routes = [
                         name: 'sellerPhones',
                         props: true,
                         component : () => import('../components/Seller/SellerPhonesComponent')
+                    },
+                    {
+                        path : 'jobs/:id',
+                        name : "sellerJobs",
+                        props: true,
+                        component : () => import('../components/Seller/SellerJobsComponent')
                     }
                 ]
             },

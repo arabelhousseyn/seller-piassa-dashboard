@@ -13,7 +13,8 @@ class SellerJob extends Model
     protected $fillable = [
         'seller_id',
         'job',
-        'type_id'
+        'type_id',
+        'sign_id'
     ];
 
     protected $hidden = [
@@ -25,5 +26,10 @@ class SellerJob extends Model
     public function type()
     {
         return $this->belongsTo(Type::class,'type_id')->withDefault();
+    }
+
+    public function sign()
+    {
+        return $this->belongsTo(Sign::class,'sign_id')->withDefault();
     }
 }
