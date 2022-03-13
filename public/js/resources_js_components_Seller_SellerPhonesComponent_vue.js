@@ -246,7 +246,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['user_id'],
+  props: ['seller_id'],
   data: function data() {
     return {
       dialog: false,
@@ -264,7 +264,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get('/sanctum/csrf-cookie').then(function (res) {
-        axios.post("/api/store-seller-phone/".concat(_this.user_id), _this.data).then(function (e) {
+        axios.post("/api/sellers/store-seller-phone/".concat(_this.seller_id), _this.data).then(function (e) {
           _this.$toast.open({
             message: "Opération effectué",
             type: 'success'
@@ -507,7 +507,9 @@ var render = function () {
                                 _vm._v(" "),
                                 _c("v-spacer"),
                                 _vm._v(" "),
-                                _c("store-seller-phones-dialog"),
+                                _c("store-seller-phones-dialog", {
+                                  attrs: { seller_id: _vm.seller_id },
+                                }),
                               ],
                               1
                             ),
@@ -729,7 +731,7 @@ var render = function () {
                     ],
                     null,
                     false,
-                    1011926585
+                    1222628053
                   ),
                 }),
               ],

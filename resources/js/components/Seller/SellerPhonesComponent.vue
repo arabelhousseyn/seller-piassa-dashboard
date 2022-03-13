@@ -24,7 +24,7 @@
                                 vertical
                             ></v-divider>
                             <v-spacer></v-spacer>
-                            <store-seller-phones-dialog />
+                            <store-seller-phones-dialog :seller_id="seller_id" />
                         </v-toolbar>
                         <v-toolbar flat>
                             <v-text-field
