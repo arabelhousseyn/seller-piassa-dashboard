@@ -94,7 +94,21 @@ export default {
     methods : {
         update()
         {
-
+            axios.get('/sanctum/csrf-cookie').then(res => {
+                axios.post(`/api/store-seller-phone/${this.user_id}`,this.data).then(e=>{
+                    this.$toast.open({
+                        message : "Opération effectué",
+                        type : 'success',
+                    })
+                    window.location.reload()
+                }).catch(err =>{
+                    let errors = Object.values(err.response.data.errors)
+                    for (const error of errors) {
+                        this.errors.push(error[0])
+                        this.hasError = true
+                    }
+                })
+            })
         },
         check()
         {

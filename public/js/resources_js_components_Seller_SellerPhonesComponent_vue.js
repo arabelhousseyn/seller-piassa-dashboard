@@ -260,7 +260,30 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    update: function update() {},
+    update: function update() {
+      var _this = this;
+
+      axios.get('/sanctum/csrf-cookie').then(function (res) {
+        axios.post("/api/store-seller-phone/".concat(_this.user_id), _this.data).then(function (e) {
+          _this.$toast.open({
+            message: "Opération effectué",
+            type: 'success'
+          });
+
+          window.location.reload();
+        })["catch"](function (err) {
+          var errors = Object.values(err.response.data.errors);
+
+          for (var _i = 0, _errors = errors; _i < _errors.length; _i++) {
+            var error = _errors[_i];
+
+            _this.errors.push(error[0]);
+
+            _this.hasError = true;
+          }
+        });
+      });
+    },
     check: function check() {
       this.hasError = false;
       this.errors = [];
