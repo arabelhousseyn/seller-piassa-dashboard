@@ -49,7 +49,7 @@ export default {
         {
             this.load = true
             axios.get('/sanctum/csrf-cookie').then(res =>{
-                axios.delete(`/api/sellers/${this.id}`).then(e=>{
+                axios.delete(`/api/sellers/phones/destroy/${this.id}`).then(e=>{
                     if(e.status == 204)
                     {
                         this.$toast.open({

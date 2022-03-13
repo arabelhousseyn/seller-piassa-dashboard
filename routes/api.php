@@ -55,8 +55,11 @@ Route::middleware('auth:sanctum')->group(function (){
     Route::controller(SellerController::class)->prefix('sellers')->group(function (){
         Route::put('restore/{id}','restore')->whereNumber('id');
         Route::get('phones/{id}','sellerPhones')->whereNumber('id');
-        Route::post('store-seller-phone/{id}','storeSellerPhones')->whereNumber('id');
-        Route::delete('destroy-seller-phone/{id}','destroySellerPhone')->whereNumber('id');
+
+        Route::prefix('phones')->group(function (){
+            Route::post('store/{id}','storeSellerPhones')->whereNumber('id');
+            Route::delete('destroy/{id}','destroySellerPhone')->whereNumber('id');
+        });
     });
 
     //resources

@@ -95,7 +95,7 @@ export default {
         update()
         {
             axios.get('/sanctum/csrf-cookie').then(res => {
-                axios.post(`/api/sellers/store-seller-phone/${this.seller_id}`,this.data).then(e=>{
+                axios.post(`/api/sellers/phones/store/${this.seller_id}`,this.data).then(e=>{
                     this.$toast.open({
                         message : "Opération effectué",
                         type : 'success',

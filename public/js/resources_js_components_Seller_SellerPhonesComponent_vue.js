@@ -246,7 +246,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this.load = true;
       axios.get('/sanctum/csrf-cookie').then(function (res) {
-        axios["delete"]("/api/sellers/".concat(_this.id)).then(function (e) {
+        axios["delete"]("/api/sellers/phones/destroy/".concat(_this.id)).then(function (e) {
           if (e.status == 204) {
             _this.$toast.open({
               message: 'Opération effectué',
@@ -381,7 +381,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get('/sanctum/csrf-cookie').then(function (res) {
-        axios.post("/api/sellers/store-seller-phone/".concat(_this.seller_id), _this.data).then(function (e) {
+        axios.post("/api/sellers/phones/store/".concat(_this.seller_id), _this.data).then(function (e) {
           _this.$toast.open({
             message: "Opération effectué",
             type: 'success'
