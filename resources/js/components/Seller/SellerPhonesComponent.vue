@@ -91,6 +91,7 @@
                     </template>
                 </v-data-table>
                 <delete-seller-phone-dialog @close="close1" :id="seller_phone_id" :dialog="dialog2" />
+                <update-seller-phone-dialog v-if="dialog" @close="close" :dialog="dialog" :id="seller_phone_id" :data="info" />
             </v-container>
         </div>
     </div>
@@ -99,8 +100,9 @@
 <script>
 import StoreSellerPhonesDialog from "../dialog/Seller/StoreSellerPhonesDialog";
 import DeleteSellerPhoneDialog from "../dialog/Seller/DeleteSellerPhoneDialog";
+import UpdateSellerPhoneDialog from "../dialog/Seller/UpdateSellerPhoneDialog";
 export default {
-    components: {DeleteSellerPhoneDialog, StoreSellerPhonesDialog},
+    components: {UpdateSellerPhoneDialog, DeleteSellerPhoneDialog, StoreSellerPhonesDialog},
     props : ['phones'],
     data : ()=>({
         data : [],
@@ -119,7 +121,7 @@ export default {
             { text: 'Nom', value: 'name' },
             { text: 'actions', value: 'actions', sortable: false },
         ],
-        name : null,
+        info : []
     }),
     methods : {
         close()
@@ -153,10 +155,10 @@ export default {
             this.dialog2 = true
             this.seller_phone_id = id
         },
-        update(name)
+        update(info)
         {
             this.dialog = true
-            this.name = name
+            this.info = info
         }
     },
     mounted() {
