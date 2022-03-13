@@ -208,7 +208,7 @@ class SellerController extends Controller
 
             $rules = [
                 'name' => 'required',
-                'phone' => 'digits:10,unique:seller_phones,phone'
+                'phone' => 'digits:10|unique:seller_phones,phone'
             ];
 
             $validated = $request->validate($rules);
