@@ -198,28 +198,23 @@ class SellerController extends Controller
 
     public function updateSellerPhone(Request $request,$seller_phone_id)
     {
-        try {
-            $seller_phone = SellerPhone::findOrFail($seller_phone_id);
 
+            $seller_phone = SellerPhone::findOrFail($seller_phone_id);
             if($seller_phone->phone == $request->phone)
             {
-                $seller_phone->update($request->only('name'));
+                SellerPhone::whereId($seller_phone_id)->update($request->only('name'));
                 return response('',204);
             }
 
             $rules = [
+                'name' => 'required',
                 'phone' => 'digits:10,unique:seller_phones,phone'
             ];
 
             $validated = $request->validate($rules);
 
-            $seller_phone->update($validated);
+            SellerPhone::whereId($seller_phone_id)->update($validated);
 
             return response('',204);
-
-        }catch (\Exception $exception)
-        {
-            return response(['message' => 'not found'],404);
-        }
     }
 }
