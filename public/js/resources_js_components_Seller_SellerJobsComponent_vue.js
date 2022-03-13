@@ -19,7 +19,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['jobs']
+  props: ['jobs'],
+  data: function data() {
+    return {
+      data: [],
+      seller_id: window.location.pathname.split('/').pop()
+    };
+  },
+  methods: {
+    init: function init() {
+      var _this = this;
+
+      axios.get('/sanctum/csrf-cookie').then(function (res) {
+        axios.get("/api/sellers/jobs/".concat(_this.seller_id)).then(function (e) {
+          _this.data = e.data.data;
+        })["catch"](function (err) {
+          if (err.response.status == 404) {
+            _this.$router.push('/home/sellers');
+          }
+
+          console.log(err);
+        });
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.init();
+  }
 });
 
 /***/ }),
@@ -109,7 +135,13 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "seller-jobs" }, [
-    _vm._v("\n    welcome to seller jobs\n    " + _vm._s(_vm.jobs) + "\n"),
+    _vm._v(
+      "\n    welcome to seller jobs\n    " +
+        _vm._s(_vm.jobs) +
+        " " +
+        _vm._s(_vm.data) +
+        "\n"
+    ),
   ])
 }
 var staticRenderFns = []

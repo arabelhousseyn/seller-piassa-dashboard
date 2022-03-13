@@ -217,4 +217,15 @@ class SellerController extends Controller
 
             return response('',204);
     }
+
+    public function sellerJobs($seller_id)
+    {
+        try {
+            $seller = Seller::withTrashed()->with('jobs.type','jobs.sign')->findOrFail($seller_id);
+            return response(['data' => $seller->jobs],200);
+        }catch (\Exception $exception)
+        {
+            return response(['message' => 'not found'],404);
+        }
+    }
 }

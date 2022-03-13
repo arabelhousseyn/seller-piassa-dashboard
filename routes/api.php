@@ -55,6 +55,7 @@ Route::middleware('auth:sanctum')->group(function (){
     Route::controller(SellerController::class)->prefix('sellers')->group(function (){
         Route::put('restore/{id}','restore')->whereNumber('id');
         Route::get('phones/{id}','sellerPhones')->whereNumber('id');
+        Route::get('jobs/{id}','sellerJobs')->whereNumber('id');
 
         Route::prefix('phones')->group(function (){
             Route::post('store/{id}','storeSellerPhones')->whereNumber('id');
