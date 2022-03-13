@@ -56,6 +56,7 @@ Route::middleware('auth:sanctum')->group(function (){
         Route::put('restore/{id}','restore')->whereNumber('id');
         Route::get('phones/{id}','sellerPhones')->whereNumber('id');
         Route::post('store-seller-phone/{id}','storeSellerPhones')->whereNumber('id');
+        Route::delete('destroy-seller-phone/{id}','destroySellerPhone')->whereNumber('id');
     });
 
     //resources

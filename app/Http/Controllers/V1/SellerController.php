@@ -8,7 +8,7 @@ use App\Http\Requests\StoreSellerRequest;
 use App\Http\Requests\UpdateSellerRequest;
 use App\Services\UpdateSellerService;
 use Illuminate\Support\Facades\Hash;
-use App\Models\{Seller};
+use App\Models\{Seller, SellerPhone};
 use Illuminate\Http\Request;
 
 class SellerController extends Controller
@@ -167,6 +167,32 @@ class SellerController extends Controller
             {
                 return response(['message' => 'not found'],404);
             }
+        }
+    }
+
+    public function destroySellerPhone($seller_phone_id)
+    {
+        try {
+            $seller_phone = SellerPhone::withTrashed()->findOrFail($seller_phone_id);
+            if(!$seller_phone->trashed())
+            {
+                $seller_phone->delete();
+                return response('',204);
+            }
+            $data = [
+                'data' => [
+                    'message' => __('messages.user_not_deleted')
+                ]
+            ];
+            return response($data,422);
+        }catch (\Exception $e)
+        {
+            $data = [
+                'data' => [
+                    'message' => __('messages.user_not_found')
+                ]
+            ];
+            return response($data,422);
         }
     }
 }
