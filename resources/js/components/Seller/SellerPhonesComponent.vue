@@ -90,6 +90,7 @@
                         </v-btn>
                     </template>
                 </v-data-table>
+                <delete-seller-phone-dialog @close="close1" :id="seller_phone_id" :dialog="dialog2" />
             </v-container>
         </div>
     </div>
@@ -97,13 +98,17 @@
 
 <script>
 import StoreSellerPhonesDialog from "../dialog/Seller/StoreSellerPhonesDialog";
+import DeleteSellerPhoneDialog from "../dialog/Seller/DeleteSellerPhoneDialog";
 export default {
-    components: {StoreSellerPhonesDialog},
+    components: {DeleteSellerPhoneDialog, StoreSellerPhonesDialog},
     props : ['phones'],
     data : ()=>({
         data : [],
         seller_id : window.location.pathname.split('/').pop(),
         search : null,
+        dialog : false,
+        dialog2 : false,
+        seller_phone_id : null,
         headers: [
             {
                 text: 'Téléphone',
@@ -112,9 +117,21 @@ export default {
                 value: 'phone',
             },
             { text: 'Nom', value: 'name' },
+            { text: 'actions', value: 'actions', sortable: false },
         ],
+        name : null,
     }),
     methods : {
+        close()
+        {
+            this.dialog = false
+            this.name = null
+        },
+        close1()
+        {
+            this.dialog2 = false
+            this.seller_phone_id = null
+        },
        init()
        {
            axios.get('/sanctum/csrf-cookie').then(res =>{
@@ -130,7 +147,17 @@ export default {
                        console.log(err)
                    })
            })
-       }
+       },
+        destroy(id)
+        {
+            this.dialog2 = true
+            this.seller_phone_id = id
+        },
+        update(name)
+        {
+            this.dialog = true
+            this.name = name
+        }
     },
     mounted() {
         this.init()

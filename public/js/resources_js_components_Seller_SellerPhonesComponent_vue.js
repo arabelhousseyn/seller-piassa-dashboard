@@ -12,6 +12,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _dialog_Seller_StoreSellerPhonesDialog__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../dialog/Seller/StoreSellerPhonesDialog */ "./resources/js/components/dialog/Seller/StoreSellerPhonesDialog.vue");
+/* harmony import */ var _dialog_Seller_DeleteSellerPhoneDialog__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../dialog/Seller/DeleteSellerPhoneDialog */ "./resources/js/components/dialog/Seller/DeleteSellerPhoneDialog.vue");
+//
 //
 //
 //
@@ -110,8 +112,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
+    DeleteSellerPhoneDialog: _dialog_Seller_DeleteSellerPhoneDialog__WEBPACK_IMPORTED_MODULE_1__["default"],
     StoreSellerPhonesDialog: _dialog_Seller_StoreSellerPhonesDialog__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   props: ['phones'],
@@ -120,6 +124,9 @@ __webpack_require__.r(__webpack_exports__);
       data: [],
       seller_id: window.location.pathname.split('/').pop(),
       search: null,
+      dialog: false,
+      dialog2: false,
+      seller_phone_id: null,
       headers: [{
         text: 'Téléphone',
         align: 'start',
@@ -128,10 +135,23 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         text: 'Nom',
         value: 'name'
-      }]
+      }, {
+        text: 'actions',
+        value: 'actions',
+        sortable: false
+      }],
+      name: null
     };
   },
   methods: {
+    close: function close() {
+      this.dialog = false;
+      this.name = null;
+    },
+    close1: function close1() {
+      this.dialog2 = false;
+      this.seller_phone_id = null;
+    },
     init: function init() {
       var _this = this;
 
@@ -146,10 +166,107 @@ __webpack_require__.r(__webpack_exports__);
           console.log(err);
         });
       });
+    },
+    destroy: function destroy(id) {
+      this.dialog2 = true;
+      this.seller_phone_id = id;
+    },
+    update: function update(name) {
+      this.dialog = true;
+      this.name = name;
     }
   },
   mounted: function mounted() {
     this.init();
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Seller/DeleteSellerPhoneDialog.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Seller/DeleteSellerPhoneDialog.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ['dialog', 'id'],
+  data: function data() {
+    return {
+      load: false
+    };
+  },
+  methods: {
+    destroy: function destroy() {
+      var _this = this;
+
+      this.load = true;
+      axios.get('/sanctum/csrf-cookie').then(function (res) {
+        axios["delete"]("/api/sellers/".concat(_this.id)).then(function (e) {
+          if (e.status == 204) {
+            _this.$toast.open({
+              message: 'Opération effectué',
+              type: 'success'
+            });
+
+            _this.load = false;
+            window.location.reload();
+          }
+        })["catch"](function (err) {
+          _this.$toast.open({
+            message: 'ERROR',
+            type: 'error'
+          });
+        });
+      });
+    },
+    close: function close() {
+      this.$emit('close');
+    }
   }
 });
 
@@ -332,6 +449,44 @@ component.options.__file = "resources/js/components/Seller/SellerPhonesComponent
 
 /***/ }),
 
+/***/ "./resources/js/components/dialog/Seller/DeleteSellerPhoneDialog.vue":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/dialog/Seller/DeleteSellerPhoneDialog.vue ***!
+  \***************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _DeleteSellerPhoneDialog_vue_vue_type_template_id_a109a170___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DeleteSellerPhoneDialog.vue?vue&type=template&id=a109a170& */ "./resources/js/components/dialog/Seller/DeleteSellerPhoneDialog.vue?vue&type=template&id=a109a170&");
+/* harmony import */ var _DeleteSellerPhoneDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DeleteSellerPhoneDialog.vue?vue&type=script&lang=js& */ "./resources/js/components/dialog/Seller/DeleteSellerPhoneDialog.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _DeleteSellerPhoneDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _DeleteSellerPhoneDialog_vue_vue_type_template_id_a109a170___WEBPACK_IMPORTED_MODULE_0__.render,
+  _DeleteSellerPhoneDialog_vue_vue_type_template_id_a109a170___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/dialog/Seller/DeleteSellerPhoneDialog.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/dialog/Seller/StoreSellerPhonesDialog.vue":
 /*!***************************************************************************!*\
   !*** ./resources/js/components/dialog/Seller/StoreSellerPhonesDialog.vue ***!
@@ -385,6 +540,21 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/dialog/Seller/DeleteSellerPhoneDialog.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************!*\
+  !*** ./resources/js/components/dialog/Seller/DeleteSellerPhoneDialog.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteSellerPhoneDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./DeleteSellerPhoneDialog.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Seller/DeleteSellerPhoneDialog.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteSellerPhoneDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/js/components/dialog/Seller/StoreSellerPhonesDialog.vue?vue&type=script&lang=js&":
 /*!****************************************************************************************************!*\
   !*** ./resources/js/components/dialog/Seller/StoreSellerPhonesDialog.vue?vue&type=script&lang=js& ***!
@@ -412,6 +582,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SellerPhonesComponent_vue_vue_type_template_id_682b9ef4___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SellerPhonesComponent_vue_vue_type_template_id_682b9ef4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./SellerPhonesComponent.vue?vue&type=template&id=682b9ef4& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Seller/SellerPhonesComponent.vue?vue&type=template&id=682b9ef4&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/dialog/Seller/DeleteSellerPhoneDialog.vue?vue&type=template&id=a109a170&":
+/*!**********************************************************************************************************!*\
+  !*** ./resources/js/components/dialog/Seller/DeleteSellerPhoneDialog.vue?vue&type=template&id=a109a170& ***!
+  \**********************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteSellerPhoneDialog_vue_vue_type_template_id_a109a170___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteSellerPhoneDialog_vue_vue_type_template_id_a109a170___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteSellerPhoneDialog_vue_vue_type_template_id_a109a170___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./DeleteSellerPhoneDialog.vue?vue&type=template&id=a109a170& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Seller/DeleteSellerPhoneDialog.vue?vue&type=template&id=a109a170&");
 
 
 /***/ }),
@@ -734,6 +920,11 @@ var render = function () {
                     1222628053
                   ),
                 }),
+                _vm._v(" "),
+                _c("delete-seller-phone-dialog", {
+                  attrs: { id: _vm.seller_phone_id, dialog: _vm.dialog2 },
+                  on: { close: _vm.close1 },
+                }),
               ],
               1
             ),
@@ -742,6 +933,95 @@ var render = function () {
         )
       : _vm._e(),
   ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Seller/DeleteSellerPhoneDialog.vue?vue&type=template&id=a109a170&":
+/*!*************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Seller/DeleteSellerPhoneDialog.vue?vue&type=template&id=a109a170& ***!
+  \*************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "delete_seller_dialog" },
+    [
+      _c(
+        "v-dialog",
+        {
+          attrs: { persistent: "", "max-width": "290" },
+          model: {
+            value: _vm.dialog,
+            callback: function ($$v) {
+              _vm.dialog = $$v
+            },
+            expression: "dialog",
+          },
+        },
+        [
+          _c(
+            "v-card",
+            [
+              _c("v-card-title", { staticClass: "text-h5" }, [
+                _vm._v(
+                  "\n                Etes-vous sûr que vous voulez supprimer !\n            "
+                ),
+              ]),
+              _vm._v(" "),
+              _c(
+                "v-card-actions",
+                [
+                  _c("v-spacer"),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { color: "grey darken-1", text: "" },
+                      on: { click: _vm.close },
+                    },
+                    [_c("v-icon", [_vm._v("mdi-cancel")])],
+                    1
+                  ),
+                  _vm._v(" "),
+                  !_vm.load
+                    ? _c(
+                        "v-btn",
+                        {
+                          attrs: { color: "red darken-1", text: "" },
+                          on: { click: _vm.destroy },
+                        },
+                        [_c("v-icon", [_vm._v("mdi-delete")])],
+                        1
+                      )
+                    : _c("v-progress-circular", {
+                        attrs: { indeterminate: "", color: "primary" },
+                      }),
+                ],
+                1
+              ),
+            ],
+            1
+          ),
+        ],
+        1
+      ),
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
