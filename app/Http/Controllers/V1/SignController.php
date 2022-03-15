@@ -86,7 +86,7 @@ class SignController extends Controller
 
     public function signs()
     {
-        $signs = Sign::withoutTrashed()->get();
+        $signs = Sign::withoutTrashed()->select(['id','name'])->get();
         return response(['data' => $signs],200);
     }
 }
