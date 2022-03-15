@@ -1844,7 +1844,7 @@ var render = function () {
               headers: _vm.headers,
               items: _vm.sellers,
               search: _vm.search,
-              "sort-by": "created_at",
+              "disable-sort": "",
             },
             scopedSlots: _vm._u([
               {
