@@ -63,6 +63,10 @@ Route::middleware('auth:sanctum')->group(function (){
             Route::put('update/{id}','updateSellerPhone')->whereNumber('id');
             Route::delete('destroy/{id}','destroySellerPhone')->whereNumber('id');
         });
+
+        Route::prefix('jobs')->group(function (){
+            Route::post('store','storeSellerJob');
+        });
     });
 
     //types
