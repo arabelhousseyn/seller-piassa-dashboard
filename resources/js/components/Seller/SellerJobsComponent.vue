@@ -19,7 +19,7 @@
                             vertical
                         ></v-divider>
                         <v-spacer></v-spacer>
-                        add
+                        <store-seller-job-dialog />
                     </v-toolbar>
                     <v-toolbar flat>
                         <v-text-field
@@ -89,7 +89,9 @@
 </template>
 
 <script>
+import StoreSellerJobDialog from "../dialog/Seller/StoreSellerJobDialog"
 export default {
+    components: {StoreSellerJobDialog},
     props : ['jobs'],
     data : ()=>({
         data : [],
