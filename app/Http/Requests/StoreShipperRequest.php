@@ -25,7 +25,7 @@ class StoreShipperRequest extends FormRequest
     public function rules()
     {
         return [
-            'phone' => 'required|digits:10|unique:users,phone',
+            'phone' => 'required|digits:10|unique:shippers,phone',
             'email' => 'email:rfc,dns,filter',
             'password' => ['required','confirmed',Password::default()],
             'province_id' => 'required|exists:provinces,id',
