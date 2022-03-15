@@ -104,6 +104,7 @@
         </v-container>
         <delete-shipper-dialog @close="close" :dialog="dialog" :id="shipper_id" />
         <restore-shipper-dialog @close="close1" :dialog="dialog1" :id="shipper_id" />
+        <shipper-profile-dialog v-if="dialog2" @close="close2" :dialog="dialog2" :profile="profile" />
     </div>
 </template>
 
@@ -112,8 +113,11 @@ import BreadCrumbsComponent from "../BreadCrumbsComponent";
 import StoreShipperDialog from "../dialog/Shipper/StoreShipperDialog";
 import DeleteShipperDialog from "../dialog/Shipper/DeleteShipperDialog";
 import RestoreShipperDialog from "../dialog/Shipper/RestoreShipperDialog";
+import ShipperProfileDialog from "../dialog/Shipper/ShipperProfileDialog";
 export default {
-    components: {RestoreShipperDialog, DeleteShipperDialog, StoreShipperDialog, BreadCrumbsComponent},
+    components: {
+        ShipperProfileDialog,
+        RestoreShipperDialog, DeleteShipperDialog, StoreShipperDialog, BreadCrumbsComponent},
     data : ()=>({
         dialog : false,
         dialog1 : false,
@@ -163,6 +167,11 @@ export default {
         {
             this.dialog1 = false
             this.shipper_id = null
+        },
+        close2()
+        {
+            this.dialog2 = false
+            this.profile = []
         },
         init()
         {
