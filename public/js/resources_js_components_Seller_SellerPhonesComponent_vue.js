@@ -373,7 +373,8 @@ __webpack_require__.r(__webpack_exports__);
       dialog: false,
       data: {
         name: null,
-        phone: null
+        phone: null,
+        seller_id: null
       },
       disable: true,
       hasError: false,
@@ -384,8 +385,9 @@ __webpack_require__.r(__webpack_exports__);
     update: function update() {
       var _this = this;
 
+      this.data.seller_id = this.seller_id;
       axios.get('/sanctum/csrf-cookie').then(function (res) {
-        axios.post("/api/sellers/phones/store/".concat(_this.seller_id), _this.data).then(function (e) {
+        axios.post("/api/sellers/phones/store", _this.data).then(function (e) {
           _this.$toast.open({
             message: "Opération effectué",
             type: 'success'
