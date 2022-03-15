@@ -29,10 +29,30 @@
                                     md="4"
                                 >
                                     <v-text-field
+                                        @keydown="check"
                                         label="Description de l'emploi*"
                                         v-model="data.job"
                                         required
                                     ></v-text-field>
+                                </v-col>
+
+                                <v-col
+                                    cols="12"
+                                    sm="6"
+                                    md="4"
+                                >
+                                    <v-select @change="check" :items="items" placeholder="Marques" v-model="selectedSign"></v-select>
+                                </v-col>
+
+                                <v-col
+                                    cols="12"
+                                    sm="6"
+                                    md="4"
+                                >
+                                    <v-select @change="check" :items="items2" placeholder="Types" v-model="selectedType"></v-select>
+                                </v-col>
+                                <v-col cols="12">
+                                    <v-btn type="submit" :disabled="disable" color="primary"><v-icon>mdi-check</v-icon></v-btn>
                                 </v-col>
                             </v-row>
                         </form>
@@ -68,6 +88,7 @@ export default {
         types : [],
         items : [],
         items2 : [],
+        disable : true,
     }),
     methods : {
         store()
@@ -79,8 +100,10 @@ export default {
             axios.get('/sanctum/csrf-cookie').then(res =>{
                 axios.get(`/api/signs/all`)
                     .then(e=>{
-                        console.log(e.data.data)
                         this.signs = e.data.data
+                        for (const sign of this.signs) {
+                            this.items.push(sign.name)
+                        }
                     })
                     .catch(err =>{
                         if(err.response.status == 404)
@@ -94,8 +117,11 @@ export default {
             axios.get('/sanctum/csrf-cookie').then(res =>{
                 axios.get(`/api/types/all`)
                     .then(e=>{
-                        console.log(e.data.data)
+
                         this.types = e.data.data
+                        for (const type of this.types) {
+                            this.items2.push(type.name)
+                        }
                     })
                     .catch(err =>{
                         if(err.response.status == 404)
@@ -105,6 +131,10 @@ export default {
                         console.log(err)
                     })
             })
+        },
+        check()
+        {
+            this.disable = (this.selectedSign == null || this.selectedType == null || this.data.job == null) ? true : false
         }
     },
     mounted() {
