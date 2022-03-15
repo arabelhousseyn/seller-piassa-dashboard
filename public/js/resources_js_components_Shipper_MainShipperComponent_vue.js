@@ -233,7 +233,6 @@ __webpack_require__.r(__webpack_exports__);
         axios.get('/api/shippers').then(function (e) {
           _this.loading = false;
           _this.shippers = e.data.data;
-          console.log(_this.shippers);
         })["catch"](function (err) {
           _this.$toast.open({
             message: 'Erreur dans serveur veuillez réessayer',
@@ -250,14 +249,6 @@ __webpack_require__.r(__webpack_exports__);
     update: function update(data) {
       this.dialog3 = true;
       this.data = data;
-    },
-    security: function security(id) {
-      this.dialog4 = true;
-      this.id = id;
-    },
-    commercial_info: function commercial_info(info) {
-      this.dialog5 = true;
-      this.info = info;
     }
   },
   mounted: function mounted() {
@@ -277,6 +268,99 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -335,11 +419,106 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      dialog: false
+      dialog: false,
+      selectedProvince: null,
+      data: {
+        phone: null,
+        first_name: null,
+        last_name: null,
+        province_id: null,
+        password: null,
+        password_confirmation: null
+      },
+      provinces: [],
+      items: [],
+      disable: true,
+      hasError: false,
+      errors: []
     };
   },
   methods: {
-    store: function store() {}
+    store: function store() {
+      var _this = this;
+
+      this.disabled = true;
+
+      var _iterator = _createForOfIteratorHelper(this.provinces),
+          _step;
+
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var province = _step.value;
+
+          if (province.name == this.selectedProvince) {
+            this.data.province_id = province.id;
+            break;
+          }
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+
+      axios.get('/sanctum/csrf-cookie').then(function (res) {
+        axios.post('/api/shippers', _this.data).then(function (e) {
+          _this.$toast.open({
+            message: "Opération effectué",
+            type: 'success'
+          });
+
+          window.location.reload();
+        })["catch"](function (err) {
+          var errors = Object.values(err.response.data.errors);
+
+          for (var _i = 0, _errors = errors; _i < _errors.length; _i++) {
+            var error = _errors[_i];
+
+            _this.errors.push(error[0]);
+
+            _this.hasError = true;
+            _this.disabled = false;
+          }
+        });
+      });
+    },
+    init: function init() {
+      var _this2 = this;
+
+      axios.get('/sanctum/csrf-cookie').then(function (res) {
+        axios.get('/api/provinces').then(function (e) {
+          _this2.provinces = e.data;
+
+          var _iterator2 = _createForOfIteratorHelper(e.data),
+              _step2;
+
+          try {
+            for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+              var province = _step2.value;
+
+              _this2.items.push(province.name);
+            }
+          } catch (err) {
+            _iterator2.e(err);
+          } finally {
+            _iterator2.f();
+          }
+        })["catch"](function (err) {
+          _this2.$toast.open({
+            message: "ERROR",
+            type: 'error'
+          });
+        });
+      });
+    },
+    check: function check() {
+      this.hasError = false;
+      this.errors = [];
+      this.disable = this.data.phone == null || this.data.first_name == null || this.data.last_name == null || this.selectedProvince == null || this.data.password == null || this.data.password_confirmation == null ? true : false;
+    }
+  },
+  mounted: function mounted() {
+    this.init();
   }
 });
 
@@ -1079,11 +1258,193 @@ var render = function () {
                               { attrs: { cols: "12", sm: "6", md: "4" } },
                               [
                                 _c("v-text-field", {
-                                  attrs: {
-                                    label: "Legal first name*",
-                                    required: "",
+                                  attrs: { label: "Nom*", required: "" },
+                                  on: { keydown: _vm.check },
+                                  model: {
+                                    value: _vm.data.first_name,
+                                    callback: function ($$v) {
+                                      _vm.$set(_vm.data, "first_name", $$v)
+                                    },
+                                    expression: "data.first_name",
                                   },
                                 }),
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-col",
+                              { attrs: { cols: "12", sm: "6", md: "4" } },
+                              [
+                                _c("v-text-field", {
+                                  attrs: { label: "Prénom*", required: "" },
+                                  on: { keydown: _vm.check },
+                                  model: {
+                                    value: _vm.data.last_name,
+                                    callback: function ($$v) {
+                                      _vm.$set(_vm.data, "last_name", $$v)
+                                    },
+                                    expression: "data.last_name",
+                                  },
+                                }),
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-col",
+                              { attrs: { cols: "12", sm: "6", md: "4" } },
+                              [
+                                _c("v-text-field", {
+                                  attrs: { label: "Téléphone*", required: "" },
+                                  on: { keydown: _vm.check },
+                                  model: {
+                                    value: _vm.data.phone,
+                                    callback: function ($$v) {
+                                      _vm.$set(_vm.data, "phone", $$v)
+                                    },
+                                    expression: "data.phone",
+                                  },
+                                }),
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-col",
+                              { attrs: { cols: "12", sm: "6", md: "4" } },
+                              [
+                                _c("v-text-field", {
+                                  attrs: { type: "email", label: "Email" },
+                                  on: { keydown: _vm.check },
+                                  model: {
+                                    value: _vm.data.email,
+                                    callback: function ($$v) {
+                                      _vm.$set(_vm.data, "email", $$v)
+                                    },
+                                    expression: "data.email",
+                                  },
+                                }),
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-col",
+                              { attrs: { cols: "12", sm: "6", md: "4" } },
+                              [
+                                _c("v-text-field", {
+                                  attrs: {
+                                    type: "password",
+                                    label: "Mote de passe*",
+                                    required: "",
+                                  },
+                                  on: { keydown: _vm.check },
+                                  model: {
+                                    value: _vm.data.password,
+                                    callback: function ($$v) {
+                                      _vm.$set(_vm.data, "password", $$v)
+                                    },
+                                    expression: "data.password",
+                                  },
+                                }),
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-col",
+                              { attrs: { cols: "12", sm: "6", md: "4" } },
+                              [
+                                _c("v-text-field", {
+                                  attrs: {
+                                    type: "password",
+                                    label: "Confirmation mote de passe*",
+                                    required: "",
+                                  },
+                                  on: { keydown: _vm.check },
+                                  model: {
+                                    value: _vm.data.password_confirmation,
+                                    callback: function ($$v) {
+                                      _vm.$set(
+                                        _vm.data,
+                                        "password_confirmation",
+                                        $$v
+                                      )
+                                    },
+                                    expression: "data.password_confirmation",
+                                  },
+                                }),
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-col",
+                              { attrs: { cols: "12", sm: "6", md: "4" } },
+                              [
+                                _c("v-select", {
+                                  attrs: {
+                                    items: _vm.items,
+                                    placeholder: "Willayas",
+                                  },
+                                  on: { change: _vm.check },
+                                  model: {
+                                    value: _vm.selectedProvince,
+                                    callback: function ($$v) {
+                                      _vm.selectedProvince = $$v
+                                    },
+                                    expression: "selectedProvince",
+                                  },
+                                }),
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _vm.hasError
+                              ? _c(
+                                  "v-alert",
+                                  {
+                                    attrs: {
+                                      border: "right",
+                                      "colored-border": "",
+                                      type: "error",
+                                      elevation: "2",
+                                    },
+                                  },
+                                  [
+                                    _c(
+                                      "ul",
+                                      _vm._l(
+                                        _vm.errors,
+                                        function (error, index) {
+                                          return _c("li", { key: index }, [
+                                            _c("span", [_vm._v(_vm._s(error))]),
+                                          ])
+                                        }
+                                      ),
+                                      0
+                                    ),
+                                  ]
+                                )
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _c(
+                              "v-col",
+                              { attrs: { cols: "12" } },
+                              [
+                                _c(
+                                  "v-btn",
+                                  {
+                                    attrs: {
+                                      type: "submit",
+                                      disabled: _vm.disable,
+                                      color: "primary",
+                                    },
+                                  },
+                                  [_c("v-icon", [_vm._v("mdi-check")])],
+                                  1
+                                ),
                               ],
                               1
                             ),

@@ -190,7 +190,6 @@ export default {
                     .then(e =>{
                         this.loading = false
                         this.shippers = e.data.data
-                        console.log(this.shippers)
                     }).catch(err => {
                     this.$toast.open({message : 'Erreur dans serveur veuillez réessayer',type : 'error'})
                 })
@@ -207,16 +206,6 @@ export default {
             this.dialog3 = true
             this.data = data
         },
-        security(id)
-        {
-            this.dialog4 = true
-            this.id = id
-        },
-        commercial_info(info)
-        {
-            this.dialog5 = true
-            this.info = info
-        }
     },
     mounted() {
         this.init()
