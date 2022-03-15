@@ -88,13 +88,15 @@
                 </template>
             </v-data-table>
         </v-container>
+        <delete-seller-job-dialog :dialog="dialog" :id="seller_job_id" />
     </div>
 </template>
 
 <script>
 import StoreSellerJobDialog from "../dialog/Seller/StoreSellerJobDialog"
+import DeleteSellerJobDialog from "../dialog/Seller/DeleteSellerJobDialog";
 export default {
-    components: {StoreSellerJobDialog},
+    components: {DeleteSellerJobDialog, StoreSellerJobDialog},
     props : ['jobs'],
     data : ()=>({
         data : undefined,
@@ -134,6 +136,7 @@ export default {
         destory(id)
         {
             this.seller_job_id = id
+            this.dialog = true
         }
     },
     mounted() {
