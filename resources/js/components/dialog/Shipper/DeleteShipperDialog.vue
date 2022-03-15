@@ -1,5 +1,5 @@
 <template>
-    <div class="delete_seller_dialog">
+    <div class="delete-shipper-dialog">
         <v-dialog
             v-model="dialog"
             persistent

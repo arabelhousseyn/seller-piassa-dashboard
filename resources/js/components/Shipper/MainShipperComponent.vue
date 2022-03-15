@@ -105,6 +105,7 @@
         <delete-shipper-dialog @close="close" :dialog="dialog" :id="shipper_id" />
         <restore-shipper-dialog @close="close1" :dialog="dialog1" :id="shipper_id" />
         <shipper-profile-dialog v-if="dialog2" @close="close2" :dialog="dialog2" :profile="profile" />
+        <update-shipper-dialog v-if="dialog3" @close="close3" :dialog="dialog3" :data="data" />
     </div>
 </template>
 
@@ -114,8 +115,10 @@ import StoreShipperDialog from "../dialog/Shipper/StoreShipperDialog";
 import DeleteShipperDialog from "../dialog/Shipper/DeleteShipperDialog";
 import RestoreShipperDialog from "../dialog/Shipper/RestoreShipperDialog";
 import ShipperProfileDialog from "../dialog/Shipper/ShipperProfileDialog";
+import UpdateShipperDialog from "../dialog/Shipper/UpdateShipperDialog";
 export default {
     components: {
+        UpdateShipperDialog,
         ShipperProfileDialog,
         RestoreShipperDialog, DeleteShipperDialog, StoreShipperDialog, BreadCrumbsComponent},
     data : ()=>({
@@ -158,6 +161,16 @@ export default {
             this.dialog1 = true
             this.shipper_id = id
         },
+        openProfile(data)
+        {
+            this.dialog2 = true
+            this.profile = data.profile
+        },
+        update(data)
+        {
+            this.dialog3 = true
+            this.data = data
+        },
         close()
         {
             this.dialog = false
@@ -173,6 +186,11 @@ export default {
             this.dialog2 = false
             this.profile = []
         },
+        close3()
+        {
+            this.dialog3 = false
+            this.data = []
+        },
         init()
         {
             axios.get('/sanctum/csrf-cookie').then(res =>{
@@ -184,11 +202,6 @@ export default {
                     this.$toast.open({message : 'Erreur dans serveur veuillez réessayer',type : 'error'})
                 })
             })
-        },
-        openProfile(data)
-        {
-            this.dialog2 = true
-            this.profile = data.profile
         }
     },
     mounted() {

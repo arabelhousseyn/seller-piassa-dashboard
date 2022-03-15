@@ -1,5 +1,5 @@
 <template>
-    <div class="resotre_seller_dialog">
+    <div class="restore-shipper-dialog">
         <v-dialog
             v-model="dialog"
             persistent

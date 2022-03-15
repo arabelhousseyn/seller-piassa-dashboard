@@ -1144,7 +1144,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         this.data2.province_id = this.data.profile.province.id;
       }
 
-      console.log(this.data2);
       axios.get('/sanctum/csrf-cookie').then(function (res) {
         axios.put("/api/sellers/".concat(_this.data.id), _this.data2).then(function (e) {
           console.log(e);

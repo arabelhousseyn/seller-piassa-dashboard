@@ -1,5 +1,5 @@
 <template>
-    <div class="update_user">
+    <div class="update-shipper-dialog">
         <v-dialog
             v-model="dialog"
             persistent
@@ -64,18 +64,7 @@
                                     sm="6"
                                     md="4"
                                 >
-                                    <v-text-field
-                                        label="Nom commercial"
-                                        v-model="data.profile.commercial_name"
-                                    ></v-text-field>
-                                </v-col>
-
-                                <v-col
-                                    cols="12"
-                                    sm="6"
-                                    md="4"
-                                >
-                                <v-select placeholder="Willayas" :items="items" v-model="selectedProvince"></v-select>
+                                    <v-select placeholder="Willayas" :items="items" v-model="selectedProvince"></v-select>
                                     <v-chip color="primary">{{data.profile.province.name}}</v-chip>
                                 </v-col>
 
@@ -119,7 +108,6 @@ export default {
             province_id : null,
             first_name : null,
             last_name : null,
-            commercial_name : null,
         },
         items : [],
         hasError : false,
@@ -136,7 +124,6 @@ export default {
             this.data2.email = this.data.email
             this.data2.first_name = this.data.profile.first_name
             this.data2.last_name = this.data.profile.last_name
-            this.data2.commercial_name = this.data.profile.commercial_name
             if(this.selectedProvince !== null)
             {
                 for (const province of this.provinces) {
@@ -150,10 +137,11 @@ export default {
                 this.data2.province_id = this.data.profile.province.id;
             }
 
+            console.log(this.data2)
 
 
             axios.get('/sanctum/csrf-cookie').then(res => {
-                axios.put(`/api/sellers/${this.data.id}`,this.data2).then(e=>{
+                axios.put(`/api/shippers/${this.data.id}`,this.data2).then(e=>{
                     console.log(e)
                     if(e.status == 204)
                     {

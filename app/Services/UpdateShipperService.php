@@ -22,7 +22,7 @@ class UpdateShipperService{
         }
 
         $rules = [
-            'phone' => 'digits:10|unique:users,phone'
+            'phone' => 'digits:10|unique:shippers,phone'
         ];
         $validated = $request->validate($rules);
         Shipper::whereId($id)->update($validated);

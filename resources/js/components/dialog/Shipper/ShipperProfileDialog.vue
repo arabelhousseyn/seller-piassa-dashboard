@@ -1,5 +1,5 @@
 <template>
-    <div class="user_profile">
+    <div class="shipper-profile">
         <template>
             <v-row justify="center">
                 <v-dialog
