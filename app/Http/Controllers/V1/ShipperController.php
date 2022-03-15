@@ -4,6 +4,7 @@ namespace App\Http\Controllers\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreShipperRequest;
+use App\Services\UpdateShipperService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\{Shipper};
@@ -79,7 +80,7 @@ class ShipperController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return UpdateShipperService::update($request,$id);
     }
 
     /**
