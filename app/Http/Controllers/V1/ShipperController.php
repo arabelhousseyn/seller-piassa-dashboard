@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreShipperRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\Models\{Shipper};
 class ShipperController extends Controller
 {
@@ -34,9 +36,16 @@ class ShipperController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreShipperRequest $request)
     {
-        //
+        if($request->validated())
+        {
+            $hash_password = Hash::make($request->password);
+            $password = ['password' => $hash_password];
+            $shipper = Shipper::create(array_merge($request->only('phone','email'),$password));
+            $shipper->profile()->create($request->except('phone','email','password'));
+            return response()->noContent();
+        }
     }
 
     /**

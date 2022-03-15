@@ -22,7 +22,7 @@
                             vertical
                         ></v-divider>
                         <v-spacer></v-spacer>
-                        add
+                        <store-shipper-dialog />
                     </v-toolbar>
                     <v-toolbar flat>
                         <v-text-field
@@ -107,8 +107,9 @@
 
 <script>
 import BreadCrumbsComponent from "../BreadCrumbsComponent";
+import StoreShipperDialog from "../dialog/Shipper/StoreShipperDialog";
 export default {
-    components: {BreadCrumbsComponent},
+    components: {StoreShipperDialog, BreadCrumbsComponent},
     data : ()=>({
         dialog : false,
         dialog1 : false,
