@@ -232,4 +232,30 @@ class SellerController extends Controller
             return response()->noContent();
         }
     }
+
+    public function destorySellerJob($seller_job_id)
+    {
+        try {
+            $seller_job = SellerJob::withTrashed()->findOrFail($seller_job_id);
+            if(!$seller_job->trashed())
+            {
+                $seller_job->delete();
+                return response()->noContent();
+            }
+            $data = [
+                'data' => [
+                    'message' => __('messages.user_not_deleted')
+                ]
+            ];
+            return response($data,422);
+        }catch (\Exception $e)
+        {
+            $data = [
+                'data' => [
+                    'message' => __('messages.user_not_found')
+                ]
+            ];
+            return response($data,422);
+        }
+    }
 }

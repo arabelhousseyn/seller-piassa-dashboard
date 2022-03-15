@@ -100,6 +100,7 @@ export default {
         data : undefined,
         seller_id : window.location.pathname.split('/').pop(),
         search : null,
+        dialog : false,
         headers: [
             {
                 text: 'Description',
@@ -111,6 +112,7 @@ export default {
             { text: 'Type', value: 'type.name' },
             { text: 'actions', value: 'actions', sortable: false },
         ],
+        seller_job_id : null,
     }),
     methods : {
         init()
@@ -128,6 +130,10 @@ export default {
                         console.log(err)
                     })
             })
+        },
+        destory(id)
+        {
+            this.seller_job_id = id
         }
     },
     mounted() {

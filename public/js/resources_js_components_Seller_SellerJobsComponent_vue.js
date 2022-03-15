@@ -116,6 +116,7 @@ __webpack_require__.r(__webpack_exports__);
       data: undefined,
       seller_id: window.location.pathname.split('/').pop(),
       search: null,
+      dialog: false,
       headers: [{
         text: 'Description',
         align: 'start',
@@ -131,7 +132,8 @@ __webpack_require__.r(__webpack_exports__);
         text: 'actions',
         value: 'actions',
         sortable: false
-      }]
+      }],
+      seller_job_id: null
     };
   },
   methods: {
@@ -149,6 +151,9 @@ __webpack_require__.r(__webpack_exports__);
           console.log(err);
         });
       });
+    },
+    destory: function destory(id) {
+      this.seller_job_id = id;
     }
   },
   mounted: function mounted() {

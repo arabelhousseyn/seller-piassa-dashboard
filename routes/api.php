@@ -66,6 +66,7 @@ Route::middleware('auth:sanctum')->group(function (){
 
         Route::prefix('jobs')->group(function (){
             Route::post('store','storeSellerJob');
+            Route::delete('destroy/{id}','destorySellerJob')->whereNumber('id');
         });
     });
 
