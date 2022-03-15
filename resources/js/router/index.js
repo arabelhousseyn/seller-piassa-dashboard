@@ -85,6 +85,12 @@ const routes = [
                     {
                         path : '/',
                         component : () => import('../components/Shipper/MainShipperComponent')
+                    },
+                    {
+                        path: 'commission/:id',
+                        name : 'commission',
+                        props: true,
+                        component : () => import('../components/Shipper/ShipperCommissionComponent')
                     }
                 ]
             },

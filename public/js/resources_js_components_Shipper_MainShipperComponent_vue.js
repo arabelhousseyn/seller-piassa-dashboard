@@ -1762,7 +1762,13 @@ var render = function () {
                                     attrs: { link: "" },
                                     on: {
                                       click: function ($event) {
-                                        return _vm.update(item)
+                                        return _vm.$router.push({
+                                          name: "commission",
+                                          params: {
+                                            id: item.id,
+                                            data: item.orderRequests,
+                                          },
+                                        })
                                       },
                                     },
                                   },
@@ -1783,7 +1789,7 @@ var render = function () {
                                       "v-list-item-content",
                                       [
                                         _c("v-list-item-title", [
-                                          _vm._v("Comissions"),
+                                          _vm._v("Commissions"),
                                         ]),
                                       ],
                                       1
