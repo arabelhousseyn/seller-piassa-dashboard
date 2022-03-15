@@ -88,7 +88,7 @@
                 </template>
             </v-data-table>
         </v-container>
-        <delete-seller-job-dialog :dialog="dialog" :id="seller_job_id" />
+        <delete-seller-job-dialog @close="close" :dialog="dialog" :id="seller_job_id" />
     </div>
 </template>
 
@@ -137,6 +137,11 @@ export default {
         {
             this.seller_job_id = id
             this.dialog = true
+        },
+        close()
+        {
+            this.seller_job_id = null
+            this.dialog = false
         }
     },
     mounted() {

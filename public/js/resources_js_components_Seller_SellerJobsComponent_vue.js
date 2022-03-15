@@ -159,6 +159,10 @@ __webpack_require__.r(__webpack_exports__);
     destory: function destory(id) {
       this.seller_job_id = id;
       this.dialog = true;
+    },
+    close: function close() {
+      this.seller_job_id = null;
+      this.dialog = false;
     }
   },
   mounted: function mounted() {
@@ -1018,6 +1022,7 @@ var render = function () {
           _vm._v(" "),
           _c("delete-seller-job-dialog", {
             attrs: { dialog: _vm.dialog, id: _vm.seller_job_id },
+            on: { close: _vm.close },
           }),
         ],
         1
