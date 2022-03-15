@@ -80,7 +80,13 @@ const routes = [
             },
             {
                 path : 'shippers',
-                component : () => import('../pages/ShippersPage')
+                component : () => import('../pages/ShippersPage'),
+                children: [
+                    {
+                        path : '/',
+                        component : () => import('../components/Shipper/MainShipperComponent')
+                    }
+                ]
             },
             {
                 path : '*',
