@@ -115,13 +115,10 @@ export default {
         dialog1 : false,
         dialog2 : false,
         dialog3 : false,
-        dialog4 : false,
-        dialog5 : false,
         id : null,
         shippers : [],
         profile : [],
         data : [],
-        info : [],
         loading : true,
         selected : null,
         search : null,
@@ -155,33 +152,8 @@ export default {
         },
         close()
         {
-            this.selected = null
-            this.dialog = false
-        },
-        close1()
-        {
-            this.selected = null
-            this.dialog1 = false
-        },
-        close2()
-        {
             this.profile = []
-            this.info = []
             this.dialog2 = false
-        },
-        close3()
-        {
-            this.data = []
-            this.dialog3 = false
-        },
-        close4()
-        {
-            this.id = null
-            this.dialog4 = false
-        },
-        close5()
-        {
-            this.dialog5 = false
         },
         init()
         {
@@ -199,13 +171,7 @@ export default {
         {
             this.dialog2 = true
             this.profile = data.profile
-            this.info = data.commercial_info
-        },
-        update(data)
-        {
-            this.dialog3 = true
-            this.data = data
-        },
+        }
     },
     mounted() {
         this.init()

@@ -159,13 +159,10 @@ __webpack_require__.r(__webpack_exports__);
       dialog1: false,
       dialog2: false,
       dialog3: false,
-      dialog4: false,
-      dialog5: false,
       id: null,
       shippers: [],
       profile: [],
       data: [],
-      info: [],
       loading: true,
       selected: null,
       search: null,
@@ -203,28 +200,8 @@ __webpack_require__.r(__webpack_exports__);
       this.selected = id;
     },
     close: function close() {
-      this.selected = null;
-      this.dialog = false;
-    },
-    close1: function close1() {
-      this.selected = null;
-      this.dialog1 = false;
-    },
-    close2: function close2() {
       this.profile = [];
-      this.info = [];
       this.dialog2 = false;
-    },
-    close3: function close3() {
-      this.data = [];
-      this.dialog3 = false;
-    },
-    close4: function close4() {
-      this.id = null;
-      this.dialog4 = false;
-    },
-    close5: function close5() {
-      this.dialog5 = false;
     },
     init: function init() {
       var _this = this;
@@ -244,11 +221,6 @@ __webpack_require__.r(__webpack_exports__);
     openProfile: function openProfile(data) {
       this.dialog2 = true;
       this.profile = data.profile;
-      this.info = data.commercial_info;
-    },
-    update: function update(data) {
-      this.dialog3 = true;
-      this.data = data;
     }
   },
   mounted: function mounted() {
