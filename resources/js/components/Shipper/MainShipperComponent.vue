@@ -6,7 +6,7 @@
                 :loading="loading"
                 loading-text="Chargement... veuillez patienter"
                 :headers="headers"
-                :items="users"
+                :items="shippers"
                 :search="search"
                 disable-sort
                 class="elevation-1"
@@ -22,7 +22,7 @@
                             vertical
                         ></v-divider>
                         <v-spacer></v-spacer>
-                        <create-user-dialog />
+                        add
                     </v-toolbar>
                     <v-toolbar flat>
                         <v-text-field
@@ -66,23 +66,10 @@
                                     <v-list-item-icon><v-icon color="primary">mdi-pencil</v-icon></v-list-item-icon>
                                     <v-list-item-content><v-list-item-title>Modifier</v-list-item-title></v-list-item-content>
                                 </v-list-item>
-                                <v-list-item v-if="item.roles[0].name == 'C'" link @click="commercial_info(item.commercial_info)">
-                                    <v-list-item-icon><v-icon color="primary">mdi-paperclip</v-icon></v-list-item-icon>
-                                    <v-list-item-content><v-list-item-title>Document</v-list-item-title></v-list-item-content>
-                                </v-list-item>
-                                <v-list-item link @click="$router.push({name : 'vehicles', params : {id : item.id,data : item.vehicle}})">
-                                    <v-list-item-icon><v-icon color="primary">mdi-car</v-icon></v-list-item-icon>
-                                    <v-list-item-content><v-list-item-title>Véhicules</v-list-item-title></v-list-item-content>
-                                </v-list-item>
 
-                                <v-list-item link @click="$router.push({name :'orders', params : {id : item.id,data : item.orders}})">
-                                    <v-list-item-icon><v-icon color="primary">mdi-cart</v-icon></v-list-item-icon>
-                                    <v-list-item-content><v-list-item-title>Commandes</v-list-item-title></v-list-item-content>
-                                </v-list-item>
-
-                                <v-list-item link @click="security(item.id)">
-                                    <v-list-item-icon><v-icon color="primary">mdi-security</v-icon></v-list-item-icon>
-                                    <v-list-item-content><v-list-item-title>Sécurité</v-list-item-title></v-list-item-content>
+                                <v-list-item link @click="update(item)">
+                                    <v-list-item-icon><v-icon color="primary">mdi-currency-usd</v-icon></v-list-item-icon>
+                                    <v-list-item-content><v-list-item-title>Comissions</v-list-item-title></v-list-item-content>
                                 </v-list-item>
 
                                 <v-list-item v-if="item.deleted_at == null" link @click="destroy(item.id)">
@@ -96,18 +83,6 @@
                             </v-list-item-group>
                         </v-list>
                     </v-menu>
-                </template>
-
-                <template v-slot:item.roles="{ item }">
-                    <v-chip v-if="item.roles[0].name =='P'" color="primary">
-                        Particulier
-                    </v-chip>
-                    <v-chip v-if="item.roles[0].name =='C'" color="primary">
-                        Corporate
-                    </v-chip>
-                    <v-chip v-if="item.roles[0].name =='A'" color="primary">
-                        Atelier
-                    </v-chip>
                 </template>
 
                 <template v-slot:item.deleted_at="{ item }">
@@ -126,31 +101,14 @@
                     </v-btn>
                 </template>
             </v-data-table>
-            <delete-user-dialog @close="close" :dialog="dialog" :id="selected" />
-            <restore-user-dialog @close1="close1" :dialog1="dialog1" :id="selected" />
-            <user-profile-dialog v-if="dialog2" :dialog="dialog2" @close2="close2" :info="info" :profile="profile" />
-            <update-user-dialog v-if="dialog3" :dialog="dialog3" @close3="close3" :data="data" />
-            <security-dialog v-if="dialog4" :dialog="dialog4" @close4="close4" :user_id="id" />
-            <user-commercial-info v-if="dialog5" :dialog="dialog5" @close5="close5" :commercial_info="info" />
         </v-container>
     </div>
 </template>
 
 <script>
-import DeleteUserDialog from "../dialog/user/DeleteUserDialog";
-import RestoreUserDialog from "../dialog/user/RestoreUserDialog";
-import CreateUserDialog from "../dialog/user/CreateUserDialog";
-import UserProfileDialog from "../dialog/user/UserProfileDialog";
-import UpdateUserDialog from "../dialog/user/UpdateUserDialog";
-import SecurityDialog from "../dialog/user/SecurityDialog";
-import UserCommercialInfo from "../dialog/user/UserCommercialInfo";
 import BreadCrumbsComponent from "../BreadCrumbsComponent";
 export default {
-    components: {
-        BreadCrumbsComponent,
-        UserCommercialInfo,
-        SecurityDialog,
-        UpdateUserDialog, UserProfileDialog, CreateUserDialog, RestoreUserDialog, DeleteUserDialog},
+    components: {BreadCrumbsComponent},
     data : ()=>({
         dialog : false,
         dialog1 : false,
@@ -174,7 +132,6 @@ export default {
                 value: 'phone',
             },
             { text: 'Email', value: 'email' },
-            { text: 'Role', value: 'roles' },
             { text: 'Créé à', value: 'created_at' },
             { text: 'Statu', value: 'deleted_at' },
             { text: 'actions', value: 'actions', sortable: false },
@@ -232,6 +189,7 @@ export default {
                     .then(e =>{
                         this.loading = false
                         this.shippers = e.data.data
+                        console.log(this.shippers)
                     }).catch(err => {
                     this.$toast.open({message : 'Erreur dans serveur veuillez réessayer',type : 'error'})
                 })
