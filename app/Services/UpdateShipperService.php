@@ -3,7 +3,6 @@
 namespace App\Services;
 
 use App\Models\Shipper;
-use Spatie\Permission\Models\Role;
 
 class UpdateShipperService{
 
