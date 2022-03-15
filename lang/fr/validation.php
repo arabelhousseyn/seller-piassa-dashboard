@@ -212,7 +212,11 @@ return [
         ],
         'name' => [
             'required' => 'Nom requis.'
-        ]
+        ],
+        'type_id' => [
+            'required' => 'Type requis.',
+            'exists' => 'Type n\'existe pas.'
+        ],
     ],
 
     /*

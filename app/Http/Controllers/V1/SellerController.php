@@ -228,4 +228,9 @@ class SellerController extends Controller
             return response(['message' => 'not found'],404);
         }
     }
+
+    public function storeSellerJob()
+    {
+
+    }
 }
