@@ -234,7 +234,7 @@ class SellerController extends Controller
     {
         if($request->validated())
         {
-            $seller_job = SellerJob::create($request->only('job','sign_id','type_id','seller_id'));
+            SellerJob::create($request->only('job','sign_id','type_id','seller_id'));
             return response()->noContent();
         }
     }
