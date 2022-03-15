@@ -14,7 +14,7 @@ class ShipperController extends Controller
      */
     public function index()
     {
-        $shippers = Shipper::withTrashed()->latest('created_at')->get();
+        $shippers = Shipper::withTrashed()->with('profile')->latest('created_at')->get();
         return response(['data' => $shippers],200);
     }
 

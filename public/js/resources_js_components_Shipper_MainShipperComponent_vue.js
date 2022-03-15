@@ -211,7 +211,7 @@ __webpack_require__.r(__webpack_exports__);
       dialog4: false,
       dialog5: false,
       id: null,
-      users: [],
+      shippers: [],
       profile: [],
       data: [],
       info: [],
@@ -284,7 +284,7 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('/sanctum/csrf-cookie').then(function (res) {
         axios.get('/api/shippers').then(function (e) {
           _this.loading = false;
-          _this.users = e.data.data;
+          _this.shippers = e.data.data;
         })["catch"](function (err) {
           _this.$toast.open({
             message: 'Erreur dans serveur veuillez réessayer',

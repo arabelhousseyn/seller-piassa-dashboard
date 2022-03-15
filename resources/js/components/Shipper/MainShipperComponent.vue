@@ -159,7 +159,7 @@ export default {
         dialog4 : false,
         dialog5 : false,
         id : null,
-        users : [],
+        shippers : [],
         profile : [],
         data : [],
         info : [],
@@ -231,7 +231,7 @@ export default {
                 axios.get('/api/shippers')
                     .then(e =>{
                         this.loading = false
-                        this.users = e.data.data
+                        this.shippers = e.data.data
                     }).catch(err => {
                     this.$toast.open({message : 'Erreur dans serveur veuillez réessayer',type : 'error'})
                 })
