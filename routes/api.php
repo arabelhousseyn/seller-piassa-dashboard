@@ -76,6 +76,12 @@ Route::middleware('auth:sanctum')->group(function (){
         Route::get('all','types');
     });
 
+    //shippers
+
+    Route::controller(ShipperController::class)->prefix('shippers')->group(function (){
+        Route::put('restore/{id}','restore')->whereNumber('id');
+    });
+
     //resources
     Route::apiResources([
         'users' => UserController::class,

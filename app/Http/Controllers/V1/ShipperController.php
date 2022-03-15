@@ -88,13 +88,28 @@ class ShipperController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($shipper_id)
     {
         try {
-            $shipper = Shipper::withTrashed()->findOrFail($id);
+            $shipper = Shipper::withTrashed()->findOrFail($shipper_id);
             if(!$shipper->trashed())
             {
                 $shipper->delete();
+                return response()->noContent();
+            }
+        }catch (\Exception $exception)
+        {
+            return response(['message' => 'not found'],404);
+        }
+    }
+
+    public function restore($shipper_id)
+    {
+        try {
+            $shipper = Shipper::withTrashed()->findOrFail($shipper_id);
+            if($shipper->trashed())
+            {
+                $shipper->restore();
                 return response()->noContent();
             }
         }catch (\Exception $exception)

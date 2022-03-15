@@ -102,14 +102,16 @@
                 </template>
             </v-data-table>
         </v-container>
+        <delete-shipper-dialog @close="close" :dialog="dialog" :id="shipper_id" />
     </div>
 </template>
 
 <script>
 import BreadCrumbsComponent from "../BreadCrumbsComponent";
 import StoreShipperDialog from "../dialog/Shipper/StoreShipperDialog";
+import DeleteShipperDialog from "../dialog/Shipper/DeleteShipperDialog";
 export default {
-    components: {StoreShipperDialog, BreadCrumbsComponent},
+    components: {DeleteShipperDialog, StoreShipperDialog, BreadCrumbsComponent},
     data : ()=>({
         dialog : false,
         dialog1 : false,
@@ -120,7 +122,7 @@ export default {
         profile : [],
         data : [],
         loading : true,
-        selected : null,
+        shipper_id : null,
         search : null,
         headers: [
             {
@@ -143,7 +145,7 @@ export default {
         destroy(id)
         {
             this.dialog = true
-            this.selected = id
+            this.shipper_id = id
         },
         restore(id)
         {
@@ -152,8 +154,8 @@ export default {
         },
         close()
         {
-            this.profile = []
-            this.dialog2 = false
+            this.dialog = false
+            this.shipper_id = null
         },
         init()
         {
