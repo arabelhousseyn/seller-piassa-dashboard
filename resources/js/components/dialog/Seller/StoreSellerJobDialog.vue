@@ -25,10 +25,10 @@
                             <v-row>
                                 <v-col
                                     cols="12"
-                                    sm="6"
-                                    md="4"
                                 >
                                     <v-text-field
+                                        counter
+                                        maxlength="255"
                                         @keydown="check"
                                         label="Description de l'emploi*"
                                         v-model="data.job"
@@ -39,7 +39,7 @@
                                 <v-col
                                     cols="12"
                                     sm="6"
-                                    md="4"
+                                    md="6"
                                 >
                                     <v-select @change="check" :items="items" placeholder="Marques" v-model="selectedSign"></v-select>
                                 </v-col>
@@ -47,10 +47,17 @@
                                 <v-col
                                     cols="12"
                                     sm="6"
-                                    md="4"
+                                    md="6"
                                 >
                                     <v-select @change="check" :items="items2" placeholder="Types" v-model="selectedType"></v-select>
                                 </v-col>
+
+                                <v-alert v-if="hasError" border="right" colored-border type="error" elevation="2">
+                                    <ul>
+                                        <li v-for="(error,index) in errors" :key="index"><span>{{error}}</span></li>
+                                    </ul>
+                                </v-alert>
+
                                 <v-col cols="12">
                                     <v-btn type="submit" :disabled="disable" color="primary"><v-icon>mdi-check</v-icon></v-btn>
                                 </v-col>
@@ -91,11 +98,45 @@ export default {
         items : [],
         items2 : [],
         disable : true,
+        hasError : false,
+        errors : [],
     }),
     methods : {
         store()
         {
             this.data.seller_id = this.seller_id
+            for (const sign of this.signs) {
+                if(sign.name == this.selectedSign)
+                {
+                    this.data.sign_id = sign.id
+                    break
+                }
+            }
+
+            for (const type of this.types) {
+                if(type.name == this.selectedType)
+                {
+                    this.data.type_id = type.id
+                    break
+                }
+            }
+
+            axios.get('/sanctum/csrf-cookie').then(res => {
+                axios.post('/api/sellers/jobs/store',this.data).then(e=>{
+                    this.$toast.open({
+                        message : "Opération effectué",
+                        type : 'success',
+                    })
+                    window.location.reload()
+                }).catch(err =>{
+                    let errors = Object.values(err.response.data.errors)
+                    for (const error of errors) {
+                        this.errors.push(error[0])
+                        this.hasError = true
+                        this.disabled = false
+                    }
+                })
+            })
         },
         init()
         {

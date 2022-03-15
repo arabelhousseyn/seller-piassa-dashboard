@@ -246,6 +246,13 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['seller_id'],
   data: function data() {
@@ -263,37 +270,99 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       types: [],
       items: [],
       items2: [],
-      disable: true
+      disable: true,
+      hasError: false,
+      errors: []
     };
   },
   methods: {
     store: function store() {
+      var _this = this;
+
       this.data.seller_id = this.seller_id;
+
+      var _iterator = _createForOfIteratorHelper(this.signs),
+          _step;
+
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var sign = _step.value;
+
+          if (sign.name == this.selectedSign) {
+            this.data.sign_id = sign.id;
+            break;
+          }
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+
+      var _iterator2 = _createForOfIteratorHelper(this.types),
+          _step2;
+
+      try {
+        for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+          var type = _step2.value;
+
+          if (type.name == this.selectedType) {
+            this.data.type_id = type.id;
+            break;
+          }
+        }
+      } catch (err) {
+        _iterator2.e(err);
+      } finally {
+        _iterator2.f();
+      }
+
+      axios.get('/sanctum/csrf-cookie').then(function (res) {
+        axios.post('/api/sellers/jobs/store', _this.data).then(function (e) {
+          _this.$toast.open({
+            message: "Opération effectué",
+            type: 'success'
+          });
+
+          window.location.reload();
+        })["catch"](function (err) {
+          var errors = Object.values(err.response.data.errors);
+
+          for (var _i = 0, _errors = errors; _i < _errors.length; _i++) {
+            var error = _errors[_i];
+
+            _this.errors.push(error[0]);
+
+            _this.hasError = true;
+            _this.disabled = false;
+          }
+        });
+      });
     },
     init: function init() {
-      var _this = this;
+      var _this2 = this;
 
       axios.get('/sanctum/csrf-cookie').then(function (res) {
         axios.get("/api/signs/all").then(function (e) {
-          _this.signs = e.data.data;
+          _this2.signs = e.data.data;
 
-          var _iterator = _createForOfIteratorHelper(_this.signs),
-              _step;
+          var _iterator3 = _createForOfIteratorHelper(_this2.signs),
+              _step3;
 
           try {
-            for (_iterator.s(); !(_step = _iterator.n()).done;) {
-              var sign = _step.value;
+            for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
+              var sign = _step3.value;
 
-              _this.items.push(sign.name);
+              _this2.items.push(sign.name);
             }
           } catch (err) {
-            _iterator.e(err);
+            _iterator3.e(err);
           } finally {
-            _iterator.f();
+            _iterator3.f();
           }
         })["catch"](function (err) {
           if (err.response.status == 404) {
-            _this.$router.push('/home/sellers');
+            _this2.$router.push('/home/sellers');
           }
 
           console.log(err);
@@ -301,25 +370,25 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       });
       axios.get('/sanctum/csrf-cookie').then(function (res) {
         axios.get("/api/types/all").then(function (e) {
-          _this.types = e.data.data;
+          _this2.types = e.data.data;
 
-          var _iterator2 = _createForOfIteratorHelper(_this.types),
-              _step2;
+          var _iterator4 = _createForOfIteratorHelper(_this2.types),
+              _step4;
 
           try {
-            for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-              var type = _step2.value;
+            for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
+              var type = _step4.value;
 
-              _this.items2.push(type.name);
+              _this2.items2.push(type.name);
             }
           } catch (err) {
-            _iterator2.e(err);
+            _iterator4.e(err);
           } finally {
-            _iterator2.f();
+            _iterator4.f();
           }
         })["catch"](function (err) {
           if (err.response.status == 404) {
-            _this.$router.push('/home/sellers');
+            _this2.$router.push('/home/sellers');
           }
 
           console.log(err);
@@ -836,10 +905,12 @@ var render = function () {
                           [
                             _c(
                               "v-col",
-                              { attrs: { cols: "12", sm: "6", md: "4" } },
+                              { attrs: { cols: "12" } },
                               [
                                 _c("v-text-field", {
                                   attrs: {
+                                    counter: "",
+                                    maxlength: "255",
                                     label: "Description de l'emploi*",
                                     required: "",
                                   },
@@ -858,7 +929,7 @@ var render = function () {
                             _vm._v(" "),
                             _c(
                               "v-col",
-                              { attrs: { cols: "12", sm: "6", md: "4" } },
+                              { attrs: { cols: "12", sm: "6", md: "6" } },
                               [
                                 _c("v-select", {
                                   attrs: {
@@ -880,7 +951,7 @@ var render = function () {
                             _vm._v(" "),
                             _c(
                               "v-col",
-                              { attrs: { cols: "12", sm: "6", md: "4" } },
+                              { attrs: { cols: "12", sm: "6", md: "6" } },
                               [
                                 _c("v-select", {
                                   attrs: {
@@ -899,6 +970,34 @@ var render = function () {
                               ],
                               1
                             ),
+                            _vm._v(" "),
+                            _vm.hasError
+                              ? _c(
+                                  "v-alert",
+                                  {
+                                    attrs: {
+                                      border: "right",
+                                      "colored-border": "",
+                                      type: "error",
+                                      elevation: "2",
+                                    },
+                                  },
+                                  [
+                                    _c(
+                                      "ul",
+                                      _vm._l(
+                                        _vm.errors,
+                                        function (error, index) {
+                                          return _c("li", { key: index }, [
+                                            _c("span", [_vm._v(_vm._s(error))]),
+                                          ])
+                                        }
+                                      ),
+                                      0
+                                    ),
+                                  ]
+                                )
+                              : _vm._e(),
                             _vm._v(" "),
                             _c(
                               "v-col",
