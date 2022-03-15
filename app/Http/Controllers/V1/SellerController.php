@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreSellerJobRequest;
 use App\Http\Requests\StoreSellerPhoneRequest;
 use App\Http\Requests\StoreSellerRequest;
 use App\Http\Requests\UpdateSellerRequest;
 use App\Services\UpdateSellerService;
 use Illuminate\Support\Facades\Hash;
-use App\Models\{Seller, SellerPhone};
+use App\Models\{Seller, SellerJob, SellerPhone};
 use Illuminate\Http\Request;
 
 class SellerController extends Controller
@@ -229,8 +230,12 @@ class SellerController extends Controller
         }
     }
 
-    public function storeSellerJob()
+    public function storeSellerJob(StoreSellerJobRequest $request)
     {
-
+        if($request->validated())
+        {
+            $seller_job = SellerJob::create($request->only('job','sign_id','type_id','seller_id'));
+            return response()->noContent();
+        }
     }
 }

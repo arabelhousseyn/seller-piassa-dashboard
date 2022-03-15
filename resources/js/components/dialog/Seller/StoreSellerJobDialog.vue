@@ -75,6 +75,7 @@
 </template>
 <script>
 export default {
+    props : ['seller_id'],
     data : ()=>({
         dialog : false,
         selectedSign : null,
@@ -82,7 +83,8 @@ export default {
         data : {
             job : null,
             sign_id : null,
-            type_id : null
+            type_id : null,
+            seller_id : null,
         },
         signs : [],
         types : [],
@@ -93,7 +95,7 @@ export default {
     methods : {
         store()
         {
-
+            this.data.seller_id = this.seller_id
         },
         init()
         {

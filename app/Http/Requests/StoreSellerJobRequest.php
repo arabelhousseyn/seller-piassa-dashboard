@@ -26,7 +26,8 @@ class StoreSellerJobRequest extends FormRequest
         return [
             'job' => 'required|max:255',
             'sign_id' => 'required|exists:signs,id',
-            'type_id' => 'required|exists:types,id'
+            'type_id' => 'required|exists:types,id',
+            'seller_id' => 'required|exists:sellers,id'
         ];
     }
 }

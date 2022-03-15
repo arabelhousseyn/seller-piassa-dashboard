@@ -19,7 +19,7 @@
                             vertical
                         ></v-divider>
                         <v-spacer></v-spacer>
-                        <store-seller-job-dialog />
+                        <store-seller-job-dialog :seller_id="seller_id" />
                     </v-toolbar>
                     <v-toolbar flat>
                         <v-text-field

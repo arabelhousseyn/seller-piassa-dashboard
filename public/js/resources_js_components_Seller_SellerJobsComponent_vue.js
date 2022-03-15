@@ -247,6 +247,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ['seller_id'],
   data: function data() {
     return {
       dialog: false,
@@ -255,7 +256,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       data: {
         job: null,
         sign_id: null,
-        type_id: null
+        type_id: null,
+        seller_id: null
       },
       signs: [],
       types: [],
@@ -265,7 +267,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     };
   },
   methods: {
-    store: function store() {},
+    store: function store() {
+      this.data.seller_id = this.seller_id;
+    },
     init: function init() {
       var _this = this;
 
@@ -520,7 +524,9 @@ var render = function () {
                         _vm._v(" "),
                         _c("v-spacer"),
                         _vm._v(" "),
-                        _c("store-seller-job-dialog"),
+                        _c("store-seller-job-dialog", {
+                          attrs: { seller_id: _vm.seller_id },
+                        }),
                       ],
                       1
                     ),
