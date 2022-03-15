@@ -79,7 +79,7 @@ Route::middleware('auth:sanctum')->group(function (){
         'provinces' => ProvincesController::class,
         'vehicles' =>  VehicleController::class,
         'signs' => SignController::class,
-        'TypeController' => TypeController::class
+        'types' => TypeController::class
     ]);
 
 });
