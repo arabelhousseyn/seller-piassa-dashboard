@@ -103,10 +103,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -885,42 +881,6 @@ var render = function () {
                                   _c(
                                     "v-list-item-group",
                                     [
-                                      _c(
-                                        "v-list-item",
-                                        {
-                                          attrs: { link: "" },
-                                          on: {
-                                            click: function ($event) {
-                                              return _vm.update(item)
-                                            },
-                                          },
-                                        },
-                                        [
-                                          _c(
-                                            "v-list-item-icon",
-                                            [
-                                              _c(
-                                                "v-icon",
-                                                { attrs: { color: "primary" } },
-                                                [_vm._v("mdi-pencil")]
-                                              ),
-                                            ],
-                                            1
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "v-list-item-content",
-                                            [
-                                              _c("v-list-item-title", [
-                                                _vm._v("Modifier"),
-                                              ]),
-                                            ],
-                                            1
-                                          ),
-                                        ],
-                                        1
-                                      ),
-                                      _vm._v(" "),
                                       item.deleted_at == null
                                         ? _c(
                                             "v-list-item",
@@ -1013,7 +973,7 @@ var render = function () {
                   ],
                   null,
                   false,
-                  1700820503
+                  3694378131
                 ),
               }),
             ],
