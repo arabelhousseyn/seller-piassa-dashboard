@@ -25,7 +25,8 @@ class StoreSellerPhoneRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'phone' => 'required|digits:10|unique:seller_phones,phone'
+            'phone' => 'required|digits:10|unique:seller_phones,phone',
+            'seller_id' => 'required|exists:sellers,id'
         ];
     }
 }

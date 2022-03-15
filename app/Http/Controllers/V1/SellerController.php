@@ -156,18 +156,12 @@ class SellerController extends Controller
         }
     }
 
-    public function storeSellerPhones(StoreSellerPhoneRequest $request,$id)
+    public function storeSellerPhones(StoreSellerPhoneRequest $request)
     {
         if($request->validated())
         {
-            try {
-                $seller = Seller::findOrFail($id);
-                $seller->phones()->create($request->only('name','phone'));
-                return response('',204);
-            }catch (\Exception $e)
-            {
-                return response(['message' => 'not found'],404);
-            }
+                SellerPhone::create($request->only('name','phone','seller_id'));
+                return response()->noContent();
         }
     }
 

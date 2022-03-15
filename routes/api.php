@@ -59,7 +59,7 @@ Route::middleware('auth:sanctum')->group(function (){
         Route::get('jobs/{id}','sellerJobs')->whereNumber('id');
 
         Route::prefix('phones')->group(function (){
-            Route::post('store/{id}','storeSellerPhones')->whereNumber('id'); // refactor
+            Route::post('store','storeSellerPhones')->whereNumber('id'); // refactor
             Route::put('update/{id}','updateSellerPhone')->whereNumber('id');
             Route::delete('destroy/{id}','destroySellerPhone')->whereNumber('id');
         });
