@@ -73,7 +73,42 @@ export default {
         store()
         {
 
+        },
+        init()
+        {
+            axios.get('/sanctum/csrf-cookie').then(res =>{
+                axios.get(`/api/signs/all`)
+                    .then(e=>{
+                        console.log(e.data.data)
+                        this.signs = e.data.data
+                    })
+                    .catch(err =>{
+                        if(err.response.status == 404)
+                        {
+                            this.$router.push('/home/sellers')
+                        }
+                        console.log(err)
+                    })
+            })
+
+            axios.get('/sanctum/csrf-cookie').then(res =>{
+                axios.get(`/api/types/all`)
+                    .then(e=>{
+                        console.log(e.data.data)
+                        this.types = e.data.data
+                    })
+                    .catch(err =>{
+                        if(err.response.status == 404)
+                        {
+                            this.$router.push('/home/sellers')
+                        }
+                        console.log(err)
+                    })
+            })
         }
+    },
+    mounted() {
+        this.init()
     }
 }
 </script>

@@ -238,7 +238,38 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    store: function store() {}
+    store: function store() {},
+    init: function init() {
+      var _this = this;
+
+      axios.get('/sanctum/csrf-cookie').then(function (res) {
+        axios.get("/api/signs/all").then(function (e) {
+          console.log(e.data.data);
+          _this.signs = e.data.data;
+        })["catch"](function (err) {
+          if (err.response.status == 404) {
+            _this.$router.push('/home/sellers');
+          }
+
+          console.log(err);
+        });
+      });
+      axios.get('/sanctum/csrf-cookie').then(function (res) {
+        axios.get("/api/types/all").then(function (e) {
+          console.log(e.data.data);
+          _this.types = e.data.data;
+        })["catch"](function (err) {
+          if (err.response.status == 404) {
+            _this.$router.push('/home/sellers');
+          }
+
+          console.log(err);
+        });
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.init();
   }
 });
 

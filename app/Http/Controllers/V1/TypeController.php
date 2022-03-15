@@ -86,7 +86,7 @@ class TypeController extends Controller
 
     public function types()
     {
-        $types = Type::withoutTrashed()->latest('created_at')->get();
+        $types = Type::withoutTrashed()->latest('created_at')->select(['id','name'])->get();
         return response(['data' => $types],200);
     }
 }
