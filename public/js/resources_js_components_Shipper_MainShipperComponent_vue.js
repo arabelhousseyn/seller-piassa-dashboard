@@ -40,6 +40,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _BreadCrumbsComponent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../BreadCrumbsComponent */ "./resources/js/components/BreadCrumbsComponent.vue");
 /* harmony import */ var _dialog_Shipper_StoreShipperDialog__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../dialog/Shipper/StoreShipperDialog */ "./resources/js/components/dialog/Shipper/StoreShipperDialog.vue");
 /* harmony import */ var _dialog_Shipper_DeleteShipperDialog__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../dialog/Shipper/DeleteShipperDialog */ "./resources/js/components/dialog/Shipper/DeleteShipperDialog.vue");
+/* harmony import */ var _dialog_Shipper_RestoreShipperDialog__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../dialog/Shipper/RestoreShipperDialog */ "./resources/js/components/dialog/Shipper/RestoreShipperDialog.vue");
 //
 //
 //
@@ -148,11 +149,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+
 
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
+    RestoreShipperDialog: _dialog_Shipper_RestoreShipperDialog__WEBPACK_IMPORTED_MODULE_3__["default"],
     DeleteShipperDialog: _dialog_Shipper_DeleteShipperDialog__WEBPACK_IMPORTED_MODULE_2__["default"],
     StoreShipperDialog: _dialog_Shipper_StoreShipperDialog__WEBPACK_IMPORTED_MODULE_1__["default"],
     BreadCrumbsComponent: _BreadCrumbsComponent__WEBPACK_IMPORTED_MODULE_0__["default"]
@@ -201,10 +205,14 @@ __webpack_require__.r(__webpack_exports__);
     },
     restore: function restore(id) {
       this.dialog1 = true;
-      this.selected = id;
+      this.shipper_id = id;
     },
     close: function close() {
       this.dialog = false;
+      this.shipper_id = null;
+    },
+    close1: function close1() {
+      this.dialog1 = false;
       this.shipper_id = null;
     },
     init: function init() {
@@ -298,6 +306,95 @@ __webpack_require__.r(__webpack_exports__);
       this.load = true;
       axios.get('/sanctum/csrf-cookie').then(function (res) {
         axios["delete"]("/api/shippers/".concat(_this.id)).then(function (e) {
+          if (e.status == 204) {
+            _this.$toast.open({
+              message: 'Opération effectué',
+              type: 'success'
+            });
+
+            _this.load = false;
+            window.location.reload();
+          }
+        })["catch"](function (err) {
+          _this.$toast.open({
+            message: 'ERROR',
+            type: 'error'
+          });
+        });
+      });
+    },
+    close: function close() {
+      this.$emit('close');
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Shipper/RestoreShipperDialog.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Shipper/RestoreShipperDialog.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ['dialog', 'id'],
+  data: function data() {
+    return {
+      load: false
+    };
+  },
+  methods: {
+    destroy: function destroy() {
+      var _this = this;
+
+      this.load = true;
+      axios.get('/sanctum/csrf-cookie').then(function (res) {
+        axios.put("/api/shippers/restore/".concat(_this.id)).then(function (e) {
           if (e.status == 204) {
             _this.$toast.open({
               message: 'Opération effectué',
@@ -703,6 +800,44 @@ component.options.__file = "resources/js/components/dialog/Shipper/DeleteShipper
 
 /***/ }),
 
+/***/ "./resources/js/components/dialog/Shipper/RestoreShipperDialog.vue":
+/*!*************************************************************************!*\
+  !*** ./resources/js/components/dialog/Shipper/RestoreShipperDialog.vue ***!
+  \*************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _RestoreShipperDialog_vue_vue_type_template_id_64cb51b5___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./RestoreShipperDialog.vue?vue&type=template&id=64cb51b5& */ "./resources/js/components/dialog/Shipper/RestoreShipperDialog.vue?vue&type=template&id=64cb51b5&");
+/* harmony import */ var _RestoreShipperDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RestoreShipperDialog.vue?vue&type=script&lang=js& */ "./resources/js/components/dialog/Shipper/RestoreShipperDialog.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _RestoreShipperDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _RestoreShipperDialog_vue_vue_type_template_id_64cb51b5___WEBPACK_IMPORTED_MODULE_0__.render,
+  _RestoreShipperDialog_vue_vue_type_template_id_64cb51b5___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/dialog/Shipper/RestoreShipperDialog.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/dialog/Shipper/StoreShipperDialog.vue":
 /*!***********************************************************************!*\
   !*** ./resources/js/components/dialog/Shipper/StoreShipperDialog.vue ***!
@@ -786,6 +921,21 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/dialog/Shipper/RestoreShipperDialog.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************!*\
+  !*** ./resources/js/components/dialog/Shipper/RestoreShipperDialog.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_RestoreShipperDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./RestoreShipperDialog.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Shipper/RestoreShipperDialog.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_RestoreShipperDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/js/components/dialog/Shipper/StoreShipperDialog.vue?vue&type=script&lang=js&":
 /*!************************************************************************************************!*\
   !*** ./resources/js/components/dialog/Shipper/StoreShipperDialog.vue?vue&type=script&lang=js& ***!
@@ -845,6 +995,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteShipperDialog_vue_vue_type_template_id_9d135218___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteShipperDialog_vue_vue_type_template_id_9d135218___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./DeleteShipperDialog.vue?vue&type=template&id=9d135218& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Shipper/DeleteShipperDialog.vue?vue&type=template&id=9d135218&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/dialog/Shipper/RestoreShipperDialog.vue?vue&type=template&id=64cb51b5&":
+/*!********************************************************************************************************!*\
+  !*** ./resources/js/components/dialog/Shipper/RestoreShipperDialog.vue?vue&type=template&id=64cb51b5& ***!
+  \********************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RestoreShipperDialog_vue_vue_type_template_id_64cb51b5___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RestoreShipperDialog_vue_vue_type_template_id_64cb51b5___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RestoreShipperDialog_vue_vue_type_template_id_64cb51b5___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./RestoreShipperDialog.vue?vue&type=template&id=64cb51b5& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Shipper/RestoreShipperDialog.vue?vue&type=template&id=64cb51b5&");
 
 
 /***/ }),
@@ -1294,6 +1460,11 @@ var render = function () {
         attrs: { dialog: _vm.dialog, id: _vm.shipper_id },
         on: { close: _vm.close },
       }),
+      _vm._v(" "),
+      _c("restore-shipper-dialog", {
+        attrs: { dialog: _vm.dialog1, id: _vm.shipper_id },
+        on: { close: _vm.close1 },
+      }),
     ],
     1
   )
@@ -1369,6 +1540,95 @@ var render = function () {
                           on: { click: _vm.destroy },
                         },
                         [_c("v-icon", [_vm._v("mdi-delete")])],
+                        1
+                      )
+                    : _c("v-progress-circular", {
+                        attrs: { indeterminate: "", color: "primary" },
+                      }),
+                ],
+                1
+              ),
+            ],
+            1
+          ),
+        ],
+        1
+      ),
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Shipper/RestoreShipperDialog.vue?vue&type=template&id=64cb51b5&":
+/*!***********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Shipper/RestoreShipperDialog.vue?vue&type=template&id=64cb51b5& ***!
+  \***********************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "resotre_seller_dialog" },
+    [
+      _c(
+        "v-dialog",
+        {
+          attrs: { persistent: "", "max-width": "290" },
+          model: {
+            value: _vm.dialog,
+            callback: function ($$v) {
+              _vm.dialog = $$v
+            },
+            expression: "dialog",
+          },
+        },
+        [
+          _c(
+            "v-card",
+            [
+              _c("v-card-title", { staticClass: "text-h5" }, [
+                _vm._v(
+                  "\n                Etes-vous sûr que vous voulez restorer !\n            "
+                ),
+              ]),
+              _vm._v(" "),
+              _c(
+                "v-card-actions",
+                [
+                  _c("v-spacer"),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { color: "grey darken-1", text: "" },
+                      on: { click: _vm.close },
+                    },
+                    [_c("v-icon", [_vm._v("mdi-cancel")])],
+                    1
+                  ),
+                  _vm._v(" "),
+                  !_vm.load
+                    ? _c(
+                        "v-btn",
+                        {
+                          attrs: { color: "success darken-1", text: "" },
+                          on: { click: _vm.destroy },
+                        },
+                        [_c("v-icon", [_vm._v("mdi-restore")])],
                         1
                       )
                     : _c("v-progress-circular", {
