@@ -282,7 +282,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get('/sanctum/csrf-cookie').then(function (res) {
-        axios.get('/api/users').then(function (e) {
+        axios.get('/api/shippers').then(function (e) {
           _this.loading = false;
           _this.users = e.data.data;
         })["catch"](function (err) {

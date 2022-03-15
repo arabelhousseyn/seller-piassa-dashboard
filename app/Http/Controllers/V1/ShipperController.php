@@ -4,7 +4,7 @@ namespace App\Http\Controllers\V1;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Models\{Shipper};
 class ShipperController extends Controller
 {
     /**
@@ -14,7 +14,8 @@ class ShipperController extends Controller
      */
     public function index()
     {
-        //
+        $shippers = Shipper::withTrashed()->latest('created_at')->get();
+        return response(['data' => $shippers],200);
     }
 
     /**

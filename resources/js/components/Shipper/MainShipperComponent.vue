@@ -228,7 +228,7 @@ export default {
         init()
         {
             axios.get('/sanctum/csrf-cookie').then(res =>{
-                axios.get('/api/users')
+                axios.get('/api/shippers')
                     .then(e =>{
                         this.loading = false
                         this.users = e.data.data
