@@ -1,12 +1,15 @@
 <template>
-    <div class="seller-jobs">
+    <div v-if="jobs !== undefined || data !== undefined" class="seller-jobs">
         <v-container fluid>
+            <v-btn color="primary">
+                <router-link style="text-decoration: none;color: white;" to="/home/sellers"><v-icon>mdi-subdirectory-arrow-left</v-icon> Retour </router-link>
+            </v-btn>
             <v-data-table
                 :headers="headers"
                 :items="jobs == undefined ? data : jobs"
                 :search="search"
                 sort-by="created_at"
-                class="elevation-1"
+                class="elevation-1 mt-3"
             >
                 <template v-slot:top>
                     <v-toolbar
@@ -94,7 +97,7 @@ export default {
     components: {StoreSellerJobDialog},
     props : ['jobs'],
     data : ()=>({
-        data : [],
+        data : undefined,
         seller_id : window.location.pathname.split('/').pop(),
         search : null,
         headers: [
