@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 
 use App\Http\Controllers\V1\{LoginController,LogoutController,UserController,SellerController,ShipperController
-,DashbaordController,ProvincesController,UserChangePassword,VehicleController,SignController,SellerChangePassword};
+,DashbaordController,ProvincesController,UserChangePassword,VehicleController,SignController,SellerChangePassword
+,TypeController};
 
 
 Route::middleware(['throttle:login'])->group(function (){
@@ -64,6 +65,12 @@ Route::middleware('auth:sanctum')->group(function (){
         });
     });
 
+    //types
+
+    Route::controller(TypeController::class)->prefix('types')->group(function (){
+        Route::get('all','types');
+    });
+
     //resources
     Route::apiResources([
         'users' => UserController::class,
@@ -71,7 +78,8 @@ Route::middleware('auth:sanctum')->group(function (){
         'shippers' => ShipperController::class,
         'provinces' => ProvincesController::class,
         'vehicles' =>  VehicleController::class,
-        'signs' => SignController::class
+        'signs' => SignController::class,
+        'TypeController' => TypeController::class
     ]);
 
 });
