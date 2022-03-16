@@ -31,7 +31,7 @@ class ShipperUserOrderCommission extends Model
 
     public function getAmountAttribute($value)
     {
-        return Money::DZD($value)->formatLocale('fr');
+        return Money::DZD($value)->getAmount() . ' DZD';
     }
 
 
