@@ -36,7 +36,7 @@
                 </template>
 
                 <template v-slot:item.actions="{ item }">
-                    <v-btn text color="primary"><v-icon>mdi-map-marker</v-icon></v-btn>
+                    <v-btn @click="openMap(item.commission.start_coordination,item.commission.end_coordination)" text color="primary"><v-icon>mdi-map-marker</v-icon></v-btn>
                 </template>
 
                 <template v-slot:no-data>
@@ -47,16 +47,22 @@
                 </template>
             </v-data-table>
         </v-container>
+        <delivery-maps-dialog v-if="dialog" @close="close" :lat="lat" :long="long" :dialog="dialog"  />
     </div>
 </template>
 
 <script>
+import DeliveryMapsDialog from "../dialog/Shipper/DeliveryMapsDialog";
 export default {
+    components: {DeliveryMapsDialog},
     props : ['data'],
     data : ()=>({
         data1 : undefined,
         search : null,
         shipper_id : window.location.pathname.split('/').pop(),
+        lat : null,
+        long : null,
+        dialog : false,
         headers: [
             {
                 text: 'Ref commande',
@@ -70,6 +76,12 @@ export default {
         ],
     }),
     methods : {
+        close()
+        {
+          this.dialog = false
+          this.lat = null
+          this.long = null
+        },
         init()
         {
             axios.get('/sanctum/csrf-cookie').then(res =>{
@@ -85,6 +97,12 @@ export default {
                         console.log(err)
                     })
             })
+        },
+        openMap(start,end)
+        {
+            this.dialog = true
+            this.lat = start
+            this.long = end
         }
     },
     mounted() {
