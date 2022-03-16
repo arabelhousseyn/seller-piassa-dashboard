@@ -1766,7 +1766,7 @@ var render = function () {
                                           name: "commission",
                                           params: {
                                             id: item.id,
-                                            data: item.orderRequests,
+                                            data: item.order_requests,
                                           },
                                         })
                                       },
