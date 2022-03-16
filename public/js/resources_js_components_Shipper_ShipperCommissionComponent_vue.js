@@ -19,7 +19,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['data']
+  props: ['data'],
+  data: function data() {
+    return {
+      data1: undefined,
+      shipper_id: window.location.pathname.split('/').pop()
+    };
+  },
+  methods: {
+    init: function init() {
+      var _this = this;
+
+      axios.get('/sanctum/csrf-cookie').then(function (res) {
+        axios.get("/api/shippers/comissions/".concat(_this.shipper_id)).then(function (e) {
+          _this.data1 = e.data.data;
+        })["catch"](function (err) {
+          if (err.response.status == 404) {
+            _this.$router.push('/home/shippers');
+          }
+
+          console.log(err);
+        });
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.init();
+  }
 });
 
 /***/ }),
@@ -110,7 +136,11 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "shipper-commissions" }, [
     _vm._v(
-      "\n    welcome to shipper comissions\n    " + _vm._s(_vm.data) + "\n"
+      "\n    welcome to shipper comissions\n    " +
+        _vm._s(_vm.data) +
+        " " +
+        _vm._s(_vm.data1) +
+        "\n"
     ),
   ])
 }
