@@ -1,7 +1,48 @@
 <template>
-    <div class="shipper-commissions">
-        welcome to shipper comissions
-        {{data}} {{data1}}
+    <div v-if="this.data !== undefined || this.data1 !== undefined" class="shipper-commissions">
+        <v-container fluid>
+            <v-btn color="primary">
+                <router-link style="text-decoration: none;color: white;" to="/home/shippers"><v-icon>mdi-subdirectory-arrow-left</v-icon> Retour </router-link>
+            </v-btn>
+            <v-data-table
+                :headers="headers"
+                :items="(data == undefined) ? data1 : data"
+                :search="search"
+                sort-by="[created_at]"
+                :sort-desc="[true]"
+                class="elevation-1 mt-3"
+            >
+                <template v-slot:top>
+                    <v-toolbar
+                        flat
+                    >
+                        <v-toolbar-title>Commissions</v-toolbar-title>
+                        <v-divider
+                            class="mx-4"
+                            inset
+                            vertical
+                        ></v-divider>
+                        <v-spacer></v-spacer>
+                    </v-toolbar>
+                    <v-toolbar flat>
+                        <v-text-field
+                            v-model="search"
+                            append-icon="mdi-magnify"
+                            label="Recherche"
+                            single-line
+                            hide-details
+                        ></v-text-field>
+                    </v-toolbar>
+                </template>
+
+                <template v-slot:no-data>
+                    <v-btn
+                        color="primary">
+                        Reset
+                    </v-btn>
+                </template>
+            </v-data-table>
+        </v-container>
     </div>
 </template>
 
@@ -10,7 +51,17 @@ export default {
     props : ['data'],
     data : ()=>({
         data1 : undefined,
-        shipper_id : window.location.pathname.split('/').pop()
+        search : null,
+        shipper_id : window.location.pathname.split('/').pop(),
+        headers: [
+            {
+                text: 'Commission',
+                align: 'start',
+                sortable: true,
+                value: 'commission.amount',
+            },
+            // { text: 'Nom', value: 'name' },
+        ],
     }),
     methods : {
         init()

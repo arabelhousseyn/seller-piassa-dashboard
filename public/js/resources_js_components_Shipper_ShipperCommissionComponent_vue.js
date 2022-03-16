@@ -18,12 +18,61 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['data'],
   data: function data() {
     return {
       data1: undefined,
-      shipper_id: window.location.pathname.split('/').pop()
+      search: null,
+      shipper_id: window.location.pathname.split('/').pop(),
+      headers: [{
+        text: 'Commission',
+        align: 'start',
+        sortable: true,
+        value: 'commission.amount'
+      } // { text: 'Nom', value: 'name' },
+      ]
     };
   },
   methods: {
@@ -134,15 +183,121 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "shipper-commissions" }, [
-    _vm._v(
-      "\n    welcome to shipper comissions\n    " +
-        _vm._s(_vm.data) +
-        " " +
-        _vm._s(_vm.data1) +
-        "\n"
-    ),
-  ])
+  return this.data !== undefined || this.data1 !== undefined
+    ? _c(
+        "div",
+        { staticClass: "shipper-commissions" },
+        [
+          _c(
+            "v-container",
+            { attrs: { fluid: "" } },
+            [
+              _c(
+                "v-btn",
+                { attrs: { color: "primary" } },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticStyle: {
+                        "text-decoration": "none",
+                        color: "white",
+                      },
+                      attrs: { to: "/home/shippers" },
+                    },
+                    [
+                      _c("v-icon", [_vm._v("mdi-subdirectory-arrow-left")]),
+                      _vm._v(" Retour "),
+                    ],
+                    1
+                  ),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("v-data-table", {
+                staticClass: "elevation-1 mt-3",
+                attrs: {
+                  headers: _vm.headers,
+                  items: _vm.data == undefined ? _vm.data1 : _vm.data,
+                  search: _vm.search,
+                  "sort-by": "[created_at]",
+                  "sort-desc": [true],
+                },
+                scopedSlots: _vm._u(
+                  [
+                    {
+                      key: "top",
+                      fn: function () {
+                        return [
+                          _c(
+                            "v-toolbar",
+                            { attrs: { flat: "" } },
+                            [
+                              _c("v-toolbar-title", [_vm._v("Commissions")]),
+                              _vm._v(" "),
+                              _c("v-divider", {
+                                staticClass: "mx-4",
+                                attrs: { inset: "", vertical: "" },
+                              }),
+                              _vm._v(" "),
+                              _c("v-spacer"),
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-toolbar",
+                            { attrs: { flat: "" } },
+                            [
+                              _c("v-text-field", {
+                                attrs: {
+                                  "append-icon": "mdi-magnify",
+                                  label: "Recherche",
+                                  "single-line": "",
+                                  "hide-details": "",
+                                },
+                                model: {
+                                  value: _vm.search,
+                                  callback: function ($$v) {
+                                    _vm.search = $$v
+                                  },
+                                  expression: "search",
+                                },
+                              }),
+                            ],
+                            1
+                          ),
+                        ]
+                      },
+                      proxy: true,
+                    },
+                    {
+                      key: "no-data",
+                      fn: function () {
+                        return [
+                          _c("v-btn", { attrs: { color: "primary" } }, [
+                            _vm._v(
+                              "\n                    Reset\n                "
+                            ),
+                          ]),
+                        ]
+                      },
+                      proxy: true,
+                    },
+                  ],
+                  null,
+                  false,
+                  460881957
+                ),
+              }),
+            ],
+            1
+          ),
+        ],
+        1
+      )
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true

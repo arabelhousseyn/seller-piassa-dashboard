@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
+use Akaunting\Money\Money;
 class ShipperUserOrderCommission extends Model
 {
     use HasFactory, SoftDeletes;
@@ -22,8 +22,17 @@ class ShipperUserOrderCommission extends Model
         'deleted_at'
     ];
 
+
     public function userOrder()
     {
         return $this->belongsTo(ShipperUserOrder::class,'shipper_user_order_id')->withDefault();
     }
+
+
+    public function getAmountAttribute($value)
+    {
+        return Money::DZD($value)->formatLocale('fr');
+    }
+
+
 }
