@@ -59,6 +59,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['data'],
   data: function data() {
@@ -77,6 +81,10 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         text: 'Date de l\'opération',
         value: 'commission.updated_at'
+      }, {
+        text: 'Map',
+        value: 'actions',
+        sortable: false
       }]
     };
   },
@@ -278,6 +286,20 @@ var render = function () {
                       proxy: true,
                     },
                     {
+                      key: "item.actions",
+                      fn: function (ref) {
+                        var item = ref.item
+                        return [
+                          _c(
+                            "v-btn",
+                            { attrs: { text: "", color: "primary" } },
+                            [_c("v-icon", [_vm._v("mdi-map-marker")])],
+                            1
+                          ),
+                        ]
+                      },
+                    },
+                    {
                       key: "no-data",
                       fn: function () {
                         return [
@@ -293,7 +315,7 @@ var render = function () {
                   ],
                   null,
                   false,
-                  460881957
+                  764671230
                 ),
               }),
             ],

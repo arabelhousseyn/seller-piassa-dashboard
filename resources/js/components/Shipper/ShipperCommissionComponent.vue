@@ -35,6 +35,10 @@
                     </v-toolbar>
                 </template>
 
+                <template v-slot:item.actions="{ item }">
+                    <v-btn text color="primary"><v-icon>mdi-map-marker</v-icon></v-btn>
+                </template>
+
                 <template v-slot:no-data>
                     <v-btn
                         color="primary">
@@ -62,6 +66,7 @@ export default {
             },
             {text: 'Commission', value: 'commission.amount'},
             { text: 'Date de l\'opération', value: 'commission.updated_at' },
+            { text: 'Map', value: 'actions', sortable: false },
         ],
     }),
     methods : {

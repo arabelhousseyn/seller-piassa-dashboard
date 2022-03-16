@@ -24,5 +24,6 @@
     <div id="app">
         @yield('master')
     </div>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGy4IaSCDzTFd9eW7H1Iovy7xEc5sNOSE" />
 </body>
 </html>
