@@ -118,4 +118,15 @@ class ShipperController extends Controller
             return response(['message' => 'not found'],404);
         }
     }
+
+    public function shipperComissions($shipper_id)
+    {
+        try {
+            $shipper = Shipper::withTrashed()->with('orderRequests.commission.userOrder.order')->findOrFail($shipper_id);
+            return response($shipper->orderRequests,200);
+        }catch (\Exception $exception)
+        {
+            return response(['message' => 'not found'],404);
+        }
+    }
 }

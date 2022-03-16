@@ -80,6 +80,7 @@ Route::middleware('auth:sanctum')->group(function (){
 
     Route::controller(ShipperController::class)->prefix('shippers')->group(function (){
         Route::put('restore/{id}','restore')->whereNumber('id');
+        Route::get('comissions/{id}','shipperComissions')->whereNumber('id');
     });
 
     //resources
