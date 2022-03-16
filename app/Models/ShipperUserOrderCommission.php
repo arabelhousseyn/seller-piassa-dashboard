@@ -22,6 +22,10 @@ class ShipperUserOrderCommission extends Model
         'deleted_at'
     ];
 
+    protected $casts = [
+        'updated_at' => 'date:Y-m-d H:i:s'
+    ];
+
 
     public function userOrder()
     {

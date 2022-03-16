@@ -122,8 +122,15 @@ class ShipperController extends Controller
     public function shipperComissions($shipper_id)
     {
         try {
+            $items = [];
             $shipper = Shipper::withTrashed()->with('orderRequests.commission.userOrder.order')->findOrFail($shipper_id);
-            return response(['data' => $shipper->orderRequests],200);
+            foreach ($shipper->orderRequests as $orderRequest) {
+                if($orderRequest->commission !== null)
+                {
+                    $items[] = $orderRequest;
+                }
+            }
+            return response(['data' => $items],200);
         }catch (\Exception $exception)
         {
             return response(['message' => 'not found'],404);

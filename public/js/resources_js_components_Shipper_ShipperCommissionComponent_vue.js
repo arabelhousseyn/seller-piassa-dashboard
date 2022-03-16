@@ -67,12 +67,17 @@ __webpack_require__.r(__webpack_exports__);
       search: null,
       shipper_id: window.location.pathname.split('/').pop(),
       headers: [{
-        text: 'Commission',
+        text: 'Ref commande',
+        value: 'commission.user_order.order.ref',
         align: 'start',
-        sortable: true,
+        sortable: true
+      }, {
+        text: 'Commission',
         value: 'commission.amount'
-      } // { text: 'Nom', value: 'name' },
-      ]
+      }, {
+        text: 'Date de l\'opération',
+        value: 'commission.updated_at'
+      }]
     };
   },
   methods: {

@@ -55,12 +55,13 @@ export default {
         shipper_id : window.location.pathname.split('/').pop(),
         headers: [
             {
-                text: 'Commission',
+                text: 'Ref commande',
+                value: 'commission.user_order.order.ref',
                 align: 'start',
                 sortable: true,
-                value: 'commission.amount',
             },
-            // { text: 'Nom', value: 'name' },
+            {text: 'Commission', value: 'commission.amount'},
+            { text: 'Date de l\'opération', value: 'commission.updated_at' },
         ],
     }),
     methods : {
