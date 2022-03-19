@@ -75,8 +75,12 @@
                                 dense
                                 accept=".xlsx,.csv"
                             ></v-file-input>
-
                     </div>
+                    <v-alert v-if="hasError1" border="right" colored-border type="error" elevation="2">
+                        <ul>
+                            <li v-for="(error,index) in errors1" :key="index"><span>{{error}}</span></li>
+                        </ul>
+                    </v-alert>
                 </v-card-text>
                 <v-card-actions>
                     <v-spacer></v-spacer>
@@ -105,6 +109,8 @@ export default {
         disable1 : false,
         hasError : false,
         errors : [],
+        hasError1 : false,
+        errors1 : [],
     }),
     methods : {
         store()
@@ -126,10 +132,30 @@ export default {
                 })
             })
         },
-        ImportExcelFile(e)
+        ImportExcelFile(file)
         {
+            this.hasError1 = false
+            this.errors1 = []
             this.disable1 = true
+            let data = new FormData
+            data.append('file',file)
 
+            axios.get('/sanctum/csrf-cookie').then(res => {
+                axios.post('/api/provinces/excel-import-provinces',data).then(e=>{
+                    console.log(e.data)
+                    this.$toast.open({
+                        message : "Opération effectué",
+                        type : 'success',
+                    })
+                     window.location.reload()
+                }).catch(err =>{
+                    let errors = Object.values(err.response.data.errors)
+                    for (const error of errors) {
+                        this.errors1.push(error[0])
+                        this.hasError1 = true
+                    }
+                })
+            })
         },
         check()
         {

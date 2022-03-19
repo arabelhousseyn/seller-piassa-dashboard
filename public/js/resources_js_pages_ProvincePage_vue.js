@@ -132,6 +132,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -143,7 +147,9 @@ __webpack_require__.r(__webpack_exports__);
       disable: true,
       disable1: false,
       hasError: false,
-      errors: []
+      errors: [],
+      hasError1: false,
+      errors1: []
     };
   },
   methods: {
@@ -172,8 +178,36 @@ __webpack_require__.r(__webpack_exports__);
         });
       });
     },
-    ImportExcelFile: function ImportExcelFile(e) {
+    ImportExcelFile: function ImportExcelFile(file) {
+      var _this2 = this;
+
+      this.hasError1 = false;
+      this.errors1 = [];
       this.disable1 = true;
+      var data = new FormData();
+      data.append('file', file);
+      axios.get('/sanctum/csrf-cookie').then(function (res) {
+        axios.post('/api/provinces/excel-import-provinces', data).then(function (e) {
+          console.log(e.data);
+
+          _this2.$toast.open({
+            message: "Opération effectué",
+            type: 'success'
+          });
+
+          window.location.reload();
+        })["catch"](function (err) {
+          var errors = Object.values(err.response.data.errors);
+
+          for (var _i2 = 0, _errors2 = errors; _i2 < _errors2.length; _i2++) {
+            var error = _errors2[_i2];
+
+            _this2.errors1.push(error[0]);
+
+            _this2.hasError1 = true;
+          }
+        });
+      });
     },
     check: function check() {
       this.disable = this.data.name == null || this.data.code == null ? true : false;
@@ -820,6 +854,31 @@ var render = function () {
                     ],
                     1
                   ),
+                  _vm._v(" "),
+                  _vm.hasError1
+                    ? _c(
+                        "v-alert",
+                        {
+                          attrs: {
+                            border: "right",
+                            "colored-border": "",
+                            type: "error",
+                            elevation: "2",
+                          },
+                        },
+                        [
+                          _c(
+                            "ul",
+                            _vm._l(_vm.errors1, function (error, index) {
+                              return _c("li", { key: index }, [
+                                _c("span", [_vm._v(_vm._s(error))]),
+                              ])
+                            }),
+                            0
+                          ),
+                        ]
+                      )
+                    : _vm._e(),
                 ],
                 1
               ),

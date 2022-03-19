@@ -15,28 +15,10 @@ class ProvincesImport implements ToModel
     */
     public function model(array $row)
     {
-        $rules = [
-            'code' => 'required|digits:02|unique:provinces,code'
-        ];
-
-        $data = [
-            'code' => $row[0]
-        ];
-
-        $validator = Validator::make($data,$rules);
-
-        if($validator->fails())
-        {
-            return response(['errors' => ['code' => 'Code non valide.']],422);
-        }
-
-        if($validator->validated())
-        {
             return new province([
                 'country_id' => 1,
                 'code' => $row[0],
                 'name' => $row[1],
             ]);
-        }
     }
 }
