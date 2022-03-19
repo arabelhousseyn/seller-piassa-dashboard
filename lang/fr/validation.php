@@ -217,6 +217,10 @@ return [
             'required' => 'Type requis.',
             'exists' => 'Type n\'existe pas.'
         ],
+        'code' => [
+            'required' => 'Code requis.',
+            'unique' => 'Le code a déjà été pris'
+        ]
     ],
 
     /*
