@@ -22,7 +22,7 @@
                             vertical
                         ></v-divider>
                         <v-spacer></v-spacer>
-                        all
+                        <store-province-dialog />
                     </v-toolbar>
                     <v-toolbar flat>
                         <v-text-field
@@ -100,8 +100,9 @@
 <script>
 
 import BreadCrumbsComponent from "../components/BreadCrumbsComponent";
+import StoreProvinceDialog from "../components/dialog/Province/StoreProvinceDialog";
 export default {
-    components: {BreadCrumbsComponent},
+    components: {StoreProvinceDialog, BreadCrumbsComponent},
     data : ()=>({
         provinces : [],
         loading : true,
