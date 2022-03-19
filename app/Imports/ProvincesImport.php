@@ -3,6 +3,7 @@
 namespace App\Imports;
 
 use App\Models\province;
+use Illuminate\Support\Facades\Validator;
 use Maatwebsite\Excel\Concerns\ToModel;
 
 class ProvincesImport implements ToModel
@@ -14,10 +15,28 @@ class ProvincesImport implements ToModel
     */
     public function model(array $row)
     {
-        return new province([
-            'country_id' => 1,
-            'name' => $row[0],
-            'code' => $row[1],
-        ]);
+        $rules = [
+            'code' => 'required|digits:02|unique:provinces,code'
+        ];
+
+        $data = [
+            'code' => $row[0]
+        ];
+
+        $validator = Validator::make($data,$rules);
+
+        if($validator->fails())
+        {
+            return response(['errors' => ['code' => 'Code non valide.']],422);
+        }
+
+        if($validator->validated())
+        {
+            return new province([
+                'country_id' => 1,
+                'code' => $row[0],
+                'name' => $row[1],
+            ]);
+        }
     }
 }
