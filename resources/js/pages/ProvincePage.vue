@@ -146,6 +146,10 @@ export default {
         activate(id)
         {
 
+        },
+        update(data)
+        {
+
         }
     },
     mounted() {

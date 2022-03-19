@@ -383,7 +383,8 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     deactivate: function deactivate(id) {},
-    activate: function activate(id) {}
+    activate: function activate(id) {},
+    update: function update(data) {}
   },
   mounted: function mounted() {
     this.init();
