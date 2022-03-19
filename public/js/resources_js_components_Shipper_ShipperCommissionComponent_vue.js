@@ -456,152 +456,143 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return this.data !== undefined || this.data1 !== undefined
-    ? _c(
-        "div",
-        { staticClass: "shipper-commissions" },
+  return _c(
+    "div",
+    { staticClass: "shipper-commissions" },
+    [
+      _c(
+        "v-container",
+        { attrs: { fluid: "" } },
         [
           _c(
-            "v-container",
-            { attrs: { fluid: "" } },
+            "v-btn",
+            { attrs: { color: "primary" } },
             [
               _c(
-                "v-btn",
-                { attrs: { color: "primary" } },
+                "router-link",
+                {
+                  staticStyle: { "text-decoration": "none", color: "white" },
+                  attrs: { to: "/home/shippers" },
+                },
                 [
-                  _c(
-                    "router-link",
-                    {
-                      staticStyle: {
-                        "text-decoration": "none",
-                        color: "white",
-                      },
-                      attrs: { to: "/home/shippers" },
-                    },
-                    [
-                      _c("v-icon", [_vm._v("mdi-subdirectory-arrow-left")]),
-                      _vm._v(" Retour "),
-                    ],
-                    1
-                  ),
+                  _c("v-icon", [_vm._v("mdi-subdirectory-arrow-left")]),
+                  _vm._v(" Retour "),
                 ],
                 1
               ),
-              _vm._v(" "),
-              _c("v-data-table", {
-                staticClass: "elevation-1 mt-3",
-                attrs: {
-                  headers: _vm.headers,
-                  items: _vm.data == undefined ? _vm.data1 : _vm.data,
-                  search: _vm.search,
-                  "sort-by": "[created_at]",
-                  "sort-desc": [true],
-                },
-                scopedSlots: _vm._u(
-                  [
-                    {
-                      key: "top",
-                      fn: function () {
-                        return [
-                          _c(
-                            "v-toolbar",
-                            { attrs: { flat: "" } },
-                            [
-                              _c("v-toolbar-title", [_vm._v("Commissions")]),
-                              _vm._v(" "),
-                              _c("v-divider", {
-                                staticClass: "mx-4",
-                                attrs: { inset: "", vertical: "" },
-                              }),
-                              _vm._v(" "),
-                              _c("v-spacer"),
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-toolbar",
-                            { attrs: { flat: "" } },
-                            [
-                              _c("v-text-field", {
-                                attrs: {
-                                  "append-icon": "mdi-magnify",
-                                  label: "Recherche",
-                                  "single-line": "",
-                                  "hide-details": "",
-                                },
-                                model: {
-                                  value: _vm.search,
-                                  callback: function ($$v) {
-                                    _vm.search = $$v
-                                  },
-                                  expression: "search",
-                                },
-                              }),
-                            ],
-                            1
-                          ),
-                        ]
-                      },
-                      proxy: true,
-                    },
-                    {
-                      key: "item.actions",
-                      fn: function (ref) {
-                        var item = ref.item
-                        return [
-                          _c(
-                            "v-btn",
-                            {
-                              attrs: { text: "", color: "primary" },
-                              on: {
-                                click: function ($event) {
-                                  return _vm.openMap(
-                                    item.commission.start_coordination,
-                                    item.commission.end_coordination
-                                  )
-                                },
-                              },
-                            },
-                            [_c("v-icon", [_vm._v("mdi-map-marker")])],
-                            1
-                          ),
-                        ]
-                      },
-                    },
-                    {
-                      key: "no-data",
-                      fn: function () {
-                        return [
-                          _c("v-btn", { attrs: { color: "primary" } }, [
-                            _vm._v(
-                              "\n                    Reset\n                "
-                            ),
-                          ]),
-                        ]
-                      },
-                      proxy: true,
-                    },
-                  ],
-                  null,
-                  false,
-                  2841555638
-                ),
-              }),
             ],
             1
           ),
           _vm._v(" "),
-          _vm.dialog
-            ? _c("delivery-maps-dialog", {
-                attrs: { lat: _vm.lat, long: _vm.long, dialog: _vm.dialog },
-                on: { close: _vm.close },
-              })
-            : _vm._e(),
+          _c("v-data-table", {
+            staticClass: "elevation-1 mt-3",
+            attrs: {
+              headers: _vm.headers,
+              items:
+                _vm.data == undefined || _vm.data[0].commission == null
+                  ? _vm.data1
+                  : _vm.data,
+              search: _vm.search,
+              "sort-by": "[created_at]",
+              "sort-desc": [true],
+            },
+            scopedSlots: _vm._u([
+              {
+                key: "top",
+                fn: function () {
+                  return [
+                    _c(
+                      "v-toolbar",
+                      { attrs: { flat: "" } },
+                      [
+                        _c("v-toolbar-title", [_vm._v("Commissions")]),
+                        _vm._v(" "),
+                        _c("v-divider", {
+                          staticClass: "mx-4",
+                          attrs: { inset: "", vertical: "" },
+                        }),
+                        _vm._v(" "),
+                        _c("v-spacer"),
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "v-toolbar",
+                      { attrs: { flat: "" } },
+                      [
+                        _c("v-text-field", {
+                          attrs: {
+                            "append-icon": "mdi-magnify",
+                            label: "Recherche",
+                            "single-line": "",
+                            "hide-details": "",
+                          },
+                          model: {
+                            value: _vm.search,
+                            callback: function ($$v) {
+                              _vm.search = $$v
+                            },
+                            expression: "search",
+                          },
+                        }),
+                      ],
+                      1
+                    ),
+                  ]
+                },
+                proxy: true,
+              },
+              {
+                key: "item.actions",
+                fn: function (ref) {
+                  var item = ref.item
+                  return [
+                    _c(
+                      "v-btn",
+                      {
+                        attrs: { text: "", color: "primary" },
+                        on: {
+                          click: function ($event) {
+                            return _vm.openMap(
+                              item.commission.start_coordination,
+                              item.commission.end_coordination
+                            )
+                          },
+                        },
+                      },
+                      [_c("v-icon", [_vm._v("mdi-map-marker")])],
+                      1
+                    ),
+                  ]
+                },
+              },
+              {
+                key: "no-data",
+                fn: function () {
+                  return [
+                    _c("v-btn", { attrs: { color: "primary" } }, [
+                      _vm._v("\n                    Reset\n                "),
+                    ]),
+                  ]
+                },
+                proxy: true,
+              },
+            ]),
+          }),
         ],
         1
-      )
-    : _vm._e()
+      ),
+      _vm._v(" "),
+      _vm.dialog
+        ? _c("delivery-maps-dialog", {
+            attrs: { lat: _vm.lat, long: _vm.long, dialog: _vm.dialog },
+            on: { close: _vm.close },
+          })
+        : _vm._e(),
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

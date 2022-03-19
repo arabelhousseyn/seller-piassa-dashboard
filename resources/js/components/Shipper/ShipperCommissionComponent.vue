@@ -1,12 +1,12 @@
 <template>
-    <div v-if="this.data !== undefined || this.data1 !== undefined" class="shipper-commissions">
+    <div class="shipper-commissions">
         <v-container fluid>
             <v-btn color="primary">
                 <router-link style="text-decoration: none;color: white;" to="/home/shippers"><v-icon>mdi-subdirectory-arrow-left</v-icon> Retour </router-link>
             </v-btn>
             <v-data-table
                 :headers="headers"
-                :items="(data == undefined) ? data1 : data"
+                :items="(data == undefined || data[0].commission == null) ? data1 : data"
                 :search="search"
                 sort-by="[created_at]"
                 :sort-desc="[true]"
