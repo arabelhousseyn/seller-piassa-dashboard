@@ -94,7 +94,7 @@ class ProvincesController extends Controller
 
     public function all()
     {
-        $provinces = Province::all();
+        $provinces = Province::latest('created_at')->get();
         return response(['data' => $provinces],200);
     }
 }
