@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreProvinceRequest;
 use Illuminate\Http\Request;
 use App\Models\Province;
 class ProvincesController extends Controller
@@ -34,9 +35,13 @@ class ProvincesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProvinceRequest $request)
     {
-        //
+        if($request->validated())
+        {
+            Province::create($request->validated());
+            return response()->noContent();
+        }
     }
 
     /**
