@@ -94,6 +94,8 @@
                 </template>
             </v-data-table>
         </v-container>
+        <deactivate-province-dialog @close="close" :id="province_id" :dialog="dialog" />
+        <activate-province-dialog @close="close1" :id="province_id" :dialog="dialog1" />
     </div>
 </template>
 
@@ -101,12 +103,16 @@
 
 import BreadCrumbsComponent from "../components/BreadCrumbsComponent";
 import StoreProvinceDialog from "../components/dialog/Province/StoreProvinceDialog";
+import DeactivateProvinceDialog from "../components/dialog/Province/DeactivateProvinceDialog";
+import ActivateProvinceDialog from "../components/dialog/Province/ActivateProvinceDialog";
 export default {
-    components: {StoreProvinceDialog, BreadCrumbsComponent},
+    components: {ActivateProvinceDialog, DeactivateProvinceDialog, StoreProvinceDialog, BreadCrumbsComponent},
     data : ()=>({
         provinces : [],
         loading : true,
         search : null,
+        dialog : false,
+        dialog1 : false,
         headers: [
             {
                 text: 'Code',
@@ -117,15 +123,27 @@ export default {
             { text: 'Willaya', value: 'name' },
             { text: 'Créé à', value: 'created_at' },
             { text: 'Mis à jour à', value: 'updated_at' },
+            { text: 'Statu', value: 'is_available' },
             { text: 'actions', value: 'actions', sortable: false },
         ],
         profile : [],
         data : [],
+        province_id : null,
     }),
     methods : {
         reset()
         {
             this.init()
+        },
+        close()
+        {
+          this.province_id = null
+          this.dialog = false
+        },
+        close1()
+        {
+          this.province_id = null
+          this.dialog1 = false
         },
         init()
         {
@@ -141,11 +159,13 @@ export default {
         },
         deactivate(id)
         {
-
+            this.province_id = id
+            this.dialog = true
         },
         activate(id)
         {
-
+            this.province_id = id
+            this.dialog1 = true
         },
         update(data)
         {

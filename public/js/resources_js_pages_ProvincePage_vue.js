@@ -27,6 +27,184 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Province/ActivateProvinceDialog.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Province/ActivateProvinceDialog.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ['dialog', 'id'],
+  data: function data() {
+    return {
+      load: false
+    };
+  },
+  methods: {
+    activate: function activate() {
+      var _this = this;
+
+      this.load = true;
+      axios.get('/sanctum/csrf-cookie').then(function (res) {
+        axios.get("/api/provinces/activate/".concat(_this.id)).then(function (e) {
+          if (e.status == 204) {
+            _this.$toast.open({
+              message: 'Opération effectué',
+              type: 'success'
+            });
+
+            _this.load = false;
+            window.location.reload();
+          }
+        })["catch"](function (err) {
+          _this.$toast.open({
+            message: 'ERROR',
+            type: 'error'
+          });
+        });
+      });
+    },
+    close: function close() {
+      this.$emit('close');
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Province/DeactivateProvinceDialog.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Province/DeactivateProvinceDialog.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ['dialog', 'id'],
+  data: function data() {
+    return {
+      load: false
+    };
+  },
+  methods: {
+    deactivate: function deactivate() {
+      var _this = this;
+
+      this.load = true;
+      axios.get('/sanctum/csrf-cookie').then(function (res) {
+        axios.get("/api/provinces/deactivate/".concat(_this.id)).then(function (e) {
+          if (e.status == 204) {
+            _this.$toast.open({
+              message: 'Opération effectué',
+              type: 'success'
+            });
+
+            _this.load = false;
+            window.location.reload();
+          }
+        })["catch"](function (err) {
+          _this.$toast.open({
+            message: 'ERROR',
+            type: 'error'
+          });
+        });
+      });
+    },
+    close: function close() {
+      this.$emit('close');
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Province/StoreProvinceDialog.vue?vue&type=script&lang=js&":
 /*!******************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Province/StoreProvinceDialog.vue?vue&type=script&lang=js& ***!
@@ -229,6 +407,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _components_BreadCrumbsComponent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/BreadCrumbsComponent */ "./resources/js/components/BreadCrumbsComponent.vue");
 /* harmony import */ var _components_dialog_Province_StoreProvinceDialog__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/dialog/Province/StoreProvinceDialog */ "./resources/js/components/dialog/Province/StoreProvinceDialog.vue");
+/* harmony import */ var _components_dialog_Province_DeactivateProvinceDialog__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/dialog/Province/DeactivateProvinceDialog */ "./resources/js/components/dialog/Province/DeactivateProvinceDialog.vue");
+/* harmony import */ var _components_dialog_Province_ActivateProvinceDialog__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/dialog/Province/ActivateProvinceDialog */ "./resources/js/components/dialog/Province/ActivateProvinceDialog.vue");
 //
 //
 //
@@ -328,10 +508,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
+    ActivateProvinceDialog: _components_dialog_Province_ActivateProvinceDialog__WEBPACK_IMPORTED_MODULE_3__["default"],
+    DeactivateProvinceDialog: _components_dialog_Province_DeactivateProvinceDialog__WEBPACK_IMPORTED_MODULE_2__["default"],
     StoreProvinceDialog: _components_dialog_Province_StoreProvinceDialog__WEBPACK_IMPORTED_MODULE_1__["default"],
     BreadCrumbsComponent: _components_BreadCrumbsComponent__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
@@ -340,6 +526,8 @@ __webpack_require__.r(__webpack_exports__);
       provinces: [],
       loading: true,
       search: null,
+      dialog: false,
+      dialog1: false,
       headers: [{
         text: 'Code',
         align: 'start',
@@ -355,17 +543,29 @@ __webpack_require__.r(__webpack_exports__);
         text: 'Mis à jour à',
         value: 'updated_at'
       }, {
+        text: 'Statu',
+        value: 'is_available'
+      }, {
         text: 'actions',
         value: 'actions',
         sortable: false
       }],
       profile: [],
-      data: []
+      data: [],
+      province_id: null
     };
   },
   methods: {
     reset: function reset() {
       this.init();
+    },
+    close: function close() {
+      this.province_id = null;
+      this.dialog = false;
+    },
+    close1: function close1() {
+      this.province_id = null;
+      this.dialog1 = false;
     },
     init: function init() {
       var _this = this;
@@ -382,8 +582,14 @@ __webpack_require__.r(__webpack_exports__);
         });
       });
     },
-    deactivate: function deactivate(id) {},
-    activate: function activate(id) {},
+    deactivate: function deactivate(id) {
+      this.province_id = id;
+      this.dialog = true;
+    },
+    activate: function activate(id) {
+      this.province_id = id;
+      this.dialog1 = true;
+    },
     update: function update(data) {}
   },
   mounted: function mounted() {
@@ -427,6 +633,82 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
 /* hot reload */
 if (false) { var api; }
 component.options.__file = "resources/js/components/BreadCrumbsComponent.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/dialog/Province/ActivateProvinceDialog.vue":
+/*!****************************************************************************!*\
+  !*** ./resources/js/components/dialog/Province/ActivateProvinceDialog.vue ***!
+  \****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _ActivateProvinceDialog_vue_vue_type_template_id_7b00e5ee___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ActivateProvinceDialog.vue?vue&type=template&id=7b00e5ee& */ "./resources/js/components/dialog/Province/ActivateProvinceDialog.vue?vue&type=template&id=7b00e5ee&");
+/* harmony import */ var _ActivateProvinceDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ActivateProvinceDialog.vue?vue&type=script&lang=js& */ "./resources/js/components/dialog/Province/ActivateProvinceDialog.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ActivateProvinceDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ActivateProvinceDialog_vue_vue_type_template_id_7b00e5ee___WEBPACK_IMPORTED_MODULE_0__.render,
+  _ActivateProvinceDialog_vue_vue_type_template_id_7b00e5ee___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/dialog/Province/ActivateProvinceDialog.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/dialog/Province/DeactivateProvinceDialog.vue":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/dialog/Province/DeactivateProvinceDialog.vue ***!
+  \******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _DeactivateProvinceDialog_vue_vue_type_template_id_67901722___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DeactivateProvinceDialog.vue?vue&type=template&id=67901722& */ "./resources/js/components/dialog/Province/DeactivateProvinceDialog.vue?vue&type=template&id=67901722&");
+/* harmony import */ var _DeactivateProvinceDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DeactivateProvinceDialog.vue?vue&type=script&lang=js& */ "./resources/js/components/dialog/Province/DeactivateProvinceDialog.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _DeactivateProvinceDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _DeactivateProvinceDialog_vue_vue_type_template_id_67901722___WEBPACK_IMPORTED_MODULE_0__.render,
+  _DeactivateProvinceDialog_vue_vue_type_template_id_67901722___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/dialog/Province/DeactivateProvinceDialog.vue"
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
 /***/ }),
@@ -522,6 +804,36 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/dialog/Province/ActivateProvinceDialog.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************!*\
+  !*** ./resources/js/components/dialog/Province/ActivateProvinceDialog.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ActivateProvinceDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ActivateProvinceDialog.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Province/ActivateProvinceDialog.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ActivateProvinceDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/dialog/Province/DeactivateProvinceDialog.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************!*\
+  !*** ./resources/js/components/dialog/Province/DeactivateProvinceDialog.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DeactivateProvinceDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./DeactivateProvinceDialog.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Province/DeactivateProvinceDialog.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DeactivateProvinceDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/js/components/dialog/Province/StoreProvinceDialog.vue?vue&type=script&lang=js&":
 /*!**************************************************************************************************!*\
   !*** ./resources/js/components/dialog/Province/StoreProvinceDialog.vue?vue&type=script&lang=js& ***!
@@ -564,6 +876,38 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BreadCrumbsComponent_vue_vue_type_template_id_068ac058___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BreadCrumbsComponent_vue_vue_type_template_id_068ac058___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./BreadCrumbsComponent.vue?vue&type=template&id=068ac058& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/BreadCrumbsComponent.vue?vue&type=template&id=068ac058&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/dialog/Province/ActivateProvinceDialog.vue?vue&type=template&id=7b00e5ee&":
+/*!***********************************************************************************************************!*\
+  !*** ./resources/js/components/dialog/Province/ActivateProvinceDialog.vue?vue&type=template&id=7b00e5ee& ***!
+  \***********************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ActivateProvinceDialog_vue_vue_type_template_id_7b00e5ee___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ActivateProvinceDialog_vue_vue_type_template_id_7b00e5ee___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ActivateProvinceDialog_vue_vue_type_template_id_7b00e5ee___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ActivateProvinceDialog.vue?vue&type=template&id=7b00e5ee& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Province/ActivateProvinceDialog.vue?vue&type=template&id=7b00e5ee&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/dialog/Province/DeactivateProvinceDialog.vue?vue&type=template&id=67901722&":
+/*!*************************************************************************************************************!*\
+  !*** ./resources/js/components/dialog/Province/DeactivateProvinceDialog.vue?vue&type=template&id=67901722& ***!
+  \*************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DeactivateProvinceDialog_vue_vue_type_template_id_67901722___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DeactivateProvinceDialog_vue_vue_type_template_id_67901722___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DeactivateProvinceDialog_vue_vue_type_template_id_67901722___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./DeactivateProvinceDialog.vue?vue&type=template&id=67901722& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Province/DeactivateProvinceDialog.vue?vue&type=template&id=67901722&");
 
 
 /***/ }),
@@ -635,6 +979,184 @@ var render = function () {
           _c("v-breadcrumbs-item", { attrs: { href: _vm.link } }, [
             _vm._v(_vm._s(_vm.title1)),
           ]),
+        ],
+        1
+      ),
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Province/ActivateProvinceDialog.vue?vue&type=template&id=7b00e5ee&":
+/*!**************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Province/ActivateProvinceDialog.vue?vue&type=template&id=7b00e5ee& ***!
+  \**************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "delete_seller_dialog" },
+    [
+      _c(
+        "v-dialog",
+        {
+          attrs: { persistent: "", "max-width": "290" },
+          model: {
+            value: _vm.dialog,
+            callback: function ($$v) {
+              _vm.dialog = $$v
+            },
+            expression: "dialog",
+          },
+        },
+        [
+          _c(
+            "v-card",
+            [
+              _c("v-card-title", { staticClass: "text-h5" }, [
+                _vm._v(
+                  "\n                Etes-vous sûr que vous voulez activer !\n            "
+                ),
+              ]),
+              _vm._v(" "),
+              _c(
+                "v-card-actions",
+                [
+                  _c("v-spacer"),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { color: "grey darken-1", text: "" },
+                      on: { click: _vm.close },
+                    },
+                    [_c("v-icon", [_vm._v("mdi-cancel")])],
+                    1
+                  ),
+                  _vm._v(" "),
+                  !_vm.load
+                    ? _c(
+                        "v-btn",
+                        {
+                          attrs: { color: "success darken-1", text: "" },
+                          on: { click: _vm.activate },
+                        },
+                        [_c("v-icon", [_vm._v("mdi-restore")])],
+                        1
+                      )
+                    : _c("v-progress-circular", {
+                        attrs: { indeterminate: "", color: "primary" },
+                      }),
+                ],
+                1
+              ),
+            ],
+            1
+          ),
+        ],
+        1
+      ),
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Province/DeactivateProvinceDialog.vue?vue&type=template&id=67901722&":
+/*!****************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Province/DeactivateProvinceDialog.vue?vue&type=template&id=67901722& ***!
+  \****************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "delete_seller_dialog" },
+    [
+      _c(
+        "v-dialog",
+        {
+          attrs: { persistent: "", "max-width": "290" },
+          model: {
+            value: _vm.dialog,
+            callback: function ($$v) {
+              _vm.dialog = $$v
+            },
+            expression: "dialog",
+          },
+        },
+        [
+          _c(
+            "v-card",
+            [
+              _c("v-card-title", { staticClass: "text-h5" }, [
+                _vm._v(
+                  "\n                Etes-vous sûr que vous voulez deactiver !\n            "
+                ),
+              ]),
+              _vm._v(" "),
+              _c(
+                "v-card-actions",
+                [
+                  _c("v-spacer"),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { color: "grey darken-1", text: "" },
+                      on: { click: _vm.close },
+                    },
+                    [_c("v-icon", [_vm._v("mdi-cancel")])],
+                    1
+                  ),
+                  _vm._v(" "),
+                  !_vm.load
+                    ? _c(
+                        "v-btn",
+                        {
+                          attrs: { color: "red darken-1", text: "" },
+                          on: { click: _vm.deactivate },
+                        },
+                        [_c("v-icon", [_vm._v("mdi-delete")])],
+                        1
+                      )
+                    : _c("v-progress-circular", {
+                        attrs: { indeterminate: "", color: "primary" },
+                      }),
+                ],
+                1
+              ),
+            ],
+            1
+          ),
         ],
         1
       ),
@@ -1226,6 +1748,16 @@ var render = function () {
         ],
         1
       ),
+      _vm._v(" "),
+      _c("deactivate-province-dialog", {
+        attrs: { id: _vm.province_id, dialog: _vm.dialog },
+        on: { close: _vm.close },
+      }),
+      _vm._v(" "),
+      _c("activate-province-dialog", {
+        attrs: { id: _vm.province_id, dialog: _vm.dialog1 },
+        on: { close: _vm.close1 },
+      }),
     ],
     1
   )
