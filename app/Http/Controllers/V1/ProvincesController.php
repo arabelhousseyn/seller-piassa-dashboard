@@ -104,12 +104,12 @@ class ProvincesController extends Controller
     public function StoreProvincesExcel(Request $request)
     {
         $rules = [
-            'file' => 'mimes:csv,xlsx'
+            'file' => 'required|mimes:csv,xlsx'
         ];
 
         $validated = $request->validate($rules);
 
-        Excel::import(new ProvincesImport,$validated->file('file'));
+        Excel::import(new ProvincesImport,$request->file('file'));
 
         return response()->noContent();
     }

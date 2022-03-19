@@ -220,7 +220,11 @@ return [
         'code' => [
             'required' => 'Code requis.',
             'digits' => 'Code Fromat invalide.',
-            'unique' => 'Le code a déjà été pris'
+            'unique' => 'Le code a déjà été pris.'
+        ],
+        'file' => [
+            'required' => 'Fichier excel requis.',
+            'mimes' => 'Fichier excel non valide.',
         ]
     ],
 
