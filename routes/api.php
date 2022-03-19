@@ -87,6 +87,7 @@ Route::middleware('auth:sanctum')->group(function (){
 
     Route::controller(ProvincesController::class)->prefix('provinces')->group(function (){
         Route::get('all','all');
+        Route::post('excel-import-provinces','StoreProvincesExcel');
     });
 
     //resources

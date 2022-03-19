@@ -4,8 +4,11 @@ namespace App\Http\Controllers\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProvinceRequest;
+use App\Imports\ProvincesImport;
 use Illuminate\Http\Request;
 use App\Models\Province;
+use Maatwebsite\Excel\Facades\Excel;
+
 class ProvincesController extends Controller
 {
     /**
@@ -96,5 +99,18 @@ class ProvincesController extends Controller
     {
         $provinces = Province::latest('created_at')->get();
         return response(['data' => $provinces],200);
+    }
+
+    public function StoreProvincesExcel(Request $request)
+    {
+        $rules = [
+            'file' => 'mimes:csv,xlsx'
+        ];
+
+        $validated = $request->validate($rules);
+
+        Excel::import(new ProvincesImport,$validated->file('file'));
+
+        return response()->noContent();
     }
 }

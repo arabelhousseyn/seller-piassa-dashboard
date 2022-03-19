@@ -17,7 +17,7 @@
             </template>
             <v-card>
                 <v-card-title>
-                    <span class="text-h5">User Profile</span>
+                    <span class="text-h5">Ajouter</span>
                 </v-card-title>
                 <v-card-text>
                     <v-container>
@@ -29,6 +29,7 @@
                                     md="6"
                                 >
                                     <v-text-field
+                                        :disabled="disable1"
                                         @keydown="check"
                                         v-model="data.code"
                                         label="Code*"
@@ -42,6 +43,7 @@
                                     md="6"
                                 >
                                     <v-text-field
+                                        :disabled="disable1"
                                         @keydown="check"
                                         v-model="data.name"
                                         label="Willaya*"
@@ -62,6 +64,19 @@
                         </form>
                     </v-container>
                     <small>*Indique le champ obligatoire</small>
+
+                    <div class="d-flex justify-content-center mt-5">
+                            <v-file-input
+                                label="CSV"
+                                color="success"
+                                prepend-icon="mdi-file-plus-outline"
+                                outlined
+                                @change="ImportExcelFile"
+                                dense
+                                accept=".xlsx,.csv"
+                            ></v-file-input>
+
+                    </div>
                 </v-card-text>
                 <v-card-actions>
                     <v-spacer></v-spacer>
@@ -87,6 +102,7 @@ export default {
             code : null,
         },
         disable : true,
+        disable1 : false,
         hasError : false,
         errors : [],
     }),
@@ -109,6 +125,11 @@ export default {
                     }
                 })
             })
+        },
+        ImportExcelFile(e)
+        {
+            this.disable1 = true
+
         },
         check()
         {

@@ -117,6 +117,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -126,6 +141,7 @@ __webpack_require__.r(__webpack_exports__);
         code: null
       },
       disable: true,
+      disable1: false,
       hasError: false,
       errors: []
     };
@@ -155,6 +171,9 @@ __webpack_require__.r(__webpack_exports__);
           }
         });
       });
+    },
+    ImportExcelFile: function ImportExcelFile(e) {
+      this.disable1 = true;
     },
     check: function check() {
       this.disable = this.data.name == null || this.data.code == null ? true : false;
@@ -658,9 +677,7 @@ var render = function () {
             "v-card",
             [
               _c("v-card-title", [
-                _c("span", { staticClass: "text-h5" }, [
-                  _vm._v("User Profile"),
-                ]),
+                _c("span", { staticClass: "text-h5" }, [_vm._v("Ajouter")]),
               ]),
               _vm._v(" "),
               _c(
@@ -687,7 +704,11 @@ var render = function () {
                               { attrs: { cols: "12", sm: "6", md: "6" } },
                               [
                                 _c("v-text-field", {
-                                  attrs: { label: "Code*", required: "" },
+                                  attrs: {
+                                    disabled: _vm.disable1,
+                                    label: "Code*",
+                                    required: "",
+                                  },
                                   on: { keydown: _vm.check },
                                   model: {
                                     value: _vm.data.code,
@@ -706,7 +727,11 @@ var render = function () {
                               { attrs: { cols: "12", sm: "6", md: "6" } },
                               [
                                 _c("v-text-field", {
-                                  attrs: { label: "Willaya*", required: "" },
+                                  attrs: {
+                                    disabled: _vm.disable1,
+                                    label: "Willaya*",
+                                    required: "",
+                                  },
                                   on: { keydown: _vm.check },
                                   model: {
                                     value: _vm.data.name,
@@ -776,6 +801,25 @@ var render = function () {
                   ]),
                   _vm._v(" "),
                   _c("small", [_vm._v("*Indique le champ obligatoire")]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "d-flex justify-content-center mt-5" },
+                    [
+                      _c("v-file-input", {
+                        attrs: {
+                          label: "CSV",
+                          color: "success",
+                          "prepend-icon": "mdi-file-plus-outline",
+                          outlined: "",
+                          dense: "",
+                          accept: ".xlsx,.csv",
+                        },
+                        on: { change: _vm.ImportExcelFile },
+                      }),
+                    ],
+                    1
+                  ),
                 ],
                 1
               ),
