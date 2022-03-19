@@ -96,6 +96,7 @@
         </v-container>
         <deactivate-province-dialog @close="close" :id="province_id" :dialog="dialog" />
         <activate-province-dialog @close="close1" :id="province_id" :dialog="dialog1" />
+        <update-provience-dialog @close="close2" :data="data" :dialog="dialog2" />
     </div>
 </template>
 
@@ -105,14 +106,18 @@ import BreadCrumbsComponent from "../components/BreadCrumbsComponent";
 import StoreProvinceDialog from "../components/dialog/Province/StoreProvinceDialog";
 import DeactivateProvinceDialog from "../components/dialog/Province/DeactivateProvinceDialog";
 import ActivateProvinceDialog from "../components/dialog/Province/ActivateProvinceDialog";
+import UpdateProvienceDialog from "../components/dialog/Province/UpdateProvienceDialog";
 export default {
-    components: {ActivateProvinceDialog, DeactivateProvinceDialog, StoreProvinceDialog, BreadCrumbsComponent},
+    components: {
+        UpdateProvienceDialog,
+        ActivateProvinceDialog, DeactivateProvinceDialog, StoreProvinceDialog, BreadCrumbsComponent},
     data : ()=>({
         provinces : [],
         loading : true,
         search : null,
         dialog : false,
         dialog1 : false,
+        dialog2 : false,
         headers: [
             {
                 text: 'Code',
@@ -145,6 +150,11 @@ export default {
           this.province_id = null
           this.dialog1 = false
         },
+        close2()
+        {
+          this.data = []
+          this.dialog2 = false
+        },
         init()
         {
             axios.get('/sanctum/csrf-cookie').then(res =>{
@@ -169,7 +179,8 @@ export default {
         },
         update(data)
         {
-
+            this.data = data
+            this.dialog2 = true
         }
     },
     mounted() {
