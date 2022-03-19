@@ -24,7 +24,7 @@ class StoreProvinceRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:255',
+            'name' => 'required|max:255|unique:provinces,name',
             'code' => 'required|digits:02|unique:provinces,code'
         ];
     }

@@ -81,7 +81,8 @@ class ProvincesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Province::whereId($id)->update($request->only('name','code'));
+        return response()->noContent();
     }
 
     /**
