@@ -97,11 +97,68 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      dialog: false
+      dialog: false,
+      data: {
+        name: null,
+        code: null
+      },
+      disable: true,
+      hasError: false,
+      errors: []
     };
+  },
+  methods: {
+    store: function store() {
+      var _this = this;
+
+      axios.get('/sanctum/csrf-cookie').then(function (res) {
+        axios.post('/api/provinces', _this.data).then(function (e) {
+          _this.$toast.open({
+            message: "Opération effectué",
+            type: 'success'
+          });
+
+          window.location.reload();
+        })["catch"](function (err) {
+          var errors = Object.values(err.response.data.errors);
+
+          for (var _i = 0, _errors = errors; _i < _errors.length; _i++) {
+            var error = _errors[_i];
+
+            _this.errors.push(error[0]);
+
+            _this.hasError = true;
+            _this.disabled = false;
+          }
+        });
+      });
+    },
+    check: function check() {
+      this.disable = this.data.name == null || this.data.code == null ? true : false;
+    }
   }
 });
 
@@ -609,33 +666,116 @@ var render = function () {
               _c(
                 "v-card-text",
                 [
-                  _c(
-                    "v-container",
-                    [
-                      _c(
-                        "v-row",
-                        [
-                          _c(
-                            "v-col",
-                            { attrs: { cols: "12", sm: "6", md: "4" } },
-                            [
-                              _c("v-text-field", {
-                                attrs: {
-                                  label: "Legal first name*",
-                                  required: "",
-                                },
-                              }),
-                            ],
-                            1
-                          ),
-                        ],
-                        1
-                      ),
-                    ],
-                    1
-                  ),
+                  _c("v-container", [
+                    _c(
+                      "form",
+                      {
+                        attrs: { method: "post" },
+                        on: {
+                          submit: function ($event) {
+                            $event.preventDefault()
+                            return _vm.store.apply(null, arguments)
+                          },
+                        },
+                      },
+                      [
+                        _c(
+                          "v-row",
+                          [
+                            _c(
+                              "v-col",
+                              { attrs: { cols: "12", sm: "6", md: "6" } },
+                              [
+                                _c("v-text-field", {
+                                  attrs: { label: "Code*", required: "" },
+                                  on: { keydown: _vm.check },
+                                  model: {
+                                    value: _vm.data.code,
+                                    callback: function ($$v) {
+                                      _vm.$set(_vm.data, "code", $$v)
+                                    },
+                                    expression: "data.code",
+                                  },
+                                }),
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-col",
+                              { attrs: { cols: "12", sm: "6", md: "6" } },
+                              [
+                                _c("v-text-field", {
+                                  attrs: { label: "Willaya*", required: "" },
+                                  on: { keydown: _vm.check },
+                                  model: {
+                                    value: _vm.data.name,
+                                    callback: function ($$v) {
+                                      _vm.$set(_vm.data, "name", $$v)
+                                    },
+                                    expression: "data.name",
+                                  },
+                                }),
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _vm.hasError
+                              ? _c(
+                                  "v-alert",
+                                  {
+                                    attrs: {
+                                      border: "right",
+                                      "colored-border": "",
+                                      type: "error",
+                                      elevation: "2",
+                                    },
+                                  },
+                                  [
+                                    _c(
+                                      "ul",
+                                      _vm._l(
+                                        _vm.errors,
+                                        function (error, index) {
+                                          return _c("li", { key: index }, [
+                                            _c("span", [_vm._v(_vm._s(error))]),
+                                          ])
+                                        }
+                                      ),
+                                      0
+                                    ),
+                                  ]
+                                )
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _c(
+                              "v-col",
+                              { attrs: { cols: "12" } },
+                              [
+                                _c(
+                                  "v-btn",
+                                  {
+                                    attrs: {
+                                      disabled: _vm.disable,
+                                      type: "submit",
+                                      color: "primary",
+                                    },
+                                  },
+                                  [_c("v-icon", [_vm._v("mdi-plus")])],
+                                  1
+                                ),
+                              ],
+                              1
+                            ),
+                          ],
+                          1
+                        ),
+                      ],
+                      1
+                    ),
+                  ]),
                   _vm._v(" "),
-                  _c("small", [_vm._v("*indicates required field")]),
+                  _c("small", [_vm._v("*Indique le champ obligatoire")]),
                 ],
                 1
               ),
@@ -655,20 +795,7 @@ var render = function () {
                         },
                       },
                     },
-                    [_vm._v("\n                    Close\n                ")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-btn",
-                    {
-                      attrs: { color: "blue darken-1", text: "" },
-                      on: {
-                        click: function ($event) {
-                          _vm.dialog = false
-                        },
-                      },
-                    },
-                    [_vm._v("\n                    Save\n                ")]
+                    [_vm._v("\n                    Fermer\n                ")]
                   ),
                 ],
                 1

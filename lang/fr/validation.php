@@ -219,6 +219,7 @@ return [
         ],
         'code' => [
             'required' => 'Code requis.',
+            'digits' => 'Code Fromat invalide.',
             'unique' => 'Le code a déjà été pris'
         ]
     ],
