@@ -83,6 +83,12 @@ Route::middleware('auth:sanctum')->group(function (){
         Route::get('comissions/{id}','shipperComissions')->whereNumber('id');
     });
 
+    // proviences
+
+    Route::controller(ProvincesController::class)->prefix('proviences')->group(function (){
+        Route::get('all','all');
+    });
+
     //resources
     Route::apiResources([
         'users' => UserController::class,
