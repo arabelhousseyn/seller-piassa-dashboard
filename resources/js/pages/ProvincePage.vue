@@ -63,12 +63,12 @@
                                     <v-list-item-content><v-list-item-title>Modifier</v-list-item-title></v-list-item-content>
                                 </v-list-item>
 
-                                <v-list-item v-if="item.deleted_at == null" link @click="destory(item.id)">
+                                <v-list-item v-if="item.is_available" link @click="deactivate(item.id)">
                                     <v-list-item-icon><v-icon color="red">mdi-delete</v-icon></v-list-item-icon>
                                     <v-list-item-content><v-list-item-title>Désactiver</v-list-item-title></v-list-item-content>
                                 </v-list-item>
 
-                                <v-list-item v-else link @click="restore(item.id)">
+                                <v-list-item v-else link @click="activate(item.id)">
                                     <v-list-item-icon><v-icon color="green">mdi-restore</v-icon></v-list-item-icon>
                                     <v-list-item-content><v-list-item-title>Activer</v-list-item-title></v-list-item-content>
                                 </v-list-item>
@@ -138,6 +138,14 @@ export default {
                     this.$toast.open({message : 'Erreur dans serveur veuillez réessayer',type : 'error'})
                 })
             })
+        },
+        deactivate(id)
+        {
+
+        },
+        activate(id)
+        {
+
         }
     },
     mounted() {

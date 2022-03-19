@@ -101,7 +101,7 @@ class ProvincesController extends Controller
         return response(['data' => $provinces],200);
     }
 
-    public function StoreProvincesExcel(Request $request)
+    public function storeProvincesExcel(Request $request)
     {
 
         $rules = [
@@ -112,6 +112,22 @@ class ProvincesController extends Controller
 
         Excel::import(new ProvincesImport,$request->file);
 
+        return response()->noContent();
+    }
+
+    public function activeProvince($province_id)
+    {
+        Province::whereId($province_id)->update([
+            'is_available' => true
+        ]);
+        return response()->noContent();
+    }
+
+    public function deactivateProvince($province_id)
+    {
+        Province::whereId($province_id)->update([
+            'is_available' => false
+        ]);
         return response()->noContent();
     }
 }

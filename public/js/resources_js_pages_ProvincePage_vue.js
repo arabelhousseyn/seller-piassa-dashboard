@@ -381,7 +381,9 @@ __webpack_require__.r(__webpack_exports__);
           });
         });
       });
-    }
+    },
+    deactivate: function deactivate(id) {},
+    activate: function activate(id) {}
   },
   mounted: function mounted() {
     this.init();
@@ -1105,14 +1107,14 @@ var render = function () {
                                   1
                                 ),
                                 _vm._v(" "),
-                                item.deleted_at == null
+                                item.is_available
                                   ? _c(
                                       "v-list-item",
                                       {
                                         attrs: { link: "" },
                                         on: {
                                           click: function ($event) {
-                                            return _vm.destory(item.id)
+                                            return _vm.deactivate(item.id)
                                           },
                                         },
                                       },
@@ -1147,7 +1149,7 @@ var render = function () {
                                         attrs: { link: "" },
                                         on: {
                                           click: function ($event) {
-                                            return _vm.restore(item.id)
+                                            return _vm.activate(item.id)
                                           },
                                         },
                                       },

@@ -87,7 +87,9 @@ Route::middleware('auth:sanctum')->group(function (){
 
     Route::controller(ProvincesController::class)->prefix('provinces')->group(function (){
         Route::get('all','all');
-        Route::post('excel-import-provinces','StoreProvincesExcel');
+        Route::post('excel-import-provinces','storeProvincesExcel');
+        Route::get('activate/{province_id}','activeProvince')->whereNumber('province_id');
+        Route::get('deactivate/{province_id}','deactivateProvince')->whereNumber('province_id');
     });
 
     //resources
