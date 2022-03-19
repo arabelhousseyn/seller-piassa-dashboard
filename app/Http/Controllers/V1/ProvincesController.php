@@ -39,7 +39,10 @@ class ProvincesController extends Controller
     {
         if($request->validated())
         {
-            Province::create($request->validated());
+            $country = [
+                'country_id' => 1
+            ];
+            Province::create(array_merge($country,$request->validated()));
             return response()->noContent();
         }
     }
