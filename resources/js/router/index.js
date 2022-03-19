@@ -95,6 +95,10 @@ const routes = [
                 ]
             },
             {
+              path: 'provinces',
+              component : ()=> import('../pages/ProvincePage')
+            },
+            {
                 path : '*',
                 component: () => import('../pages/NotFoundPage'),
             }

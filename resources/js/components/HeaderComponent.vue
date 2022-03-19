@@ -62,6 +62,18 @@
                         </v-list-item>
                     </v-list-group>
 
+                    <v-list-item
+                        @click="()=>{this.$router.push('/home/provinces').catch(err => {})}"
+                        style="border-right: 4px solid;"
+                    >
+                        <v-list-item-icon>
+                            <v-icon>mdi-home-map-marker</v-icon>
+                        </v-list-item-icon>
+                        <v-list-item-content>
+                            <v-list-item-title>Willayas</v-list-item-title>
+                        </v-list-item-content>
+                    </v-list-item>
+
                 </v-list-item-group>
             </v-list>
         </v-navigation-drawer>

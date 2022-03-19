@@ -86,7 +86,7 @@ class ProvincesController extends Controller
 
     public function all()
     {
-        $proviences = Province::all();
-        return response(['data' => $proviences],200);
+        $provinces = Province::all();
+        return response(['data' => $provinces],200);
     }
 }

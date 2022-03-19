@@ -85,7 +85,7 @@ Route::middleware('auth:sanctum')->group(function (){
 
     // proviences
 
-    Route::controller(ProvincesController::class)->prefix('proviences')->group(function (){
+    Route::controller(ProvincesController::class)->prefix('provinces')->group(function (){
         Route::get('all','all');
     });
 

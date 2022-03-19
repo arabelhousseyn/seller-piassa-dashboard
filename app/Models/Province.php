@@ -18,9 +18,12 @@ class Province extends Model
     ];
 
     protected $hidden = [
-        'created_at',
-        'updated_at',
         'deleted_at'
+    ];
+
+    protected $casts = [
+        'created_at' => 'date:Y-m-d H:i:s',
+        'updated_at' => 'date:Y-m-d H:i:s'
     ];
 
     public function country()
