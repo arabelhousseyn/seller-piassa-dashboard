@@ -344,6 +344,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -364,6 +379,9 @@ __webpack_require__.r(__webpack_exports__);
         value: 'name',
         align: 'start',
         sortable: true
+      }, {
+        text: 'logo',
+        value: 'logo'
       }, {
         text: 'Créé à',
         value: 'created_at'
@@ -1270,6 +1288,26 @@ var render = function () {
                             "\n                    Supprimé\n                "
                           ),
                         ]),
+                  ]
+                },
+              },
+              {
+                key: "item.logo",
+                fn: function (ref) {
+                  var item = ref.item
+                  return [
+                    _c("lottie-animation", {
+                      attrs: {
+                        path: "https://assets10.lottiefiles.com/packages/lf20_phjobus6.json",
+                        loop: false,
+                        autoPlay: true,
+                        loopDelayMin: 2.5,
+                        loopDelayMax: 5,
+                        speed: 1,
+                        width: 256,
+                        height: 256,
+                      },
+                    }),
                   ]
                 },
               },

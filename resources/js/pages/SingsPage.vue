@@ -84,12 +84,27 @@
                     </v-chip>
                 </template>
 
+                <template v-slot:item.logo="{ item }">
+                    <lottie-animation
+                        path="https://assets10.lottiefiles.com/packages/lf20_phjobus6.json"
+                        :loop="false"
+                        :autoPlay="true"
+                        :loopDelayMin="2.5"
+                        :loopDelayMax="5"
+                        :speed="1"
+                        :width="256"
+                        :height="256"
+                    />
+                </template>
+
                 <template v-slot:no-data>
                     <v-btn
                         color="primary">
                         Reset
                     </v-btn>
                 </template>
+
+
             </v-data-table>
         </v-container>
     </div>
@@ -115,6 +130,7 @@ export default {
                 align: 'start',
                 sortable: true,
             },
+            {text: 'logo',value: 'logo'},
             { text: 'Créé à', value: 'created_at' },
             { text: 'Mis à jour à', value: 'updated_at' },
             { text: 'Préfixe', value: 'prefix' },
