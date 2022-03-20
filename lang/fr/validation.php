@@ -225,6 +225,10 @@ return [
         'file' => [
             'required' => 'Fichier excel requis.',
             'mimes' => 'Fichier excel non valide.',
+        ],
+        'logo' => [
+            'required' => 'Logo requis.',
+            'url' => 'Logo URL non valide.'
         ]
     ],
 

@@ -27,23 +27,16 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Province/StoreProvinceDialog.vue?vue&type=script&lang=js&":
-/*!******************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Province/StoreProvinceDialog.vue?vue&type=script&lang=js& ***!
-  \******************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Sign/StoreSignDialog.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Sign/StoreSignDialog.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -142,22 +135,21 @@ __webpack_require__.r(__webpack_exports__);
       dialog: false,
       data: {
         name: null,
-        code: null
+        logo: null,
+        prefix: null
       },
       disable: true,
-      disable1: false,
       hasError: false,
-      errors: [],
-      hasError1: false,
-      errors1: []
+      errors: []
     };
   },
   methods: {
     store: function store() {
       var _this = this;
 
+      this.disabled = true;
       axios.get('/sanctum/csrf-cookie').then(function (res) {
-        axios.post('/api/provinces', _this.data).then(function (e) {
+        axios.post('/api/signs', _this.data).then(function (e) {
           _this.$toast.open({
             message: "Opération effectué",
             type: 'success'
@@ -178,39 +170,10 @@ __webpack_require__.r(__webpack_exports__);
         });
       });
     },
-    ImportExcelFile: function ImportExcelFile(file) {
-      var _this2 = this;
-
-      this.hasError1 = false;
-      this.errors1 = [];
-      this.disable1 = true;
-      var data = new FormData();
-      data.append('file', file);
-      axios.get('/sanctum/csrf-cookie').then(function (res) {
-        axios.post('/api/provinces/excel-import-provinces', data).then(function (e) {
-          console.log(e.data);
-
-          _this2.$toast.open({
-            message: "Opération effectué",
-            type: 'success'
-          });
-
-          window.location.reload();
-        })["catch"](function (err) {
-          var errors = Object.values(err.response.data.errors);
-
-          for (var _i2 = 0, _errors2 = errors; _i2 < _errors2.length; _i2++) {
-            var error = _errors2[_i2];
-
-            _this2.errors1.push(error[0]);
-
-            _this2.hasError1 = true;
-          }
-        });
-      });
-    },
     check: function check() {
-      this.disable = this.data.name == null || this.data.code == null ? true : false;
+      this.hasError = false;
+      this.errors = [];
+      this.disable = this.data.name == null || this.data.logo == null ? true : false;
     }
   }
 });
@@ -228,7 +191,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _components_BreadCrumbsComponent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/BreadCrumbsComponent */ "./resources/js/components/BreadCrumbsComponent.vue");
-/* harmony import */ var _components_dialog_Province_StoreProvinceDialog__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/dialog/Province/StoreProvinceDialog */ "./resources/js/components/dialog/Province/StoreProvinceDialog.vue");
+/* harmony import */ var _components_dialog_Sign_StoreSignDialog__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/dialog/Sign/StoreSignDialog */ "./resources/js/components/dialog/Sign/StoreSignDialog.vue");
 //
 //
 //
@@ -330,7 +293,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    StoreProvinceDialog: _components_dialog_Province_StoreProvinceDialog__WEBPACK_IMPORTED_MODULE_1__["default"],
+    StoreSignDialog: _components_dialog_Sign_StoreSignDialog__WEBPACK_IMPORTED_MODULE_1__["default"],
     BreadCrumbsComponent: _components_BreadCrumbsComponent__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   data: function data() {
@@ -454,18 +417,18 @@ component.options.__file = "resources/js/components/BreadCrumbsComponent.vue"
 
 /***/ }),
 
-/***/ "./resources/js/components/dialog/Province/StoreProvinceDialog.vue":
-/*!*************************************************************************!*\
-  !*** ./resources/js/components/dialog/Province/StoreProvinceDialog.vue ***!
-  \*************************************************************************/
+/***/ "./resources/js/components/dialog/Sign/StoreSignDialog.vue":
+/*!*****************************************************************!*\
+  !*** ./resources/js/components/dialog/Sign/StoreSignDialog.vue ***!
+  \*****************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _StoreProvinceDialog_vue_vue_type_template_id_658d9166___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./StoreProvinceDialog.vue?vue&type=template&id=658d9166& */ "./resources/js/components/dialog/Province/StoreProvinceDialog.vue?vue&type=template&id=658d9166&");
-/* harmony import */ var _StoreProvinceDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./StoreProvinceDialog.vue?vue&type=script&lang=js& */ "./resources/js/components/dialog/Province/StoreProvinceDialog.vue?vue&type=script&lang=js&");
+/* harmony import */ var _StoreSignDialog_vue_vue_type_template_id_612a86c0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./StoreSignDialog.vue?vue&type=template&id=612a86c0& */ "./resources/js/components/dialog/Sign/StoreSignDialog.vue?vue&type=template&id=612a86c0&");
+/* harmony import */ var _StoreSignDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./StoreSignDialog.vue?vue&type=script&lang=js& */ "./resources/js/components/dialog/Sign/StoreSignDialog.vue?vue&type=script&lang=js&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -475,9 +438,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 ;
 var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _StoreProvinceDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _StoreProvinceDialog_vue_vue_type_template_id_658d9166___WEBPACK_IMPORTED_MODULE_0__.render,
-  _StoreProvinceDialog_vue_vue_type_template_id_658d9166___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  _StoreSignDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _StoreSignDialog_vue_vue_type_template_id_612a86c0___WEBPACK_IMPORTED_MODULE_0__.render,
+  _StoreSignDialog_vue_vue_type_template_id_612a86c0___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
   null,
@@ -487,7 +450,7 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/dialog/Province/StoreProvinceDialog.vue"
+component.options.__file = "resources/js/components/dialog/Sign/StoreSignDialog.vue"
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
 /***/ }),
@@ -545,18 +508,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/dialog/Province/StoreProvinceDialog.vue?vue&type=script&lang=js&":
-/*!**************************************************************************************************!*\
-  !*** ./resources/js/components/dialog/Province/StoreProvinceDialog.vue?vue&type=script&lang=js& ***!
-  \**************************************************************************************************/
+/***/ "./resources/js/components/dialog/Sign/StoreSignDialog.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/components/dialog/Sign/StoreSignDialog.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_StoreProvinceDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./StoreProvinceDialog.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Province/StoreProvinceDialog.vue?vue&type=script&lang=js&");
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_StoreProvinceDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_StoreSignDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./StoreSignDialog.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Sign/StoreSignDialog.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_StoreSignDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
@@ -591,18 +554,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/dialog/Province/StoreProvinceDialog.vue?vue&type=template&id=658d9166&":
-/*!********************************************************************************************************!*\
-  !*** ./resources/js/components/dialog/Province/StoreProvinceDialog.vue?vue&type=template&id=658d9166& ***!
-  \********************************************************************************************************/
+/***/ "./resources/js/components/dialog/Sign/StoreSignDialog.vue?vue&type=template&id=612a86c0&":
+/*!************************************************************************************************!*\
+  !*** ./resources/js/components/dialog/Sign/StoreSignDialog.vue?vue&type=template&id=612a86c0& ***!
+  \************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_StoreProvinceDialog_vue_vue_type_template_id_658d9166___WEBPACK_IMPORTED_MODULE_0__.render),
-/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_StoreProvinceDialog_vue_vue_type_template_id_658d9166___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_StoreSignDialog_vue_vue_type_template_id_612a86c0___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_StoreSignDialog_vue_vue_type_template_id_612a86c0___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_StoreProvinceDialog_vue_vue_type_template_id_658d9166___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./StoreProvinceDialog.vue?vue&type=template&id=658d9166& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Province/StoreProvinceDialog.vue?vue&type=template&id=658d9166&");
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_StoreSignDialog_vue_vue_type_template_id_612a86c0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./StoreSignDialog.vue?vue&type=template&id=612a86c0& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Sign/StoreSignDialog.vue?vue&type=template&id=612a86c0&");
 
 
 /***/ }),
@@ -672,10 +635,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Province/StoreProvinceDialog.vue?vue&type=template&id=658d9166&":
-/*!***********************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Province/StoreProvinceDialog.vue?vue&type=template&id=658d9166& ***!
-  \***********************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Sign/StoreSignDialog.vue?vue&type=template&id=612a86c0&":
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Sign/StoreSignDialog.vue?vue&type=template&id=612a86c0& ***!
+  \***************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -689,7 +652,7 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "store-province-dialog" },
+    { staticClass: "store-sign-dialog" },
     [
       _c(
         "v-dialog",
@@ -761,21 +724,17 @@ var render = function () {
                           [
                             _c(
                               "v-col",
-                              { attrs: { cols: "12", sm: "6", md: "6" } },
+                              { attrs: { cols: "12", sm: "6", md: "4" } },
                               [
                                 _c("v-text-field", {
-                                  attrs: {
-                                    disabled: _vm.disable1,
-                                    label: "Code*",
-                                    required: "",
-                                  },
+                                  attrs: { label: "Marque*", required: "" },
                                   on: { keydown: _vm.check },
                                   model: {
-                                    value: _vm.data.code,
+                                    value: _vm.data.name,
                                     callback: function ($$v) {
-                                      _vm.$set(_vm.data, "code", $$v)
+                                      _vm.$set(_vm.data, "name", $$v)
                                     },
-                                    expression: "data.code",
+                                    expression: "data.name",
                                   },
                                 }),
                               ],
@@ -784,21 +743,36 @@ var render = function () {
                             _vm._v(" "),
                             _c(
                               "v-col",
-                              { attrs: { cols: "12", sm: "6", md: "6" } },
+                              { attrs: { cols: "12", sm: "6", md: "4" } },
                               [
                                 _c("v-text-field", {
-                                  attrs: {
-                                    disabled: _vm.disable1,
-                                    label: "Willaya*",
-                                    required: "",
-                                  },
+                                  attrs: { label: "Logo URL*", required: "" },
                                   on: { keydown: _vm.check },
                                   model: {
-                                    value: _vm.data.name,
+                                    value: _vm.data.logo,
                                     callback: function ($$v) {
-                                      _vm.$set(_vm.data, "name", $$v)
+                                      _vm.$set(_vm.data, "logo", $$v)
                                     },
-                                    expression: "data.name",
+                                    expression: "data.logo",
+                                  },
+                                }),
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-col",
+                              { attrs: { cols: "12", sm: "6", md: "4" } },
+                              [
+                                _c("v-text-field", {
+                                  attrs: { label: "Préfixe" },
+                                  on: { keydown: _vm.check },
+                                  model: {
+                                    value: _vm.data.prefix,
+                                    callback: function ($$v) {
+                                      _vm.$set(_vm.data, "prefix", $$v)
+                                    },
+                                    expression: "data.prefix",
                                   },
                                 }),
                               ],
@@ -841,12 +815,12 @@ var render = function () {
                                   "v-btn",
                                   {
                                     attrs: {
-                                      disabled: _vm.disable,
                                       type: "submit",
+                                      disabled: _vm.disable,
                                       color: "primary",
                                     },
                                   },
-                                  [_c("v-icon", [_vm._v("mdi-plus")])],
+                                  [_c("v-icon", [_vm._v("mdi-check")])],
                                   1
                                 ),
                               ],
@@ -861,50 +835,6 @@ var render = function () {
                   ]),
                   _vm._v(" "),
                   _c("small", [_vm._v("*Indique le champ obligatoire")]),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "d-flex justify-content-center mt-5" },
-                    [
-                      _c("v-file-input", {
-                        attrs: {
-                          label: "CSV",
-                          color: "success",
-                          "prepend-icon": "mdi-file-plus-outline",
-                          outlined: "",
-                          dense: "",
-                          accept: ".xlsx,.csv",
-                        },
-                        on: { change: _vm.ImportExcelFile },
-                      }),
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _vm.hasError1
-                    ? _c(
-                        "v-alert",
-                        {
-                          attrs: {
-                            border: "right",
-                            "colored-border": "",
-                            type: "error",
-                            elevation: "2",
-                          },
-                        },
-                        [
-                          _c(
-                            "ul",
-                            _vm._l(_vm.errors1, function (error, index) {
-                              return _c("li", { key: index }, [
-                                _c("span", [_vm._v(_vm._s(error))]),
-                              ])
-                            }),
-                            0
-                          ),
-                        ]
-                      )
-                    : _vm._e(),
                 ],
                 1
               ),
@@ -1005,7 +935,7 @@ var render = function () {
                         _vm._v(" "),
                         _c("v-spacer"),
                         _vm._v(" "),
-                        _c("store-province-dialog"),
+                        _c("store-sign-dialog"),
                       ],
                       1
                     ),

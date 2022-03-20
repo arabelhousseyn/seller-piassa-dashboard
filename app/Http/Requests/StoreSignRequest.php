@@ -25,8 +25,7 @@ class StoreSignRequest extends FormRequest
     {
         return [
             'name' => 'required|max:255',
-            'logo' => 'required|url',
-            'prefix' => 'required'
+            'logo' => 'required|url'
         ];
     }
 }

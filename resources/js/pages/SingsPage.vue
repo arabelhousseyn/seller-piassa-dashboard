@@ -22,7 +22,7 @@
                             vertical
                         ></v-divider>
                         <v-spacer></v-spacer>
-                        <store-province-dialog />
+                        <store-sign-dialog />
                     </v-toolbar>
                     <v-toolbar flat>
                         <v-text-field
@@ -98,9 +98,9 @@
 <script>
 
 import BreadCrumbsComponent from "../components/BreadCrumbsComponent";
-import StoreProvinceDialog from "../components/dialog/Province/StoreProvinceDialog";
+import StoreSignDialog from "../components/dialog/Sign/StoreSignDialog";
 export default {
-    components: { StoreProvinceDialog, BreadCrumbsComponent},
+    components: {StoreSignDialog, BreadCrumbsComponent},
     data : ()=>({
         sings : [],
         loading : true,
