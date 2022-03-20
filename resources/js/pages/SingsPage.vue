@@ -85,16 +85,7 @@
                 </template>
 
                 <template v-slot:item.logo="{ item }">
-                    <lottie-animation
-                        path="https://assets10.lottiefiles.com/packages/lf20_phjobus6.json"
-                        :loop="false"
-                        :autoPlay="true"
-                        :loopDelayMin="2.5"
-                        :loopDelayMax="5"
-                        :speed="1"
-                        :width="256"
-                        :height="256"
-                    />
+                    <iframe width="100" height="100" :src="item.logo"></iframe>
                 </template>
 
                 <template v-slot:no-data>
@@ -114,6 +105,7 @@
 
 import BreadCrumbsComponent from "../components/BreadCrumbsComponent";
 import StoreSignDialog from "../components/dialog/Sign/StoreSignDialog";
+
 export default {
     components: {StoreSignDialog, BreadCrumbsComponent},
     data : ()=>({

@@ -350,15 +350,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -1296,17 +1287,8 @@ var render = function () {
                 fn: function (ref) {
                   var item = ref.item
                   return [
-                    _c("lottie-animation", {
-                      attrs: {
-                        path: "https://assets10.lottiefiles.com/packages/lf20_phjobus6.json",
-                        loop: false,
-                        autoPlay: true,
-                        loopDelayMin: 2.5,
-                        loopDelayMax: 5,
-                        speed: 1,
-                        width: 256,
-                        height: 256,
-                      },
+                    _c("iframe", {
+                      attrs: { width: "100", height: "100", src: item.logo },
                     }),
                   ]
                 },
