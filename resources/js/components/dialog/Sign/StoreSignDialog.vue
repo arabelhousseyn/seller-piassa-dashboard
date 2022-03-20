@@ -29,6 +29,7 @@
                                     md="4"
                                 >
                                     <v-text-field
+                                        :disabled="disable1"
                                         @keydown="check"
                                         label="Marque*"
                                         v-model="data.name"
@@ -42,6 +43,7 @@
                                     md="4"
                                 >
                                     <v-text-field
+                                        :disabled="disable1"
                                         @keydown="check"
                                         label="Logo URL*"
                                         v-model="data.logo"
@@ -55,6 +57,7 @@
                                     md="4"
                                 >
                                     <v-text-field
+                                        :disabled="disable1"
                                         @keydown="check"
                                         label="Préfixe"
                                         v-model="data.prefix"
@@ -74,6 +77,24 @@
                         </form>
                     </v-container>
                     <small>*Indique le champ obligatoire</small>
+
+                    <div class="d-flex justify-content-center mt-5">
+                        <v-file-input
+                            label="CSV"
+                            color="success"
+                            prepend-icon="mdi-file-plus-outline"
+                            outlined
+                            @change="ImportExcelFile"
+                            dense
+                            accept=".xlsx,.csv"
+                        ></v-file-input>
+                    </div>
+                    <v-alert v-if="hasError1" border="right" colored-border type="error" elevation="2">
+                        <ul>
+                            <li v-for="(error,index) in errors1" :key="index"><span>{{error}}</span></li>
+                        </ul>
+                    </v-alert>
+
                 </v-card-text>
                 <v-card-actions>
                     <v-spacer></v-spacer>
@@ -101,8 +122,11 @@ export default {
             prefix : null,
         },
         disable : true,
+        disable1 : false,
         hasError : false,
         errors : [],
+        hasError1 : false,
+        errors1 : [],
     }),
     methods : {
         store()
@@ -126,6 +150,31 @@ export default {
                 })
             })
 
+        },
+        ImportExcelFile(file)
+        {
+            this.hasError1 = false
+            this.errors1 = []
+            this.disable1 = true
+            let data = new FormData
+            data.append('file',file)
+
+            axios.get('/sanctum/csrf-cookie').then(res => {
+                axios.post('/api/signs/excel-import-signs',data).then(e=>{
+                    console.log(e.data)
+                    this.$toast.open({
+                        message : "Opération effectué",
+                        type : 'success',
+                    })
+                    window.location.reload()
+                }).catch(err =>{
+                    let errors = Object.values(err.response.data.errors)
+                    for (const error of errors) {
+                        this.errors1.push(error[0])
+                        this.hasError1 = true
+                    }
+                })
+            })
         },
         check()
         {
