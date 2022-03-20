@@ -45,6 +45,7 @@ Route::middleware('auth:sanctum')->group(function (){
 
     Route::controller(SignController::class)->prefix('signs')->group(function (){
         Route::get('all','signs');
+        Route::post('excel-import-signs','storeSignsExcel');
     });
 
     // sellers

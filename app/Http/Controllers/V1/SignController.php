@@ -4,7 +4,9 @@ namespace App\Http\Controllers\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreSignRequest;
+use App\Imports\SignsImport;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Models\{Sign};
 class SignController extends Controller
 {
@@ -93,5 +95,19 @@ class SignController extends Controller
     {
         $signs = Sign::withoutTrashed()->select(['id','name'])->get();
         return response(['data' => $signs],200);
+    }
+
+    public function storeSignsExcel(Request $request)
+    {
+
+        $rules = [
+            'file' => 'required|mimes:csv,xlsx'
+        ];
+
+        $validated = $request->validate($rules);
+
+        Excel::import(new SignsImport,$request->file);
+
+        return response()->noContent();
     }
 }
