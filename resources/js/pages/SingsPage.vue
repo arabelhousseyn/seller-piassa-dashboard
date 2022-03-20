@@ -6,7 +6,7 @@
                 :loading="loading"
                 loading-text="Chargement... veuillez patienter"
                 :headers="headers"
-                :items="provinces"
+                :items="sings"
                 :search="search"
                 disable-sort
                 class="elevation-1"
@@ -15,7 +15,7 @@
                     <v-toolbar
                         flat
                     >
-                        <v-toolbar-title>Willayas</v-toolbar-title>
+                        <v-toolbar-title>Marques</v-toolbar-title>
                         <v-divider
                             class="mx-4"
                             inset
@@ -62,27 +62,25 @@
                                     <v-list-item-icon><v-icon color="primary">mdi-pencil</v-icon></v-list-item-icon>
                                     <v-list-item-content><v-list-item-title>Modifier</v-list-item-title></v-list-item-content>
                                 </v-list-item>
-
-                                <v-list-item v-if="item.is_available" link @click="deactivate(item.id)">
+                                <v-list-item v-if="item.deleted_at == null" link @click="destroy(item.id)">
                                     <v-list-item-icon><v-icon color="red">mdi-delete</v-icon></v-list-item-icon>
-                                    <v-list-item-content><v-list-item-title>Désactiver</v-list-item-title></v-list-item-content>
+                                    <v-list-item-content><v-list-item-title>Supprimer</v-list-item-title></v-list-item-content>
                                 </v-list-item>
-
-                                <v-list-item v-else link @click="activate(item.id)">
+                                <v-list-item v-else link @click="restore(item.id)">
                                     <v-list-item-icon><v-icon color="green">mdi-restore</v-icon></v-list-item-icon>
-                                    <v-list-item-content><v-list-item-title>Activer</v-list-item-title></v-list-item-content>
+                                    <v-list-item-content><v-list-item-title>Restaurer</v-list-item-title></v-list-item-content>
                                 </v-list-item>
                             </v-list-item-group>
                         </v-list>
                     </v-menu>
                 </template>
 
-                <template v-slot:item.is_available="{ item }">
-                    <v-chip dark v-if="item.is_available" color="green">
-                        Disponible
+                <template v-slot:item.deleted_at="{ item }">
+                    <v-chip dark v-if="item.deleted_at == null" color="green">
+                        Active
                     </v-chip>
                     <v-chip dark v-else color="red">
-                        Indisponible
+                        Supprimé
                     </v-chip>
                 </template>
 
@@ -94,9 +92,6 @@
                 </template>
             </v-data-table>
         </v-container>
-        <deactivate-province-dialog @close="close" :id="province_id" :dialog="dialog" />
-        <activate-province-dialog @close="close1" :id="province_id" :dialog="dialog1" />
-        <update-provience-dialog @close="close2" :data="data" :dialog="dialog2" />
     </div>
 </template>
 
@@ -104,15 +99,10 @@
 
 import BreadCrumbsComponent from "../components/BreadCrumbsComponent";
 import StoreProvinceDialog from "../components/dialog/Province/StoreProvinceDialog";
-import DeactivateProvinceDialog from "../components/dialog/Province/DeactivateProvinceDialog";
-import ActivateProvinceDialog from "../components/dialog/Province/ActivateProvinceDialog";
-import UpdateProvienceDialog from "../components/dialog/Province/UpdateProvienceDialog";
 export default {
-    components: {
-        UpdateProvienceDialog,
-        ActivateProvinceDialog, DeactivateProvinceDialog, StoreProvinceDialog, BreadCrumbsComponent},
+    components: { StoreProvinceDialog, BreadCrumbsComponent},
     data : ()=>({
-        provinces : [],
+        sings : [],
         loading : true,
         search : null,
         dialog : false,
@@ -120,15 +110,14 @@ export default {
         dialog2 : false,
         headers: [
             {
-                text: 'Code',
+                text: 'Marque',
+                value: 'name',
                 align: 'start',
                 sortable: true,
-                value: 'code',
             },
-            { text: 'Willaya', value: 'name' },
             { text: 'Créé à', value: 'created_at' },
             { text: 'Mis à jour à', value: 'updated_at' },
-            { text: 'Statu', value: 'is_available' },
+            { text: 'Préfixe', value: 'prefix' },
             { text: 'actions', value: 'actions', sortable: false },
         ],
         profile : [],
@@ -158,10 +147,10 @@ export default {
         init()
         {
             axios.get('/sanctum/csrf-cookie').then(res =>{
-                axios.get('/api/provinces/all')
+                axios.get('/api/signs')
                     .then(e =>{
                         this.loading = false
-                        this.provinces = e.data.data
+                        this.sings = e.data.data
                     }).catch(err => {
                     this.$toast.open({message : 'Erreur dans serveur veuillez réessayer',type : 'error'})
                 })

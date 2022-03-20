@@ -14,7 +14,7 @@ class SignController extends Controller
      */
     public function index()
     {
-        $signs = Sign::withTrashed()->get();
+        $signs = Sign::withTrashed()->latest('created_at')->get();
         return response(['data' => $signs],200);
     }
 
