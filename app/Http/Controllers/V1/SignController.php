@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreSignRequest;
 use Illuminate\Http\Request;
 use App\Models\{Sign};
 class SignController extends Controller
@@ -34,9 +35,13 @@ class SignController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreSignRequest $request)
     {
-        //
+        if($request->validated())
+        {
+            Sign::create($request->validated());
+            return response()->noContent();
+        }
     }
 
     /**
