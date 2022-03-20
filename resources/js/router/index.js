@@ -99,6 +99,10 @@ const routes = [
               component : ()=> import('../pages/ProvincePage')
             },
             {
+              path: 'signs',
+              component : ()=> import('../pages/SingsPage')
+            },
+            {
                 path : '*',
                 component: () => import('../pages/NotFoundPage'),
             }
