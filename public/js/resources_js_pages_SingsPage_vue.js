@@ -336,7 +336,11 @@ __webpack_require__.r(__webpack_exports__);
       var data = new FormData();
       data.append('name', this.data.name);
       data.append('logo', this.data.logo);
-      data.append('prefix', this.data.prefix);
+
+      if (this.data.prefix !== null) {
+        data.append('prefix', this.data.prefix);
+      }
+
       axios.get('/sanctum/csrf-cookie').then(function (res) {
         axios.post('/api/signs', data).then(function (e) {
           _this.$toast.open({

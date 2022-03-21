@@ -114,7 +114,10 @@ export default {
             let data = new FormData
             data.append('name',this.data.name)
             data.append('logo',this.data.logo)
-            data.append('prefix',this.data.prefix)
+            if(this.data.prefix !== null)
+            {
+                data.append('prefix',this.data.prefix)
+            }
 
             axios.get('/sanctum/csrf-cookie').then(res => {
                 axios.post('/api/signs',data).then(e=>{
