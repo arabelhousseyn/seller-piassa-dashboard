@@ -16,10 +16,6 @@ class Sign extends Model
         'prefix'
     ];
 
-    protected $hidden = [
-        'deleted_at'
-    ];
-
     protected $casts = [
         'created_at' => 'date:Y-m-d H:i:s',
         'updated_at' => 'date:Y-m-d H:i:s',

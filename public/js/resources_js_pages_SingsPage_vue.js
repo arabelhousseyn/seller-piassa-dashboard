@@ -476,6 +476,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -510,6 +519,9 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         text: 'Préfixe',
         value: 'prefix'
+      }, {
+        text: 'Statu',
+        value: 'deleted_at'
       }, {
         text: 'actions',
         value: 'actions',

@@ -88,6 +88,15 @@
                     <iframe width="100" height="100" :src="item.logo"></iframe>
                 </template>
 
+                <template v-slot:item.deleted_at="{ item }">
+                    <v-chip dark v-if="item.deleted_at == null" color="green">
+                        Active
+                    </v-chip>
+                    <v-chip dark v-else color="red">
+                        Supprimé
+                    </v-chip>
+                </template>
+
                 <template v-slot:no-data>
                     <v-btn
                         color="primary">
@@ -126,6 +135,7 @@ export default {
             { text: 'Créé à', value: 'created_at' },
             { text: 'Mis à jour à', value: 'updated_at' },
             { text: 'Préfixe', value: 'prefix' },
+            { text: 'Statu', value: 'deleted_at' },
             { text: 'actions', value: 'actions', sortable: false },
         ],
         profile : [],
