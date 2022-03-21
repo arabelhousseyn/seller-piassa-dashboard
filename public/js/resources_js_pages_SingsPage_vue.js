@@ -592,14 +592,17 @@ __webpack_require__.r(__webpack_exports__);
         text: 'logo',
         value: 'logo'
       }, {
+        text: 'Préfixe',
+        value: 'prefix'
+      }, {
         text: 'Créé à',
         value: 'created_at'
       }, {
         text: 'Mis à jour à',
         value: 'updated_at'
       }, {
-        text: 'Préfixe',
-        value: 'prefix'
+        text: 'Statu',
+        value: 'deleted_at'
       }, {
         text: 'actions',
         value: 'actions',
