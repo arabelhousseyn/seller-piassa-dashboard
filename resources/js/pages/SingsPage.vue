@@ -94,9 +94,8 @@
                         Reset
                     </v-btn>
                 </template>
-
-
             </v-data-table>
+            <update-sign-dialog @close="close2" :dialog="dialog2" :data="data" />
         </v-container>
     </div>
 </template>
@@ -105,9 +104,10 @@
 
 import BreadCrumbsComponent from "../components/BreadCrumbsComponent";
 import StoreSignDialog from "../components/dialog/Sign/StoreSignDialog";
+import UpdateSignDialog from "../components/dialog/Sign/UpdateSignDialog";
 
 export default {
-    components: {StoreSignDialog, BreadCrumbsComponent},
+    components: {UpdateSignDialog, StoreSignDialog, BreadCrumbsComponent},
     data : ()=>({
         sings : [],
         loading : true,
