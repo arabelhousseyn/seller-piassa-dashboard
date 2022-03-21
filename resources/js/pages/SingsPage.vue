@@ -58,10 +58,6 @@
 
                         <v-list>
                             <v-list-item-group>
-                                <v-list-item link @click="update(item)">
-                                    <v-list-item-icon><v-icon color="primary">mdi-pencil</v-icon></v-list-item-icon>
-                                    <v-list-item-content><v-list-item-title>Modifier</v-list-item-title></v-list-item-content>
-                                </v-list-item>
                                 <v-list-item v-if="item.deleted_at == null" link @click="destroy(item.id)">
                                     <v-list-item-icon><v-icon color="red">mdi-delete</v-icon></v-list-item-icon>
                                     <v-list-item-content><v-list-item-title>Supprimer</v-list-item-title></v-list-item-content>
@@ -86,15 +82,6 @@
 
                 <template v-slot:item.logo="{ item }">
                     <iframe width="100" height="100" :src="item.logo"></iframe>
-                </template>
-
-                <template v-slot:item.deleted_at="{ item }">
-                    <v-chip dark v-if="item.deleted_at == null" color="green">
-                        Active
-                    </v-chip>
-                    <v-chip dark v-else color="red">
-                        Supprimé
-                    </v-chip>
                 </template>
 
                 <template v-slot:no-data>
@@ -135,7 +122,6 @@ export default {
             { text: 'Créé à', value: 'created_at' },
             { text: 'Mis à jour à', value: 'updated_at' },
             { text: 'Préfixe', value: 'prefix' },
-            { text: 'Statu', value: 'deleted_at' },
             { text: 'actions', value: 'actions', sortable: false },
         ],
         profile : [],
@@ -149,12 +135,12 @@ export default {
         },
         close()
         {
-            this.province_id = null
+            this.sing_id = null
             this.dialog = false
         },
         close1()
         {
-            this.province_id = null
+            this.sing_id = null
             this.dialog1 = false
         },
         close2()

@@ -472,19 +472,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -520,9 +507,6 @@ __webpack_require__.r(__webpack_exports__);
         text: 'Préfixe',
         value: 'prefix'
       }, {
-        text: 'Statu',
-        value: 'deleted_at'
-      }, {
         text: 'actions',
         value: 'actions',
         sortable: false
@@ -537,11 +521,11 @@ __webpack_require__.r(__webpack_exports__);
       this.init();
     },
     close: function close() {
-      this.province_id = null;
+      this.sing_id = null;
       this.dialog = false;
     },
     close1: function close1() {
-      this.province_id = null;
+      this.sing_id = null;
       this.dialog1 = false;
     },
     close2: function close2() {
@@ -1536,42 +1520,6 @@ var render = function () {
                             _c(
                               "v-list-item-group",
                               [
-                                _c(
-                                  "v-list-item",
-                                  {
-                                    attrs: { link: "" },
-                                    on: {
-                                      click: function ($event) {
-                                        return _vm.update(item)
-                                      },
-                                    },
-                                  },
-                                  [
-                                    _c(
-                                      "v-list-item-icon",
-                                      [
-                                        _c(
-                                          "v-icon",
-                                          { attrs: { color: "primary" } },
-                                          [_vm._v("mdi-pencil")]
-                                        ),
-                                      ],
-                                      1
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "v-list-item-content",
-                                      [
-                                        _c("v-list-item-title", [
-                                          _vm._v("Modifier"),
-                                        ]),
-                                      ],
-                                      1
-                                    ),
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
                                 item.deleted_at == null
                                   ? _c(
                                       "v-list-item",

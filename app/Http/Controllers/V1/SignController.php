@@ -93,7 +93,13 @@ class SignController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $signs = Sign::findOrFail($id);
+            $signs->forceDelete();
+        }catch (\Exception $exception)
+        {
+            return response(['message' => 'not found'],404);
+        }
     }
 
     public function signs()
