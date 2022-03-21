@@ -100,6 +100,7 @@
                     </v-btn>
                 </template>
             </v-data-table>
+            <update-type-dialog @close="close1" :data="data" :dialog="dialog1" />
         </v-container>
     </div>
 </template>
@@ -108,9 +109,10 @@
 
 import BreadCrumbsComponent from "../components/BreadCrumbsComponent";
 import StoreTypeDialog from "../components/dialog/Type/StoreTypeDialog";
+import UpdateTypeDialog from "../components/dialog/Type/UpdateTypeDialog";
 
 export default {
-    components: {StoreTypeDialog, BreadCrumbsComponent},
+    components: {UpdateTypeDialog, StoreTypeDialog, BreadCrumbsComponent},
     data : ()=>({
         types : [],
         loading : true,

@@ -1515,7 +1515,7 @@ var render = function () {
                               { attrs: { cols: "12", sm: "6", md: "6" } },
                               [
                                 _c("v-text-field", {
-                                  attrs: { label: "Nom" },
+                                  attrs: { label: "Logo" },
                                   model: {
                                     value: _vm.data.logo,
                                     callback: function ($$v) {

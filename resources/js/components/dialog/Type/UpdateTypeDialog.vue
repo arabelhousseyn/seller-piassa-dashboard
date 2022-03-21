@@ -1,5 +1,5 @@
 <template>
-    <div class="update-shipper-dialog">
+    <div class="update-type-dialog">
         <v-dialog
             v-model="dialog"
             persistent
@@ -17,7 +17,7 @@
                                 <v-col
                                     cols="12"
                                     sm="6"
-                                    md="6"
+                                    md="4"
                                 >
                                     <v-text-field
                                         label="Nom"
@@ -28,11 +28,22 @@
                                 <v-col
                                     cols="12"
                                     sm="6"
-                                    md="6"
+                                    md="4"
                                 >
                                     <v-text-field
                                         label="Logo"
                                         v-model="data.logo"
+                                    ></v-text-field>
+                                </v-col>
+
+                                <v-col
+                                    cols="12"
+                                    sm="6"
+                                    md="4"
+                                >
+                                    <v-text-field
+                                        label="%"
+                                        v-model="data.percent"
                                     ></v-text-field>
                                 </v-col>
 
@@ -72,6 +83,7 @@ export default {
         data2 : {
             name : null,
             logo : null,
+            percent : null,
         },
         hasError : false,
         errors : []
@@ -85,9 +97,10 @@ export default {
         {
             this.data2.name = this.data.name
             this.data2.logo = this.data.logo
+            this.data2.percent = this.data.percent
 
             axios.get('/sanctum/csrf-cookie').then(res => {
-                axios.put(`/api/signs/${this.data.id}`,this.data2).then(e=>{
+                axios.put(`/api/types/${this.data.id}`,this.data2).then(e=>{
                     if(e.status == 204)
                     {
                         this.$toast.open({
