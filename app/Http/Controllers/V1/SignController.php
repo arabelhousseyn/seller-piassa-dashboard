@@ -131,18 +131,4 @@ class SignController extends Controller
         $signs = Sign::withoutTrashed()->select(['id','name'])->get();
         return response(['data' => $signs],200);
     }
-
-    public function storeSignsExcel(Request $request)
-    {
-
-        $rules = [
-            'file' => 'required|mimes:csv,xlsx'
-        ];
-
-        $validated = $request->validate($rules);
-
-        Excel::import(new SignsImport,$request->file);
-
-        return response()->noContent();
-    }
 }
