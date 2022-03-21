@@ -94,8 +94,26 @@ class SignController extends Controller
     public function destroy($id)
     {
         try {
-            $signs = Sign::findOrFail($id);
-            $signs->forceDelete();
+            $sign = Sign::findOrFail($id);
+            if(!$sign->trashed())
+            {
+                $sign->delete();
+            }
+            return response()->noContent();
+        }catch (\Exception $exception)
+        {
+            return response(['message' => 'not found'],404);
+        }
+    }
+
+    public function restore($id)
+    {
+        try {
+            $sign = Sign::findOrFail($id);
+            if($sign->trashed())
+            {
+                $sign->restore();
+            }
             return response()->noContent();
         }catch (\Exception $exception)
         {
