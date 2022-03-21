@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ChangeLogoSignRequest;
 use App\Http\Requests\StoreSignRequest;
 use App\Http\Requests\UpdateSignRequest;
 use App\Imports\SignsImport;
@@ -131,5 +132,16 @@ class SignController extends Controller
     {
         $signs = Sign::withoutTrashed()->select(['id','name'])->get();
         return response(['data' => $signs],200);
+    }
+
+    public function changeLogoSign(ChangeLogoSignRequest $request)
+    {
+        if($request->validated())
+        {
+            $sign = Sign::find($request->sign_id);
+            $image_name = str_replace('storage/logoSigns/','',$sign->logo);
+            $request->file('logo')->storeAs('public/logoSigns/',$image_name);
+            return response()->noContent();
+        }
     }
 }

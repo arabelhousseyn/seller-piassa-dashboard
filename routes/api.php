@@ -46,6 +46,7 @@ Route::middleware('auth:sanctum')->group(function (){
     Route::controller(SignController::class)->prefix('signs')->group(function (){
         Route::get('all','signs');
         Route::put('restore/{id}','restore')->whereNumber('id');
+        Route::post('change-sign-logo','changeLogoSign');
     });
 
     // sellers
