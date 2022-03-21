@@ -58,13 +58,13 @@
 
                         <v-list>
                             <v-list-item-group>
+                                <v-list-item link @click="update(item)">
+                                    <v-list-item-icon><v-icon color="primary">mdi-pencil</v-icon></v-list-item-icon>
+                                    <v-list-item-content><v-list-item-title>Modifier</v-list-item-title></v-list-item-content>
+                                </v-list-item>
                                 <v-list-item v-if="item.deleted_at == null" link @click="destroy(item.id)">
                                     <v-list-item-icon><v-icon color="red">mdi-delete</v-icon></v-list-item-icon>
                                     <v-list-item-content><v-list-item-title>Supprimer</v-list-item-title></v-list-item-content>
-                                </v-list-item>
-                                <v-list-item v-else link @click="restore(item.id)">
-                                    <v-list-item-icon><v-icon color="green">mdi-restore</v-icon></v-list-item-icon>
-                                    <v-list-item-content><v-list-item-title>Restaurer</v-list-item-title></v-list-item-content>
                                 </v-list-item>
                             </v-list-item-group>
                         </v-list>
@@ -91,7 +91,8 @@
                     </v-btn>
                 </template>
             </v-data-table>
-            <update-sign-dialog @close="close2" :dialog="dialog2" :data="data" />
+            <update-sign-dialog @close="close1" :dialog="dialog1" :data="data" />
+            <delete-sign-dialog @close="close" :dialog="dialog" :id="sing_id" />
         </v-container>
     </div>
 </template>
@@ -101,16 +102,16 @@
 import BreadCrumbsComponent from "../components/BreadCrumbsComponent";
 import StoreSignDialog from "../components/dialog/Sign/StoreSignDialog";
 import UpdateSignDialog from "../components/dialog/Sign/UpdateSignDialog";
+import DeleteSignDialog from "../components/dialog/Sign/DeleteSignDialog";
 
 export default {
-    components: {UpdateSignDialog, StoreSignDialog, BreadCrumbsComponent},
+    components: {DeleteSignDialog, UpdateSignDialog, StoreSignDialog, BreadCrumbsComponent},
     data : ()=>({
         sings : [],
         loading : true,
         search : null,
         dialog : false,
         dialog1 : false,
-        dialog2 : false,
         headers: [
             {
                 text: 'Marque',
@@ -140,13 +141,8 @@ export default {
         },
         close1()
         {
-            this.sing_id = null
-            this.dialog1 = false
-        },
-        close2()
-        {
             this.data = []
-            this.dialog2 = false
+            this.dialog1 = false
         },
         init()
         {
@@ -162,18 +158,13 @@ export default {
         },
         destroy(id)
         {
-            this.province_id = id
+            this.sing_id = id
             this.dialog = true
-        },
-        restore(id)
-        {
-            this.province_id = id
-            this.dialog1 = true
         },
         update(data)
         {
             this.data = data
-            this.dialog2 = true
+            this.dialog1 = true
         }
     },
     mounted() {

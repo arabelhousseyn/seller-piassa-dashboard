@@ -96,6 +96,7 @@ class SignController extends Controller
         try {
             $signs = Sign::findOrFail($id);
             $signs->forceDelete();
+            return response()->noContent();
         }catch (\Exception $exception)
         {
             return response(['message' => 'not found'],404);
