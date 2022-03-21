@@ -48,6 +48,21 @@
                             </v-row>
                         </form>
                     </v-container>
+
+                        <v-file-input
+                            accept="image/png, image/jpeg, image/jpg"
+                            placeholder="Logo"
+                            prepend-icon="mdi-camera"
+                            label="Logo"
+                            @change="logo"
+                        ></v-file-input>
+
+                    <v-alert v-if="hasError1" border="right" colored-border type="error" elevation="2">
+                        <ul>
+                            <li v-for="(error,index) in errors1" :key="index"><span>{{error}}</span></li>
+                        </ul>
+                    </v-alert>
+
                 </v-card-text>
                 <v-card-actions>
                     <v-spacer></v-spacer>
@@ -69,12 +84,14 @@
 export default {
     props : ['data','dialog'],
     data : ()=>({
-        hasError : false,
         data2 : {
             name : null,
             prefix : null,
         },
+        hasError : false,
         errors : [],
+        hasError1 : false,
+        errors1 : [],
     }),
     methods : {
         close()
@@ -107,7 +124,29 @@ export default {
         },
         logo(e)
         {
-            this.file = e
+            let data = new FormData
+            data.append('sign_id',this.data.id)
+            data.append('logo',e)
+
+            axios.get('/sanctum/csrf-cookie').then(res => {
+                axios.post(`/api/signs/change-sign-logo`,data).then(e=>{
+                    if(e.status == 204)
+                    {
+                        this.$toast.open({
+                            message : "Opération effectué",
+                            type : 'success',
+                        })
+                        window.location.reload()
+                    }
+                }).catch(err =>{
+                    let errors = Object.values(err.response.data.errors)
+                    for (const error of errors) {
+                        this.errors1.push(error[0])
+                        this.hasError1 = true
+                    }
+                })
+            })
+
         }
     }
 }

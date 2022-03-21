@@ -13,7 +13,7 @@ class ChangeLogoSignRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,7 @@ class ChangeLogoSignRequest extends FormRequest
     public function rules()
     {
         return [
-            'sign_id' => 'required|exists:sings,id',
+            'sign_id' => 'required|exists:signs,id',
             'logo' => 'required|mimes:jpg,png,jpeg|dimensions:max_width=60,max_height=70'
         ];
     }

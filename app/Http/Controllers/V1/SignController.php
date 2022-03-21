@@ -139,8 +139,8 @@ class SignController extends Controller
         if($request->validated())
         {
             $sign = Sign::find($request->sign_id);
-            $image_name = str_replace('storage/logoSigns/','',$sign->logo);
-            $request->file('logo')->storeAs('public/logoSigns/',$image_name);
+//            $image_name = str_replace('storage/logoSigns/','',$sign->logo);
+//            $request->file('logo')->storeAs('public/logoSigns/',$image_name);
             return response()->noContent();
         }
     }
