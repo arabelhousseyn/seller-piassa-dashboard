@@ -103,6 +103,10 @@ const routes = [
               component : ()=> import('../pages/SingsPage')
             },
             {
+                path: 'types',
+                component : ()=> import('../pages/TypesPage')
+            },
+            {
                 path : '*',
                 component: () => import('../pages/NotFoundPage'),
             }
