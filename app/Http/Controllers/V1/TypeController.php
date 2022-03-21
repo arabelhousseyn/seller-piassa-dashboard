@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreTypeRequest;
 use Illuminate\Http\Request;
 use App\Models\{Type};
 class TypeController extends Controller
@@ -34,9 +35,13 @@ class TypeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreTypeRequest $request)
     {
-        //
+        if($request->validated())
+        {
+            Type::create($request->validated());
+            return response()->noContent();
+        }
     }
 
     /**

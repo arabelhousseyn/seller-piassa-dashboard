@@ -27,100 +27,9 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Sign/DeleteSignDialog.vue?vue&type=script&lang=js&":
-/*!***********************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Sign/DeleteSignDialog.vue?vue&type=script&lang=js& ***!
-  \***********************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['dialog', 'id'],
-  data: function data() {
-    return {
-      load: false
-    };
-  },
-  methods: {
-    destroy: function destroy() {
-      var _this = this;
-
-      this.load = true;
-      axios.get('/sanctum/csrf-cookie').then(function (res) {
-        axios["delete"]("/api/signs/".concat(_this.id)).then(function (e) {
-          console.log(e.status);
-
-          if (e.status == 204) {
-            _this.$toast.open({
-              message: 'Opération effectué',
-              type: 'success'
-            });
-
-            _this.load = false;
-            window.location.reload();
-          }
-        })["catch"](function (err) {
-          _this.$toast.open({
-            message: 'ERROR',
-            type: 'error'
-          });
-        });
-      });
-    },
-    close: function close() {
-      this.$emit('close');
-    }
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Sign/StoreSignDialog.vue?vue&type=script&lang=js&":
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Type/StoreTypeDialog.vue?vue&type=script&lang=js&":
 /*!**********************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Sign/StoreSignDialog.vue?vue&type=script&lang=js& ***!
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Type/StoreTypeDialog.vue?vue&type=script&lang=js& ***!
   \**********************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -248,7 +157,7 @@ __webpack_require__.r(__webpack_exports__);
       data: {
         name: null,
         logo: null,
-        prefix: null
+        percent: null
       },
       disable: true,
       disable1: false,
@@ -264,7 +173,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this.disabled = true;
       axios.get('/sanctum/csrf-cookie').then(function (res) {
-        axios.post('/api/signs', _this.data).then(function (e) {
+        axios.post('/api/types', _this.data).then(function (e) {
           _this.$toast.open({
             message: "Opération effectué",
             type: 'success'
@@ -294,7 +203,7 @@ __webpack_require__.r(__webpack_exports__);
       var data = new FormData();
       data.append('file', file);
       axios.get('/sanctum/csrf-cookie').then(function (res) {
-        axios.post('/api/signs/excel-import-signs', data).then(function (e) {
+        axios.post('/api/types/excel-import-signs', data).then(function (e) {
           console.log(e.data);
 
           _this2.$toast.open({
@@ -319,133 +228,7 @@ __webpack_require__.r(__webpack_exports__);
     check: function check() {
       this.hasError = false;
       this.errors = [];
-      this.disable = this.data.name == null || this.data.logo == null ? true : false;
-    }
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Sign/UpdateSignDialog.vue?vue&type=script&lang=js&":
-/*!***********************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Sign/UpdateSignDialog.vue?vue&type=script&lang=js& ***!
-  \***********************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['data', 'dialog'],
-  data: function data() {
-    return {
-      data2: {
-        name: null,
-        logo: null
-      },
-      hasError: false,
-      errors: []
-    };
-  },
-  methods: {
-    close: function close() {
-      this.$emit('close');
-    },
-    update: function update() {
-      var _this = this;
-
-      this.data2.name = this.data.name;
-      this.data2.logo = this.data.logo;
-      axios.get('/sanctum/csrf-cookie').then(function (res) {
-        axios.put("/api/signs/".concat(_this.data.id), _this.data2).then(function (e) {
-          if (e.status == 204) {
-            _this.$toast.open({
-              message: "Opération effectué",
-              type: 'success'
-            });
-
-            window.location.reload();
-          }
-        })["catch"](function (err) {
-          var errors = Object.values(err.response.data.errors);
-
-          for (var _i = 0, _errors = errors; _i < _errors.length; _i++) {
-            var error = _errors[_i];
-
-            _this.errors.push(error[0]);
-
-            _this.hasError = true;
-          }
-        });
-      });
+      this.disable = this.data.name == null || this.data.logo == null || this.data.percent == null ? true : false;
     }
   }
 });
@@ -463,9 +246,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _components_BreadCrumbsComponent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/BreadCrumbsComponent */ "./resources/js/components/BreadCrumbsComponent.vue");
-/* harmony import */ var _components_dialog_Sign_StoreSignDialog__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/dialog/Sign/StoreSignDialog */ "./resources/js/components/dialog/Sign/StoreSignDialog.vue");
-/* harmony import */ var _components_dialog_Sign_UpdateSignDialog__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/dialog/Sign/UpdateSignDialog */ "./resources/js/components/dialog/Sign/UpdateSignDialog.vue");
-/* harmony import */ var _components_dialog_Sign_DeleteSignDialog__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/dialog/Sign/DeleteSignDialog */ "./resources/js/components/dialog/Sign/DeleteSignDialog.vue");
+/* harmony import */ var _components_dialog_Type_StoreTypeDialog__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/dialog/Type/StoreTypeDialog */ "./resources/js/components/dialog/Type/StoreTypeDialog.vue");
 //
 //
 //
@@ -565,29 +346,35 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
-
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    DeleteSignDialog: _components_dialog_Sign_DeleteSignDialog__WEBPACK_IMPORTED_MODULE_3__["default"],
-    UpdateSignDialog: _components_dialog_Sign_UpdateSignDialog__WEBPACK_IMPORTED_MODULE_2__["default"],
-    StoreSignDialog: _components_dialog_Sign_StoreSignDialog__WEBPACK_IMPORTED_MODULE_1__["default"],
+    StoreTypeDialog: _components_dialog_Type_StoreTypeDialog__WEBPACK_IMPORTED_MODULE_1__["default"],
     BreadCrumbsComponent: _components_BreadCrumbsComponent__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   data: function data() {
     return {
-      sings: [],
+      types: [],
       loading: true,
       search: null,
       dialog: false,
       dialog1: false,
       headers: [{
-        text: 'Marque',
+        text: 'Type',
         value: 'name',
         align: 'start',
         sortable: true
+      }, {
+        text: '%',
+        value: 'percent'
       }, {
         text: 'logo',
         value: 'logo'
@@ -598,8 +385,8 @@ __webpack_require__.r(__webpack_exports__);
         text: 'Mis à jour à',
         value: 'updated_at'
       }, {
-        text: 'Préfixe',
-        value: 'prefix'
+        text: 'Statu',
+        value: 'deleted_at'
       }, {
         text: 'actions',
         value: 'actions',
@@ -626,9 +413,9 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get('/sanctum/csrf-cookie').then(function (res) {
-        axios.get('/api/signs').then(function (e) {
+        axios.get('/api/types').then(function (e) {
           _this.loading = false;
-          _this.sings = e.data.data;
+          _this.types = e.data.data;
         })["catch"](function (err) {
           _this.$toast.open({
             message: 'Erreur dans serveur veuillez réessayer',
@@ -691,47 +478,9 @@ component.options.__file = "resources/js/components/BreadCrumbsComponent.vue"
 
 /***/ }),
 
-/***/ "./resources/js/components/dialog/Sign/DeleteSignDialog.vue":
-/*!******************************************************************!*\
-  !*** ./resources/js/components/dialog/Sign/DeleteSignDialog.vue ***!
-  \******************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _DeleteSignDialog_vue_vue_type_template_id_41c2e646___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DeleteSignDialog.vue?vue&type=template&id=41c2e646& */ "./resources/js/components/dialog/Sign/DeleteSignDialog.vue?vue&type=template&id=41c2e646&");
-/* harmony import */ var _DeleteSignDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DeleteSignDialog.vue?vue&type=script&lang=js& */ "./resources/js/components/dialog/Sign/DeleteSignDialog.vue?vue&type=script&lang=js&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-;
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _DeleteSignDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _DeleteSignDialog_vue_vue_type_template_id_41c2e646___WEBPACK_IMPORTED_MODULE_0__.render,
-  _DeleteSignDialog_vue_vue_type_template_id_41c2e646___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/dialog/Sign/DeleteSignDialog.vue"
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/dialog/Sign/StoreSignDialog.vue":
+/***/ "./resources/js/components/dialog/Type/StoreTypeDialog.vue":
 /*!*****************************************************************!*\
-  !*** ./resources/js/components/dialog/Sign/StoreSignDialog.vue ***!
+  !*** ./resources/js/components/dialog/Type/StoreTypeDialog.vue ***!
   \*****************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -739,8 +488,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _StoreSignDialog_vue_vue_type_template_id_612a86c0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./StoreSignDialog.vue?vue&type=template&id=612a86c0& */ "./resources/js/components/dialog/Sign/StoreSignDialog.vue?vue&type=template&id=612a86c0&");
-/* harmony import */ var _StoreSignDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./StoreSignDialog.vue?vue&type=script&lang=js& */ "./resources/js/components/dialog/Sign/StoreSignDialog.vue?vue&type=script&lang=js&");
+/* harmony import */ var _StoreTypeDialog_vue_vue_type_template_id_1cdb50fa___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./StoreTypeDialog.vue?vue&type=template&id=1cdb50fa& */ "./resources/js/components/dialog/Type/StoreTypeDialog.vue?vue&type=template&id=1cdb50fa&");
+/* harmony import */ var _StoreTypeDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./StoreTypeDialog.vue?vue&type=script&lang=js& */ "./resources/js/components/dialog/Type/StoreTypeDialog.vue?vue&type=script&lang=js&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -750,9 +499,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 ;
 var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _StoreSignDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _StoreSignDialog_vue_vue_type_template_id_612a86c0___WEBPACK_IMPORTED_MODULE_0__.render,
-  _StoreSignDialog_vue_vue_type_template_id_612a86c0___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  _StoreTypeDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _StoreTypeDialog_vue_vue_type_template_id_1cdb50fa___WEBPACK_IMPORTED_MODULE_0__.render,
+  _StoreTypeDialog_vue_vue_type_template_id_1cdb50fa___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
   null,
@@ -762,45 +511,7 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/dialog/Sign/StoreSignDialog.vue"
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/dialog/Sign/UpdateSignDialog.vue":
-/*!******************************************************************!*\
-  !*** ./resources/js/components/dialog/Sign/UpdateSignDialog.vue ***!
-  \******************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _UpdateSignDialog_vue_vue_type_template_id_129dcce4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UpdateSignDialog.vue?vue&type=template&id=129dcce4& */ "./resources/js/components/dialog/Sign/UpdateSignDialog.vue?vue&type=template&id=129dcce4&");
-/* harmony import */ var _UpdateSignDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UpdateSignDialog.vue?vue&type=script&lang=js& */ "./resources/js/components/dialog/Sign/UpdateSignDialog.vue?vue&type=script&lang=js&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-;
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _UpdateSignDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _UpdateSignDialog_vue_vue_type_template_id_129dcce4___WEBPACK_IMPORTED_MODULE_0__.render,
-  _UpdateSignDialog_vue_vue_type_template_id_129dcce4___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/dialog/Sign/UpdateSignDialog.vue"
+component.options.__file = "resources/js/components/dialog/Type/StoreTypeDialog.vue"
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
 /***/ }),
@@ -858,24 +569,9 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/dialog/Sign/DeleteSignDialog.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************************!*\
-  !*** ./resources/js/components/dialog/Sign/DeleteSignDialog.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteSignDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./DeleteSignDialog.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Sign/DeleteSignDialog.vue?vue&type=script&lang=js&");
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteSignDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/components/dialog/Sign/StoreSignDialog.vue?vue&type=script&lang=js&":
+/***/ "./resources/js/components/dialog/Type/StoreTypeDialog.vue?vue&type=script&lang=js&":
 /*!******************************************************************************************!*\
-  !*** ./resources/js/components/dialog/Sign/StoreSignDialog.vue?vue&type=script&lang=js& ***!
+  !*** ./resources/js/components/dialog/Type/StoreTypeDialog.vue?vue&type=script&lang=js& ***!
   \******************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -883,23 +579,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_StoreSignDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./StoreSignDialog.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Sign/StoreSignDialog.vue?vue&type=script&lang=js&");
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_StoreSignDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/components/dialog/Sign/UpdateSignDialog.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************************!*\
-  !*** ./resources/js/components/dialog/Sign/UpdateSignDialog.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_UpdateSignDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./UpdateSignDialog.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Sign/UpdateSignDialog.vue?vue&type=script&lang=js&");
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_UpdateSignDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_StoreTypeDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./StoreTypeDialog.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Type/StoreTypeDialog.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_StoreTypeDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
@@ -934,50 +615,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/dialog/Sign/DeleteSignDialog.vue?vue&type=template&id=41c2e646&":
-/*!*************************************************************************************************!*\
-  !*** ./resources/js/components/dialog/Sign/DeleteSignDialog.vue?vue&type=template&id=41c2e646& ***!
-  \*************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteSignDialog_vue_vue_type_template_id_41c2e646___WEBPACK_IMPORTED_MODULE_0__.render),
-/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteSignDialog_vue_vue_type_template_id_41c2e646___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
-/* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteSignDialog_vue_vue_type_template_id_41c2e646___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./DeleteSignDialog.vue?vue&type=template&id=41c2e646& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Sign/DeleteSignDialog.vue?vue&type=template&id=41c2e646&");
-
-
-/***/ }),
-
-/***/ "./resources/js/components/dialog/Sign/StoreSignDialog.vue?vue&type=template&id=612a86c0&":
+/***/ "./resources/js/components/dialog/Type/StoreTypeDialog.vue?vue&type=template&id=1cdb50fa&":
 /*!************************************************************************************************!*\
-  !*** ./resources/js/components/dialog/Sign/StoreSignDialog.vue?vue&type=template&id=612a86c0& ***!
+  !*** ./resources/js/components/dialog/Type/StoreTypeDialog.vue?vue&type=template&id=1cdb50fa& ***!
   \************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_StoreSignDialog_vue_vue_type_template_id_612a86c0___WEBPACK_IMPORTED_MODULE_0__.render),
-/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_StoreSignDialog_vue_vue_type_template_id_612a86c0___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_StoreTypeDialog_vue_vue_type_template_id_1cdb50fa___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_StoreTypeDialog_vue_vue_type_template_id_1cdb50fa___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_StoreSignDialog_vue_vue_type_template_id_612a86c0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./StoreSignDialog.vue?vue&type=template&id=612a86c0& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Sign/StoreSignDialog.vue?vue&type=template&id=612a86c0&");
-
-
-/***/ }),
-
-/***/ "./resources/js/components/dialog/Sign/UpdateSignDialog.vue?vue&type=template&id=129dcce4&":
-/*!*************************************************************************************************!*\
-  !*** ./resources/js/components/dialog/Sign/UpdateSignDialog.vue?vue&type=template&id=129dcce4& ***!
-  \*************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UpdateSignDialog_vue_vue_type_template_id_129dcce4___WEBPACK_IMPORTED_MODULE_0__.render),
-/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UpdateSignDialog_vue_vue_type_template_id_129dcce4___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
-/* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UpdateSignDialog_vue_vue_type_template_id_129dcce4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./UpdateSignDialog.vue?vue&type=template&id=129dcce4& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Sign/UpdateSignDialog.vue?vue&type=template&id=129dcce4&");
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_StoreTypeDialog_vue_vue_type_template_id_1cdb50fa___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./StoreTypeDialog.vue?vue&type=template&id=1cdb50fa& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Type/StoreTypeDialog.vue?vue&type=template&id=1cdb50fa&");
 
 
 /***/ }),
@@ -1047,98 +696,9 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Sign/DeleteSignDialog.vue?vue&type=template&id=41c2e646&":
-/*!****************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Sign/DeleteSignDialog.vue?vue&type=template&id=41c2e646& ***!
-  \****************************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* binding */ render),
-/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
-/* harmony export */ });
-var render = function () {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "delete-shipper-dialog" },
-    [
-      _c(
-        "v-dialog",
-        {
-          attrs: { persistent: "", "max-width": "290" },
-          model: {
-            value: _vm.dialog,
-            callback: function ($$v) {
-              _vm.dialog = $$v
-            },
-            expression: "dialog",
-          },
-        },
-        [
-          _c(
-            "v-card",
-            [
-              _c("v-card-title", { staticClass: "text-h5" }, [
-                _vm._v(
-                  "\n                Etes-vous sûr que vous voulez supprimer !\n            "
-                ),
-              ]),
-              _vm._v(" "),
-              _c(
-                "v-card-actions",
-                [
-                  _c("v-spacer"),
-                  _vm._v(" "),
-                  _c(
-                    "v-btn",
-                    {
-                      attrs: { color: "grey darken-1", text: "" },
-                      on: { click: _vm.close },
-                    },
-                    [_c("v-icon", [_vm._v("mdi-cancel")])],
-                    1
-                  ),
-                  _vm._v(" "),
-                  !_vm.load
-                    ? _c(
-                        "v-btn",
-                        {
-                          attrs: { color: "red darken-1", text: "" },
-                          on: { click: _vm.destroy },
-                        },
-                        [_c("v-icon", [_vm._v("mdi-delete")])],
-                        1
-                      )
-                    : _c("v-progress-circular", {
-                        attrs: { indeterminate: "", color: "primary" },
-                      }),
-                ],
-                1
-              ),
-            ],
-            1
-          ),
-        ],
-        1
-      ),
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Sign/StoreSignDialog.vue?vue&type=template&id=612a86c0&":
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Type/StoreTypeDialog.vue?vue&type=template&id=1cdb50fa&":
 /*!***************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Sign/StoreSignDialog.vue?vue&type=template&id=612a86c0& ***!
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Type/StoreTypeDialog.vue?vue&type=template&id=1cdb50fa& ***!
   \***************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -1153,7 +713,7 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "store-sign-dialog" },
+    { staticClass: "store-type-dialog" },
     [
       _c(
         "v-dialog",
@@ -1230,7 +790,7 @@ var render = function () {
                                 _c("v-text-field", {
                                   attrs: {
                                     disabled: _vm.disable1,
-                                    label: "Marque*",
+                                    label: "Type*",
                                     required: "",
                                   },
                                   on: { keydown: _vm.check },
@@ -1276,15 +836,15 @@ var render = function () {
                                 _c("v-text-field", {
                                   attrs: {
                                     disabled: _vm.disable1,
-                                    label: "Préfixe",
+                                    label: "%*",
                                   },
                                   on: { keydown: _vm.check },
                                   model: {
-                                    value: _vm.data.prefix,
+                                    value: _vm.data.percent,
                                     callback: function ($$v) {
-                                      _vm.$set(_vm.data, "prefix", $$v)
+                                      _vm.$set(_vm.data, "percent", $$v)
                                     },
-                                    expression: "data.prefix",
+                                    expression: "data.percent",
                                   },
                                 }),
                               ],
@@ -1432,189 +992,6 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Sign/UpdateSignDialog.vue?vue&type=template&id=129dcce4&":
-/*!****************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Sign/UpdateSignDialog.vue?vue&type=template&id=129dcce4& ***!
-  \****************************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* binding */ render),
-/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
-/* harmony export */ });
-var render = function () {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "update-shipper-dialog" },
-    [
-      _c(
-        "v-dialog",
-        {
-          attrs: { persistent: "", "max-width": "600px" },
-          model: {
-            value: _vm.dialog,
-            callback: function ($$v) {
-              _vm.dialog = $$v
-            },
-            expression: "dialog",
-          },
-        },
-        [
-          _c(
-            "v-card",
-            [
-              _c("v-card-title", [
-                _c("span", { staticClass: "text-h5" }, [
-                  _vm._v("Modification"),
-                ]),
-              ]),
-              _vm._v(" "),
-              _c(
-                "v-card-text",
-                [
-                  _c("v-container", [
-                    _c(
-                      "form",
-                      {
-                        attrs: { method: "put" },
-                        on: {
-                          submit: function ($event) {
-                            $event.preventDefault()
-                            return _vm.update.apply(null, arguments)
-                          },
-                        },
-                      },
-                      [
-                        _c(
-                          "v-row",
-                          [
-                            _c(
-                              "v-col",
-                              { attrs: { cols: "12", sm: "6", md: "6" } },
-                              [
-                                _c("v-text-field", {
-                                  attrs: { label: "Nom" },
-                                  model: {
-                                    value: _vm.data.name,
-                                    callback: function ($$v) {
-                                      _vm.$set(_vm.data, "name", $$v)
-                                    },
-                                    expression: "data.name",
-                                  },
-                                }),
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "v-col",
-                              { attrs: { cols: "12", sm: "6", md: "6" } },
-                              [
-                                _c("v-text-field", {
-                                  attrs: { label: "Nom" },
-                                  model: {
-                                    value: _vm.data.logo,
-                                    callback: function ($$v) {
-                                      _vm.$set(_vm.data, "logo", $$v)
-                                    },
-                                    expression: "data.logo",
-                                  },
-                                }),
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _vm.hasError
-                              ? _c(
-                                  "v-alert",
-                                  {
-                                    attrs: {
-                                      border: "right",
-                                      "colored-border": "",
-                                      type: "error",
-                                      elevation: "2",
-                                    },
-                                  },
-                                  [
-                                    _c(
-                                      "ul",
-                                      _vm._l(
-                                        _vm.errors,
-                                        function (error, index) {
-                                          return _c("li", { key: index }, [
-                                            _c("span", [_vm._v(_vm._s(error))]),
-                                          ])
-                                        }
-                                      ),
-                                      0
-                                    ),
-                                  ]
-                                )
-                              : _vm._e(),
-                            _vm._v(" "),
-                            _c(
-                              "v-col",
-                              { attrs: { cols: "12" } },
-                              [
-                                _c(
-                                  "v-btn",
-                                  {
-                                    attrs: { type: "submit", color: "success" },
-                                  },
-                                  [_c("v-icon", [_vm._v("mdi-check")])],
-                                  1
-                                ),
-                              ],
-                              1
-                            ),
-                          ],
-                          1
-                        ),
-                      ],
-                      1
-                    ),
-                  ]),
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-card-actions",
-                [
-                  _c("v-spacer"),
-                  _vm._v(" "),
-                  _c(
-                    "v-btn",
-                    {
-                      attrs: { color: "blue darken-1", text: "" },
-                      on: { click: _vm.close },
-                    },
-                    [_vm._v("\n                    Fermer\n                ")]
-                  ),
-                ],
-                1
-              ),
-            ],
-            1
-          ),
-        ],
-        1
-      ),
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/TypesPage.vue?vue&type=template&id=14b5e122&":
 /*!****************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/TypesPage.vue?vue&type=template&id=14b5e122& ***!
@@ -1640,8 +1017,8 @@ var render = function () {
         [
           _c("bread-crumbs-component", {
             attrs: {
-              title1: "Marques",
-              link: "/home/signs",
+              title1: "Types",
+              link: "/home/types",
               icon: "mdi mdi-chevron-right",
             },
           }),
@@ -1652,7 +1029,7 @@ var render = function () {
               loading: _vm.loading,
               "loading-text": "Chargement... veuillez patienter",
               headers: _vm.headers,
-              items: _vm.sings,
+              items: _vm.types,
               search: _vm.search,
               "disable-sort": "",
             },
@@ -1665,7 +1042,7 @@ var render = function () {
                       "v-toolbar",
                       { attrs: { flat: "" } },
                       [
-                        _c("v-toolbar-title", [_vm._v("Marques")]),
+                        _c("v-toolbar-title", [_vm._v("Types")]),
                         _vm._v(" "),
                         _c("v-divider", {
                           staticClass: "mx-4",
@@ -1674,7 +1051,7 @@ var render = function () {
                         _vm._v(" "),
                         _c("v-spacer"),
                         _vm._v(" "),
-                        _c("store-sign-dialog"),
+                        _c("store-type-dialog"),
                       ],
                       1
                     ),
@@ -1891,16 +1268,6 @@ var render = function () {
                 proxy: true,
               },
             ]),
-          }),
-          _vm._v(" "),
-          _c("update-sign-dialog", {
-            attrs: { dialog: _vm.dialog1, data: _vm.data },
-            on: { close: _vm.close1 },
-          }),
-          _vm._v(" "),
-          _c("delete-sign-dialog", {
-            attrs: { dialog: _vm.dialog, id: _vm.sing_id },
-            on: { close: _vm.close },
           }),
         ],
         1

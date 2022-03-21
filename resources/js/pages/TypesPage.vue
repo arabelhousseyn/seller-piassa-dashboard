@@ -1,12 +1,12 @@
 <template>
     <div class="sellers-data-table">
         <v-container fluid>
-            <bread-crumbs-component title1="Marques" link="/home/signs" icon="mdi mdi-chevron-right" />
+            <bread-crumbs-component title1="Types" link="/home/types" icon="mdi mdi-chevron-right" />
             <v-data-table
                 :loading="loading"
                 loading-text="Chargement... veuillez patienter"
                 :headers="headers"
-                :items="sings"
+                :items="types"
                 :search="search"
                 disable-sort
                 class="elevation-1"
@@ -15,14 +15,14 @@
                     <v-toolbar
                         flat
                     >
-                        <v-toolbar-title>Marques</v-toolbar-title>
+                        <v-toolbar-title>Types</v-toolbar-title>
                         <v-divider
                             class="mx-4"
                             inset
                             vertical
                         ></v-divider>
                         <v-spacer></v-spacer>
-                        <store-sign-dialog />
+                        <store-type-dialog />
                     </v-toolbar>
                     <v-toolbar flat>
                         <v-text-field
@@ -84,6 +84,15 @@
                     <iframe width="100" height="100" :src="item.logo"></iframe>
                 </template>
 
+                <template v-slot:item.deleted_at="{ item }">
+                    <v-chip dark v-if="item.deleted_at == null" color="green">
+                        Active
+                    </v-chip>
+                    <v-chip dark v-else color="red">
+                        Supprimé
+                    </v-chip>
+                </template>
+
                 <template v-slot:no-data>
                     <v-btn
                         color="primary">
@@ -91,8 +100,6 @@
                     </v-btn>
                 </template>
             </v-data-table>
-            <update-sign-dialog @close="close1" :dialog="dialog1" :data="data" />
-            <delete-sign-dialog @close="close" :dialog="dialog" :id="sing_id" />
         </v-container>
     </div>
 </template>
@@ -100,29 +107,28 @@
 <script>
 
 import BreadCrumbsComponent from "../components/BreadCrumbsComponent";
-import StoreSignDialog from "../components/dialog/Sign/StoreSignDialog";
-import UpdateSignDialog from "../components/dialog/Sign/UpdateSignDialog";
-import DeleteSignDialog from "../components/dialog/Sign/DeleteSignDialog";
+import StoreTypeDialog from "../components/dialog/Type/StoreTypeDialog";
 
 export default {
-    components: {DeleteSignDialog, UpdateSignDialog, StoreSignDialog, BreadCrumbsComponent},
+    components: {StoreTypeDialog, BreadCrumbsComponent},
     data : ()=>({
-        sings : [],
+        types : [],
         loading : true,
         search : null,
         dialog : false,
         dialog1 : false,
         headers: [
             {
-                text: 'Marque',
+                text: 'Type',
                 value: 'name',
                 align: 'start',
                 sortable: true,
             },
+            { text: '%', value: 'percent' },
             {text: 'logo',value: 'logo'},
             { text: 'Créé à', value: 'created_at' },
             { text: 'Mis à jour à', value: 'updated_at' },
-            { text: 'Préfixe', value: 'prefix' },
+            { text: 'Statu', value: 'deleted_at' },
             { text: 'actions', value: 'actions', sortable: false },
         ],
         profile : [],
@@ -147,10 +153,10 @@ export default {
         init()
         {
             axios.get('/sanctum/csrf-cookie').then(res =>{
-                axios.get('/api/signs')
+                axios.get('/api/types')
                     .then(e =>{
                         this.loading = false
-                        this.sings = e.data.data
+                        this.types = e.data.data
                     }).catch(err => {
                     this.$toast.open({message : 'Erreur dans serveur veuillez réessayer',type : 'error'})
                 })
