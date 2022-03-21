@@ -109,7 +109,7 @@ class SignController extends Controller
     public function restore($id)
     {
         try {
-            $sign = Sign::findOrFail($id);
+            $sign = Sign::withTrashed()->findOrFail($id);
             if($sign->trashed())
             {
                 $sign->restore();

@@ -1355,7 +1355,7 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "delete-shipper-dialog" },
+    { staticClass: "restore-type-dialog" },
     [
       _c(
         "v-dialog",

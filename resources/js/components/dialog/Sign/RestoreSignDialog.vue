@@ -1,5 +1,5 @@
 <template>
-    <div class="restore-type-dialog">
+    <div class="restore-sign-dialog">
         <v-dialog
             v-model="dialog"
             persistent
@@ -49,7 +49,7 @@ export default {
         {
             this.load = true
             axios.get('/sanctum/csrf-cookie').then(res =>{
-                axios.put(`/api/types/restore/${this.id}`).then(e=>{
+                axios.put(`/api/signs/restore/${this.id}`).then(e=>{
                     console.log(e.status)
                     if(e.status == 204)
                     {

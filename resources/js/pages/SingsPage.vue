@@ -66,6 +66,12 @@
                                     <v-list-item-icon><v-icon color="red">mdi-delete</v-icon></v-list-item-icon>
                                     <v-list-item-content><v-list-item-title>Supprimer</v-list-item-title></v-list-item-content>
                                 </v-list-item>
+
+                                <v-list-item v-else link @click="restore(item.id)">
+                                    <v-list-item-icon><v-icon color="green">mdi-restore</v-icon></v-list-item-icon>
+                                    <v-list-item-content><v-list-item-title>Restaurer</v-list-item-title></v-list-item-content>
+                                </v-list-item>
+
                             </v-list-item-group>
                         </v-list>
                     </v-menu>
@@ -93,6 +99,7 @@
             </v-data-table>
             <update-sign-dialog @close="close1" :dialog="dialog1" :data="data" />
             <delete-sign-dialog @close="close" :dialog="dialog" :id="sing_id" />
+            <restore-sign-dialog @close="close2" :dialog="dialog2" :id="sing_id" />
         </v-container>
     </div>
 </template>
@@ -103,15 +110,17 @@ import BreadCrumbsComponent from "../components/BreadCrumbsComponent";
 import StoreSignDialog from "../components/dialog/Sign/StoreSignDialog";
 import UpdateSignDialog from "../components/dialog/Sign/UpdateSignDialog";
 import DeleteSignDialog from "../components/dialog/Sign/DeleteSignDialog";
+import RestoreSignDialog from "../components/dialog/Sign/RestoreSignDialog";
 
 export default {
-    components: {DeleteSignDialog, UpdateSignDialog, StoreSignDialog, BreadCrumbsComponent},
+    components: {RestoreSignDialog, DeleteSignDialog, UpdateSignDialog, StoreSignDialog, BreadCrumbsComponent},
     data : ()=>({
         sings : [],
         loading : true,
         search : null,
         dialog : false,
         dialog1 : false,
+        dialog2 : false,
         headers: [
             {
                 text: 'Marque',
@@ -145,6 +154,11 @@ export default {
             this.data = []
             this.dialog1 = false
         },
+        close2()
+        {
+            this.sing_id = id
+            this.dialog2 = true
+        },
         init()
         {
             axios.get('/sanctum/csrf-cookie').then(res =>{
@@ -161,6 +175,12 @@ export default {
         {
             this.sing_id = id
             this.dialog = true
+        },
+        restore(id)
+        {
+            this.sing_id = id
+            this.dialog2 = true
+
         },
         update(data)
         {
