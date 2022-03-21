@@ -4,6 +4,7 @@ namespace App\Http\Controllers\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreSignRequest;
+use App\Http\Requests\UpdateSignRequest;
 use App\Imports\SignsImport;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
@@ -75,9 +76,13 @@ class SignController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateSignRequest $request, $id)
     {
-        //
+        if($request->validated())
+        {
+            Sign::whereId($id)->update($request->validated());
+            return response()->noContent();
+        }
     }
 
     /**

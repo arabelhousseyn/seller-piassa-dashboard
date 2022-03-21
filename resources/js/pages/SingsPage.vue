@@ -130,7 +130,7 @@ export default {
         ],
         profile : [],
         data : [],
-        province_id : null,
+        sing_id : null,
     }),
     methods : {
         reset()
@@ -164,12 +164,12 @@ export default {
                 })
             })
         },
-        deactivate(id)
+        destroy(id)
         {
             this.province_id = id
             this.dialog = true
         },
-        activate(id)
+        restore(id)
         {
             this.province_id = id
             this.dialog1 = true

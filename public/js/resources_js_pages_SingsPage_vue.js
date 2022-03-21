@@ -389,7 +389,7 @@ __webpack_require__.r(__webpack_exports__);
       }],
       profile: [],
       data: [],
-      province_id: null
+      sing_id: null
     };
   },
   methods: {
@@ -423,11 +423,11 @@ __webpack_require__.r(__webpack_exports__);
         });
       });
     },
-    deactivate: function deactivate(id) {
+    destroy: function destroy(id) {
       this.province_id = id;
       this.dialog = true;
     },
-    activate: function activate(id) {
+    restore: function restore(id) {
       this.province_id = id;
       this.dialog1 = true;
     },
