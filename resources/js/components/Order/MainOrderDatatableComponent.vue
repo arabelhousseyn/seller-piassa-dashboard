@@ -1,7 +1,7 @@
 <template>
     <div class="users-data-table">
         <v-container fluid>
-            <bread-crumbs-component title1="Utilisateurs" link="/home/users" icon="mdi mdi-chevron-right" />
+            <bread-crumbs-component title1="Commandes" link="/home/orders" icon="mdi mdi-chevron-right" />
             <v-data-table
                 :loading="loading"
                 loading-text="Chargement... veuillez patienter"
@@ -15,14 +15,7 @@
                     <v-toolbar
                         flat
                     >
-                        <v-toolbar-title>Utilisateurs</v-toolbar-title>
-                        <v-divider
-                            class="mx-4"
-                            inset
-                            vertical
-                        ></v-divider>
-                        <v-spacer></v-spacer>
-                        <create-user-dialog />
+                        <v-toolbar-title>Commandes</v-toolbar-title>
                     </v-toolbar>
                     <v-toolbar flat>
                         <v-text-field

@@ -176,13 +176,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -2213,8 +2206,8 @@ var render = function () {
         [
           _c("bread-crumbs-component", {
             attrs: {
-              title1: "Utilisateurs",
-              link: "/home/users",
+              title1: "Commandes",
+              link: "/home/orders",
               icon: "mdi mdi-chevron-right",
             },
           }),
@@ -2237,18 +2230,7 @@ var render = function () {
                     _c(
                       "v-toolbar",
                       { attrs: { flat: "" } },
-                      [
-                        _c("v-toolbar-title", [_vm._v("Utilisateurs")]),
-                        _vm._v(" "),
-                        _c("v-divider", {
-                          staticClass: "mx-4",
-                          attrs: { inset: "", vertical: "" },
-                        }),
-                        _vm._v(" "),
-                        _c("v-spacer"),
-                        _vm._v(" "),
-                        _c("create-user-dialog"),
-                      ],
+                      [_c("v-toolbar-title", [_vm._v("Commandes")])],
                       1
                     ),
                     _vm._v(" "),
