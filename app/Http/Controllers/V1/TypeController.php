@@ -93,7 +93,32 @@ class TypeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $type = Type::findOrFail($id);
+            if(!$type->trashed())
+            {
+                $type->delete();
+                return response()->noContent();
+            }
+        }catch (\Exception $exception)
+        {
+            return response(['message' => 'not found'],404);
+        }
+    }
+
+    public function restore($id)
+    {
+        try {
+            $type = Type::findOrFail($id);
+            if($type->trashed())
+            {
+                $type->restore();
+                return response()->noContent();
+            }
+        }catch (\Exception $exception)
+        {
+            return response(['message' => 'not found'],404);
+        }
     }
 
     public function types()

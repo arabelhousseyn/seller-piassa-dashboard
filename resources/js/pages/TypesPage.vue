@@ -66,6 +66,10 @@
                                     <v-list-item-icon><v-icon color="red">mdi-delete</v-icon></v-list-item-icon>
                                     <v-list-item-content><v-list-item-title>Supprimer</v-list-item-title></v-list-item-content>
                                 </v-list-item>
+                                <v-list-item v-else link @click="restore(item.id)">
+                                    <v-list-item-icon><v-icon color="green">mdi-restore</v-icon></v-list-item-icon>
+                                    <v-list-item-content><v-list-item-title>Restaurer</v-list-item-title></v-list-item-content>
+                                </v-list-item>
                             </v-list-item-group>
                         </v-list>
                     </v-menu>
@@ -135,7 +139,7 @@ export default {
         ],
         profile : [],
         data : [],
-        sing_id : null,
+        type_id : null,
     }),
     methods : {
         reset()
@@ -166,8 +170,12 @@ export default {
         },
         destroy(id)
         {
-            this.sing_id = id
+            this.type_id = id
             this.dialog = true
+        },
+        restore()
+        {
+
         },
         update(data)
         {

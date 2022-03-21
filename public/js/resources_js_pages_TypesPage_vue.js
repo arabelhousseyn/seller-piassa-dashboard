@@ -494,6 +494,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -537,7 +541,7 @@ __webpack_require__.r(__webpack_exports__);
       }],
       profile: [],
       data: [],
-      sing_id: null
+      type_id: null
     };
   },
   methods: {
@@ -568,9 +572,10 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     destroy: function destroy(id) {
-      this.sing_id = id;
+      this.type_id = id;
       this.dialog = true;
     },
+    restore: function restore() {},
     update: function update(data) {
       this.data = data;
       this.dialog1 = true;
@@ -1626,7 +1631,41 @@ var render = function () {
                                       ],
                                       1
                                     )
-                                  : _vm._e(),
+                                  : _c(
+                                      "v-list-item",
+                                      {
+                                        attrs: { link: "" },
+                                        on: {
+                                          click: function ($event) {
+                                            return _vm.restore(item.id)
+                                          },
+                                        },
+                                      },
+                                      [
+                                        _c(
+                                          "v-list-item-icon",
+                                          [
+                                            _c(
+                                              "v-icon",
+                                              { attrs: { color: "green" } },
+                                              [_vm._v("mdi-restore")]
+                                            ),
+                                          ],
+                                          1
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "v-list-item-content",
+                                          [
+                                            _c("v-list-item-title", [
+                                              _vm._v("Restaurer"),
+                                            ]),
+                                          ],
+                                          1
+                                        ),
+                                      ],
+                                      1
+                                    ),
                               ],
                               1
                             ),
