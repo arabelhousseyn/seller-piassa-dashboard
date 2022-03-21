@@ -203,7 +203,7 @@ __webpack_require__.r(__webpack_exports__);
       var data = new FormData();
       data.append('file', file);
       axios.get('/sanctum/csrf-cookie').then(function (res) {
-        axios.post('/api/types/excel-import-signs', data).then(function (e) {
+        axios.post('/api/types/excel-import-types', data).then(function (e) {
           console.log(e.data);
 
           _this2.$toast.open({

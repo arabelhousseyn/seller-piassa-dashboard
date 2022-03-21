@@ -160,7 +160,7 @@ export default {
             data.append('file',file)
 
             axios.get('/sanctum/csrf-cookie').then(res => {
-                axios.post('/api/types/excel-import-signs',data).then(e=>{
+                axios.post('/api/types/excel-import-types',data).then(e=>{
                     console.log(e.data)
                     this.$toast.open({
                         message : "Opération effectué",

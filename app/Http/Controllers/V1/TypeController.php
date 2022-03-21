@@ -4,7 +4,9 @@ namespace App\Http\Controllers\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTypeRequest;
+use App\Imports\TypesImport;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Models\{Type};
 class TypeController extends Controller
 {
@@ -93,5 +95,19 @@ class TypeController extends Controller
     {
         $types = Type::withoutTrashed()->latest('created_at')->select(['id','name'])->get();
         return response(['data' => $types],200);
+    }
+
+    public function storeTypesExcel(Request $request)
+    {
+
+        $rules = [
+            'file' => 'required|mimes:csv,xlsx'
+        ];
+
+        $validated = $request->validate($rules);
+
+        Excel::import(new TypesImport,$request->file);
+
+        return response()->noContent();
     }
 }
