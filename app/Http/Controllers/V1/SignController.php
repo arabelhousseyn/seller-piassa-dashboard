@@ -42,7 +42,12 @@ class SignController extends Controller
     {
         if($request->validated())
         {
-            Sign::create($request->validated());
+            $unique_id = uniqid();
+            $path = $request->file('logo')->storeAs('logoSigns',$unique_id);
+            $logo = [
+                'logo' => $path
+            ];
+            Sign::create(array_merge($logo,$request->only('name','prefix')));
             return response()->noContent();
         }
     }
