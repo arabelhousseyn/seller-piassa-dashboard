@@ -20,7 +20,7 @@
                                     md="6"
                                 >
                                     <v-text-field
-                                        label="Nom"
+                                        label="Marque"
                                         v-model="data.name"
                                     ></v-text-field>
                                 </v-col>
@@ -31,8 +31,8 @@
                                     md="6"
                                 >
                                     <v-text-field
-                                        label="Logo"
-                                        v-model="data.logo"
+                                        label="Préfixe"
+                                        v-model="data.prefix"
                                     ></v-text-field>
                                 </v-col>
 
@@ -69,12 +69,12 @@
 export default {
     props : ['data','dialog'],
     data : ()=>({
+        hasError : false,
         data2 : {
             name : null,
-            logo : null,
+            prefix : null,
         },
-        hasError : false,
-        errors : []
+        errors : [],
     }),
     methods : {
         close()
@@ -84,8 +84,7 @@ export default {
         update()
         {
             this.data2.name = this.data.name
-            this.data2.logo = this.data.logo
-
+            this.data2.prefix = this.data.prefix
             axios.get('/sanctum/csrf-cookie').then(res => {
                 axios.put(`/api/signs/${this.data.id}`,this.data2).then(e=>{
                     if(e.status == 204)
@@ -105,6 +104,10 @@ export default {
                 })
             })
 
+        },
+        logo(e)
+        {
+            this.file = e
         }
     }
 }

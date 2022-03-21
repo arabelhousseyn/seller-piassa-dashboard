@@ -458,11 +458,11 @@ __webpack_require__.r(__webpack_exports__);
   props: ['data', 'dialog'],
   data: function data() {
     return {
+      hasError: false,
       data2: {
         name: null,
-        logo: null
+        prefix: null
       },
-      hasError: false,
       errors: []
     };
   },
@@ -474,7 +474,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.data2.name = this.data.name;
-      this.data2.logo = this.data.logo;
+      this.data2.prefix = this.data.prefix;
       axios.get('/sanctum/csrf-cookie').then(function (res) {
         axios.put("/api/signs/".concat(_this.data.id), _this.data2).then(function (e) {
           if (e.status == 204) {
@@ -497,6 +497,9 @@ __webpack_require__.r(__webpack_exports__);
           }
         });
       });
+    },
+    logo: function logo(e) {
+      this.file = e;
     }
   }
 });
@@ -1671,7 +1674,7 @@ var render = function () {
                               { attrs: { cols: "12", sm: "6", md: "6" } },
                               [
                                 _c("v-text-field", {
-                                  attrs: { label: "Nom" },
+                                  attrs: { label: "Marque" },
                                   model: {
                                     value: _vm.data.name,
                                     callback: function ($$v) {
@@ -1689,13 +1692,13 @@ var render = function () {
                               { attrs: { cols: "12", sm: "6", md: "6" } },
                               [
                                 _c("v-text-field", {
-                                  attrs: { label: "Logo" },
+                                  attrs: { label: "Préfixe" },
                                   model: {
-                                    value: _vm.data.logo,
+                                    value: _vm.data.prefix,
                                     callback: function ($$v) {
-                                      _vm.$set(_vm.data, "logo", $$v)
+                                      _vm.$set(_vm.data, "prefix", $$v)
                                     },
-                                    expression: "data.logo",
+                                    expression: "data.prefix",
                                   },
                                 }),
                               ],

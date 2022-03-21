@@ -86,16 +86,8 @@ class SignController extends Controller
     {
         if($request->validated())
         {
-            try {
-                $sign = Sign::findOrFail($id);
-                $image_name = str_replace('storage/logoSigns/','',$sign->logo);
-                $request->file('logo')->storeAs('public/logoSigns',$image_name);
-                Sign::whereId($id)->update($request->only('name','prefix'));
-                return response()->noContent();
-            }catch (\Exception $exception)
-            {
-                return response(['message' => 'not found'],404);
-            }
+            Sign::whereId($id)->update($request->validated());
+            return response()->noContent();
         }
     }
 
