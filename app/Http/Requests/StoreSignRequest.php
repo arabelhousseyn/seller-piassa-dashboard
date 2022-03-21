@@ -25,7 +25,7 @@ class StoreSignRequest extends FormRequest
     {
         return [
             'name' => 'required|max:255',
-            'logo' => 'required|mimes:jpg,png,jpeg'
+            'logo' => 'required|mimes:jpg,png,jpeg|dimensions:max_width=60,max_height=70'
         ];
     }
 }

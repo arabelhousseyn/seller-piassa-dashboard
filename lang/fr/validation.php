@@ -228,7 +228,9 @@ return [
         ],
         'logo' => [
             'required' => 'Logo requis.',
-            'url' => 'Logo URL non valide.'
+            'url' => 'Logo URL non valide.',
+            'mimes' => 'Type logo invalide.',
+            'dimensions' => '60 X 70 dimensions logo requis.'
         ]
     ],
 

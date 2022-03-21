@@ -2077,9 +2077,15 @@ var render = function () {
                 fn: function (ref) {
                   var item = ref.item
                   return [
-                    _c("iframe", {
-                      attrs: { width: "100", height: "100", src: item.logo },
-                    }),
+                    _c(
+                      "v-avatar",
+                      [
+                        _c("v-img", {
+                          attrs: { src: item.logo, "lazy-src": item.lgo },
+                        }),
+                      ],
+                      1
+                    ),
                   ]
                 },
               },

@@ -87,7 +87,7 @@
                 </template>
 
                 <template v-slot:item.logo="{ item }">
-                    <iframe width="100" height="100" :src="item.logo"></iframe>
+                    <v-avatar><v-img :src="item.logo" :lazy-src="item.lgo"></v-img> </v-avatar>
                 </template>
 
                 <template v-slot:no-data>
