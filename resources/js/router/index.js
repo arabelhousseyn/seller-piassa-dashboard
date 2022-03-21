@@ -107,6 +107,16 @@ const routes = [
                 component : ()=> import('../pages/TypesPage')
             },
             {
+              path: 'orders',
+              component : () => import('../pages/OrderPage'),
+                children: [
+                    {
+                        path : '/',
+                        component : () => import('../components/Order/MainOrderDatatableComponent')
+                    }
+                ]
+            },
+            {
                 path : '*',
                 component: () => import('../pages/NotFoundPage'),
             }
