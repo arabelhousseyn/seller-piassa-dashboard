@@ -109,7 +109,7 @@ class TypeController extends Controller
     public function restore($id)
     {
         try {
-            $type = Type::findOrFail($id);
+            $type = Type::withTrashed()->findOrFail($id);
             if($type->trashed())
             {
                 $type->restore();

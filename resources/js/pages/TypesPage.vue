@@ -106,6 +106,7 @@
             </v-data-table>
             <update-type-dialog @close="close1" :data="data" :dialog="dialog1" />
             <delete-type-dialog @close="close" :id="type_id" :dialog="dialog" />
+            <restore-type-dialog @close="close2" :id="type_id" :dialog="dialog2" />
         </v-container>
     </div>
 </template>
@@ -116,15 +117,17 @@ import BreadCrumbsComponent from "../components/BreadCrumbsComponent";
 import StoreTypeDialog from "../components/dialog/Type/StoreTypeDialog";
 import UpdateTypeDialog from "../components/dialog/Type/UpdateTypeDialog";
 import DeleteTypeDialog from "../components/dialog/Type/DeleteTypeDialog";
+import RestoreTypeDialog from "../components/dialog/Type/RestoreTypeDialog";
 
 export default {
-    components: {DeleteTypeDialog, UpdateTypeDialog, StoreTypeDialog, BreadCrumbsComponent},
+    components: {RestoreTypeDialog, DeleteTypeDialog, UpdateTypeDialog, StoreTypeDialog, BreadCrumbsComponent},
     data : ()=>({
         types : [],
         loading : true,
         search : null,
         dialog : false,
         dialog1 : false,
+        dialog2 : false,
         headers: [
             {
                 text: 'Type',
@@ -158,6 +161,11 @@ export default {
             this.data = []
             this.dialog1 = false
         },
+        close2()
+        {
+            this.type_id = null
+            this.dialog2 = false
+        },
         init()
         {
             axios.get('/sanctum/csrf-cookie').then(res =>{
@@ -175,9 +183,10 @@ export default {
             this.type_id = id
             this.dialog = true
         },
-        restore()
+        restore(id)
         {
-
+            this.type_id = id
+            this.dialog2 = true
         },
         update(data)
         {
