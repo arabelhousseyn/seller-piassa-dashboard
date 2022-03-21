@@ -105,6 +105,7 @@
                 </template>
             </v-data-table>
             <update-type-dialog @close="close1" :data="data" :dialog="dialog1" />
+            <delete-type-dialog @close="close" :id="type_id" :dialog="dialog" />
         </v-container>
     </div>
 </template>
@@ -114,9 +115,10 @@
 import BreadCrumbsComponent from "../components/BreadCrumbsComponent";
 import StoreTypeDialog from "../components/dialog/Type/StoreTypeDialog";
 import UpdateTypeDialog from "../components/dialog/Type/UpdateTypeDialog";
+import DeleteTypeDialog from "../components/dialog/Type/DeleteTypeDialog";
 
 export default {
-    components: {UpdateTypeDialog, StoreTypeDialog, BreadCrumbsComponent},
+    components: {DeleteTypeDialog, UpdateTypeDialog, StoreTypeDialog, BreadCrumbsComponent},
     data : ()=>({
         types : [],
         loading : true,
@@ -148,7 +150,7 @@ export default {
         },
         close()
         {
-            this.sing_id = null
+            this.type_id = null
             this.dialog = false
         },
         close1()
