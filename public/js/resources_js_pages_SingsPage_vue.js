@@ -311,6 +311,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -332,8 +333,12 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.disabled = true;
+      var data = new FormData();
+      data.append('name', this.data.name);
+      data.append('logo', this.data.logo);
+      data.append('prefix', this.data.prefix);
       axios.get('/sanctum/csrf-cookie').then(function (res) {
-        axios.post('/api/signs', _this.data).then(function (e) {
+        axios.post('/api/signs', data).then(function (e) {
           _this.$toast.open({
             message: "Opération effectué",
             type: 'success'
@@ -358,6 +363,10 @@ __webpack_require__.r(__webpack_exports__);
       this.hasError = false;
       this.errors = [];
       this.disable = this.data.name == null || this.data.logo == null ? true : false;
+    },
+    logo: function logo(e) {
+      this.data.logo = e;
+      this.check();
     }
   }
 });
@@ -1464,16 +1473,14 @@ var render = function () {
                               "v-col",
                               { attrs: { cols: "12", sm: "6", md: "4" } },
                               [
-                                _c("v-text-field", {
-                                  attrs: { label: "Logo URL*", required: "" },
-                                  on: { keydown: _vm.check },
-                                  model: {
-                                    value: _vm.data.logo,
-                                    callback: function ($$v) {
-                                      _vm.$set(_vm.data, "logo", $$v)
-                                    },
-                                    expression: "data.logo",
+                                _c("v-file-input", {
+                                  attrs: {
+                                    accept: "image/png, image/jpeg, image/jpg",
+                                    placeholder: "Logo",
+                                    "prepend-icon": "mdi-camera",
+                                    label: "Logo",
                                   },
+                                  on: { change: _vm.logo },
                                 }),
                               ],
                               1

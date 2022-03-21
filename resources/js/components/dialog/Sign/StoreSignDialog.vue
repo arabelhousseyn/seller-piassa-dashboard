@@ -41,12 +41,13 @@
                                     sm="6"
                                     md="4"
                                 >
-                                    <v-text-field
-                                        @keydown="check"
-                                        label="Logo URL*"
-                                        v-model="data.logo"
-                                        required
-                                    ></v-text-field>
+                                    <v-file-input
+                                        accept="image/png, image/jpeg, image/jpg"
+                                        placeholder="Logo"
+                                        prepend-icon="mdi-camera"
+                                        label="Logo"
+                                        @change="logo"
+                                    ></v-file-input>
                                 </v-col>
 
                                 <v-col
@@ -110,9 +111,13 @@ export default {
         store()
         {
             this.disabled = true
+            let data = new FormData
+            data.append('name',this.data.name)
+            data.append('logo',this.data.logo)
+            data.append('prefix',this.data.prefix)
 
             axios.get('/sanctum/csrf-cookie').then(res => {
-                axios.post('/api/signs',this.data).then(e=>{
+                axios.post('/api/signs',data).then(e=>{
                     this.$toast.open({
                         message : "Opération effectué",
                         type : 'success',
@@ -134,6 +139,11 @@ export default {
             this.hasError = false
             this.errors = []
             this.disable = (this.data.name == null || this.data.logo == null) ? true : false
+        },
+        logo(e)
+        {
+            this.data.logo = e
+            this.check()
         }
     }
 }

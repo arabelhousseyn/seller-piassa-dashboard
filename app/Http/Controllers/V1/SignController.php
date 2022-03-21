@@ -42,8 +42,9 @@ class SignController extends Controller
     {
         if($request->validated())
         {
-            $unique_id = uniqid();
-            $path = $request->file('logo')->storeAs('logoSigns',$unique_id);
+            $image_name = uniqid() . '.' . $request->file('logo')->extension();
+            $path = $request->file('logo')->storeAs('public/logoSigns',$image_name);
+            $path = str_replace('public','storage',$path);
             $logo = [
                 'logo' => $path
             ];
