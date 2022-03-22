@@ -64,6 +64,19 @@
                     </v-menu>
                 </template>
 
+                <template v-slot:item.invoice.path="{ item }">
+                    <a :href="item.invoice.path" target="_blank"><v-icon large>mdi-file-pdf-box</v-icon></a>
+                </template>
+
+                <template v-slot:item.confirmed_by_administrator_at="{ item }">
+                    <v-chip dark v-if="item.confirmed_by_administrator_at == null" color="yellow">
+                        En attente
+                    </v-chip>
+                    <v-chip dark v-else color="green">
+                        Confirmé
+                    </v-chip>
+                </template>
+
 
                 <template v-slot:item.deleted_at="{ item }">
                     <v-chip dark v-if="item.deleted_at == null" color="green">
@@ -124,12 +137,12 @@ export default {
             },
             { text: 'Livraison', value: 'type_delivery' },
             { text: 'Sous Total', value: 'amount' },
-            { text: 'Confirmation', value: 'confirmed_by_administrator_at' },
             { text: 'Nom utilisateur', value: 'user.profile.full_name' },
             { text: 'Téléphone', value: 'user.phone' },
             { text: 'Facture', value: 'invoice.path' },
             { text: 'Créé à', value: 'created_at' },
             { text: 'Mise à jour à', value: 'updated_at' },
+            { text: 'Confirmation', value: 'confirmed_by_administrator_at' },
             { text: 'Statu', value: 'deleted_at' },
             { text: 'actions', value: 'actions', sortable: false },
         ],

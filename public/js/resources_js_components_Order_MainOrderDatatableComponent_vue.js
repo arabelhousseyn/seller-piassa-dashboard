@@ -132,6 +132,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -179,9 +192,6 @@ __webpack_require__.r(__webpack_exports__);
         text: 'Sous Total',
         value: 'amount'
       }, {
-        text: 'Confirmation',
-        value: 'confirmed_by_administrator_at'
-      }, {
         text: 'Nom utilisateur',
         value: 'user.profile.full_name'
       }, {
@@ -196,6 +206,9 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         text: 'Mise à jour à',
         value: 'updated_at'
+      }, {
+        text: 'Confirmation',
+        value: 'confirmed_by_administrator_at'
       }, {
         text: 'Statu',
         value: 'deleted_at'
@@ -2370,6 +2383,43 @@ var render = function () {
                       ],
                       1
                     ),
+                  ]
+                },
+              },
+              {
+                key: "item.invoice.path",
+                fn: function (ref) {
+                  var item = ref.item
+                  return [
+                    _c(
+                      "a",
+                      { attrs: { href: item.invoice.path, target: "_blank" } },
+                      [
+                        _c("v-icon", { attrs: { large: "" } }, [
+                          _vm._v("mdi-file-pdf-box"),
+                        ]),
+                      ],
+                      1
+                    ),
+                  ]
+                },
+              },
+              {
+                key: "item.confirmed_by_administrator_at",
+                fn: function (ref) {
+                  var item = ref.item
+                  return [
+                    item.confirmed_by_administrator_at == null
+                      ? _c("v-chip", { attrs: { dark: "", color: "yellow" } }, [
+                          _vm._v(
+                            "\n                    En attente\n                "
+                          ),
+                        ])
+                      : _c("v-chip", { attrs: { dark: "", color: "green" } }, [
+                          _vm._v(
+                            "\n                    Confirmé\n                "
+                          ),
+                        ]),
                   ]
                 },
               },
