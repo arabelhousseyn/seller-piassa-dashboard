@@ -330,6 +330,34 @@ __webpack_require__.r(__webpack_exports__);
       selectedItem: 0,
       drawer: null
     };
+  },
+  methods: {
+    init: function init() {
+      var path = window.location.pathname.replace('/', '');
+
+      if (path == 'home') {
+        this.selectedItem = 0;
+      } else if (path.includes('home/users')) {
+        this.selectedItem = 1;
+      } else if (path.includes('home/sellers')) {
+        this.selectedItem = 1;
+      } else if (path.includes('home/shippers')) {
+        this.selectedItem = 1;
+      } else if (path.includes('home/provinces')) {
+        this.selectedItem = 2;
+      } else if (path.includes('home/signs')) {
+        this.selectedItem = 3;
+      } else if (path.includes('home/types')) {
+        this.selectedItem = 4;
+      } else if (path.includes('home/orders')) {
+        this.selectedItem = 5;
+      } else {
+        this.selectedItem = null;
+      }
+    }
+  },
+  mounted: function mounted() {
+    this.init();
   }
 });
 
