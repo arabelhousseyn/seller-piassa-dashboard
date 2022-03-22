@@ -129,7 +129,6 @@ export default {
       init()
       {
           let path = window.location.pathname.replace('/','')
-
           if(path == 'home')
           {
               this.selectedItem = 0
