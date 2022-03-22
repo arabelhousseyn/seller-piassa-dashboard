@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
+use Akaunting\Money\Money;
 class UserOrder extends Model
 {
     use HasFactory, SoftDeletes;
@@ -21,13 +21,10 @@ class UserOrder extends Model
         'confirmed_at'
     ];
 
-    protected $hidden = [
-        'updated_at',
-        'deleted_at'
-    ];
-
     protected $casts = [
-        'amount' => 'double'
+        'amount' => 'double',
+        'created_at' => 'date:Y-m-d H:i:s',
+        'updated_at' => 'date:Y-m-d H:i:s'
     ];
 
     public function items()
@@ -53,5 +50,21 @@ class UserOrder extends Model
     public function invoice()
     {
       return $this->hasOne(UserOrderInvoice::class);
+    }
+
+    public function getTypeDeliveryAttribute()
+    {
+        if($this->attributes['type_delivery'] == 'S')
+        {
+            return 'STANDARD';
+        }elseif($this->attributes['type_delivery'] == 'E')
+        {
+            return 'EXPRESS';
+        }
+    }
+
+    public function getAmountAttribute()
+    {
+        return $this->attributes['amount'] . ' DZD';
     }
 }

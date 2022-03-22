@@ -132,50 +132,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -204,7 +160,7 @@ __webpack_require__.r(__webpack_exports__);
       dialog4: false,
       dialog5: false,
       id: null,
-      users: [],
+      orders: [],
       profile: [],
       data: [],
       info: [],
@@ -212,19 +168,34 @@ __webpack_require__.r(__webpack_exports__);
       selected: null,
       search: null,
       headers: [{
-        text: 'Téléphone',
+        text: 'Ref',
         align: 'start',
         sortable: true,
-        value: 'phone'
+        value: 'ref'
       }, {
-        text: 'Email',
-        value: 'email'
+        text: 'Livraison',
+        value: 'type_delivery'
       }, {
-        text: 'Role',
-        value: 'roles'
+        text: 'Sous Total',
+        value: 'amount'
+      }, {
+        text: 'Confirmation',
+        value: 'confirmed_by_administrator_at'
+      }, {
+        text: 'Nom utilisateur',
+        value: 'user.profile.full_name'
+      }, {
+        text: 'Téléphone',
+        value: 'user.phone'
+      }, {
+        text: 'Facture',
+        value: 'invoice.path'
       }, {
         text: 'Créé à',
         value: 'created_at'
+      }, {
+        text: 'Mise à jour à',
+        value: 'updated_at'
       }, {
         text: 'Statu',
         value: 'deleted_at'
@@ -275,9 +246,9 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get('/sanctum/csrf-cookie').then(function (res) {
-        axios.get('/api/users').then(function (e) {
+        axios.get('/api/orders/all').then(function (e) {
           _this.loading = false;
-          _this.users = e.data.data;
+          _this.orders = e.data.data;
         })["catch"](function (err) {
           _this.$toast.open({
             message: 'Erreur dans serveur veuillez réessayer',
@@ -2218,7 +2189,7 @@ var render = function () {
               loading: _vm.loading,
               "loading-text": "Chargement... veuillez patienter",
               headers: _vm.headers,
-              items: _vm.users,
+              items: _vm.orders,
               search: _vm.search,
               "disable-sort": "",
             },
@@ -2319,238 +2290,6 @@ var render = function () {
                             _c(
                               "v-list-item-group",
                               [
-                                _c(
-                                  "v-list-item",
-                                  {
-                                    attrs: { link: "" },
-                                    on: {
-                                      click: function ($event) {
-                                        return _vm.openProfile(item)
-                                      },
-                                    },
-                                  },
-                                  [
-                                    _c(
-                                      "v-list-item-icon",
-                                      [
-                                        _c(
-                                          "v-icon",
-                                          { attrs: { color: "primary" } },
-                                          [_vm._v("mdi-account")]
-                                        ),
-                                      ],
-                                      1
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "v-list-item-content",
-                                      [
-                                        _c("v-list-item-title", [
-                                          _vm._v("Compte"),
-                                        ]),
-                                      ],
-                                      1
-                                    ),
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-list-item",
-                                  {
-                                    attrs: { link: "" },
-                                    on: {
-                                      click: function ($event) {
-                                        return _vm.update(item)
-                                      },
-                                    },
-                                  },
-                                  [
-                                    _c(
-                                      "v-list-item-icon",
-                                      [
-                                        _c(
-                                          "v-icon",
-                                          { attrs: { color: "primary" } },
-                                          [_vm._v("mdi-pencil")]
-                                        ),
-                                      ],
-                                      1
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "v-list-item-content",
-                                      [
-                                        _c("v-list-item-title", [
-                                          _vm._v("Modifier"),
-                                        ]),
-                                      ],
-                                      1
-                                    ),
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                item.roles[0].name == "C"
-                                  ? _c(
-                                      "v-list-item",
-                                      {
-                                        attrs: { link: "" },
-                                        on: {
-                                          click: function ($event) {
-                                            return _vm.commercial_info(
-                                              item.commercial_info
-                                            )
-                                          },
-                                        },
-                                      },
-                                      [
-                                        _c(
-                                          "v-list-item-icon",
-                                          [
-                                            _c(
-                                              "v-icon",
-                                              { attrs: { color: "primary" } },
-                                              [_vm._v("mdi-paperclip")]
-                                            ),
-                                          ],
-                                          1
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "v-list-item-content",
-                                          [
-                                            _c("v-list-item-title", [
-                                              _vm._v("Document"),
-                                            ]),
-                                          ],
-                                          1
-                                        ),
-                                      ],
-                                      1
-                                    )
-                                  : _vm._e(),
-                                _vm._v(" "),
-                                _c(
-                                  "v-list-item",
-                                  {
-                                    attrs: { link: "" },
-                                    on: {
-                                      click: function ($event) {
-                                        return _vm.$router.push({
-                                          name: "vehicles",
-                                          params: {
-                                            id: item.id,
-                                            data: item.vehicle,
-                                          },
-                                        })
-                                      },
-                                    },
-                                  },
-                                  [
-                                    _c(
-                                      "v-list-item-icon",
-                                      [
-                                        _c(
-                                          "v-icon",
-                                          { attrs: { color: "primary" } },
-                                          [_vm._v("mdi-car")]
-                                        ),
-                                      ],
-                                      1
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "v-list-item-content",
-                                      [
-                                        _c("v-list-item-title", [
-                                          _vm._v("Véhicules"),
-                                        ]),
-                                      ],
-                                      1
-                                    ),
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-list-item",
-                                  {
-                                    attrs: { link: "" },
-                                    on: {
-                                      click: function ($event) {
-                                        return _vm.$router.push({
-                                          name: "orders",
-                                          params: {
-                                            id: item.id,
-                                            data: item.orders,
-                                          },
-                                        })
-                                      },
-                                    },
-                                  },
-                                  [
-                                    _c(
-                                      "v-list-item-icon",
-                                      [
-                                        _c(
-                                          "v-icon",
-                                          { attrs: { color: "primary" } },
-                                          [_vm._v("mdi-cart")]
-                                        ),
-                                      ],
-                                      1
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "v-list-item-content",
-                                      [
-                                        _c("v-list-item-title", [
-                                          _vm._v("Commandes"),
-                                        ]),
-                                      ],
-                                      1
-                                    ),
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-list-item",
-                                  {
-                                    attrs: { link: "" },
-                                    on: {
-                                      click: function ($event) {
-                                        return _vm.security(item.id)
-                                      },
-                                    },
-                                  },
-                                  [
-                                    _c(
-                                      "v-list-item-icon",
-                                      [
-                                        _c(
-                                          "v-icon",
-                                          { attrs: { color: "primary" } },
-                                          [_vm._v("mdi-security")]
-                                        ),
-                                      ],
-                                      1
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "v-list-item-content",
-                                      [
-                                        _c("v-list-item-title", [
-                                          _vm._v("Sécurité"),
-                                        ]),
-                                      ],
-                                      1
-                                    ),
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
                                 item.deleted_at == null
                                   ? _c(
                                       "v-list-item",
@@ -2635,37 +2374,6 @@ var render = function () {
                 },
               },
               {
-                key: "item.roles",
-                fn: function (ref) {
-                  var item = ref.item
-                  return [
-                    item.roles[0].name == "P"
-                      ? _c("v-chip", { attrs: { color: "primary" } }, [
-                          _vm._v(
-                            "\n                    Particulier\n                "
-                          ),
-                        ])
-                      : _vm._e(),
-                    _vm._v(" "),
-                    item.roles[0].name == "C"
-                      ? _c("v-chip", { attrs: { color: "primary" } }, [
-                          _vm._v(
-                            "\n                    Corporate\n                "
-                          ),
-                        ])
-                      : _vm._e(),
-                    _vm._v(" "),
-                    item.roles[0].name == "A"
-                      ? _c("v-chip", { attrs: { color: "primary" } }, [
-                          _vm._v(
-                            "\n                    Atelier\n                "
-                          ),
-                        ])
-                      : _vm._e(),
-                  ]
-                },
-              },
-              {
                 key: "item.deleted_at",
                 fn: function (ref) {
                   var item = ref.item
@@ -2697,48 +2405,6 @@ var render = function () {
               },
             ]),
           }),
-          _vm._v(" "),
-          _c("delete-user-dialog", {
-            attrs: { dialog: _vm.dialog, id: _vm.selected },
-            on: { close: _vm.close },
-          }),
-          _vm._v(" "),
-          _c("restore-user-dialog", {
-            attrs: { dialog1: _vm.dialog1, id: _vm.selected },
-            on: { close1: _vm.close1 },
-          }),
-          _vm._v(" "),
-          _vm.dialog2
-            ? _c("user-profile-dialog", {
-                attrs: {
-                  dialog: _vm.dialog2,
-                  info: _vm.info,
-                  profile: _vm.profile,
-                },
-                on: { close2: _vm.close2 },
-              })
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.dialog3
-            ? _c("update-user-dialog", {
-                attrs: { dialog: _vm.dialog3, data: _vm.data },
-                on: { close3: _vm.close3 },
-              })
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.dialog4
-            ? _c("security-dialog", {
-                attrs: { dialog: _vm.dialog4, user_id: _vm.id },
-                on: { close4: _vm.close4 },
-              })
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.dialog5
-            ? _c("user-commercial-info", {
-                attrs: { dialog: _vm.dialog5, commercial_info: _vm.info },
-                on: { close5: _vm.close5 },
-              })
-            : _vm._e(),
         ],
         1
       ),

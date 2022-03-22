@@ -24,6 +24,6 @@ class UserOrderInvoice extends Model
 
     protected function getPathAttribute()
     {
-        return env('APP_URL') . '/'.$this->attributes['path'];
+        return env('BACKEND_APP_URL').$this->attributes['path'];
     }
 }

@@ -6,7 +6,7 @@
                 :loading="loading"
                 loading-text="Chargement... veuillez patienter"
                 :headers="headers"
-                :items="users"
+                :items="orders"
                 :search="search"
                 disable-sort
                 class="elevation-1"
@@ -51,33 +51,6 @@
 
                         <v-list>
                             <v-list-item-group>
-                                <v-list-item link @click="openProfile(item)">
-                                    <v-list-item-icon><v-icon color="primary">mdi-account</v-icon></v-list-item-icon>
-                                    <v-list-item-content><v-list-item-title>Compte</v-list-item-title></v-list-item-content>
-                                </v-list-item>
-                                <v-list-item link @click="update(item)">
-                                    <v-list-item-icon><v-icon color="primary">mdi-pencil</v-icon></v-list-item-icon>
-                                    <v-list-item-content><v-list-item-title>Modifier</v-list-item-title></v-list-item-content>
-                                </v-list-item>
-                                <v-list-item v-if="item.roles[0].name == 'C'" link @click="commercial_info(item.commercial_info)">
-                                    <v-list-item-icon><v-icon color="primary">mdi-paperclip</v-icon></v-list-item-icon>
-                                    <v-list-item-content><v-list-item-title>Document</v-list-item-title></v-list-item-content>
-                                </v-list-item>
-                                <v-list-item link @click="$router.push({name : 'vehicles', params : {id : item.id,data : item.vehicle}})">
-                                    <v-list-item-icon><v-icon color="primary">mdi-car</v-icon></v-list-item-icon>
-                                    <v-list-item-content><v-list-item-title>Véhicules</v-list-item-title></v-list-item-content>
-                                </v-list-item>
-
-                                <v-list-item link @click="$router.push({name :'orders', params : {id : item.id,data : item.orders}})">
-                                    <v-list-item-icon><v-icon color="primary">mdi-cart</v-icon></v-list-item-icon>
-                                    <v-list-item-content><v-list-item-title>Commandes</v-list-item-title></v-list-item-content>
-                                </v-list-item>
-
-                                <v-list-item link @click="security(item.id)">
-                                    <v-list-item-icon><v-icon color="primary">mdi-security</v-icon></v-list-item-icon>
-                                    <v-list-item-content><v-list-item-title>Sécurité</v-list-item-title></v-list-item-content>
-                                </v-list-item>
-
                                 <v-list-item v-if="item.deleted_at == null" link @click="destroy(item.id)">
                                     <v-list-item-icon><v-icon color="red">mdi-delete</v-icon></v-list-item-icon>
                                     <v-list-item-content><v-list-item-title>Supprimer</v-list-item-title></v-list-item-content>
@@ -91,17 +64,6 @@
                     </v-menu>
                 </template>
 
-                <template v-slot:item.roles="{ item }">
-                    <v-chip v-if="item.roles[0].name =='P'" color="primary">
-                        Particulier
-                    </v-chip>
-                    <v-chip v-if="item.roles[0].name =='C'" color="primary">
-                        Corporate
-                    </v-chip>
-                    <v-chip v-if="item.roles[0].name =='A'" color="primary">
-                        Atelier
-                    </v-chip>
-                </template>
 
                 <template v-slot:item.deleted_at="{ item }">
                     <v-chip dark v-if="item.deleted_at == null" color="green">
@@ -119,12 +81,6 @@
                     </v-btn>
                 </template>
             </v-data-table>
-            <delete-user-dialog @close="close" :dialog="dialog" :id="selected" />
-            <restore-user-dialog @close1="close1" :dialog1="dialog1" :id="selected" />
-            <user-profile-dialog v-if="dialog2" :dialog="dialog2" @close2="close2" :info="info" :profile="profile" />
-            <update-user-dialog v-if="dialog3" :dialog="dialog3" @close3="close3" :data="data" />
-            <security-dialog v-if="dialog4" :dialog="dialog4" @close4="close4" :user_id="id" />
-            <user-commercial-info v-if="dialog5" :dialog="dialog5" @close5="close5" :commercial_info="info" />
         </v-container>
     </div>
 </template>
@@ -152,7 +108,7 @@ export default {
         dialog4 : false,
         dialog5 : false,
         id : null,
-        users : [],
+        orders : [],
         profile : [],
         data : [],
         info : [],
@@ -161,14 +117,19 @@ export default {
         search : null,
         headers: [
             {
-                text: 'Téléphone',
+                text: 'Ref',
                 align: 'start',
                 sortable: true,
-                value: 'phone',
+                value: 'ref',
             },
-            { text: 'Email', value: 'email' },
-            { text: 'Role', value: 'roles' },
+            { text: 'Livraison', value: 'type_delivery' },
+            { text: 'Sous Total', value: 'amount' },
+            { text: 'Confirmation', value: 'confirmed_by_administrator_at' },
+            { text: 'Nom utilisateur', value: 'user.profile.full_name' },
+            { text: 'Téléphone', value: 'user.phone' },
+            { text: 'Facture', value: 'invoice.path' },
             { text: 'Créé à', value: 'created_at' },
+            { text: 'Mise à jour à', value: 'updated_at' },
             { text: 'Statu', value: 'deleted_at' },
             { text: 'actions', value: 'actions', sortable: false },
         ],
@@ -221,10 +182,10 @@ export default {
         init()
         {
             axios.get('/sanctum/csrf-cookie').then(res =>{
-                axios.get('/api/users')
+                axios.get('/api/orders/all')
                     .then(e =>{
                         this.loading = false
-                        this.users = e.data.data
+                        this.orders = e.data.data
                     }).catch(err => {
                     this.$toast.open({message : 'Erreur dans serveur veuillez réessayer',type : 'error'})
                 })

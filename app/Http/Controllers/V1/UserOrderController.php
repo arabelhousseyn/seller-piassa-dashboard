@@ -9,7 +9,7 @@ class UserOrderController extends Controller
 {
     public function getAllOrders()
     {
-        $user_orders = UserOrder::with('items.item','events','user','invoice')->withTrashed()->latest('created_at')->get();
+        $user_orders = UserOrder::with('items.item','events','user.profile','invoice')->withTrashed()->latest('created_at')->get();
         return response(['data' => $user_orders],200);
     }
 }
