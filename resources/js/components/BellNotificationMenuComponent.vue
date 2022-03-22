@@ -28,28 +28,6 @@
                 <v-card-text>
                     <v-list two-line>
                         <v-list-item-group>
-                                <v-list-item>
-                                    <v-list-item-avatar>
-                                        <v-icon>mdi-star</v-icon>
-                                    </v-list-item-avatar>
-                                        <v-list-item-content>
-                                            <v-list-item-title>hello</v-list-item-title>
-
-                                            <v-list-item-subtitle class="text--primary">You have new notification</v-list-item-subtitle>
-
-                                            <v-list-item-subtitle>New notification</v-list-item-subtitle>
-                                        </v-list-item-content>
-
-                                        <v-list-item-action>
-                                            <v-list-item-action-text>
-                                                6h ago
-                                            </v-list-item-action-text>
-
-                                            <v-icon color="grey lighten-1">mdi-email-open-outline</v-icon>
-                                        </v-list-item-action>
-                                </v-list-item>
-
-                                <v-divider></v-divider>
                             <v-list-item>
                                 <v-list-item-avatar>
                                     <v-icon>mdi-star</v-icon>
@@ -70,30 +48,6 @@
                                     <v-icon color="grey lighten-1">mdi-email-open-outline</v-icon>
                                 </v-list-item-action>
                             </v-list-item>
-
-                            <v-divider></v-divider>
-                            <v-list-item>
-                                <v-list-item-avatar>
-                                    <v-icon>mdi-star</v-icon>
-                                </v-list-item-avatar>
-                                <v-list-item-content>
-                                    <v-list-item-title>hello</v-list-item-title>
-
-                                    <v-list-item-subtitle class="text--primary">You have new notification</v-list-item-subtitle>
-
-                                    <v-list-item-subtitle>New notification</v-list-item-subtitle>
-                                </v-list-item-content>
-
-                                <v-list-item-action>
-                                    <v-list-item-action-text>
-                                        6h ago
-                                    </v-list-item-action-text>
-
-                                    <v-icon color="grey lighten-1">mdi-email-open-outline</v-icon>
-                                </v-list-item-action>
-                            </v-list-item>
-
-                            <v-divider></v-divider>
                         </v-list-item-group>
                     </v-list>
                 </v-card-text>

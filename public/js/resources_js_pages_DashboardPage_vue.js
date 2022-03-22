@@ -69,52 +69,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -1121,56 +1075,6 @@ var render = function () {
                                 [
                                   _c("v-list-item-action-text", [
                                     _vm._v(
-                                      "\n                                            6h ago\n                                        "
-                                    ),
-                                  ]),
-                                  _vm._v(" "),
-                                  _c(
-                                    "v-icon",
-                                    { attrs: { color: "grey lighten-1" } },
-                                    [_vm._v("mdi-email-open-outline")]
-                                  ),
-                                ],
-                                1
-                              ),
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c("v-divider"),
-                          _vm._v(" "),
-                          _c(
-                            "v-list-item",
-                            [
-                              _c(
-                                "v-list-item-avatar",
-                                [_c("v-icon", [_vm._v("mdi-star")])],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-list-item-content",
-                                [
-                                  _c("v-list-item-title", [_vm._v("hello")]),
-                                  _vm._v(" "),
-                                  _c(
-                                    "v-list-item-subtitle",
-                                    { staticClass: "text--primary" },
-                                    [_vm._v("You have new notification")]
-                                  ),
-                                  _vm._v(" "),
-                                  _c("v-list-item-subtitle", [
-                                    _vm._v("New notification"),
-                                  ]),
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-list-item-action",
-                                [
-                                  _c("v-list-item-action-text", [
-                                    _vm._v(
                                       "\n                                    6h ago\n                                "
                                     ),
                                   ]),
@@ -1186,58 +1090,6 @@ var render = function () {
                             ],
                             1
                           ),
-                          _vm._v(" "),
-                          _c("v-divider"),
-                          _vm._v(" "),
-                          _c(
-                            "v-list-item",
-                            [
-                              _c(
-                                "v-list-item-avatar",
-                                [_c("v-icon", [_vm._v("mdi-star")])],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-list-item-content",
-                                [
-                                  _c("v-list-item-title", [_vm._v("hello")]),
-                                  _vm._v(" "),
-                                  _c(
-                                    "v-list-item-subtitle",
-                                    { staticClass: "text--primary" },
-                                    [_vm._v("You have new notification")]
-                                  ),
-                                  _vm._v(" "),
-                                  _c("v-list-item-subtitle", [
-                                    _vm._v("New notification"),
-                                  ]),
-                                ],
-                                1
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-list-item-action",
-                                [
-                                  _c("v-list-item-action-text", [
-                                    _vm._v(
-                                      "\n                                    6h ago\n                                "
-                                    ),
-                                  ]),
-                                  _vm._v(" "),
-                                  _c(
-                                    "v-icon",
-                                    { attrs: { color: "grey lighten-1" } },
-                                    [_vm._v("mdi-email-open-outline")]
-                                  ),
-                                ],
-                                1
-                              ),
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c("v-divider"),
                         ],
                         1
                       ),
