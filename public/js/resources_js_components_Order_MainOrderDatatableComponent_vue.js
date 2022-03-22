@@ -189,14 +189,14 @@ __webpack_require__.r(__webpack_exports__);
         text: 'Livraison',
         value: 'type_delivery'
       }, {
-        text: 'Sous Total',
-        value: 'amount'
-      }, {
         text: 'Nom utilisateur',
         value: 'user.profile.full_name'
       }, {
         text: 'Téléphone',
         value: 'user.phone'
+      }, {
+        text: 'Sous Total',
+        value: 'amount'
       }, {
         text: 'Facture',
         value: 'invoice.path'
