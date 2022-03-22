@@ -12,7 +12,7 @@
                     overlap
                 >
                     <template v-slot:badge>
-                        <span>0</span>
+                        <span v-text="$store.state.data.count_notification"></span>
                     </template>
                 <v-btn
                     icon

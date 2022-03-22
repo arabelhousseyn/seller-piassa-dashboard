@@ -4,7 +4,8 @@ namespace App\Http\Controllers\V1;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Carbon;
-use App\Models\{User,Seller,Shipper,CompanyCommission};
+use Illuminate\Support\Facades\Auth;
+use App\Models\{Admin, User, Seller, Shipper, CompanyCommission};
 use Akaunting\Money\Money;
 use App\Services\{IncomeService,UsersStatsService};
 class DashbaordController extends Controller
@@ -45,7 +46,8 @@ class DashbaordController extends Controller
                 'title' => __('messages.company')
             ],
             'icomes_by_month' => $incomes,
-            'users_by_month' => $users_stats
+            'users_by_month' => $users_stats,
+            'count_notification' => count(Admin::find(Auth::id())->notifications)
 
         ];
 

@@ -1033,7 +1033,15 @@ var render = function () {
                           {
                             key: "badge",
                             fn: function () {
-                              return [_c("span", [_vm._v("0")])]
+                              return [
+                                _c("span", {
+                                  domProps: {
+                                    textContent: _vm._s(
+                                      _vm.$store.state.data.count_notification
+                                    ),
+                                  },
+                                }),
+                              ]
                             },
                             proxy: true,
                           },
