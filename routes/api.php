@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\V1\{LoginController,LogoutController,UserController,SellerController,ShipperController
 ,DashbaordController,ProvincesController,UserChangePassword,VehicleController,SignController,SellerChangePassword
-,TypeController};
+,TypeController,UserOrderController};
 
 
 Route::middleware(['throttle:login'])->group(function (){
@@ -94,6 +94,12 @@ Route::middleware('auth:sanctum')->group(function (){
         Route::post('excel-import-provinces','storeProvincesExcel');
         Route::get('activate/{province_id}','activeProvince')->whereNumber('province_id');
         Route::get('deactivate/{province_id}','deactivateProvince')->whereNumber('province_id');
+    });
+
+    // user orders
+
+    Route::controller(UserOrderController::class)->prefix('orders')->group(function (){
+        Route::get('all','getAllOrders');
     });
 
     //resources
