@@ -2342,7 +2342,7 @@ var render = function () {
                                       "v-list-item-content",
                                       [
                                         _c("v-list-item-title", [
-                                          _vm._v("Purchases"),
+                                          _vm._v("Achats"),
                                         ]),
                                       ],
                                       1
