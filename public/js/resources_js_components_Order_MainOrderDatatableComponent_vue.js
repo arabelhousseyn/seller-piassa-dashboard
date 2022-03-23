@@ -145,6 +145,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -2303,6 +2307,50 @@ var render = function () {
                             _c(
                               "v-list-item-group",
                               [
+                                _c(
+                                  "v-list-item",
+                                  {
+                                    attrs: { link: "" },
+                                    on: {
+                                      click: function ($event) {
+                                        _vm.$router
+                                          .push({
+                                            name: "orderItems",
+                                            params: {
+                                              id: item.id,
+                                              data: item.items,
+                                            },
+                                          })
+                                          .catch()
+                                      },
+                                    },
+                                  },
+                                  [
+                                    _c(
+                                      "v-list-item-icon",
+                                      [
+                                        _c(
+                                          "v-icon",
+                                          { attrs: { color: "green" } },
+                                          [_vm._v("mdi-cart-outline")]
+                                        ),
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-list-item-content",
+                                      [
+                                        _c("v-list-item-title", [
+                                          _vm._v("Purchases"),
+                                        ]),
+                                      ],
+                                      1
+                                    ),
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
                                 item.deleted_at == null
                                   ? _c(
                                       "v-list-item",

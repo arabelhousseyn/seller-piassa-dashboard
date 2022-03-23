@@ -51,6 +51,10 @@
 
                         <v-list>
                             <v-list-item-group>
+                                <v-list-item link @click="$router.push({name : 'orderItems',params : {id : item.id,data : item.items}}).catch()">
+                                    <v-list-item-icon><v-icon color="green">mdi-cart-outline</v-icon></v-list-item-icon>
+                                    <v-list-item-content><v-list-item-title>Purchases</v-list-item-title></v-list-item-content>
+                                </v-list-item>
                                 <v-list-item v-if="item.deleted_at == null" link @click="destroy(item.id)">
                                     <v-list-item-icon><v-icon color="red">mdi-delete</v-icon></v-list-item-icon>
                                     <v-list-item-content><v-list-item-title>Supprimer</v-list-item-title></v-list-item-content>

@@ -112,7 +112,13 @@ const routes = [
                 children: [
                     {
                         path : '/',
-                        component : () => import('../components/Order/MainOrderDatatableComponent')
+                        component : () => import('../components/Order/MainOrderDatatableComponent'),
+                    },
+                    {
+                        path : 'items/:id',
+                        props : true,
+                        name : 'orderItems',
+                        component : () => import('../components/Order/OrderItemsDatatableComponent')
                     }
                 ]
             },
