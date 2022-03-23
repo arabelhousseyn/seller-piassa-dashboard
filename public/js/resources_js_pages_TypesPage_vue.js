@@ -527,7 +527,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this.data2.name = this.data.name;
       this.data2.logo = this.data.logo;
-      this.data2.percent = this.data.percent;
+      this.data2.percent = this.data.percent.replace('%', '');
       axios.get('/sanctum/csrf-cookie').then(function (res) {
         axios.put("/api/types/".concat(_this.data.id), _this.data2).then(function (e) {
           if (e.status == 204) {

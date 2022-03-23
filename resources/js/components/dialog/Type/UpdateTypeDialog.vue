@@ -97,7 +97,7 @@ export default {
         {
             this.data2.name = this.data.name
             this.data2.logo = this.data.logo
-            this.data2.percent = this.data.percent
+            this.data2.percent = this.data.percent.replace('%','')
 
             axios.get('/sanctum/csrf-cookie').then(res => {
                 axios.put(`/api/types/${this.data.id}`,this.data2).then(e=>{
