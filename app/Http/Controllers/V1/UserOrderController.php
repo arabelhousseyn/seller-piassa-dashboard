@@ -14,10 +14,10 @@ class UserOrderController extends Controller
         return response(['data' => $user_orders],200);
     }
 
-    public function getOrderItemsByUser($user_id)
+    public function getOrderItemsByUser($user_order_id)
     {
         try {
-            $user_orders = UserOrder::with('items.item','events','user.profile','invoice')->withTrashed()->findOrFail($user_id);
+            $user_orders = UserOrder::with('items.item','events','user.profile','invoice')->withTrashed()->findOrFail($user_order_id);
             return response(['data' => $user_orders->items],200);
         }catch (Exception $exception)
         {

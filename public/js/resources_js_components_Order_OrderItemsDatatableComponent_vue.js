@@ -22,7 +22,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['data'],
   data: function data() {
-    return {};
+    return {
+      data2: undefined,
+      user_id: user_id
+    };
   },
   mounted: function mounted() {
     console.log(window.location.href);
@@ -120,7 +123,9 @@ var render = function () {
     { staticClass: "users-data-table" },
     [
       _c("v-container", { attrs: { fluid: "" } }, [
-        _vm._v("\n        " + _vm._s(_vm.data) + "\n    "),
+        _vm._v(
+          "\n        " + _vm._s(_vm.data) + " " + _vm._s(_vm.data2) + "\n    "
+        ),
       ]),
     ],
     1
