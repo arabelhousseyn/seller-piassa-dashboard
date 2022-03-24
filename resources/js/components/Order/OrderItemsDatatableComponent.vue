@@ -11,10 +11,23 @@ export default {
     props : ['data'],
     data : ()=>({
         data2 : undefined,
-        user_id
+        user_order_id : window.location.pathname.split('/').pop()
     }),
+    methods : {
+        init()
+        {
+            axios.get('/sanctum/csrf-cookie').then(res =>{
+                axios.get(`/api/orders/items/${this.user_order_id}`)
+                    .then(e =>{
+                        this.data2 = e.data.data
+                    }).catch(err => {
+                    this.$router.push('/home/orders')
+                })
+            })
+        }
+    },
     mounted() {
-        console.log(window.location.href)
+        this.init()
     }
 }
 </script>

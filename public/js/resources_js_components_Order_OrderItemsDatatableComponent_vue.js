@@ -24,11 +24,24 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       data2: undefined,
-      user_id: user_id
+      user_order_id: window.location.pathname.split('/').pop()
     };
   },
+  methods: {
+    init: function init() {
+      var _this = this;
+
+      axios.get('/sanctum/csrf-cookie').then(function (res) {
+        axios.get("/api/orders/items/".concat(_this.user_order_id)).then(function (e) {
+          _this.data2 = e.data.data;
+        })["catch"](function (err) {
+          _this.$router.push('/home/orders');
+        });
+      });
+    }
+  },
   mounted: function mounted() {
-    console.log(window.location.href);
+    this.init();
   }
 });
 
