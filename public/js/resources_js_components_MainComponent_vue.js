@@ -187,7 +187,7 @@ __webpack_require__.r(__webpack_exports__);
     this.renderChart({
       labels: ["Homme", "Femme"],
       datasets: [{
-        backgroundColor: [this.gradient, this.gradient2, "#e85810"],
+        backgroundColor: [this.gradient2, this.gradient, "#e85810"],
         data: [this.$store.state.data.count_male, this.$store.state.data.count_female]
       }]
     }, {
