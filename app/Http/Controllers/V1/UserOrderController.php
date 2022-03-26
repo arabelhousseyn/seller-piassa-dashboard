@@ -17,7 +17,7 @@ class UserOrderController extends Controller
     public function getOrderItemsByUser($user_order_id)
     {
         try {
-            $user_orders = UserOrder::with('items.item','events','user.profile','invoice')->withTrashed()->findOrFail($user_order_id);
+            $user_orders = UserOrder::with('items.item')->withTrashed()->findOrFail($user_order_id);
             return response(['data' => $user_orders->items],200);
         }catch (Exception $exception)
         {
