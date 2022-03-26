@@ -220,7 +220,7 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "users-data-table" },
+    { staticClass: "order-items-data-table" },
     [
       _c(
         "v-container",

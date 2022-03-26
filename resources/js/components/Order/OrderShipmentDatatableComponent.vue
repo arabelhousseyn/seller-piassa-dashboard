@@ -1,6 +1,7 @@
 <template>
-    <div class="order-items-data-table">
+    <div class="order-shipment-data-table">
         <v-container fluid>
+            {{data}}
             <v-btn color="primary">
                 <router-link style="text-decoration: none;color: white;" to="/home/orders"><v-icon>mdi-subdirectory-arrow-left</v-icon> Retour </router-link>
             </v-btn>
@@ -15,7 +16,7 @@
                     <v-toolbar
                         flat
                     >
-                        <v-toolbar-title>Achats</v-toolbar-title>
+                        <v-toolbar-title>Livraison</v-toolbar-title>
                     </v-toolbar>
                     <v-toolbar flat>
                         <v-text-field

@@ -103,32 +103,14 @@
 </template>
 
 <script>
-import DeleteUserDialog from "../dialog/user/DeleteUserDialog";
-import RestoreUserDialog from "../dialog/user/RestoreUserDialog";
-import CreateUserDialog from "../dialog/user/CreateUserDialog";
-import UserProfileDialog from "../dialog/user/UserProfileDialog";
-import UpdateUserDialog from "../dialog/user/UpdateUserDialog";
-import SecurityDialog from "../dialog/user/SecurityDialog";
-import UserCommercialInfo from "../dialog/user/UserCommercialInfo";
 import BreadCrumbsComponent from "../BreadCrumbsComponent";
 export default {
-    components: {
-        BreadCrumbsComponent,
-        UserCommercialInfo,
-        SecurityDialog,
-        UpdateUserDialog, UserProfileDialog, CreateUserDialog, RestoreUserDialog, DeleteUserDialog},
+    components: {BreadCrumbsComponent},
     data : ()=>({
         dialog : false,
         dialog1 : false,
-        dialog2 : false,
-        dialog3 : false,
-        dialog4 : false,
-        dialog5 : false,
         id : null,
         orders : [],
-        profile : [],
-        data : [],
-        info : [],
         loading : true,
         selected : null,
         search : null,
@@ -176,26 +158,6 @@ export default {
             this.selected = null
             this.dialog1 = false
         },
-        close2()
-        {
-            this.profile = []
-            this.info = []
-            this.dialog2 = false
-        },
-        close3()
-        {
-            this.data = []
-            this.dialog3 = false
-        },
-        close4()
-        {
-            this.id = null
-            this.dialog4 = false
-        },
-        close5()
-        {
-            this.dialog5 = false
-        },
         init()
         {
             axios.get('/sanctum/csrf-cookie').then(res =>{
@@ -207,27 +169,6 @@ export default {
                     this.$toast.open({message : 'Erreur dans serveur veuillez réessayer',type : 'error'})
                 })
             })
-        },
-        openProfile(data)
-        {
-            this.dialog2 = true
-            this.profile = data.profile
-            this.info = data.commercial_info
-        },
-        update(data)
-        {
-            this.dialog3 = true
-            this.data = data
-        },
-        security(id)
-        {
-            this.dialog4 = true
-            this.id = id
-        },
-        commercial_info(info)
-        {
-            this.dialog5 = true
-            this.info = info
         }
     },
     mounted() {
