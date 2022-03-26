@@ -78,7 +78,6 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('/sanctum/csrf-cookie').then(function (res) {
         axios.get("/api/orders/events/".concat(_this.user_order_id)).then(function (e) {
           _this.data2 = e.data.data;
-          console.log(_this.user_order_id);
         })["catch"](function (err) {
           _this.$router.push('/home/orders');
         });

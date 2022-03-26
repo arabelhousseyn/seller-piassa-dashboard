@@ -64,7 +64,6 @@ export default {
                 axios.get(`/api/orders/events/${this.user_order_id}`)
                     .then(e =>{
                         this.data2 = e.data.data
-                        console.log(this.user_order_id)
                     }).catch(err => {
                     this.$router.push('/home/orders')
                 })
