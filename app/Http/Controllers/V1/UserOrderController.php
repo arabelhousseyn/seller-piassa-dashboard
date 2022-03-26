@@ -36,4 +36,20 @@ class UserOrderController extends Controller
             return response(['message' => 'not found']);
         }
     }
+
+    public function destroy($user_order_id)
+    {
+        try {
+            $user_order = UserOrder::findOrFail($user_order_id);
+            if(!$user_order->trashed())
+            {
+                $user_order->delete();
+                return response()->noContent();
+            }
+        }catch (\Exception $exception)
+        {
+            return response(['message' => 'not found'],404);
+        }
+
+    }
 }

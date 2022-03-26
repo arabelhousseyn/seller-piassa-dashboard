@@ -102,6 +102,7 @@ Route::middleware('auth:sanctum')->group(function (){
         Route::get('all','getAllOrders');
         Route::get('items/{user_order_id}','getOrderItemsByUser')->whereNumber('user_order_id');
         Route::get('events/{user_order_id}','getOrderEventsByUser')->whereNumber('user_order_id');
+        Route::delete('destroy/{user_order_id}','destroy')->whereNumber('user_order_id');
     });
 
     //resources

@@ -102,18 +102,19 @@
                     </v-btn>
                 </template>
             </v-data-table>
+            <order-delete-dialog @close="close" :dialog="dialog" :id="selected" />
         </v-container>
     </div>
 </template>
 
 <script>
 import BreadCrumbsComponent from "../BreadCrumbsComponent";
+import OrderDeleteDialog from "../dialog/Order/OrderDeleteDialog";
 export default {
-    components: {BreadCrumbsComponent},
+    components: {OrderDeleteDialog, BreadCrumbsComponent},
     data : ()=>({
         dialog : false,
         dialog1 : false,
-        id : null,
         orders : [],
         loading : true,
         selected : null,
