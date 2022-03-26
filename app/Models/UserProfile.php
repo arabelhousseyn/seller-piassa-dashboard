@@ -28,4 +28,9 @@ class UserProfile extends Model
     {
         return $this->belongsTo(Province::class,'province_id')->withDefault();
     }
+
+    public function scopeGender($query,$type)
+    {
+        return $query->where('gender',$type);
+    }
 }
