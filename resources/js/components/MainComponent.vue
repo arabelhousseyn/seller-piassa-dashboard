@@ -44,6 +44,14 @@
                         </v-card-text>
                     </v-card>
                 </v-col>
+
+                <v-col cols="12" lg="6" md="6">
+                    <v-card elevation="0">
+                        <v-card-text>
+                            <gender-stats-component />
+                        </v-card-text>
+                    </v-card>
+                </v-col>
             </v-row>
         </v-container>
     </div>
@@ -52,7 +60,8 @@
 import CardInformationComponent from "./CardInformationComponent";
 import UsersStatsComponent from "./charts/UsersStatsComponent";
 import ComissionStatsComponent from "./charts/ComissionStatsComponent";
+import GenderStatsComponent from "./charts/GenderStatsComponent";
 export default {
-    components: {ComissionStatsComponent, UsersStatsComponent, CardInformationComponent}
+    components: {GenderStatsComponent, ComissionStatsComponent, UsersStatsComponent, CardInformationComponent}
 }
 </script>
