@@ -59,6 +59,12 @@
                                     <v-list-item-icon><v-icon color="green">mdi-truck-fast</v-icon></v-list-item-icon>
                                     <v-list-item-content><v-list-item-title>Livraison</v-list-item-title></v-list-item-content>
                                 </v-list-item>
+
+                                <v-list-item v-if="item.confirmed_by_administrator_at == null" link @click="confirm(item.id)">
+                                    <v-list-item-icon><v-icon color="green">mdi-check</v-icon></v-list-item-icon>
+                                    <v-list-item-content><v-list-item-title>Confirmer</v-list-item-title></v-list-item-content>
+                                </v-list-item>
+
                                 <v-list-item v-if="item.deleted_at == null" link @click="destroy(item.id)">
                                     <v-list-item-icon><v-icon color="red">mdi-delete</v-icon></v-list-item-icon>
                                     <v-list-item-content><v-list-item-title>Supprimer</v-list-item-title></v-list-item-content>
@@ -103,6 +109,8 @@
                 </template>
             </v-data-table>
             <order-delete-dialog @close="close" :dialog="dialog" :id="selected" />
+            <order-restore-dialog @close="close1" :dialog="dialog1" :id="selected" />
+            <confirm-order-dialog @close="close2" :dialog="dialog2" :id="selected" />
         </v-container>
     </div>
 </template>
@@ -110,11 +118,14 @@
 <script>
 import BreadCrumbsComponent from "../BreadCrumbsComponent";
 import OrderDeleteDialog from "../dialog/Order/OrderDeleteDialog";
+import OrderRestoreDialog from "../dialog/Order/OrderRestoreDialog";
+import ConfirmOrderDialog from "../dialog/Order/ConfirmOrderDialog";
 export default {
-    components: {OrderDeleteDialog, BreadCrumbsComponent},
+    components: {ConfirmOrderDialog, OrderRestoreDialog, OrderDeleteDialog, BreadCrumbsComponent},
     data : ()=>({
         dialog : false,
         dialog1 : false,
+        dialog2 : false,
         orders : [],
         loading : true,
         selected : null,
@@ -154,6 +165,11 @@ export default {
             this.dialog1 = true
             this.selected = id
         },
+        confirm(id)
+        {
+            this.dialog2 = true
+            this.selected = id
+        },
         close()
         {
             this.selected = null
@@ -163,6 +179,11 @@ export default {
         {
             this.selected = null
             this.dialog1 = false
+        },
+        close2()
+        {
+            this.selected = null
+            this.dialog2 = false
         },
         init()
         {

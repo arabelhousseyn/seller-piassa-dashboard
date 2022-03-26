@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\V1;
 
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use mysql_xdevapi\Exception;
 use App\Models\{UserOrder};
@@ -51,5 +52,34 @@ class UserOrderController extends Controller
             return response(['message' => 'not found'],404);
         }
 
+    }
+
+    public function restore($user_order_id)
+    {
+        try {
+            $user_order = UserOrder::withTrashed()->findOrFail($user_order_id);
+            if($user_order->trashed())
+            {
+                $user_order->restore();
+                return response()->noContent();
+            }
+        }catch (\Exception $exception)
+        {
+            return response(['message' => 'not found'],404);
+        }
+    }
+
+    public function confirmOrder($user_order_id)
+    {
+        try {
+            $user_order = UserOrder::findOrFail($user_order_id);
+            $user_order->update([
+                'confirmed_by_administrator_at' => Carbon::now()
+            ]);
+            return response()->noContent();
+        }catch (\Exception $exception)
+        {
+            return response(['message' => 'not found'],404);
+        }
     }
 }
