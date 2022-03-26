@@ -18,4 +18,9 @@ class UserOrderEvent extends Model
     protected $casts = [
         'created_at' => 'date:Y-m-d H:i:s'
     ];
+
+    public function getEventAttribute()
+    {
+        return ($this->attributes['event'] == 'R') ? 'Récupération' : 'Livraison';
+    }
 }
