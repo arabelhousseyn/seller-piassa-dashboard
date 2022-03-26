@@ -169,6 +169,9 @@ __webpack_require__.r(__webpack_exports__);
         text: 'Livraison',
         value: 'type_delivery'
       }, {
+        text: 'Livreur',
+        value: 'shipper_user_order.shipper.phone'
+      }, {
         text: 'Nom utilisateur',
         value: 'user.profile.full_name'
       }, {

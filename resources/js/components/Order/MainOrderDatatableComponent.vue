@@ -126,6 +126,7 @@ export default {
                 value: 'ref',
             },
             { text: 'Livraison', value: 'type_delivery' },
+            { text: 'Livreur', value: 'shipper_user_order.shipper.phone' },
             { text: 'Nom utilisateur', value: 'user.profile.full_name' },
             { text: 'Téléphone', value: 'user.phone' },
             { text: 'Sous Total', value: 'amount' },
