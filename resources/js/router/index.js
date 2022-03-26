@@ -119,6 +119,12 @@ const routes = [
                         props : true,
                         name : 'orderItems',
                         component : () => import('../components/Order/OrderItemsDatatableComponent')
+                    },
+                    {
+                        path: 'shipment/:id',
+                        props: true,
+                        name : 'OrderShipment',
+                        component : () => import('../components/Order/OrderShipmentDatatableComponent')
                     }
                 ]
             },

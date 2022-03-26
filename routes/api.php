@@ -101,6 +101,7 @@ Route::middleware('auth:sanctum')->group(function (){
     Route::controller(UserOrderController::class)->prefix('orders')->group(function (){
         Route::get('all','getAllOrders');
         Route::get('items/{user_order_id}','getOrderItemsByUser')->whereNumber('user_order_id');
+        Route::get('events/{user_order_id}','getOrderEventsByUser')->whereNumber('user_order_id');
     });
 
     //resources

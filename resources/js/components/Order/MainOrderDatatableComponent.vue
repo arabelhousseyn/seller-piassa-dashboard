@@ -55,6 +55,10 @@
                                     <v-list-item-icon><v-icon color="green">mdi-cart-outline</v-icon></v-list-item-icon>
                                     <v-list-item-content><v-list-item-title>Achats</v-list-item-title></v-list-item-content>
                                 </v-list-item>
+                                <v-list-item v-if="item.events.length > 0" link @click="$router.push({name : 'OrderShipment',params : {id : item.id,data : item.events}}).catch()">
+                                    <v-list-item-icon><v-icon color="green">mdi-truck-fast</v-icon></v-list-item-icon>
+                                    <v-list-item-content><v-list-item-title>Livraison</v-list-item-title></v-list-item-content>
+                                </v-list-item>
                                 <v-list-item v-if="item.deleted_at == null" link @click="destroy(item.id)">
                                     <v-list-item-icon><v-icon color="red">mdi-delete</v-icon></v-list-item-icon>
                                     <v-list-item-content><v-list-item-title>Supprimer</v-list-item-title></v-list-item-content>

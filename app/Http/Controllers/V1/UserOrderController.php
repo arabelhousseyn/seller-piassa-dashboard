@@ -17,9 +17,21 @@ class UserOrderController extends Controller
     public function getOrderItemsByUser($user_order_id)
     {
         try {
-            $user_orders = UserOrder::with('items.item','shipperUserOrder.shipper')->withTrashed()->findOrFail($user_order_id);
+            $user_orders = UserOrder::with('items.item')->withTrashed()->findOrFail($user_order_id);
             return response(['data' => $user_orders->items],200);
         }catch (Exception $exception)
+        {
+            return response(['message' => 'not found']);
+        }
+    }
+
+
+    public function getOrderEventsByUser($user_order_id)
+    {
+        try {
+            $user_orders = UserOrder::with('events')->withTrashed()->findOrFail($user_order_id);
+            return response(['data' => $user_orders->events],200);
+        }catch (\Exception $exception)
         {
             return response(['message' => 'not found']);
         }

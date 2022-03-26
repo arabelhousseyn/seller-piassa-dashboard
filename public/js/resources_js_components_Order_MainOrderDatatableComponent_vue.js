@@ -142,6 +142,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -606,6 +610,52 @@ var render = function () {
                                   ],
                                   1
                                 ),
+                                _vm._v(" "),
+                                item.events.length > 0
+                                  ? _c(
+                                      "v-list-item",
+                                      {
+                                        attrs: { link: "" },
+                                        on: {
+                                          click: function ($event) {
+                                            _vm.$router
+                                              .push({
+                                                name: "OrderShipment",
+                                                params: {
+                                                  id: item.id,
+                                                  data: item.events,
+                                                },
+                                              })
+                                              .catch()
+                                          },
+                                        },
+                                      },
+                                      [
+                                        _c(
+                                          "v-list-item-icon",
+                                          [
+                                            _c(
+                                              "v-icon",
+                                              { attrs: { color: "green" } },
+                                              [_vm._v("mdi-truck-fast")]
+                                            ),
+                                          ],
+                                          1
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "v-list-item-content",
+                                          [
+                                            _c("v-list-item-title", [
+                                              _vm._v("Livraison"),
+                                            ]),
+                                          ],
+                                          1
+                                        ),
+                                      ],
+                                      1
+                                    )
+                                  : _vm._e(),
                                 _vm._v(" "),
                                 item.deleted_at == null
                                   ? _c(
