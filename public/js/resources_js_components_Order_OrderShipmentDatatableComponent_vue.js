@@ -52,7 +52,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['data'],
   data: function data() {
@@ -183,7 +182,6 @@ var render = function () {
         "v-container",
         { attrs: { fluid: "" } },
         [
-          _vm._v("\n        " + _vm._s(_vm.data) + "\n        "),
           _c(
             "v-btn",
             { attrs: { color: "primary" } },

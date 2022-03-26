@@ -1,7 +1,6 @@
 <template>
     <div class="order-shipment-data-table">
         <v-container fluid>
-            {{data}}
             <v-btn color="primary">
                 <router-link style="text-decoration: none;color: white;" to="/home/orders"><v-icon>mdi-subdirectory-arrow-left</v-icon> Retour </router-link>
             </v-btn>
