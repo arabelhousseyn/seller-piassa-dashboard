@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SendPushNotificationRequest;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Services\UpdateUserService;
@@ -10,10 +11,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
-use App\Models\{User};
-
+use App\Models\{User, UserProfile};
+use App\Traits\SendPushNotificationTrait;
 class UserController extends Controller
 {
+    use SendPushNotificationTrait;
+
     /**
      * Display a listing of the resource.
      *
@@ -188,6 +191,28 @@ class UserController extends Controller
         }catch (\Exception $e)
         {
             return response(['message' => 'not found'],404);
+        }
+    }
+
+    public function sendPushNotification(SendPushNotificationRequest $request)
+    {
+        try {
+            if($request->type == 'ALL')
+            {
+                $users_device_token = UserProfile::pluck('user_id');
+            }else{
+                $users_device_token = UserProfile::where('gender',$request->type)->pluck('user_id');
+            }
+
+            foreach ($users_device_token as $value)
+            {
+                $this->push($request->title,$request->message,$value);
+            }
+
+            return response()->noContent();
+        }catch (\Exception $exception)
+        {
+            return response($exception->getMessage(),500);
         }
     }
 }

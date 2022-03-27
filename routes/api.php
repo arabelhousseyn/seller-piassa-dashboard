@@ -29,6 +29,7 @@ Route::middleware('auth:sanctum')->group(function (){
     Route::controller(UserController::class)->prefix('users')->group(function (){
             Route::put('restore/{id}','restore')->whereNumber('id');
             Route::put('update-commercial-info/{id}','updateCommercialInfo')->whereNumber('id');
+            Route::post('send-push-notifications','sendPushNotification');
     });
 
     Route::prefix('users')->group(function (){

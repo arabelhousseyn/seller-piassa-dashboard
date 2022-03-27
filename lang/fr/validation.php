@@ -231,7 +231,20 @@ return [
             'url' => 'Logo URL non valide.',
             'mimes' => 'Type logo invalide.',
             'dimensions' => '60 X 70 dimensions logo requis.'
-        ]
+        ],
+        'title' => [
+            'required' => 'Titre requis.',
+            'max' => 'Taille maximum 255.'
+        ],
+
+        'body' => [
+            'required' => 'Message requis.',
+            'max' => 'Taille maximum 255.'
+        ],
+
+        'type' => [
+            'required' => 'Type requis.'
+        ],
     ],
 
     /*
