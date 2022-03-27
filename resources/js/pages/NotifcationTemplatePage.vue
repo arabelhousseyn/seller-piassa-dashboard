@@ -2,7 +2,7 @@
     <div class="notification-templating">
         <v-container fluid>
             <bread-crumbs-component title1="Envoi des notifications" link="/home/notifications" icon="mdi mdi-chevron-right" />
-            <v-card>
+            <v-card elevation="1">
                 <v-card-title><v-icon>mdi-broadcast</v-icon> <span class="ml-2">Envoi des notification</span></v-card-title>
                 <v-card-text>
                     <form @submit.prevent="sendPush" method="post">
@@ -57,6 +57,12 @@
                            {{message}}
                         </v-alert>
 
+                        <v-alert v-if="hasError" border="right" colored-border type="error" elevation="2">
+                            <ul>
+                                <li v-for="(error,index) in errors" :key="index"><span>{{error}}</span></li>
+                            </ul>
+                        </v-alert>
+
                         <v-tooltip bottom>
                             <template v-slot:activator="{ on, attrs }">
                                 <v-btn :disabled="disabled" v-bind="attrs" v-on="on" type="submit" large color="primary"><v-icon v-if="!send">mdi-send</v-icon>  <v-progress-circular v-else indeterminate color="white"></v-progress-circular></v-btn>
@@ -84,6 +90,8 @@ export default {
         disabled : true,
         message : null,
         send : false,
+        hasError : false,
+        errors : [],
     }),
     methods : {
         sendPush()
@@ -99,12 +107,19 @@ export default {
                     }).catch(err => {
                         this.disabled = false
                         this.send = false
-                    this.$toast.open({message: 'Erreur dans serveur veuillez réessayer', type: 'error'})
+                    let errors = Object.values(err.response.data.errors)
+                    for (const error of errors) {
+                        this.errors.push(error[0])
+                        this.hasError = true
+                        this.disabled = false
+                    }
                 })
             })
         },
         check()
         {
+            this.errors = []
+            this.hasError = false
             this.disabled = (this.data.title.length == 0 || this.data.body.length == 0) ? true : false;
         }
     }

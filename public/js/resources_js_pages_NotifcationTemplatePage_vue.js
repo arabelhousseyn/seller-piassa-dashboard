@@ -110,6 +110,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -127,7 +133,9 @@ __webpack_require__.r(__webpack_exports__);
       }],
       disabled: true,
       message: null,
-      send: false
+      send: false,
+      hasError: false,
+      errors: []
     };
   },
   methods: {
@@ -144,15 +152,22 @@ __webpack_require__.r(__webpack_exports__);
         })["catch"](function (err) {
           _this.disabled = false;
           _this.send = false;
+          var errors = Object.values(err.response.data.errors);
 
-          _this.$toast.open({
-            message: 'Erreur dans serveur veuillez réessayer',
-            type: 'error'
-          });
+          for (var _i = 0, _errors = errors; _i < _errors.length; _i++) {
+            var error = _errors[_i];
+
+            _this.errors.push(error[0]);
+
+            _this.hasError = true;
+            _this.disabled = false;
+          }
         });
       });
     },
     check: function check() {
+      this.errors = [];
+      this.hasError = false;
       this.disabled = this.data.title.length == 0 || this.data.body.length == 0 ? true : false;
     }
   }
@@ -380,6 +395,7 @@ var render = function () {
           _vm._v(" "),
           _c(
             "v-card",
+            { attrs: { elevation: "1" } },
             [
               _c(
                 "v-card-title",
@@ -499,6 +515,31 @@ var render = function () {
                               "\n                       " +
                                 _vm._s(_vm.message) +
                                 "\n                    "
+                            ),
+                          ]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.hasError
+                      ? _c(
+                          "v-alert",
+                          {
+                            attrs: {
+                              border: "right",
+                              "colored-border": "",
+                              type: "error",
+                              elevation: "2",
+                            },
+                          },
+                          [
+                            _c(
+                              "ul",
+                              _vm._l(_vm.errors, function (error, index) {
+                                return _c("li", { key: index }, [
+                                  _c("span", [_vm._v(_vm._s(error))]),
+                                ])
+                              }),
+                              0
                             ),
                           ]
                         )
