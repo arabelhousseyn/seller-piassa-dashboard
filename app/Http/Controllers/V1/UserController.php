@@ -209,7 +209,7 @@ class UserController extends Controller
                 $this->push($request->title,$request->message,$value);
             }
 
-            return response()->noContent();
+            return response(['message' => 'Message envoyé.'],200);
         }catch (\Exception $exception)
         {
             return response($exception->getMessage(),500);

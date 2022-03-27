@@ -1,10 +1,11 @@
 <template>
     <div class="notification-templating">
         <v-container fluid>
+            <bread-crumbs-component title1="Envoi des notifications" link="/home/notifications" icon="mdi mdi-chevron-right" />
             <v-card>
-                <v-card-title><v-icon>mdi-broadcast</v-icon>Envoi des notification</v-card-title>
+                <v-card-title><v-icon>mdi-broadcast</v-icon> <span class="ml-2">Envoi des notification</span></v-card-title>
                 <v-card-text>
-                    <form @submit.prevent="send" method="post">
+                    <form @submit.prevent="sendPush" method="post">
                         <v-text-field
                             required
                             placeholder="Titre"
@@ -51,9 +52,14 @@
                                 value="W"
                             ></v-radio>
                         </v-radio-group>
+
+                        <v-alert v-if="message !== null" outlined type="success" text dismissible>
+                           {{message}}
+                        </v-alert>
+
                         <v-tooltip bottom>
                             <template v-slot:activator="{ on, attrs }">
-                                <v-btn :disabled="disabled" v-bind="attrs" v-on="on" type="submit" large color="primary"><v-icon>mdi-send</v-icon></v-btn>
+                                <v-btn :disabled="disabled" v-bind="attrs" v-on="on" type="submit" large color="primary"><v-icon v-if="!send">mdi-send</v-icon>  <v-progress-circular v-else indeterminate color="white"></v-progress-circular></v-btn>
                             </template>
                             <span>Envoi</span>
                         </v-tooltip>
@@ -65,7 +71,9 @@
 </template>
 
 <script>
+import BreadCrumbsComponent from "../components/BreadCrumbsComponent";
 export default {
+    components: {BreadCrumbsComponent},
     data : () =>({
         data : {
             title : 'Titre',
@@ -74,11 +82,26 @@ export default {
         },
         rules: [v => v.length <= 255 || 'Max 255 characters'],
         disabled : true,
+        message : null,
+        send : false,
     }),
     methods : {
-        send()
+        sendPush()
         {
-
+            this.disabled = true
+            this.send = true
+            axios.get('/sanctum/csrf-cookie').then(res => {
+                axios.post('/api/users/send-push-notifications', this.data)
+                    .then(e => {
+                        this.disabled = false
+                        this.send = false
+                        this.message = e.data.message
+                    }).catch(err => {
+                        this.disabled = false
+                        this.send = false
+                    this.$toast.open({message: 'Erreur dans serveur veuillez réessayer', type: 'error'})
+                })
+            })
         },
         check()
         {
