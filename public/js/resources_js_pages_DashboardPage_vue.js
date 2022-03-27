@@ -87,7 +87,11 @@ __webpack_require__.r(__webpack_exports__);
 
       this.data.notification_id = id;
       axios.get('/sanctum/csrf-cookie').then(function (res) {
-        axios.put('/api/notifications/read', _this.data).then(function (e) {})["catch"](function (err) {});
+        axios.put('/api/notifications/read', _this.data).then(function (e) {
+          if (e.status == 204) {
+            _this.$router.push('/home/orders');
+          }
+        })["catch"](function (err) {});
       });
     },
     formatDate: function formatDate(date) {

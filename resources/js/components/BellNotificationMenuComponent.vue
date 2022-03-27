@@ -71,7 +71,10 @@ export default {
             this.data.notification_id = id
             axios.get('/sanctum/csrf-cookie').then(res => {
                 axios.put('/api/notifications/read',this.data).then(e=>{
-
+                    if(e.status == 204)
+                    {
+                        this.$router.push('/home/orders')
+                    }
                 }).catch(err =>{
 
                 })
