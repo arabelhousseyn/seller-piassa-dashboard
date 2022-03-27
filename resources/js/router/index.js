@@ -129,6 +129,10 @@ const routes = [
                 ]
             },
             {
+              path: 'notifications',
+              component : () => import('../pages/NotifcationTemplatePage')
+            },
+            {
                 path : '*',
                 component: () => import('../pages/NotFoundPage'),
             }
