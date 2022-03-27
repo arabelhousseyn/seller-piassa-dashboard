@@ -170,6 +170,10 @@ export default {
           {
               this.selectedItem = 5;
           }
+          else if(path.includes('home/notifications'))
+          {
+              this.selectedItem = 6;
+          }
           else{
               this.selectedItem = null
           }

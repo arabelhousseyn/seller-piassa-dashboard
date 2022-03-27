@@ -317,6 +317,8 @@ __webpack_require__.r(__webpack_exports__);
         this.selectedItem = 4;
       } else if (path.includes('home/orders')) {
         this.selectedItem = 5;
+      } else if (path.includes('home/notifications')) {
+        this.selectedItem = 6;
       } else {
         this.selectedItem = null;
       }
