@@ -79,7 +79,7 @@
                 </template>
 
                 <template v-slot:item.invoice.path="{ item }">
-                    <a :href="item.invoice.path" target="_blank"><v-icon large>mdi-file-pdf-box</v-icon></a>
+                    <a v-if="item.invoice !== null" :href="item.invoice.path" target="_blank"><v-icon large>mdi-file-pdf-box</v-icon></a>
                 </template>
 
                 <template v-slot:item.confirmed_by_administrator_at="{ item }">

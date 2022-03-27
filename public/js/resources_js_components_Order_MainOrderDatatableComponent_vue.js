@@ -1290,16 +1290,23 @@ var render = function () {
                 fn: function (ref) {
                   var item = ref.item
                   return [
-                    _c(
-                      "a",
-                      { attrs: { href: item.invoice.path, target: "_blank" } },
-                      [
-                        _c("v-icon", { attrs: { large: "" } }, [
-                          _vm._v("mdi-file-pdf-box"),
-                        ]),
-                      ],
-                      1
-                    ),
+                    item.invoice !== null
+                      ? _c(
+                          "a",
+                          {
+                            attrs: {
+                              href: item.invoice.path,
+                              target: "_blank",
+                            },
+                          },
+                          [
+                            _c("v-icon", { attrs: { large: "" } }, [
+                              _vm._v("mdi-file-pdf-box"),
+                            ]),
+                          ],
+                          1
+                        )
+                      : _vm._e(),
                   ]
                 },
               },
