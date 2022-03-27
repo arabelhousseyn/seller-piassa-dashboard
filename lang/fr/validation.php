@@ -245,6 +245,10 @@ return [
         'type' => [
             'required' => 'Type requis.'
         ],
+        'notification_id' => [
+            'required' => 'notification requis.',
+            'exists' => 'notification invalide .'
+        ]
     ],
 
     /*

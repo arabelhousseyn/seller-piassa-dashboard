@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\V1\{LoginController,LogoutController,UserController,SellerController,ShipperController
 ,DashbaordController,ProvincesController,UserChangePassword,VehicleController,SignController,SellerChangePassword
-,TypeController,UserOrderController};
+,TypeController,UserOrderController,NotificationController};
 
 
 Route::middleware(['throttle:login'])->group(function (){
@@ -106,6 +106,12 @@ Route::middleware('auth:sanctum')->group(function (){
         Route::delete('destroy/{user_order_id}','destroy')->whereNumber('user_order_id');
         Route::put('restore/{user_order_id}','restore')->whereNumber('user_order_id');
         Route::put('confirm-order/{user_order_id}','confirmOrder')->whereNumber('user_order_id');
+    });
+
+    // notifications
+
+    Route::controller(NotificationController::class)->prefix('notifications')->group(function (){
+        Route::put('read','read');
     });
 
     //resources

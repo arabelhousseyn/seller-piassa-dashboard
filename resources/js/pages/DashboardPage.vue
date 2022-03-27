@@ -13,6 +13,7 @@
 import ProgressCircularComponent from "../components/ProgressCircularComponent";
 import HeaderComponent from "../components/HeaderComponent";
 import FooterComponent from "../components/FooterComponent";
+import Echo from "laravel-echo";
 export default {
     data : () =>({
        isLoading : true,
@@ -29,6 +30,12 @@ export default {
                 this.$toast.open({message : 'Erreur dans serveur veuillez réessayer',type : 'error'})
             })
         })
+
+         window.Echo.channel('admin')
+             .listen('order-event', (e) => {
+                 console.log(e);
+             });
+
     }
 }
 </script>

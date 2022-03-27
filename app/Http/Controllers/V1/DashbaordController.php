@@ -49,7 +49,8 @@ class DashbaordController extends Controller
             'users_by_month' => $users_stats,
             'count_notification' => count(Admin::find(Auth::id())->notifications),
             'count_male' => UserProfile::gender('M')->count(),
-            'count_female' => UserProfile::gender('W')->count()
+            'count_female' => UserProfile::gender('W')->count(),
+            'notifications' => Admin::find(Auth::id())->notifications
 
         ];
 

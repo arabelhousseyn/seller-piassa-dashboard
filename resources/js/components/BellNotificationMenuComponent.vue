@@ -28,25 +28,26 @@
                 <v-card-text>
                     <v-list two-line>
                         <v-list-item-group>
-                            <v-list-item>
-                                <v-list-item-avatar>
-                                    <v-icon>mdi-star</v-icon>
-                                </v-list-item-avatar>
-                                <v-list-item-content>
-                                    <v-list-item-title>hello</v-list-item-title>
+                            <v-list-item v-for="(notification,index) in this.$store.state.data.notifications" :key="index" @click="open(notification.id)">
+                                    <v-list-item-avatar>
+                                        <v-icon v-if="notification.read_at == null">mdi-star-outline</v-icon>
+                                        <v-icon v-else>mdi-star</v-icon>
+                                    </v-list-item-avatar>
+                                    <v-list-item-content>
+                                        <v-list-item-title>Numéro de commande : {{notification.data.data.ref}}</v-list-item-title>
+                                        <v-list-item-subtitle v-if="notification.read_at == null">
+                                            <v-chip color="green" dark>Nouvelle notification</v-chip>
+                                        </v-list-item-subtitle>
+                                    </v-list-item-content>
 
-                                    <v-list-item-subtitle class="text--primary">You have new notification</v-list-item-subtitle>
+                                    <v-list-item-action>
+                                        <v-list-item-action-text>
+                                            {{ formatDate(notification.created_at) }}
+                                        </v-list-item-action-text>
 
-                                    <v-list-item-subtitle>New notification</v-list-item-subtitle>
-                                </v-list-item-content>
-
-                                <v-list-item-action>
-                                    <v-list-item-action-text>
-                                        6h ago
-                                    </v-list-item-action-text>
-
-                                    <v-icon color="grey lighten-1">mdi-email-open-outline</v-icon>
-                                </v-list-item-action>
+                                        <v-icon v-if="notification.read_at == null" color="grey lighten-1">mdi-email</v-icon>
+                                        <v-icon v-else color="grey lighten-1">mdi-email-open</v-icon>
+                                    </v-list-item-action>
                             </v-list-item>
                         </v-list-item-group>
                     </v-list>
@@ -57,41 +58,31 @@
 </template>
 
 <script>
+import moment from 'moment'
 export default {
-    data: () => ({
-        selected: [2],
-        items: [
-            {
-                action: '15 min',
-                headline: 'Brunch this weekend?',
-                subtitle: `I'll be in your neighborhood doing errands this weekend. Do you want to hang out?`,
-                title: 'Ali Connors',
-            },
-            {
-                action: '2 hr',
-                headline: 'Summer BBQ',
-                subtitle: `Wish I could come, but I'm out of town this weekend.`,
-                title: 'me, Scrott, Jennifer',
-            },
-            {
-                action: '6 hr',
-                headline: 'Oui oui',
-                subtitle: 'Do you have Paris recommendations? Have you ever been?',
-                title: 'Sandra Adams',
-            },
-            {
-                action: '12 hr',
-                headline: 'Birthday gift',
-                subtitle: 'Have any ideas about what we should get Heidi for her birthday?',
-                title: 'Trevor Hansen',
-            },
-            {
-                action: '18hr',
-                headline: 'Recipe to try',
-                subtitle: 'We should eat this: Grate, Squash, Corn, and tomatillo Tacos.',
-                title: 'Britta Holt',
-            },
-        ],
+    data : () => ({
+        data : {
+            notification_id : null,
+        }
     }),
+    methods : {
+        open(id)
+        {
+            this.data.notification_id = id
+            axios.get('/sanctum/csrf-cookie').then(res => {
+                axios.put('/api/notifications/read',this.data).then(e=>{
+
+                }).catch(err =>{
+
+                })
+            })
+        },
+        formatDate(date) {
+            return moment(date).locale('fr').format('dd.mm.YYYY');
+        },
+    },
+    mounted() {
+
+    }
 }
 </script>
