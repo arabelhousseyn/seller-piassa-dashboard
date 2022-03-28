@@ -72,7 +72,7 @@ class UserOrderController extends Controller
     public function confirmOrder($user_order_id)
     {
         try {
-            $user_order = UserOrder::findOrFail($user_order_id);
+            $user_order = UserOrder::with('shipperUserOrder.shipper','items.item.request')->findOrFail($user_order_id);
             $user_order->update([
                 'confirmed_by_administrator_at' => Carbon::now()
             ]);
