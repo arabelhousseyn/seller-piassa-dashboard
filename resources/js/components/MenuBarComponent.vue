@@ -32,20 +32,6 @@
                     </v-list-item>
                 </v-list>
 
-                <v-divider></v-divider>
-
-                <v-list>
-                    <v-list-item>
-                        <v-list-item-action>
-                            <v-switch
-                                v-model="dark_mode"
-                                color="black"
-                            ></v-switch>
-                        </v-list-item-action>
-                        <v-list-item-title>Mode sombre</v-list-item-title>
-                    </v-list-item>
-                </v-list>
-
                 <v-card-actions>
                     <v-spacer></v-spacer>
 

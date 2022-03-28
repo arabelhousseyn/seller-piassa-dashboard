@@ -5,7 +5,7 @@ import '@mdi/font/css/materialdesignicons.css'
 Vue.use(Vuetify)
 
 export default new Vuetify({
-    theme: { dark: (window.localStorage.getItem('darkMode') == null) ? false : true,
+    theme: { dark:  false,
         themes: {
             light: {
                 primary: '#e85810',

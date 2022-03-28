@@ -398,20 +398,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -23216,39 +23202,6 @@ var render = function () {
                         ],
                         1
                       ),
-                    ],
-                    1
-                  ),
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c("v-divider"),
-              _vm._v(" "),
-              _c(
-                "v-list",
-                [
-                  _c(
-                    "v-list-item",
-                    [
-                      _c(
-                        "v-list-item-action",
-                        [
-                          _c("v-switch", {
-                            attrs: { color: "black" },
-                            model: {
-                              value: _vm.dark_mode,
-                              callback: function ($$v) {
-                                _vm.dark_mode = $$v
-                              },
-                              expression: "dark_mode",
-                            },
-                          }),
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c("v-list-item-title", [_vm._v("Mode sombre")]),
                     ],
                     1
                   ),
