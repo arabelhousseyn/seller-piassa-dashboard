@@ -36,6 +36,10 @@ export default new Vuex.Store({
         SET_DATA(state,data)
         {
             state.data = data
+        },
+        INCREMENT_NOTIFICATION(state,number)
+        {
+            state.data.count_notification += number;
         }
     },
     actions: {

@@ -19,7 +19,34 @@ export default {
        isLoading : true,
     }),
     components: {FooterComponent, HeaderComponent, ProgressCircularComponent},
+    methods : {
+        enableNotification(data)
+        {
+            if(localStorage.getItem('permission') == 'granted')
+            {
+                let notification = new Notification('Nouvelle notification',{
+                    vibrate : true,
+                    body : `Numéro de commande : ${data.data.ref}`,
+                    badge : ""
+                })
+                this.$store.commit('INCREMENT_NOTIFICATION',1)
+                notification.addEventListener('click',()=>{
+                    this.$router.push('/home/orders')
+                    notification.close()
+                })
+            }
+        }
+    },
      mounted() {
+
+        if(Notification.permission == 'denied')
+        {
+            let permission = Notification.requestPermission();
+            localStorage.setItem('permission',permission)
+        }else{
+            localStorage.setItem('permission','granted')
+        }
+
         axios.defaults.headers.common['Authorization'] = `Bearer ${this.$store.state.user.token}`
         axios.get('/sanctum/csrf-cookie').then(res =>{
             axios.get('/api/company/data')
@@ -31,11 +58,12 @@ export default {
             })
         })
 
-         window.Echo.channel('admin')
-             .listen('order-event', (e) => {
-                 console.log(e);
-             });
+         var pusher = new Pusher(process.env.MIX_PUSHER_APP_KEY, {
+             cluster: process.env.MIX_PUSHER_APP_CLUSTER
+         });
 
+         var channel = pusher.subscribe('admin');
+         channel.bind('order-event', this.enableNotification);
     }
 }
 </script>

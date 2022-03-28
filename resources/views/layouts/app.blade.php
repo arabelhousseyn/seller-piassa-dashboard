@@ -25,5 +25,6 @@
         @yield('master')
     </div>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGy4IaSCDzTFd9eW7H1Iovy7xEc5sNOSE" />
+    <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
 </body>
 </html>

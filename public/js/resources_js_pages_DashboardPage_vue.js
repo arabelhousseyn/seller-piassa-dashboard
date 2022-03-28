@@ -532,25 +532,53 @@ __webpack_require__.r(__webpack_exports__);
     HeaderComponent: _components_HeaderComponent__WEBPACK_IMPORTED_MODULE_1__["default"],
     ProgressCircularComponent: _components_ProgressCircularComponent__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
+  methods: {
+    enableNotification: function enableNotification(data) {
+      var _this = this;
+
+      if (localStorage.getItem('permission') == 'granted') {
+        var notification = new Notification('Nouvelle notification', {
+          vibrate: true,
+          body: "Num\xE9ro de commande : ".concat(data.data.ref),
+          badge: ""
+        });
+        this.$store.commit('INCREMENT_NOTIFICATION', 1);
+        notification.addEventListener('click', function () {
+          _this.$router.push('/home/orders');
+
+          notification.close();
+        });
+      }
+    }
+  },
   mounted: function mounted() {
-    var _this = this;
+    var _this2 = this;
+
+    if (Notification.permission == 'denied') {
+      var permission = Notification.requestPermission();
+      localStorage.setItem('permission', permission);
+    } else {
+      localStorage.setItem('permission', 'granted');
+    }
 
     axios.defaults.headers.common['Authorization'] = "Bearer ".concat(this.$store.state.user.token);
     axios.get('/sanctum/csrf-cookie').then(function (res) {
       axios.get('/api/company/data').then(function (e) {
-        _this.isLoading = false;
+        _this2.isLoading = false;
 
-        _this.$store.commit('SET_DATA', e.data);
+        _this2.$store.commit('SET_DATA', e.data);
       })["catch"](function (err) {
-        _this.$toast.open({
+        _this2.$toast.open({
           message: 'Erreur dans serveur veuillez réessayer',
           type: 'error'
         });
       });
     });
-    window.Echo.channel('admin').listen('order-event', function (e) {
-      console.log(e);
+    var pusher = new Pusher("b5ef6ef8a5619d1d4b7b", {
+      cluster: "eu"
     });
+    var channel = pusher.subscribe('admin');
+    channel.bind('order-event', this.enableNotification);
   }
 });
 
