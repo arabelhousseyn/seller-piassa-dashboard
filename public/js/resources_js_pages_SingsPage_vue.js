@@ -518,6 +518,8 @@ __webpack_require__.r(__webpack_exports__);
     logo: function logo(e) {
       var _this2 = this;
 
+      this.errors1 = [];
+      this.hasError1 = false;
       var data = new FormData();
       data.append('sign_id', this.data.id);
       data.append('logo', e);
