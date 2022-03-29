@@ -29,6 +29,7 @@
                             :rules="rules"
                             v-model="data.body"
                             solo
+                            auto-grow
                         ></v-textarea>
 
                         <v-radio-group

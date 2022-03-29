@@ -116,6 +116,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -453,6 +454,7 @@ var render = function () {
                         placeholder: "Text",
                         rules: _vm.rules,
                         solo: "",
+                        "auto-grow": "",
                       },
                       on: { keydown: _vm.check },
                       model: {
