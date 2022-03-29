@@ -27,7 +27,7 @@
             <v-card>
                 <v-card-text>
                     <v-list two-line>
-                        <v-list-item-group>
+                        <v-list-item-group v-if="this.$store.state.data.count_notification > 0">
                             <v-list-item v-for="(notification,index) in this.$store.state.data.notifications" :key="index" @click="open(notification.id)">
                                     <v-list-item-avatar>
                                         <v-icon v-if="notification.read_at == null">mdi-star-outline</v-icon>
@@ -50,6 +50,13 @@
                                     </v-list-item-action>
                             </v-list-item>
                         </v-list-item-group>
+
+                            <v-list-item v-else>
+                                <v-list-item-content>
+                                    <v-list-item-title>Notification vide <v-icon>mdi-baby-face-outline</v-icon> </v-list-item-title>
+                                </v-list-item-content>
+                            </v-list-item>
+
                     </v-list>
                 </v-card-text>
             </v-card>

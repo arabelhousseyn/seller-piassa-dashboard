@@ -72,6 +72,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -22529,106 +22536,137 @@ var render = function () {
                     "v-list",
                     { attrs: { "two-line": "" } },
                     [
-                      _c(
-                        "v-list-item-group",
-                        _vm._l(
-                          this.$store.state.data.notifications,
-                          function (notification, index) {
-                            return _c(
-                              "v-list-item",
-                              {
-                                key: index,
-                                on: {
-                                  click: function ($event) {
-                                    return _vm.open(notification.id)
+                      this.$store.state.data.count_notification > 0
+                        ? _c(
+                            "v-list-item-group",
+                            _vm._l(
+                              this.$store.state.data.notifications,
+                              function (notification, index) {
+                                return _c(
+                                  "v-list-item",
+                                  {
+                                    key: index,
+                                    on: {
+                                      click: function ($event) {
+                                        return _vm.open(notification.id)
+                                      },
+                                    },
                                   },
-                                },
-                              },
-                              [
-                                _c(
-                                  "v-list-item-avatar",
                                   [
-                                    notification.read_at == null
-                                      ? _c("v-icon", [
-                                          _vm._v("mdi-star-outline"),
-                                        ])
-                                      : _c("v-icon", [_vm._v("mdi-star")]),
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-list-item-content",
-                                  [
-                                    _c("v-list-item-title", [
-                                      _vm._v(
-                                        "Numéro de commande : " +
-                                          _vm._s(notification.data.data.ref)
-                                      ),
-                                    ]),
+                                    _c(
+                                      "v-list-item-avatar",
+                                      [
+                                        notification.read_at == null
+                                          ? _c("v-icon", [
+                                              _vm._v("mdi-star-outline"),
+                                            ])
+                                          : _c("v-icon", [_vm._v("mdi-star")]),
+                                      ],
+                                      1
+                                    ),
                                     _vm._v(" "),
-                                    notification.read_at == null
-                                      ? _c(
-                                          "v-list-item-subtitle",
-                                          [
-                                            _c(
-                                              "v-chip",
+                                    _c(
+                                      "v-list-item-content",
+                                      [
+                                        _c("v-list-item-title", [
+                                          _vm._v(
+                                            "Numéro de commande : " +
+                                              _vm._s(notification.data.data.ref)
+                                          ),
+                                        ]),
+                                        _vm._v(" "),
+                                        notification.read_at == null
+                                          ? _c(
+                                              "v-list-item-subtitle",
+                                              [
+                                                _c(
+                                                  "v-chip",
+                                                  {
+                                                    attrs: {
+                                                      color: "green",
+                                                      dark: "",
+                                                    },
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      "Nouvelle notification"
+                                                    ),
+                                                  ]
+                                                ),
+                                              ],
+                                              1
+                                            )
+                                          : _vm._e(),
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-list-item-action",
+                                      [
+                                        _c("v-list-item-action-text", [
+                                          _vm._v(
+                                            "\n                                        " +
+                                              _vm._s(
+                                                _vm.formatDate(
+                                                  notification.created_at
+                                                )
+                                              ) +
+                                              "\n                                    "
+                                          ),
+                                        ]),
+                                        _vm._v(" "),
+                                        notification.read_at == null
+                                          ? _c(
+                                              "v-icon",
                                               {
                                                 attrs: {
-                                                  color: "green",
-                                                  dark: "",
+                                                  color: "grey lighten-1",
                                                 },
                                               },
-                                              [_vm._v("Nouvelle notification")]
-                                            ),
-                                          ],
-                                          1
-                                        )
-                                      : _vm._e(),
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-list-item-action",
-                                  [
-                                    _c("v-list-item-action-text", [
-                                      _vm._v(
-                                        "\n                                        " +
-                                          _vm._s(
-                                            _vm.formatDate(
-                                              notification.created_at
+                                              [_vm._v("mdi-email")]
                                             )
-                                          ) +
-                                          "\n                                    "
-                                      ),
-                                    ]),
-                                    _vm._v(" "),
-                                    notification.read_at == null
-                                      ? _c(
-                                          "v-icon",
-                                          {
-                                            attrs: { color: "grey lighten-1" },
-                                          },
-                                          [_vm._v("mdi-email")]
-                                        )
-                                      : _c(
-                                          "v-icon",
-                                          {
-                                            attrs: { color: "grey lighten-1" },
-                                          },
-                                          [_vm._v("mdi-email-open")]
-                                        ),
+                                          : _c(
+                                              "v-icon",
+                                              {
+                                                attrs: {
+                                                  color: "grey lighten-1",
+                                                },
+                                              },
+                                              [_vm._v("mdi-email-open")]
+                                            ),
+                                      ],
+                                      1
+                                    ),
                                   ],
                                   1
-                                ),
-                              ],
-                              1
-                            )
-                          }
-                        ),
-                        1
-                      ),
+                                )
+                              }
+                            ),
+                            1
+                          )
+                        : _c(
+                            "v-list-item",
+                            [
+                              _c(
+                                "v-list-item-content",
+                                [
+                                  _c(
+                                    "v-list-item-title",
+                                    [
+                                      _vm._v("Notification vide "),
+                                      _c("v-icon", [
+                                        _vm._v("mdi-baby-face-outline"),
+                                      ]),
+                                    ],
+                                    1
+                                  ),
+                                ],
+                                1
+                              ),
+                            ],
+                            1
+                          ),
                     ],
                     1
                   ),
