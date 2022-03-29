@@ -6,9 +6,11 @@ use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use mysql_xdevapi\Exception;
-use App\Models\{UserOrder};
+use App\Models\{ShipperUserOrder, UserOrder};
+use App\Traits\CustomPushNotificationTrait;
 class UserOrderController extends Controller
 {
+    use CustomPushNotificationTrait;
     public function getAllOrders()
     {
         $user_orders = UserOrder::with('items.item','events','user.profile','invoice','shipperUserOrder.shipper')->withTrashed()->latest('created_at')->get();
@@ -72,10 +74,20 @@ class UserOrderController extends Controller
     public function confirmOrder($user_order_id)
     {
         try {
-            $user_order = UserOrder::with('shipperUserOrder.shipper','items.item.request')->findOrFail($user_order_id);
+            $sellers_ids = array();
+            $user_order = UserOrder::with('items.item.request')->findOrFail($user_order_id);
+            foreach ($user_order->items as $item) {
+                $sellers_ids[] = $item->item->request->seller_id;
+            }
+            $shipper_ids = ShipperUserOrder::where('user_order_id',$user_order_id)->pluck('shipper_id');
             $user_order->update([
                 'confirmed_by_administrator_at' => Carbon::now()
             ]);
+
+            $this->pushNotification('Votre suggestion est en ordre','votre suggestion est en ordre',$sellers_ids,'seller');
+            $this->pushNotification('Vous avez une nouvelle commande','Vous avez une nouvelle commande',$shipper_ids,'shipper');
+
+
             return response()->noContent();
         }catch (\Exception $exception)
         {
