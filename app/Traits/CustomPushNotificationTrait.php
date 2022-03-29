@@ -14,7 +14,6 @@ trait CustomPushNotificationTrait{
         {
             case 'seller' : $tokens = SellerProfile::whereIn('seller_id',$ids)->pluck('device_token'); break;
             case 'shippers' : $tokens = ShipperProfile::whereIn('shipper_id',$ids)->pluck('device_token'); break;
-            default : $tokens = []; break;
         }
 
         $SERVER_API_KEY = env('SERVER_KEY_TARGET_USERS');
