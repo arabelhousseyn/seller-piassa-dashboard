@@ -117,7 +117,7 @@ Route::middleware('auth:sanctum')->group(function (){
     // statistics
 
     Route::controller(StatisticsController::class)->prefix('statistics')->group(function (){
-        Route::get('request-expired/{days}','requestBanned')->whereNumber('days');
+        Route::get('request-expired/{days}','requestExpired')->whereNumber('days');
     });
 
     //resources
