@@ -17,14 +17,15 @@ class UserRequest extends Model
         'expired_at'
     ];
 
+
     protected $hidden = [
-        'created_at',
         'updated_at',
         'deleted_at'
     ];
 
     protected $casts = [
-        'qt' => 'integer'
+        'qt' => 'integer',
+        'created_at' => 'date:Y-m-d H:i:s'
     ];
 
     public function vehicle()
