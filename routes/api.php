@@ -8,12 +8,12 @@ use App\Http\Controllers\V1\{LoginController,LogoutController,UserController,Sel
 ,TypeController,UserOrderController,NotificationController,StatisticsController};
 
 
-Route::middleware(['throttle:login'])->group(function (){
+Route::middleware(['throttle:login','app_version'])->group(function (){
     Route::post('login',LoginController::class);
 });
 
 
-Route::middleware('auth:sanctum')->group(function (){
+Route::middleware(['auth:sanctum','app_version'])->group(function (){
 
 
     // admin handle

@@ -5,6 +5,7 @@
             cols="12"
         >
         <p class="mr-0" style="font-weight: bold;">&copy; Copyright {{text}} <strong style="color: #e85810;">Piassa</strong> Tout droit réservé</p>
+            <p style="color: grey;" class="mr-0">Version {{ $store.state.data.app_version.versioning}}</p>
         <p class="mr-0">Created by <a style="text-decoration: none; color: #0b5ed7; font-weight: bold;" href="https://www.linkedin.com/in/elhousseyn-arab/" target="_blank">Elhousseyn Arab</a></p>
         </v-col>
     </v-footer>

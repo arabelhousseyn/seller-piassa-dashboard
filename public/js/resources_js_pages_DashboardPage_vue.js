@@ -134,6 +134,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -22734,6 +22735,12 @@ var render = function () {
             _vm._v(" Tout droit réservé"),
           ]
         ),
+        _vm._v(" "),
+        _c("p", { staticClass: "mr-0", staticStyle: { color: "grey" } }, [
+          _vm._v(
+            "Version " + _vm._s(_vm.$store.state.data.app_version.versioning)
+          ),
+        ]),
         _vm._v(" "),
         _c("p", { staticClass: "mr-0" }, [
           _vm._v("Created by "),
