@@ -47,13 +47,92 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     BreadCrumbsComponent: _components_BreadCrumbsComponent__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   data: function data() {
-    return {};
+    return {
+      headers: [{
+        text: "Numéro de demande",
+        value: "id",
+        align: "start",
+        sortable: true
+      }, {
+        text: 'Nom Véhicule',
+        value: 'vehicle.model'
+      }, {
+        text: 'Année Véhicule',
+        value: 'vehicle.year'
+      }, {
+        text: 'N° châssis',
+        value: 'vehicle.chassis_number'
+      }, {
+        text: 'Type',
+        value: 'type.name'
+      }],
+      data: [],
+      days: 7,
+      loading: true,
+      search: null
+    };
+  },
+  methods: {
+    init: function init() {
+      var _this = this;
+
+      axios.get('/sanctum/csrf-cookie').then(function (res) {
+        axios.get("/api/statistics/request-expired/".concat(_this.days)).then(function (e) {
+          _this.data = e.data.data;
+          _this.loading = false;
+        })["catch"](function (err) {
+          _this.$toast.open({
+            message: 'Erreur dans serveur veuillez réessayer',
+            type: 'error'
+          });
+        });
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.init();
   }
 });
 
@@ -276,7 +355,83 @@ var render = function () {
               icon: "mdi mdi-chevron-right",
             },
           }),
-          _vm._v("\n        welcome to stats page\n    "),
+          _vm._v(" "),
+          _c(
+            "v-row",
+            [
+              _c(
+                "v-col",
+                { attrs: { cols: "12", lg: "6", sm: "6" } },
+                [
+                  _c("v-data-table", {
+                    staticClass: "elevation-1",
+                    attrs: {
+                      loading: _vm.loading,
+                      "loading-text": "Chargement... veuillez patienter",
+                      headers: _vm.headers,
+                      items: _vm.data,
+                      search: _vm.search,
+                      "disable-sort": "",
+                    },
+                    scopedSlots: _vm._u([
+                      {
+                        key: "top",
+                        fn: function () {
+                          return [
+                            _c(
+                              "v-toolbar",
+                              { attrs: { flat: "" } },
+                              [_c("v-toolbar-title", [_vm._v("Statistiques")])],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-toolbar",
+                              { attrs: { flat: "" } },
+                              [
+                                _c("v-text-field", {
+                                  attrs: {
+                                    "append-icon": "mdi-magnify",
+                                    label: "Recherche",
+                                    "single-line": "",
+                                    "hide-details": "",
+                                  },
+                                  model: {
+                                    value: _vm.search,
+                                    callback: function ($$v) {
+                                      _vm.search = $$v
+                                    },
+                                    expression: "search",
+                                  },
+                                }),
+                              ],
+                              1
+                            ),
+                          ]
+                        },
+                        proxy: true,
+                      },
+                      {
+                        key: "no-data",
+                        fn: function () {
+                          return [
+                            _c("v-btn", { attrs: { color: "primary" } }, [
+                              _vm._v(
+                                "\n                            Reset\n                        "
+                              ),
+                            ]),
+                          ]
+                        },
+                        proxy: true,
+                      },
+                    ]),
+                  }),
+                ],
+                1
+              ),
+            ],
+            1
+          ),
         ],
         1
       ),
