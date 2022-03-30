@@ -134,7 +134,7 @@ const routes = [
             },
             {
               path: 'statistics',
-              component : () => import('../pages/StatsComponent')
+              component : () => import('../pages/StatsPage')
             },
             {
                 path : '*',
