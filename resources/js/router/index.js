@@ -133,6 +133,10 @@ const routes = [
               component : () => import('../pages/NotifcationTemplatePage')
             },
             {
+              path: 'statistics',
+              component : () => import('../pages/StatsComponent')
+            },
+            {
                 path : '*',
                 component: () => import('../pages/NotFoundPage'),
             }
