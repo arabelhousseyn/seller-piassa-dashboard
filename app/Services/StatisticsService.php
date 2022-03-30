@@ -15,7 +15,7 @@ class StatisticsService{
         return $this;
     }
 
-    public function ExportData()
+    public function exportData()
     {
         $data = array();
         $user_requests = UserRequest::with('suggestions')
