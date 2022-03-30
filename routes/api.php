@@ -116,7 +116,7 @@ Route::middleware('auth:sanctum')->group(function (){
 
     // statistics
 
-    Route::controller(ShipperController::class)->prefix('statistics')->group(function (){
+    Route::controller(StatisticsController::class)->prefix('statistics')->group(function (){
         Route::get('request-expired/{days}','requestBanned')->whereNumber('days');
     });
 
