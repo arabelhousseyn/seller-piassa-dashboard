@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\V1\{LoginController,LogoutController,UserController,SellerController,ShipperController
 ,DashbaordController,ProvincesController,UserChangePassword,VehicleController,SignController,SellerChangePassword
-,TypeController,UserOrderController,NotificationController};
+,TypeController,UserOrderController,NotificationController,StatisticsController};
 
 
 Route::middleware(['throttle:login'])->group(function (){
@@ -112,6 +112,12 @@ Route::middleware('auth:sanctum')->group(function (){
 
     Route::controller(NotificationController::class)->prefix('notifications')->group(function (){
         Route::put('read','read');
+    });
+
+    // statistics
+
+    Route::controller(ShipperController::class)->prefix('statistics')->group(function (){
+        Route::get('request-expired/{days}','requestBanned')->whereNumber('days');
     });
 
     //resources
