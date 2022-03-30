@@ -22736,11 +22736,14 @@ var render = function () {
           ]
         ),
         _vm._v(" "),
-        _c("p", { staticClass: "mr-0", staticStyle: { color: "grey" } }, [
-          _vm._v(
-            "Version " + _vm._s(_vm.$store.state.data.app_version.versioning)
-          ),
-        ]),
+        _vm.$store.state.data.app_version
+          ? _c("p", { staticClass: "mr-0", staticStyle: { color: "grey" } }, [
+              _vm._v(
+                "Version " +
+                  _vm._s(_vm.$store.state.data.app_version.versioning)
+              ),
+            ])
+          : _vm._e(),
         _vm._v(" "),
         _c("p", { staticClass: "mr-0" }, [
           _vm._v("Created by "),
