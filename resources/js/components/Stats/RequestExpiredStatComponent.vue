@@ -13,7 +13,7 @@
                             <v-toolbar
                                 flat
                             >
-                                <v-toolbar-title>Statistiques</v-toolbar-title>
+                                <v-toolbar-title>Informations des pièce non disponible</v-toolbar-title>
                             </v-toolbar>
                             <v-toolbar flat>
                                 <v-text-field
