@@ -66,6 +66,12 @@ __webpack_require__.r(__webpack_exports__);
         sortable: true,
         value: 'item.mark'
       }, {
+        text: 'Nom Vendeur',
+        value: 'item.price'
+      }, {
+        text: 'Nom Vendeur',
+        value: 'item.price'
+      }, {
         text: 'Prix',
         value: 'item.price'
       }, {

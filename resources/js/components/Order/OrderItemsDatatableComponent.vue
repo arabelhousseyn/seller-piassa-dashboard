@@ -54,6 +54,8 @@ export default {
                 sortable: true,
                 value: 'item.mark',
             },
+            { text: 'Nom Vendeur', value: 'item.price' },
+            { text: 'Nom Vendeur', value: 'item.price' },
             { text: 'Prix', value: 'item.price' },
             { text: 'disponible à', value: 'item.available_at' },
         ],
