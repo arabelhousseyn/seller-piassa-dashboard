@@ -66,14 +66,14 @@ __webpack_require__.r(__webpack_exports__);
         sortable: true,
         value: 'item.mark'
       }, {
-        text: 'Nom Vendeur',
-        value: 'item.price'
-      }, {
-        text: 'Nom Vendeur',
-        value: 'item.price'
-      }, {
         text: 'Prix',
         value: 'item.price'
+      }, {
+        text: 'Nom Vendeur',
+        value: 'item.request.seller.profile.first_name'
+      }, {
+        text: 'Téléphone Vendeur',
+        value: 'item.request.seller.phone'
       }, {
         text: 'disponible à',
         value: 'item.available_at'
