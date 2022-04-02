@@ -7,6 +7,7 @@ use App\Http\Requests\StoreAdminRequest;
 use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -41,7 +42,13 @@ class AdminController extends Controller
     {
         if($request->validated())
         {
+            $password_hashed = Hash::make($request->password);
+            $password = [
+                'password' => $password_hashed
+            ];
 
+            Admin::create(array_merge($password,$request->except('password','password_confirmation')));
+            return response(['data' => 'created !'],201);
         }
     }
 
