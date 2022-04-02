@@ -98,6 +98,7 @@
             </v-data-table>
             <destroy-admin-dialog :dialog="dialog" :id="selected" @close="close" />
             <restore-admin-dialog :dialog="dialog1" :id="selected" @close="close1" />
+            <update-admin-dialog :dialog="dialog2" :data="data" @close="close2" />
         </v-container>
     </div>
 </template>
@@ -107,15 +108,13 @@ import BreadCrumbsComponent from "../components/BreadCrumbsComponent";
 import StoreAdminDialog from "../components/dialog/Admin/StoreAdminDialog";
 import DestroyAdminDialog from "../components/dialog/Admin/DestroyAdminDialog";
 import RestoreAdminDialog from "../components/dialog/Admin/RestoreAdminDialog";
+import UpdateAdminDialog from '../components/dialog/Admin/UpdateAdminDialog'
 export default {
-    components: {RestoreAdminDialog, DestroyAdminDialog, StoreAdminDialog, BreadCrumbsComponent},
+    components: {RestoreAdminDialog, DestroyAdminDialog, StoreAdminDialog, BreadCrumbsComponent,UpdateAdminDialog},
     data : ()=>({
         dialog : false,
         dialog1 : false,
         dialog2 : false,
-        dialog3 : false,
-        dialog4 : false,
-        dialog5 : false,
         id : null,
         users : [],
         profile : [],
@@ -167,7 +166,7 @@ export default {
         close2()
         {
             this.data = []
-            this.dialog3 = false
+            this.dialog2 = false
         },
         init()
         {
@@ -183,7 +182,7 @@ export default {
         },
         update(data)
         {
-            this.dialog3 = true
+            this.dialog2 = true
             this.data = data
         },
     },

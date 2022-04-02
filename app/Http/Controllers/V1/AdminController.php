@@ -84,7 +84,14 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return UpdateAdminService::update($request,$id);
+        $admin = Admin::findOrFail($id);
+        if($admin->phone == $request->phone)
+        {
+            Admin::whereId($id)->update($request->except('phone'));
+            return response('',204);
+        }
+        Admin::whereId($id)->update($request->all());
+        return response('',204);
     }
 
     /**

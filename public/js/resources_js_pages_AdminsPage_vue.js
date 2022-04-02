@@ -386,6 +386,152 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Admin/UpdateAdminDialog.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Admin/UpdateAdminDialog.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ['data', 'dialog'],
+  data: function data() {
+    return {
+      selectedType: null,
+      provinces: [],
+      data2: {
+        phone: null,
+        fullName: null,
+        type: null
+      },
+      items: ['admin', 'agent'],
+      hasError: false,
+      errors: []
+    };
+  },
+  methods: {
+    close: function close() {
+      this.$emit('close');
+    },
+    update: function update() {
+      var _this = this;
+
+      this.data2.phone = this.data.phone;
+      this.data2.fullName = this.data.fullName;
+
+      if (this.selectedType == null) {
+        this.data2.type = this.data.type;
+      } else {
+        this.data2.type = this.selectedType;
+      }
+
+      axios.get('/sanctum/csrf-cookie').then(function (res) {
+        axios.put("/api/admins/".concat(_this.data.id), _this.data2).then(function (e) {
+          if (e.status == 204) {
+            _this.$toast.open({
+              message: "Opération effectué",
+              type: 'success'
+            });
+
+            window.location.reload();
+          }
+        })["catch"](function (err) {
+          var errors = Object.values(err.response.data.errors);
+
+          for (var _i = 0, _errors = errors; _i < _errors.length; _i++) {
+            var error = _errors[_i];
+
+            _this.errors.push(error[0]);
+
+            _this.hasError = true;
+          }
+        });
+      });
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/AdminsPage.vue?vue&type=script&lang=js&":
 /*!************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/AdminsPage.vue?vue&type=script&lang=js& ***!
@@ -400,6 +546,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_dialog_Admin_StoreAdminDialog__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/dialog/Admin/StoreAdminDialog */ "./resources/js/components/dialog/Admin/StoreAdminDialog.vue");
 /* harmony import */ var _components_dialog_Admin_DestroyAdminDialog__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/dialog/Admin/DestroyAdminDialog */ "./resources/js/components/dialog/Admin/DestroyAdminDialog.vue");
 /* harmony import */ var _components_dialog_Admin_RestoreAdminDialog__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/dialog/Admin/RestoreAdminDialog */ "./resources/js/components/dialog/Admin/RestoreAdminDialog.vue");
+/* harmony import */ var _components_dialog_Admin_UpdateAdminDialog__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/dialog/Admin/UpdateAdminDialog */ "./resources/js/components/dialog/Admin/UpdateAdminDialog.vue");
 //
 //
 //
@@ -504,6 +651,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+
 
 
 
@@ -513,16 +662,14 @@ __webpack_require__.r(__webpack_exports__);
     RestoreAdminDialog: _components_dialog_Admin_RestoreAdminDialog__WEBPACK_IMPORTED_MODULE_3__["default"],
     DestroyAdminDialog: _components_dialog_Admin_DestroyAdminDialog__WEBPACK_IMPORTED_MODULE_2__["default"],
     StoreAdminDialog: _components_dialog_Admin_StoreAdminDialog__WEBPACK_IMPORTED_MODULE_1__["default"],
-    BreadCrumbsComponent: _components_BreadCrumbsComponent__WEBPACK_IMPORTED_MODULE_0__["default"]
+    BreadCrumbsComponent: _components_BreadCrumbsComponent__WEBPACK_IMPORTED_MODULE_0__["default"],
+    UpdateAdminDialog: _components_dialog_Admin_UpdateAdminDialog__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
   data: function data() {
     return {
       dialog: false,
       dialog1: false,
       dialog2: false,
-      dialog3: false,
-      dialog4: false,
-      dialog5: false,
       id: null,
       users: [],
       profile: [],
@@ -580,7 +727,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     close2: function close2() {
       this.data = [];
-      this.dialog3 = false;
+      this.dialog2 = false;
     },
     init: function init() {
       var _this = this;
@@ -598,7 +745,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     update: function update(data) {
-      this.dialog3 = true;
+      this.dialog2 = true;
       this.data = data;
     }
   },
@@ -761,6 +908,44 @@ component.options.__file = "resources/js/components/dialog/Admin/StoreAdminDialo
 
 /***/ }),
 
+/***/ "./resources/js/components/dialog/Admin/UpdateAdminDialog.vue":
+/*!********************************************************************!*\
+  !*** ./resources/js/components/dialog/Admin/UpdateAdminDialog.vue ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _UpdateAdminDialog_vue_vue_type_template_id_0305b89c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UpdateAdminDialog.vue?vue&type=template&id=0305b89c& */ "./resources/js/components/dialog/Admin/UpdateAdminDialog.vue?vue&type=template&id=0305b89c&");
+/* harmony import */ var _UpdateAdminDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UpdateAdminDialog.vue?vue&type=script&lang=js& */ "./resources/js/components/dialog/Admin/UpdateAdminDialog.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _UpdateAdminDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _UpdateAdminDialog_vue_vue_type_template_id_0305b89c___WEBPACK_IMPORTED_MODULE_0__.render,
+  _UpdateAdminDialog_vue_vue_type_template_id_0305b89c___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/dialog/Admin/UpdateAdminDialog.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/pages/AdminsPage.vue":
 /*!*******************************************!*\
   !*** ./resources/js/pages/AdminsPage.vue ***!
@@ -859,6 +1044,21 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/dialog/Admin/UpdateAdminDialog.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/components/dialog/Admin/UpdateAdminDialog.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_UpdateAdminDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./UpdateAdminDialog.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Admin/UpdateAdminDialog.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_UpdateAdminDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/js/pages/AdminsPage.vue?vue&type=script&lang=js&":
 /*!********************************************************************!*\
   !*** ./resources/js/pages/AdminsPage.vue?vue&type=script&lang=js& ***!
@@ -934,6 +1134,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_StoreAdminDialog_vue_vue_type_template_id_6a4c64c2___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_StoreAdminDialog_vue_vue_type_template_id_6a4c64c2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./StoreAdminDialog.vue?vue&type=template&id=6a4c64c2& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Admin/StoreAdminDialog.vue?vue&type=template&id=6a4c64c2&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/dialog/Admin/UpdateAdminDialog.vue?vue&type=template&id=0305b89c&":
+/*!***************************************************************************************************!*\
+  !*** ./resources/js/components/dialog/Admin/UpdateAdminDialog.vue?vue&type=template&id=0305b89c& ***!
+  \***************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UpdateAdminDialog_vue_vue_type_template_id_0305b89c___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UpdateAdminDialog_vue_vue_type_template_id_0305b89c___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UpdateAdminDialog_vue_vue_type_template_id_0305b89c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./UpdateAdminDialog.vue?vue&type=template&id=0305b89c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Admin/UpdateAdminDialog.vue?vue&type=template&id=0305b89c&");
 
 
 /***/ }),
@@ -1480,6 +1696,214 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Admin/UpdateAdminDialog.vue?vue&type=template&id=0305b89c&":
+/*!******************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Admin/UpdateAdminDialog.vue?vue&type=template&id=0305b89c& ***!
+  \******************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "update_user" },
+    [
+      _c(
+        "v-dialog",
+        {
+          attrs: { persistent: "", "max-width": "600px" },
+          model: {
+            value: _vm.dialog,
+            callback: function ($$v) {
+              _vm.dialog = $$v
+            },
+            expression: "dialog",
+          },
+        },
+        [
+          _c(
+            "v-card",
+            [
+              _c("v-card-title", [
+                _c("span", { staticClass: "text-h5" }, [
+                  _vm._v("Modification"),
+                ]),
+              ]),
+              _vm._v(" "),
+              _c(
+                "v-card-text",
+                [
+                  _c("v-container", [
+                    _c(
+                      "form",
+                      {
+                        attrs: { method: "put" },
+                        on: {
+                          submit: function ($event) {
+                            $event.preventDefault()
+                            return _vm.update.apply(null, arguments)
+                          },
+                        },
+                      },
+                      [
+                        _c(
+                          "v-row",
+                          [
+                            _c(
+                              "v-col",
+                              { attrs: { cols: "12", sm: "6", md: "4" } },
+                              [
+                                _c("v-text-field", {
+                                  attrs: { label: "Nom" },
+                                  model: {
+                                    value: _vm.data.fullName,
+                                    callback: function ($$v) {
+                                      _vm.$set(_vm.data, "fullName", $$v)
+                                    },
+                                    expression: "data.fullName",
+                                  },
+                                }),
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-col",
+                              { attrs: { cols: "12", sm: "6", md: "4" } },
+                              [
+                                _c("v-text-field", {
+                                  attrs: { label: "Téléphone" },
+                                  model: {
+                                    value: _vm.data.phone,
+                                    callback: function ($$v) {
+                                      _vm.$set(_vm.data, "phone", $$v)
+                                    },
+                                    expression: "data.phone",
+                                  },
+                                }),
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-col",
+                              { attrs: { cols: "12", sm: "6", md: "4" } },
+                              [
+                                _c("v-select", {
+                                  attrs: {
+                                    placeholder: "Types",
+                                    items: _vm.items,
+                                  },
+                                  model: {
+                                    value: _vm.selectedType,
+                                    callback: function ($$v) {
+                                      _vm.selectedType = $$v
+                                    },
+                                    expression: "selectedType",
+                                  },
+                                }),
+                                _vm._v(" "),
+                                _c("v-chip", { attrs: { color: "primary" } }, [
+                                  _vm._v(_vm._s(_vm.data.type)),
+                                ]),
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _vm.hasError
+                              ? _c(
+                                  "v-alert",
+                                  {
+                                    attrs: {
+                                      border: "right",
+                                      "colored-border": "",
+                                      type: "error",
+                                      elevation: "2",
+                                    },
+                                  },
+                                  [
+                                    _c(
+                                      "ul",
+                                      _vm._l(
+                                        _vm.errors,
+                                        function (error, index) {
+                                          return _c("li", { key: index }, [
+                                            _c("span", [_vm._v(_vm._s(error))]),
+                                          ])
+                                        }
+                                      ),
+                                      0
+                                    ),
+                                  ]
+                                )
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _c(
+                              "v-col",
+                              { attrs: { cols: "12" } },
+                              [
+                                _c(
+                                  "v-btn",
+                                  {
+                                    attrs: { type: "submit", color: "success" },
+                                  },
+                                  [_c("v-icon", [_vm._v("mdi-check")])],
+                                  1
+                                ),
+                              ],
+                              1
+                            ),
+                          ],
+                          1
+                        ),
+                      ],
+                      1
+                    ),
+                  ]),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-card-actions",
+                [
+                  _c("v-spacer"),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { color: "blue darken-1", text: "" },
+                      on: { click: _vm.close },
+                    },
+                    [_vm._v("\n                    Fermer\n                ")]
+                  ),
+                ],
+                1
+              ),
+            ],
+            1
+          ),
+        ],
+        1
+      ),
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/AdminsPage.vue?vue&type=template&id=0a27dc7c&":
 /*!*****************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/pages/AdminsPage.vue?vue&type=template&id=0a27dc7c& ***!
@@ -1808,6 +2232,11 @@ var render = function () {
           _c("restore-admin-dialog", {
             attrs: { dialog: _vm.dialog1, id: _vm.selected },
             on: { close: _vm.close1 },
+          }),
+          _vm._v(" "),
+          _c("update-admin-dialog", {
+            attrs: { dialog: _vm.dialog2, data: _vm.data },
+            on: { close: _vm.close2 },
           }),
         ],
         1
