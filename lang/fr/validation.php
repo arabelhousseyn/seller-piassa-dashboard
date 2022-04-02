@@ -248,6 +248,10 @@ return [
         'notification_id' => [
             'required' => 'notification requis.',
             'exists' => 'notification invalide .'
+        ],
+        'fullName' => [
+            'required' => 'Nom complet requis.',
+            'max' => 'Taille maximum 255.'
         ]
     ],
 
