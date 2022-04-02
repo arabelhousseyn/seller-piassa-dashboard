@@ -120,6 +120,12 @@ Route::middleware(['auth:sanctum','app_version'])->group(function (){
         Route::get('request-expired/{days}','requestExpired')->whereNumber('days');
     });
 
+    // admins
+
+    Route::controller(AdminController::class)->prefix('admins')->group(function (){
+        Route::put('restore/{id}','restore')->whereNumber('id');
+    });
+
     //resources
     Route::apiResources([
         'admins' => AdminController::class,

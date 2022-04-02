@@ -323,25 +323,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -1178,42 +1159,6 @@ var render = function () {
                                     attrs: { link: "" },
                                     on: {
                                       click: function ($event) {
-                                        return _vm.openProfile(item)
-                                      },
-                                    },
-                                  },
-                                  [
-                                    _c(
-                                      "v-list-item-icon",
-                                      [
-                                        _c(
-                                          "v-icon",
-                                          { attrs: { color: "primary" } },
-                                          [_vm._v("mdi-account")]
-                                        ),
-                                      ],
-                                      1
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "v-list-item-content",
-                                      [
-                                        _c("v-list-item-title", [
-                                          _vm._v("Compte"),
-                                        ]),
-                                      ],
-                                      1
-                                    ),
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-list-item",
-                                  {
-                                    attrs: { link: "" },
-                                    on: {
-                                      click: function ($event) {
                                         return _vm.update(item)
                                       },
                                     },
@@ -1236,126 +1181,6 @@ var render = function () {
                                       [
                                         _c("v-list-item-title", [
                                           _vm._v("Modifier"),
-                                        ]),
-                                      ],
-                                      1
-                                    ),
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-list-item",
-                                  {
-                                    attrs: { link: "" },
-                                    on: {
-                                      click: function ($event) {
-                                        return _vm.$router.push({
-                                          name: "vehicles",
-                                          params: {
-                                            id: item.id,
-                                            data: item.vehicle,
-                                          },
-                                        })
-                                      },
-                                    },
-                                  },
-                                  [
-                                    _c(
-                                      "v-list-item-icon",
-                                      [
-                                        _c(
-                                          "v-icon",
-                                          { attrs: { color: "primary" } },
-                                          [_vm._v("mdi-car")]
-                                        ),
-                                      ],
-                                      1
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "v-list-item-content",
-                                      [
-                                        _c("v-list-item-title", [
-                                          _vm._v("Véhicules"),
-                                        ]),
-                                      ],
-                                      1
-                                    ),
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-list-item",
-                                  {
-                                    attrs: { link: "" },
-                                    on: {
-                                      click: function ($event) {
-                                        return _vm.$router.push({
-                                          name: "orders",
-                                          params: {
-                                            id: item.id,
-                                            data: item.orders,
-                                          },
-                                        })
-                                      },
-                                    },
-                                  },
-                                  [
-                                    _c(
-                                      "v-list-item-icon",
-                                      [
-                                        _c(
-                                          "v-icon",
-                                          { attrs: { color: "primary" } },
-                                          [_vm._v("mdi-cart")]
-                                        ),
-                                      ],
-                                      1
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "v-list-item-content",
-                                      [
-                                        _c("v-list-item-title", [
-                                          _vm._v("Commandes"),
-                                        ]),
-                                      ],
-                                      1
-                                    ),
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-list-item",
-                                  {
-                                    attrs: { link: "" },
-                                    on: {
-                                      click: function ($event) {
-                                        return _vm.security(item.id)
-                                      },
-                                    },
-                                  },
-                                  [
-                                    _c(
-                                      "v-list-item-icon",
-                                      [
-                                        _c(
-                                          "v-icon",
-                                          { attrs: { color: "primary" } },
-                                          [_vm._v("mdi-security")]
-                                        ),
-                                      ],
-                                      1
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "v-list-item-content",
-                                      [
-                                        _c("v-list-item-title", [
-                                          _vm._v("Sécurité"),
                                         ]),
                                       ],
                                       1

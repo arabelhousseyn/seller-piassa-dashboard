@@ -96,4 +96,9 @@ class AdminController extends Controller
     {
         //
     }
+
+    public function restore($id)
+    {
+
+    }
 }
