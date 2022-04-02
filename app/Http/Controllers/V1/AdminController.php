@@ -94,11 +94,53 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $admin = Admin::withTrashed()->findOrFail($id);
+            if(!$admin->trashed())
+            {
+                $admin->delete();
+                return response('',204);
+            }
+            $data = [
+                'data' => [
+                    'message' => __('messages.user_delete_error')
+                ]
+            ];
+            return response($data,422);
+        }catch (\Exception $e)
+        {
+            $data = [
+                'data' => [
+                    'message' => __('messages.user_not_found')
+                ]
+            ];
+            return response($data,422);
+        }
     }
 
     public function restore($id)
     {
-
+        try {
+            $admin = Admin::withTrashed()->findOrFail($id);
+            if($admin->trashed())
+            {
+                $admin->restore();
+                return response('',204);
+            }
+            $data = [
+                'data' => [
+                    'message' => __('messages.user_not_deleted')
+                ]
+            ];
+            return response($data,422);
+        }catch (\Exception $e)
+        {
+            $data = [
+                'data' => [
+                    'message' => __('messages.user_not_found')
+                ]
+            ];
+            return response($data,422);
+        }
     }
 }
