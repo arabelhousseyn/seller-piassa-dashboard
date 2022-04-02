@@ -5,6 +5,7 @@ namespace App\Http\Controllers\V1;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreAdminRequest;
 use App\Models\Admin;
+use App\Services\UpdateAdminService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -83,7 +84,7 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return UpdateAdminService::update($request,$id);
     }
 
     /**
