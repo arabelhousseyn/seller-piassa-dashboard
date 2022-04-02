@@ -20,7 +20,8 @@ class AdminFactory extends Factory
         return [
             'fullName' => $this->faker->name,
             'phone' => $this->faker->numerify('##########'),
-            'password' => Hash::make('password')
+            'password' => Hash::make('password'),
+            'type' => 'admin'
         ];
     }
 }

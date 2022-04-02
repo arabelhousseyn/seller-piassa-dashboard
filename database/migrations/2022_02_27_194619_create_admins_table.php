@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('fullName');
             $table->string('phone')->unique();
             $table->string('password');
+            $table->enum('type',['admin','agent']);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
