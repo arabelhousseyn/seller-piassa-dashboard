@@ -22,7 +22,7 @@
                             vertical
                         ></v-divider>
                         <v-spacer></v-spacer>
-                        create admin
+                        <store-admin-dialog />
                     </v-toolbar>
                     <v-toolbar flat>
                         <v-text-field
@@ -122,8 +122,9 @@
 
 <script>
 import BreadCrumbsComponent from "../components/BreadCrumbsComponent";
+import StoreAdminDialog from "../components/dialog/Admin/StoreAdminDialog";
 export default {
-    components: {BreadCrumbsComponent},
+    components: {StoreAdminDialog, BreadCrumbsComponent},
     data : ()=>({
         dialog : false,
         dialog1 : false,
