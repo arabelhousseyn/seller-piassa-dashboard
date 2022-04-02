@@ -64,7 +64,7 @@
                                 </v-list-item>
                                 <v-list-item v-if="item.deleted_at == null" link @click="destroy(item.id)">
                                     <v-list-item-icon><v-icon color="red">mdi-delete</v-icon></v-list-item-icon>
-                                    <v-list-item-content><v-list-item-title>Supprimer</v-list-item-title></v-list-item-content>
+                                    <v-list-item-content><v-list-item-title>Bloqué</v-list-item-title></v-list-item-content>
                                 </v-list-item>
                                 <v-list-item v-else link @click="restore(item.id)">
                                     <v-list-item-icon><v-icon color="green">mdi-restore</v-icon></v-list-item-icon>
@@ -85,7 +85,7 @@
                         Active
                     </v-chip>
                     <v-chip dark v-else color="red">
-                        Supprimé
+                        Bloqué
                     </v-chip>
                 </template>
 
@@ -96,7 +96,8 @@
                     </v-btn>
                 </template>
             </v-data-table>
-
+            <destroy-admin-dialog :dialog="dialog" :id="selected" @close="close" />
+            <restore-admin-dialog :dialog="dialog1" :id="selected" @close="close1" />
         </v-container>
     </div>
 </template>
@@ -104,8 +105,10 @@
 <script>
 import BreadCrumbsComponent from "../components/BreadCrumbsComponent";
 import StoreAdminDialog from "../components/dialog/Admin/StoreAdminDialog";
+import DestroyAdminDialog from "../components/dialog/Admin/DestroyAdminDialog";
+import RestoreAdminDialog from "../components/dialog/Admin/RestoreAdminDialog";
 export default {
-    components: {StoreAdminDialog, BreadCrumbsComponent},
+    components: {RestoreAdminDialog, DestroyAdminDialog, StoreAdminDialog, BreadCrumbsComponent},
     data : ()=>({
         dialog : false,
         dialog1 : false,
@@ -163,23 +166,8 @@ export default {
         },
         close2()
         {
-            this.profile = []
-            this.info = []
-            this.dialog2 = false
-        },
-        close3()
-        {
             this.data = []
             this.dialog3 = false
-        },
-        close4()
-        {
-            this.id = null
-            this.dialog4 = false
-        },
-        close5()
-        {
-            this.dialog5 = false
         },
         init()
         {
@@ -193,27 +181,11 @@ export default {
                 })
             })
         },
-        openProfile(data)
-        {
-            this.dialog2 = true
-            this.profile = data.profile
-            this.info = data.commercial_info
-        },
         update(data)
         {
             this.dialog3 = true
             this.data = data
         },
-        security(id)
-        {
-            this.dialog4 = true
-            this.id = id
-        },
-        commercial_info(info)
-        {
-            this.dialog5 = true
-            this.info = info
-        }
     },
     mounted() {
         this.init()
