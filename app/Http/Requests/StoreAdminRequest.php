@@ -27,7 +27,7 @@ class StoreAdminRequest extends FormRequest
     {
         return [
             'fullName' => 'required|max:255',
-            'phone' => 'required|digits:10,',
+            'phone' => 'required|digits:10|unique:admins,phone',
             'password' => ['required','confirmed',Password::default()],
             'type' => ['required',new CheckTypeRule()]
         ];
