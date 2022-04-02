@@ -11,6 +11,8 @@ class Admin extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable,SoftDeletes;
 
+    const types = ['admin','agent'];
+
     protected $fillable = [
         'fullName',
         'phone',
