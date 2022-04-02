@@ -34,6 +34,10 @@ const routes = [
                 component : () => import('../components/MainComponent')
             },
             {
+                path: "admins",
+                component : () => import('../pages/AdminsPage')
+            },
+            {
                 path : 'users',
                 component : () => import('../pages/UsersPage'),
                 children : [
