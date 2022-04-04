@@ -71,7 +71,7 @@
                                 </v-alert>
 
                                 <v-col cols="12">
-                                    <v-btn type="submit" :disabled="disable" color="primary"><v-icon>mdi-check</v-icon></v-btn>
+                                    <v-btn type="submit" :disabled="disable" color="primary"><v-icon v-if="!progress">mdi-check</v-icon> <v-progress-circular v-else indeterminate color="white"></v-progress-circular> </v-btn>
                                 </v-col>
                             </v-row>
                         </form>
@@ -127,12 +127,13 @@ export default {
         errors : [],
         hasError1 : false,
         errors1 : [],
+        progress : false,
     }),
     methods : {
         store()
         {
-            this.disabled = true
-
+            this.disable = true
+            this.progress = true
             axios.get('/sanctum/csrf-cookie').then(res => {
                 axios.post('/api/types',this.data).then(e=>{
                     this.$toast.open({
@@ -145,7 +146,8 @@ export default {
                     for (const error of errors) {
                         this.errors.push(error[0])
                         this.hasError = true
-                        this.disabled = false
+                        this.disable = false
+                        this.progress = false
                     }
                 })
             })

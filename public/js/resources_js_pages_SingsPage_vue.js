@@ -325,14 +325,16 @@ __webpack_require__.r(__webpack_exports__);
       hasError: false,
       errors: [],
       hasError1: false,
-      errors1: []
+      errors1: [],
+      progress: false
     };
   },
   methods: {
     store: function store() {
       var _this = this;
 
-      this.disabled = true;
+      this.disable = true;
+      this.progress = true;
       var data = new FormData();
       data.append('name', this.data.name);
       data.append('logo', this.data.logo);
@@ -358,7 +360,8 @@ __webpack_require__.r(__webpack_exports__);
             _this.errors.push(error[0]);
 
             _this.hasError = true;
-            _this.disabled = false;
+            _this.disable = false;
+            _this.progress = false;
           }
         });
       });
@@ -480,7 +483,8 @@ __webpack_require__.r(__webpack_exports__);
       hasError: false,
       errors: [],
       hasError1: false,
-      errors1: []
+      errors1: [],
+      progress: false
     };
   },
   methods: {
@@ -490,6 +494,7 @@ __webpack_require__.r(__webpack_exports__);
     update: function update() {
       var _this = this;
 
+      this.progress = true;
       this.data2.name = this.data.name;
       this.data2.prefix = this.data.prefix;
       axios.get('/sanctum/csrf-cookie').then(function (res) {
@@ -511,6 +516,7 @@ __webpack_require__.r(__webpack_exports__);
             _this.errors.push(error[0]);
 
             _this.hasError = true;
+            _this.progress = false;
           }
         });
       });
@@ -1598,7 +1604,16 @@ var render = function () {
                                       color: "primary",
                                     },
                                   },
-                                  [_c("v-icon", [_vm._v("mdi-check")])],
+                                  [
+                                    !_vm.progress
+                                      ? _c("v-icon", [_vm._v("mdi-check")])
+                                      : _c("v-progress-circular", {
+                                          attrs: {
+                                            indeterminate: "",
+                                            color: "white",
+                                          },
+                                        }),
+                                  ],
                                   1
                                 ),
                               ],
@@ -1787,7 +1802,16 @@ var render = function () {
                                   {
                                     attrs: { type: "submit", color: "success" },
                                   },
-                                  [_c("v-icon", [_vm._v("mdi-check")])],
+                                  [
+                                    !_vm.progress
+                                      ? _c("v-icon", [_vm._v("mdi-check")])
+                                      : _c("v-progress-circular", {
+                                          attrs: {
+                                            indeterminate: "",
+                                            color: "white",
+                                          },
+                                        }),
+                                  ],
                                   1
                                 ),
                               ],

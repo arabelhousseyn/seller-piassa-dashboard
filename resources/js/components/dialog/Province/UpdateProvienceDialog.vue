@@ -42,7 +42,7 @@
                                 </v-alert>
 
                                 <v-col cols="12">
-                                    <v-btn type="submit" color="success"><v-icon>mdi-check</v-icon> </v-btn>
+                                    <v-btn type="submit" color="success"><v-icon v-if="!progress">mdi-check</v-icon> <v-progress-circular v-else indeterminate color="white"></v-progress-circular> </v-btn>
                                 </v-col>
                             </v-row>
                         </form>
@@ -76,7 +76,8 @@ export default {
             commercial_name : null,
         },
         hasError : false,
-        errors : []
+        errors : [],
+        progress : false,
     }),
     methods : {
         close()
@@ -85,6 +86,7 @@ export default {
         },
         update()
         {
+            this.progress = true
             this.data2.name = this.data.name
             this.data2.code = this.data.code
             axios.get('/sanctum/csrf-cookie').then(res => {
@@ -103,6 +105,7 @@ export default {
                     for (const error of errors) {
                         this.errors.push(error[0])
                         this.hasError = true
+                        this.progress = false
                     }
                 })
             })
