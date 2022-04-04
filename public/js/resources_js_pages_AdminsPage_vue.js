@@ -344,7 +344,8 @@ __webpack_require__.r(__webpack_exports__);
       items: ['admin', 'agent'],
       hasError: false,
       errors: [],
-      disabled: true
+      disabled: true,
+      progress: false
     };
   },
   methods: {
@@ -356,6 +357,7 @@ __webpack_require__.r(__webpack_exports__);
     store: function store() {
       var _this = this;
 
+      this.progress = true;
       this.disabled = true;
       this.data.type = this.selectedType;
       console.log(this.data);
@@ -376,6 +378,7 @@ __webpack_require__.r(__webpack_exports__);
             _this.errors.push(error[0]);
 
             _this.hasError = true;
+            _this.progress = false;
             _this.disabled = false;
           }
         });
@@ -485,7 +488,8 @@ __webpack_require__.r(__webpack_exports__);
       },
       items: ['admin', 'agent'],
       hasError: false,
-      errors: []
+      errors: [],
+      progress: false
     };
   },
   methods: {
@@ -495,6 +499,7 @@ __webpack_require__.r(__webpack_exports__);
     update: function update() {
       var _this = this;
 
+      this.progress = true;
       this.data2.phone = this.data.phone;
       this.data2.fullName = this.data.fullName;
 
@@ -523,6 +528,7 @@ __webpack_require__.r(__webpack_exports__);
             _this.errors.push(error[0]);
 
             _this.hasError = true;
+            _this.progress = false;
           }
         });
       });
@@ -1640,7 +1646,16 @@ var render = function () {
                                       color: "primary",
                                     },
                                   },
-                                  [_c("v-icon", [_vm._v("mdi-check")])],
+                                  [
+                                    !_vm.progress
+                                      ? _c("v-icon", [_vm._v("mdi-check")])
+                                      : _c("v-progress-circular", {
+                                          attrs: {
+                                            indeterminate: "",
+                                            color: "white",
+                                          },
+                                        }),
+                                  ],
                                   1
                                 ),
                               ],
@@ -1854,7 +1869,16 @@ var render = function () {
                                   {
                                     attrs: { type: "submit", color: "success" },
                                   },
-                                  [_c("v-icon", [_vm._v("mdi-check")])],
+                                  [
+                                    !_vm.progress
+                                      ? _c("v-icon", [_vm._v("mdi-check")])
+                                      : _c("v-progress-circular", {
+                                          attrs: {
+                                            indeterminate: "",
+                                            color: "white",
+                                          },
+                                        }),
+                                  ],
                                   1
                                 ),
                               ],

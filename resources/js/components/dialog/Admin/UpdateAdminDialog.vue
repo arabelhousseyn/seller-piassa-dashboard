@@ -52,7 +52,7 @@
                                 </v-alert>
 
                                 <v-col cols="12">
-                                    <v-btn type="submit" color="success"><v-icon>mdi-check</v-icon> </v-btn>
+                                    <v-btn type="submit" color="success"><v-icon v-if="!progress">mdi-check</v-icon> <v-progress-circular v-else indeterminate color="white"></v-progress-circular></v-btn>
                                 </v-col>
                             </v-row>
                         </form>
@@ -87,7 +87,8 @@ export default {
         },
         items : ['admin','agent'],
         hasError : false,
-        errors : []
+        errors : [],
+        progress : false,
     }),
     methods : {
         close()
@@ -96,6 +97,7 @@ export default {
         },
         update()
         {
+            this.progress = true
             this.data2.phone = this.data.phone
             this.data2.fullName = this.data.fullName
             if(this.selectedType == null)
@@ -120,6 +122,7 @@ export default {
                     for (const error of errors) {
                         this.errors.push(error[0])
                         this.hasError = true
+                        this.progress = false
                     }
                 })
             })
