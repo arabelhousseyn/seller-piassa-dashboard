@@ -555,12 +555,15 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       items3: ['Particulier', 'Corporate', 'Atelier'],
       disabled: true,
       errors: [],
-      hasError: false
+      hasError: false,
+      progress: false
     };
   },
   methods: {
     create: function create() {
       var _this = this;
+
+      this.progress = true;
 
       if (this.selectedGender == "Homme") {
         this.data.gender = 'M';
@@ -611,6 +614,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
             _this.errors.push(error[0]);
 
             _this.hasError = true;
+            _this.progress = false;
           }
         });
       });
@@ -3187,7 +3191,16 @@ var render = function () {
                                     color: "primary",
                                   },
                                 },
-                                [_c("v-icon", [_vm._v("mdi-check")])],
+                                [
+                                  !_vm.progress
+                                    ? _c("v-icon", [_vm._v("mdi-check")])
+                                    : _c("v-progress-circular", {
+                                        attrs: {
+                                          indeterminate: "",
+                                          color: "white",
+                                        },
+                                      }),
+                                ],
                                 1
                               ),
                             ],

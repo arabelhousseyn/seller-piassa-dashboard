@@ -171,7 +171,7 @@
                                 </ul>
                             </v-alert>
                                 <v-col cols="12">
-                                    <v-btn type="submit" :disabled="disabled" color="primary"><v-icon>mdi-check</v-icon></v-btn>
+                                    <v-btn type="submit" :disabled="disabled" color="primary"><v-icon v-if="!progress">mdi-check</v-icon> <v-progress-circular v-else indeterminate color="white"></v-progress-circular></v-btn>
                                 </v-col>
                         </v-row>
                         </v-form>
@@ -220,11 +220,13 @@ export default {
         disabled : true,
         errors : [],
         hasError : false,
+        progress : false,
 
     }),
     methods : {
         create()
         {
+            this.progress = true
             if(this.selectedGender == "Homme")
             {
                 this.data.gender = 'M'
@@ -265,6 +267,7 @@ export default {
                     for (const error of errors) {
                         this.errors.push(error[0])
                         this.hasError = true
+                        this.progress = false
                     }
                 })
             })
