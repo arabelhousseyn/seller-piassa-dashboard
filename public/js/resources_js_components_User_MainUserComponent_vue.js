@@ -941,7 +941,8 @@ __webpack_require__.r(__webpack_exports__);
       },
       errors: [],
       hasError: false,
-      disable: true
+      disable: true,
+      progress: false
     };
   },
   methods: {
@@ -951,6 +952,7 @@ __webpack_require__.r(__webpack_exports__);
     changePassword: function changePassword() {
       var _this = this;
 
+      this.progress = true;
       axios.get('/sanctum/csrf-cookie').then(function (res) {
         axios.put("/api/users/change-password/".concat(_this.user_id), _this.data).then(function (e) {
           _this.$toast.open({
@@ -968,6 +970,7 @@ __webpack_require__.r(__webpack_exports__);
             _this.errors.push(error[0]);
 
             _this.hasError = true;
+            _this.progress = false;
           }
         });
       });
@@ -1126,7 +1129,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       items2: ['Particulier', 'Corporate', 'Atelier'],
       items3: [],
       hasError: false,
-      errors: []
+      errors: [],
+      progress: false
     };
   },
   methods: {
@@ -1136,6 +1140,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     update: function update() {
       var _this = this;
 
+      this.progress = true;
       this.data2.full_name = this.data.profile.full_name;
       this.data2.phone = this.data.phone;
 
@@ -1203,6 +1208,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
             _this.errors.push(error[0]);
 
             _this.hasError = true;
+            _this.progress = false;
           }
         });
       });
@@ -3584,7 +3590,16 @@ var render = function () {
                                       color: "success",
                                     },
                                   },
-                                  [_c("v-icon", [_vm._v("mdi-check")])],
+                                  [
+                                    !_vm.progress
+                                      ? _c("v-icon", [_vm._v("mdi-check")])
+                                      : _c("v-progress-circular", {
+                                          attrs: {
+                                            indeterminate: "",
+                                            color: "white",
+                                          },
+                                        }),
+                                  ],
                                   1
                                 ),
                               ],
@@ -3900,7 +3915,16 @@ var render = function () {
                                   {
                                     attrs: { type: "submit", color: "success" },
                                   },
-                                  [_c("v-icon", [_vm._v("mdi-check")])],
+                                  [
+                                    !_vm.progress
+                                      ? _c("v-icon", [_vm._v("mdi-check")])
+                                      : _c("v-progress-circular", {
+                                          attrs: {
+                                            indeterminate: "",
+                                            color: "white",
+                                          },
+                                        }),
+                                  ],
                                   1
                                 ),
                               ],

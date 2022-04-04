@@ -85,7 +85,7 @@
                                 </v-alert>
 
                                 <v-col cols="12">
-                                    <v-btn type="submit" color="success"><v-icon>mdi-check</v-icon> </v-btn>
+                                    <v-btn type="submit" color="success"><v-icon v-if="!progress">mdi-check</v-icon> <v-progress-circular v-else indeterminate color="white"></v-progress-circular> </v-btn>
                                 </v-col>
                             </v-row>
                         </form>
@@ -126,7 +126,8 @@ export default {
         items2 : ['Particulier','Corporate','Atelier'],
         items3 : [],
         hasError : false,
-        errors : []
+        errors : [],
+        progress : false,
     }),
     methods : {
         close()
@@ -135,6 +136,7 @@ export default {
         },
         update()
         {
+            this.progress = true
             this.data2.full_name = this.data.profile.full_name
             this.data2.phone = this.data.phone
 
@@ -198,6 +200,7 @@ export default {
                     for (const error of errors) {
                         this.errors.push(error[0])
                         this.hasError = true
+                        this.progress = false
                     }
                 })
             })
