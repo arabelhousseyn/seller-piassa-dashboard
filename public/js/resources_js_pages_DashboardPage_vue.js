@@ -555,12 +555,17 @@ __webpack_require__.r(__webpack_exports__);
           badge: ""
         });
         this.$store.commit('INCREMENT_NOTIFICATION', 1);
+        this.playSound();
         notification.addEventListener('click', function () {
           _this.$router.push('/home/orders');
 
           notification.close();
         });
       }
+    },
+    playSound: function playSound() {
+      var audio = new Audio('storage/notification.mp3');
+      audio.play();
     }
   },
   mounted: function mounted() {

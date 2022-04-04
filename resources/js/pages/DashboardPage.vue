@@ -30,15 +30,20 @@ export default {
                     badge : ""
                 })
                 this.$store.commit('INCREMENT_NOTIFICATION',1)
+                this.playSound()
                 notification.addEventListener('click',()=>{
                     this.$router.push('/home/orders')
                     notification.close()
                 })
             }
+        },
+        playSound()
+        {
+            let audio = new Audio('storage/notification.mp3')
+            audio.play()
         }
     },
      mounted() {
-
         if(Notification.permission == 'denied')
         {
             let permission = Notification.requestPermission();
