@@ -67,7 +67,7 @@
                                     <v-list-item-content><v-list-item-title>Modifier</v-list-item-title></v-list-item-content>
                                 </v-list-item>
 
-                                <v-list-item link @click="$router.push({name : 'commission',params : {id : item.id,data : item.order_requests}})">
+                                <v-list-item v-if="item.order_requests.length > 0" link @click="$router.push({name : 'commission',params : {id : item.id,data : item.order_requests}})">
                                     <v-list-item-icon><v-icon color="primary">mdi-currency-usd</v-icon></v-list-item-icon>
                                     <v-list-item-content><v-list-item-title>Commissions</v-list-item-title></v-list-item-content>
                                 </v-list-item>

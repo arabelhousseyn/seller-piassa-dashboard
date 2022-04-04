@@ -1756,47 +1756,49 @@ var render = function () {
                                   1
                                 ),
                                 _vm._v(" "),
-                                _c(
-                                  "v-list-item",
-                                  {
-                                    attrs: { link: "" },
-                                    on: {
-                                      click: function ($event) {
-                                        return _vm.$router.push({
-                                          name: "commission",
-                                          params: {
-                                            id: item.id,
-                                            data: item.order_requests,
+                                item.order_requests.length > 0
+                                  ? _c(
+                                      "v-list-item",
+                                      {
+                                        attrs: { link: "" },
+                                        on: {
+                                          click: function ($event) {
+                                            return _vm.$router.push({
+                                              name: "commission",
+                                              params: {
+                                                id: item.id,
+                                                data: item.order_requests,
+                                              },
+                                            })
                                           },
-                                        })
+                                        },
                                       },
-                                    },
-                                  },
-                                  [
-                                    _c(
-                                      "v-list-item-icon",
                                       [
                                         _c(
-                                          "v-icon",
-                                          { attrs: { color: "primary" } },
-                                          [_vm._v("mdi-currency-usd")]
+                                          "v-list-item-icon",
+                                          [
+                                            _c(
+                                              "v-icon",
+                                              { attrs: { color: "primary" } },
+                                              [_vm._v("mdi-currency-usd")]
+                                            ),
+                                          ],
+                                          1
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "v-list-item-content",
+                                          [
+                                            _c("v-list-item-title", [
+                                              _vm._v("Commissions"),
+                                            ]),
+                                          ],
+                                          1
                                         ),
                                       ],
                                       1
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "v-list-item-content",
-                                      [
-                                        _c("v-list-item-title", [
-                                          _vm._v("Commissions"),
-                                        ]),
-                                      ],
-                                      1
-                                    ),
-                                  ],
-                                  1
-                                ),
+                                    )
+                                  : _vm._e(),
                                 _vm._v(" "),
                                 item.deleted_at == null
                                   ? _c(
