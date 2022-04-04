@@ -74,7 +74,7 @@
                                     </ul>
                                 </v-alert>
 
-                                <v-col cols="12"> <v-btn type="submit" color="success"><v-icon>mdi-pencil</v-icon></v-btn> </v-col>
+                                <v-col cols="12"> <v-btn type="submit" color="success"><v-icon v-if="!progress">mdi-pencil</v-icon> <v-progress-circular v-else indeterminate color="white"></v-progress-circular></v-btn> </v-col>
                             </v-row>
                         </form>
                     </v-container>
@@ -110,6 +110,7 @@ export default {
         signs : [],
         errors : [],
         hasError : false,
+        progress : false,
     }),
     methods : {
         close()
@@ -118,6 +119,7 @@ export default {
         },
         update()
         {
+            this.progress = true
             this.data2.model = this.data.model
             this.data2.year = this.data.year
             this.data2.motorization = this.data.motorization
@@ -151,6 +153,7 @@ export default {
                     for (const error of errors) {
                         this.errors.push(error[0])
                         this.hasError = true
+                        this.progress = false
                     }
                 })
             })

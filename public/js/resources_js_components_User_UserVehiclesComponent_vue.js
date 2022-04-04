@@ -663,7 +663,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       items: [],
       signs: [],
       errors: [],
-      hasError: false
+      hasError: false,
+      progress: false
     };
   },
   methods: {
@@ -673,6 +674,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     update: function update() {
       var _this = this;
 
+      this.progress = true;
       this.data2.model = this.data.model;
       this.data2.year = this.data.year;
       this.data2.motorization = this.data.motorization;
@@ -719,6 +721,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
             _this.errors.push(error[0]);
 
             _this.hasError = true;
+            _this.progress = false;
           }
         });
       });
@@ -1940,7 +1943,16 @@ var render = function () {
                                   {
                                     attrs: { type: "submit", color: "success" },
                                   },
-                                  [_c("v-icon", [_vm._v("mdi-pencil")])],
+                                  [
+                                    !_vm.progress
+                                      ? _c("v-icon", [_vm._v("mdi-pencil")])
+                                      : _c("v-progress-circular", {
+                                          attrs: {
+                                            indeterminate: "",
+                                            color: "white",
+                                          },
+                                        }),
+                                  ],
                                   1
                                 ),
                               ],
