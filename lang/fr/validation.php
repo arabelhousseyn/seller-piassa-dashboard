@@ -252,6 +252,14 @@ return [
         'fullName' => [
             'required' => 'Nom complet requis.',
             'max' => 'Taille maximum 255.'
+        ],
+        'job' => [
+            'required' => 'Travaille requis.',
+            'max' => 'Taille maximum 255.'
+        ],
+        'seller_id' => [
+            'required' => 'Erreur dans serveur.',
+            'exists' => 'Vendeur n\'existe pas.'
         ]
     ],
 

@@ -90,7 +90,7 @@ export default {
         changePassword()
         {
             this.progress = true
-
+            this.disable = true
             axios.get('/sanctum/csrf-cookie').then(res => {
                 axios.put(`/api/users/change-password/${this.user_id}`,this.data).then(e=>{
                     this.$toast.open({
@@ -104,6 +104,7 @@ export default {
                         this.errors.push(error[0])
                         this.hasError = true
                         this.progress = false
+                        this.disable = false
                     }
                 })
             })

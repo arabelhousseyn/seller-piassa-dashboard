@@ -646,7 +646,8 @@ __webpack_require__.r(__webpack_exports__);
       },
       errors: [],
       hasError: false,
-      disable: true
+      disable: true,
+      progress: false
     };
   },
   methods: {
@@ -656,6 +657,8 @@ __webpack_require__.r(__webpack_exports__);
     changePassword: function changePassword() {
       var _this = this;
 
+      this.disable = true;
+      this.progress = true;
       axios.get('/sanctum/csrf-cookie').then(function (res) {
         axios.put("/api/sellers/change-password/".concat(_this.user_id), _this.data).then(function (e) {
           _this.$toast.open({
@@ -673,6 +676,8 @@ __webpack_require__.r(__webpack_exports__);
             _this.errors.push(error[0]);
 
             _this.hasError = true;
+            _this.disable = false;
+            _this.progress = false;
           }
         });
       });
@@ -874,7 +879,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       provinces: [],
       hasError: false,
       errors: [],
-      disabled: true
+      disabled: true,
+      progress: false
     };
   },
   methods: {
@@ -915,6 +921,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     store: function store() {
       var _this2 = this;
 
+      this.progress = true;
       this.disabled = true;
 
       var _iterator2 = _createForOfIteratorHelper(this.provinces),
@@ -952,6 +959,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
             _this2.errors.push(error[0]);
 
             _this2.hasError = true;
+            _this2.progress = false;
             _this2.disabled = false;
           }
         });
@@ -1106,7 +1114,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       },
       items: [],
       hasError: false,
-      errors: []
+      errors: [],
+      progress: false
     };
   },
   methods: {
@@ -1116,6 +1125,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     update: function update() {
       var _this = this;
 
+      this.progress = true;
       this.data2.phone = this.data.phone;
       this.data2.email = this.data.email;
       this.data2.first_name = this.data.profile.first_name;
@@ -1165,6 +1175,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
             _this.errors.push(error[0]);
 
             _this.hasError = true;
+            _this.progress = false;
           }
         });
       });
@@ -2863,7 +2874,16 @@ var render = function () {
                                       color: "success",
                                     },
                                   },
-                                  [_c("v-icon", [_vm._v("mdi-check")])],
+                                  [
+                                    !_vm.progress
+                                      ? _c("v-icon", [_vm._v("mdi-check")])
+                                      : _c("v-progress-circular", {
+                                          attrs: {
+                                            indeterminate: "",
+                                            color: "white",
+                                          },
+                                        }),
+                                  ],
                                   1
                                 ),
                               ],
@@ -3215,7 +3235,16 @@ var render = function () {
                                       color: "primary",
                                     },
                                   },
-                                  [_c("v-icon", [_vm._v("mdi-check")])],
+                                  [
+                                    !_vm.progress
+                                      ? _c("v-icon", [_vm._v("mdi-check")])
+                                      : _c("v-progress-circular", {
+                                          attrs: {
+                                            indeterminate: "",
+                                            color: "white",
+                                          },
+                                        }),
+                                  ],
                                   1
                                 ),
                               ],
@@ -3497,7 +3526,16 @@ var render = function () {
                                   {
                                     attrs: { type: "submit", color: "success" },
                                   },
-                                  [_c("v-icon", [_vm._v("mdi-check")])],
+                                  [
+                                    !_vm.progress
+                                      ? _c("v-icon", [_vm._v("mdi-check")])
+                                      : _c("v-progress-circular", {
+                                          attrs: {
+                                            indeterminate: "",
+                                            color: "white",
+                                          },
+                                        }),
+                                  ],
                                   1
                                 ),
                               ],

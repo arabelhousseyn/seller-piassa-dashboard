@@ -21,7 +21,7 @@
                 </v-card-title>
                 <v-card-text>
                     <v-container>
-                        <form @submit.prevent="update" method="put">
+                        <form @submit.prevent="store" method="put">
                             <v-row>
                                 <v-col
                                     cols="12"
@@ -56,7 +56,7 @@
                                 </v-alert>
 
                                 <v-col cols="12">
-                                    <v-btn type="submit" :disabled="disable" color="primary"><v-icon>mdi-check</v-icon></v-btn>
+                                    <v-btn type="submit" :disabled="disable" color="primary"><v-icon v-if="!progress">mdi-check</v-icon> <v-progress-circular v-else indeterminate color="white"></v-progress-circular> </v-btn>
                                 </v-col>
                             </v-row>
                         </form>
@@ -90,11 +90,14 @@ export default {
         },
         disable : true,
         hasError : false,
-        errors : []
+        errors : [],
+        progress : false,
     }),
     methods : {
-        update()
+        store()
         {
+            this.disable = true
+            this.progress = true
             this.data.seller_id = this.seller_id
             axios.get('/sanctum/csrf-cookie').then(res => {
                 axios.post(`/api/sellers/phones/store`,this.data).then(e=>{
@@ -108,6 +111,8 @@ export default {
                     for (const error of errors) {
                         this.errors.push(error[0])
                         this.hasError = true
+                        this.disable = false
+                        this.progress = false
                     }
                 })
             })

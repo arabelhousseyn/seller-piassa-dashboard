@@ -59,7 +59,7 @@
                                 </v-alert>
 
                                 <v-col cols="12">
-                                    <v-btn type="submit" :disabled="disable" color="primary"><v-icon>mdi-check</v-icon></v-btn>
+                                    <v-btn type="submit" :disabled="disable" color="primary"><v-icon v-if="!progress">mdi-check</v-icon> <v-progress-circular v-else indeterminate color="white"></v-progress-circular> </v-btn>
                                 </v-col>
                             </v-row>
                         </form>
@@ -100,10 +100,13 @@ export default {
         disable : true,
         hasError : false,
         errors : [],
+        progress : false,
     }),
     methods : {
         store()
         {
+            this.disable = true
+            this.progress = true
             this.data.seller_id = this.seller_id
             for (const sign of this.signs) {
                 if(sign.name == this.selectedSign)
@@ -133,7 +136,8 @@ export default {
                     for (const error of errors) {
                         this.errors.push(error[0])
                         this.hasError = true
-                        this.disabled = false
+                        this.disable = false
+                        this.progress = false
                     }
                 })
             })

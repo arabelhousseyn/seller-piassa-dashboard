@@ -955,6 +955,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.progress = true;
+      this.disable = true;
       axios.get('/sanctum/csrf-cookie').then(function (res) {
         axios.put("/api/users/change-password/".concat(_this.user_id), _this.data).then(function (e) {
           _this.$toast.open({
@@ -973,6 +974,7 @@ __webpack_require__.r(__webpack_exports__);
 
             _this.hasError = true;
             _this.progress = false;
+            _this.disable = false;
           }
         });
       });

@@ -24,7 +24,7 @@ class StoreSellerJobRequest extends FormRequest
     public function rules()
     {
         return [
-            'job' => 'required|max:255',
+            'job' => 'required|max:254',
             'sign_id' => 'required|exists:signs,id',
             'type_id' => 'required|exists:types,id',
             'seller_id' => 'required|exists:sellers,id'
