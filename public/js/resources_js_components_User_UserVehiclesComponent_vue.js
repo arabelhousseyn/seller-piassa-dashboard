@@ -355,13 +355,15 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       items: [],
       signs: [],
       errors: [],
-      hasError: false
+      hasError: false,
+      progress: false
     };
   },
   methods: {
     store: function store() {
       var _this = this;
 
+      this.progress = true;
       this.disable = true;
       this.data.user_id = this.user_id;
 
@@ -403,6 +405,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
             _this.hasError = true;
             _this.disable = false;
+            _this.progress = false;
           }
         });
       });
@@ -1589,7 +1592,16 @@ var render = function () {
                                       color: "primary",
                                     },
                                   },
-                                  [_c("v-icon", [_vm._v("mdi-check")])],
+                                  [
+                                    !_vm.progress
+                                      ? _c("v-icon", [_vm._v("mdi-check")])
+                                      : _c("v-progress-circular", {
+                                          attrs: {
+                                            indeterminate: "",
+                                            color: "white",
+                                          },
+                                        }),
+                                  ],
                                   1
                                 ),
                               ],
