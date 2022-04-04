@@ -564,6 +564,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       var _this = this;
 
       this.progress = true;
+      this.disabled = true;
 
       if (this.selectedGender == "Homme") {
         this.data.gender = 'M';
@@ -614,6 +615,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
             _this.errors.push(error[0]);
 
             _this.hasError = true;
+            _this.disabled = false;
             _this.progress = false;
           }
         });

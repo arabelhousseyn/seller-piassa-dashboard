@@ -227,6 +227,7 @@ export default {
         create()
         {
             this.progress = true
+            this.disabled = true
             if(this.selectedGender == "Homme")
             {
                 this.data.gender = 'M'
@@ -267,6 +268,7 @@ export default {
                     for (const error of errors) {
                         this.errors.push(error[0])
                         this.hasError = true
+                        this.disabled = false
                         this.progress = false
                     }
                 })
