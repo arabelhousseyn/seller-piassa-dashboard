@@ -5,7 +5,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\V1\{LoginController,LogoutController,UserController,SellerController,ShipperController
 ,DashbaordController,ProvincesController,UserChangePassword,VehicleController,SignController,SellerChangePassword
-,TypeController,UserOrderController,NotificationController,StatisticsController,AdminController,AdminChangePasswordController};
+,TypeController,UserOrderController,NotificationController,StatisticsController,AdminController,
+    AdminChangePasswordController,AdminChangeProfileController};
 
 
 Route::middleware(['throttle:login','app_version'])->group(function (){
@@ -128,6 +129,7 @@ Route::middleware(['auth:sanctum','app_version'])->group(function (){
 
     Route::prefix('admins')->group(function (){
         Route::put('update-password-admin-dashboard',AdminChangePasswordController::class);
+        Route::put('update-profile-admin-dashboard',AdminChangeProfileController::class);
     });
 
     //resources
