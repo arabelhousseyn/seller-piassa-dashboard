@@ -100,22 +100,74 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       data: [],
       disable: false,
       disable1: true,
+      progress: false,
+      progress1: false,
       infos: {
         old_password: null,
         password: null,
         password_confirmation: null
-      }
+      },
+      hasError1: false,
+      errors1: []
     };
   },
   methods: {
     update: function update() {},
-    updatePassword: function updatePassword() {}
+    updatePassword: function updatePassword() {
+      var _this = this;
+
+      this.disable1 = true;
+      this.progress1 = true;
+      axios.get('/sanctum/csrf-cookie').then(function (res) {
+        axios.put('/api/admins/update-password-admin-dashboard', _this.infos).then(function (e) {
+          _this.$toast.open({
+            message: "Opération effectué",
+            type: 'success'
+          });
+
+          _this.$store.commit('SET_AUTH', false);
+
+          _this.$store.commit('SET_USER', []);
+
+          localStorage.clear();
+
+          _this.$router.push('/');
+        })["catch"](function (err) {
+          var errors = Object.values(err.response.data.errors);
+
+          for (var _i = 0, _errors = errors; _i < _errors.length; _i++) {
+            var error = _errors[_i];
+
+            _this.errors1.push(error[0]);
+
+            _this.hasError1 = true;
+            _this.disable1 = false;
+            _this.progress1 = false;
+          }
+        });
+      });
+    },
+    check: function check() {
+      this.disable1 = this.infos.old_password == null || this.infos.password == null || this.infos.password_confirmation == null ? true : false;
+    }
   },
   mounted: function mounted() {
     this.data = this.$store.getters.GET_USER;
@@ -436,9 +488,11 @@ var render = function () {
                           [
                             _c("v-text-field", {
                               attrs: {
+                                type: "password",
                                 label: "Ancien Mote de passe *",
                                 dense: "",
                               },
+                              on: { keydown: _vm.check },
                               model: {
                                 value: _vm.infos.old_password,
                                 callback: function ($$v) {
@@ -456,7 +510,12 @@ var render = function () {
                           { attrs: { cols: "12", md: "6", lg: "6" } },
                           [
                             _c("v-text-field", {
-                              attrs: { label: "Mote de passe *", dense: "" },
+                              attrs: {
+                                type: "password",
+                                label: "Mote de passe *",
+                                dense: "",
+                              },
+                              on: { keydown: _vm.check },
                               model: {
                                 value: _vm.infos.password,
                                 callback: function ($$v) {
@@ -475,9 +534,11 @@ var render = function () {
                           [
                             _c("v-text-field", {
                               attrs: {
+                                type: "password",
                                 label: "Confirmation mote de passe *",
                                 dense: "",
                               },
+                              on: { keydown: _vm.check },
                               model: {
                                 value: _vm.infos.password_confirmation,
                                 callback: function ($$v) {
@@ -494,6 +555,31 @@ var render = function () {
                           1
                         ),
                         _vm._v(" "),
+                        _vm.hasError1
+                          ? _c(
+                              "v-alert",
+                              {
+                                attrs: {
+                                  border: "right",
+                                  "colored-border": "",
+                                  type: "error",
+                                  elevation: "2",
+                                },
+                              },
+                              [
+                                _c(
+                                  "ul",
+                                  _vm._l(_vm.errors1, function (error, index) {
+                                    return _c("li", { key: index }, [
+                                      _c("span", [_vm._v(_vm._s(error))]),
+                                    ])
+                                  }),
+                                  0
+                                ),
+                              ]
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
                         _c(
                           "v-col",
                           { attrs: { cols: "12" } },
@@ -508,9 +594,18 @@ var render = function () {
                                 },
                               },
                               [
-                                _c("v-icon", { attrs: { color: "white" } }, [
-                                  _vm._v("mdi-check"),
-                                ]),
+                                !_vm.progress1
+                                  ? _c(
+                                      "v-icon",
+                                      { attrs: { color: "white" } },
+                                      [_vm._v("mdi-check")]
+                                    )
+                                  : _c("v-progress-circular", {
+                                      attrs: {
+                                        indeterminate: "",
+                                        color: "white",
+                                      },
+                                    }),
                               ],
                               1
                             ),
