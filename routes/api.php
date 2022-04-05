@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\V1\{LoginController,LogoutController,UserController,SellerController,ShipperController
 ,DashbaordController,ProvincesController,UserChangePassword,VehicleController,SignController,SellerChangePassword
-,TypeController,UserOrderController,NotificationController,StatisticsController,AdminController};
+,TypeController,UserOrderController,NotificationController,StatisticsController,AdminController,AdminChangePasswordController};
 
 
 Route::middleware(['throttle:login','app_version'])->group(function (){
@@ -124,6 +124,10 @@ Route::middleware(['auth:sanctum','app_version'])->group(function (){
 
     Route::controller(AdminController::class)->prefix('admins')->group(function (){
         Route::put('restore/{id}','restore')->whereNumber('id');
+    });
+
+    Route::prefix('admins')->group(function (){
+        Route::put('update-password-admin-dashboard',AdminChangePasswordController::class);
     });
 
     //resources

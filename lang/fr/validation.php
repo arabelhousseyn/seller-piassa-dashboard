@@ -260,6 +260,9 @@ return [
         'seller_id' => [
             'required' => 'Erreur dans serveur.',
             'exists' => 'Vendeur n\'existe pas.'
+        ],
+        'old_password' => [
+            'required' => 'Ancien mote de passe requis.'
         ]
     ],
 
