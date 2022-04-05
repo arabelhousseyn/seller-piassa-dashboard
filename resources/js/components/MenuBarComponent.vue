@@ -17,7 +17,7 @@
 
             <v-card>
                 <v-list>
-                    <v-list-item link>
+                    <v-list-item @click="AdminProfileForward" link>
                         <v-list-item-avatar>
                             <img
                                 :src="$store.state.user_logo"
@@ -82,6 +82,11 @@ export default {
                 })
             })
             this.menu = false
+        },
+        AdminProfileForward()
+        {
+            this.menu = false
+            this.$router.push('/home/profile').catch(err => {});
         }
     }
 }

@@ -141,6 +141,10 @@ const routes = [
               component : () => import('../pages/StatsPage')
             },
             {
+                path: 'profile',
+                component : () => import('../pages/AdminProfilePage')
+            },
+            {
                 path : '*',
                 component: () => import('../pages/NotFoundPage'),
             }

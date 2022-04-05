@@ -457,6 +457,10 @@ __webpack_require__.r(__webpack_exports__);
         });
       });
       this.menu = false;
+    },
+    AdminProfileForward: function AdminProfileForward() {
+      this.menu = false;
+      this.$router.push('/home/profile')["catch"](function (err) {});
     }
   }
 });
@@ -23305,7 +23309,10 @@ var render = function () {
                 [
                   _c(
                     "v-list-item",
-                    { attrs: { link: "" } },
+                    {
+                      attrs: { link: "" },
+                      on: { click: _vm.AdminProfileForward },
+                    },
                     [
                       _c("v-list-item-avatar", [
                         _c("img", {
