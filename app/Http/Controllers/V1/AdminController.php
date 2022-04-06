@@ -161,8 +161,10 @@ class AdminController extends Controller
         ];
 
         $validated = $request->validate($rules);
-
-        Admin::whereId($id)->update($validated);
+        $data = [
+            'password' => Hash::make($validated['password'])
+        ];
+        Admin::whereId($id)->update($data);
         return response()->noContent();
     }
 }
