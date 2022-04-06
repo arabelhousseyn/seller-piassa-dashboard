@@ -125,6 +125,7 @@ Route::middleware(['auth:sanctum','app_version'])->group(function (){
 
     Route::controller(AdminController::class)->prefix('admins')->group(function (){
         Route::put('restore/{id}','restore')->whereNumber('id');
+        Route::put('change-password/{id}','changePassword')->whereNumber('id');
     });
 
     Route::prefix('admins')->group(function (){

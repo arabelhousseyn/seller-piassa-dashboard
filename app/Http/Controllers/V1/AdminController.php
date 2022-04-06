@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AdminChangePasswordRequest;
 use App\Http\Requests\StoreAdminRequest;
 use App\Models\Admin;
 use App\Services\UpdateAdminService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
 
 class AdminController extends Controller
 {
@@ -150,5 +152,17 @@ class AdminController extends Controller
             ];
             return response($data,422);
         }
+    }
+
+    public function changePassword(Request $request, $id)
+    {
+        $rules = [
+            'password' => ['required','confirmed',Password::default()]
+        ];
+
+        $validated = $request->validate($rules);
+
+        Admin::whereId($id)->update($validated);
+        return response()->noContent();
     }
 }
