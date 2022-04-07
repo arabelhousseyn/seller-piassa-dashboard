@@ -70,6 +70,10 @@
                                     <v-list-item-icon><v-icon color="green">mdi-restore</v-icon></v-list-item-icon>
                                     <v-list-item-content><v-list-item-title>Restaurer</v-list-item-title></v-list-item-content>
                                 </v-list-item>
+                                <v-list-item link @click="security(item.id)">
+                                    <v-list-item-icon><v-icon color="primary">mdi-security</v-icon></v-list-item-icon>
+                                    <v-list-item-content><v-list-item-title>Sécurité</v-list-item-title></v-list-item-content>
+                                </v-list-item>
                             </v-list-item-group>
                         </v-list>
                     </v-menu>
@@ -99,6 +103,7 @@
             <destroy-admin-dialog :dialog="dialog" :id="selected" @close="close" />
             <restore-admin-dialog :dialog="dialog1" :id="selected" @close="close1" />
             <update-admin-dialog :dialog="dialog2" :data="data" @close="close2" />
+            <admin-security-dialog :dialog="dialog3" :id="selected" @close="close3" />
         </v-container>
     </div>
 </template>
@@ -109,12 +114,16 @@ import StoreAdminDialog from "../components/dialog/Admin/StoreAdminDialog";
 import DestroyAdminDialog from "../components/dialog/Admin/DestroyAdminDialog";
 import RestoreAdminDialog from "../components/dialog/Admin/RestoreAdminDialog";
 import UpdateAdminDialog from '../components/dialog/Admin/UpdateAdminDialog'
+import AdminSecurityDialog from "../components/dialog/Admin/AdminSecurityDialog";
 export default {
-    components: {RestoreAdminDialog, DestroyAdminDialog, StoreAdminDialog, BreadCrumbsComponent,UpdateAdminDialog},
+    components: {
+        AdminSecurityDialog,
+        RestoreAdminDialog, DestroyAdminDialog, StoreAdminDialog, BreadCrumbsComponent,UpdateAdminDialog},
     data : ()=>({
         dialog : false,
         dialog1 : false,
         dialog2 : false,
+        dialog3 : false,
         id : null,
         users : [],
         profile : [],
@@ -153,6 +162,11 @@ export default {
             this.dialog1 = true
             this.selected = id
         },
+        security(id)
+        {
+            this.dialog3 = true
+            this.selected = id
+        },
         close()
         {
             this.selected = null
@@ -167,6 +181,11 @@ export default {
         {
             this.data = []
             this.dialog2 = false
+        },
+        close3()
+        {
+            this.dialog3 = false
+            this.selected = null
         },
         init()
         {
