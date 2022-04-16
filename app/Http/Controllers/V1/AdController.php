@@ -88,6 +88,7 @@ class AdController extends Controller
         try {
             $ad = Ad::findOrFail($id);
             $image_name = str_replace('storage/ad/','',$ad->path);
+            $image_name = str_replace(env('APP_URL'),'',$image_name);
             $request->file('ad')->storeAs('public/ad/',$image_name);
             return response()->noContent();
         }catch (\Exception $exception)
@@ -107,6 +108,7 @@ class AdController extends Controller
         try {
             $ad = Ad::findOrFail($id);
             $image_name = str_replace('storage/ad/','',$ad->path);
+            $image_name = str_replace(env('APP_URL'),'',$image_name);
             Storage::delete('public/ad/' . $image_name);
             $ad->delete();
             return response()->noContent();
