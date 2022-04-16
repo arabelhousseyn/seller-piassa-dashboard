@@ -125,17 +125,17 @@ class AdController extends Controller
         $image_name = str_replace(env('APP_URL'),'',$ad->path);
         $save_image_name = uniqid() . '.jpg';
         $save_path = '../storage/app/public/ad/' . $save_image_name;
-        $image = Image::load($image_name)->width($width)->height($height)->save($save_path);
+        Image::load($image_name)->width($width)->height($height)->save($save_path);
 
         $path = 'storage/ad/' . $save_image_name;
         $size = $width . 'x' . $height;
 
-        Ad::create([
+        $created_ad = Ad::create([
             'path' => $path,
             'type' => 'MS',
             'size' => $size
         ]);
-        return response()->noContent();
+        return response(['data' => $created_ad],200);
 
     }
 }
