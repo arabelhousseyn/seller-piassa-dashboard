@@ -263,6 +263,11 @@ return [
         ],
         'old_password' => [
             'required' => 'Ancien mote de passe requis.'
+        ],
+        'ad' => [
+            'required' => 'Ad requis.',
+            'mimes' => 'Type non valide.',
+            'dimensions' => '640 X 1920 dimensions logo requis.'
         ]
     ],
 

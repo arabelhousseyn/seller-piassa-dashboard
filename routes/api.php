@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\V1\{LoginController,LogoutController,UserController,SellerController,ShipperController
 ,DashbaordController,ProvincesController,UserChangePassword,VehicleController,SignController,SellerChangePassword
 ,TypeController,UserOrderController,NotificationController,StatisticsController,AdminController,
-    AdminChangePasswordController,AdminChangeProfileController};
+    AdminChangePasswordController,AdminChangeProfileController,AdController};
 
 
 Route::middleware(['throttle:login','app_version'])->group(function (){
@@ -133,6 +133,9 @@ Route::middleware(['auth:sanctum','app_version'])->group(function (){
         Route::put('update-profile-admin-dashboard',AdminChangeProfileController::class);
     });
 
+    // ads
+
+
     //resources
     Route::apiResources([
         'admins' => AdminController::class,
@@ -142,7 +145,8 @@ Route::middleware(['auth:sanctum','app_version'])->group(function (){
         'provinces' => ProvincesController::class,
         'vehicles' =>  VehicleController::class,
         'signs' => SignController::class,
-        'types' => TypeController::class
+        'types' => TypeController::class,
+        'ads' => AdController::class
     ]);
 
 });
