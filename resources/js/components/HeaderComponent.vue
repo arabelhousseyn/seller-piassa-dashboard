@@ -140,6 +140,18 @@
                         </v-list-item-content>
                     </v-list-item>
 
+                    <v-list-item
+                        @click="()=>{this.$router.push('/home/ads').catch(err => {})}"
+                        style="border-right: 4px solid;"
+                    >
+                        <v-list-item-icon>
+                            <v-icon>mdi-google-ads</v-icon>
+                        </v-list-item-icon>
+                        <v-list-item-content>
+                            <v-list-item-title>Publicités</v-list-item-title>
+                        </v-list-item-content>
+                    </v-list-item>
+
                 </v-list-item-group>
             </v-list>
         </v-navigation-drawer>

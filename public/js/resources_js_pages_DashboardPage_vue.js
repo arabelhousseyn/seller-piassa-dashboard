@@ -310,6 +310,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -23196,6 +23208,34 @@ var render = function () {
                       _c(
                         "v-list-item-content",
                         [_c("v-list-item-title", [_vm._v("Statistiques")])],
+                        1
+                      ),
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-list-item",
+                    {
+                      staticStyle: { "border-right": "4px solid" },
+                      on: {
+                        click: function () {
+                          this$1.$router
+                            .push("/home/ads")
+                            .catch(function (err) {})
+                        },
+                      },
+                    },
+                    [
+                      _c(
+                        "v-list-item-icon",
+                        [_c("v-icon", [_vm._v("mdi-google-ads")])],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-list-item-content",
+                        [_c("v-list-item-title", [_vm._v("Publicités")])],
                         1
                       ),
                     ],
