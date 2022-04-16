@@ -7,6 +7,7 @@ use App\Http\Requests\StoreAdRequest;
 use Illuminate\Http\Request;
 use App\Models\Ad;
 use Illuminate\Support\Facades\Storage;
+use Spatie\Image\Image;
 
 class AdController extends Controller
 {
@@ -17,7 +18,7 @@ class AdController extends Controller
      */
     public function index()
     {
-        $ad = Ad::where('type','MS')->first();
+        $ad = Ad::where([['type','MS'],['size','640x1920']])->first();
 
         return response(['data' => $ad],200);
     }
@@ -116,5 +117,25 @@ class AdController extends Controller
         {
             return response(['message' => 'not found'],404);
         }
+    }
+
+    public function resize(int $width,int $height)
+    {
+        $ad = Ad::where([['type','MS'],['size','640x1920']])->first();
+        $image_name = str_replace(env('APP_URL'),'',$ad->path);
+        $save_image_name = uniqid() . '.jpg';
+        $save_path = '../storage/app/public/ad/' . $save_image_name;
+        $image = Image::load($image_name)->width($width)->height($height)->save($save_path);
+
+        $path = 'storage/ad/' . $save_image_name;
+        $size = $width . 'x' . $height;
+
+        Ad::create([
+            'path' => $path,
+            'type' => 'MS',
+            'size' => $size
+        ]);
+        return response()->noContent();
+
     }
 }

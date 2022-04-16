@@ -13,6 +13,11 @@ Route::middleware(['throttle:login','app_version'])->group(function (){
     Route::post('login',LoginController::class);
 });
 
+// expect case no need for auth token
+
+Route::controller(AdController::class)->prefix('ads')->group(function (){
+    Route::get('resize/{width}/{height}','resize')->whereNumber(['width','height']);
+});
 
 Route::middleware(['auth:sanctum','app_version'])->group(function (){
 
