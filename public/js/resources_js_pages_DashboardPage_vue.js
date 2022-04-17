@@ -357,6 +357,10 @@ __webpack_require__.r(__webpack_exports__);
         this.selectedItem = 5;
       } else if (path.includes('home/notifications')) {
         this.selectedItem = 6;
+      } else if (path.includes('home/statistics')) {
+        this.selectedItem = 7;
+      } else if (path.includes('home/ads')) {
+        this.selectedItem = 8;
       } else {
         this.selectedItem = null;
       }
