@@ -8,6 +8,7 @@ use App\Http\Requests\StoreSignRequest;
 use App\Http\Requests\UpdateSignRequest;
 use App\Imports\SignsImport;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\{Sign};
 class SignController extends Controller
@@ -139,8 +140,11 @@ class SignController extends Controller
         if($request->validated())
         {
             $sign = Sign::find($request->sign_id);
-            $image_name = str_replace('storage/logoSigns/','',$sign->logo);
+            Storage::delete(str_replace('storage','public',$sign->logo));
+            $image_name = uniqid() . '.' . $request->file('logo')->extension();
+            $path = 'storage/logoSigns/' . $image_name;
             $request->file('logo')->storeAs('public/logoSigns/',$image_name);
+            $sign->update(['logo' => $path]);
             return response()->noContent();
         }
     }

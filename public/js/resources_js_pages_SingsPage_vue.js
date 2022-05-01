@@ -1825,6 +1825,8 @@ var render = function () {
                     ),
                   ]),
                   _vm._v(" "),
+                  _c("v-divider"),
+                  _vm._v(" "),
                   _c("v-file-input", {
                     attrs: {
                       accept: "image/png, image/jpeg, image/jpg",

@@ -48,7 +48,7 @@
                             </v-row>
                         </form>
                     </v-container>
-
+                    <v-divider></v-divider>
                         <v-file-input
                             accept="image/png, image/jpeg, image/jpg"
                             placeholder="Logo"
