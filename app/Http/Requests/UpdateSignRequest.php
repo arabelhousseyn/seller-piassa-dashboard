@@ -25,6 +25,7 @@ class UpdateSignRequest extends FormRequest
     {
         return [
             'name' => 'required|max:255',
+            'prefix' => 'max:255'
         ];
     }
 }
