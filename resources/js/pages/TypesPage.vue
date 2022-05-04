@@ -85,7 +85,8 @@
                 </template>
 
                 <template v-slot:item.logo="{ item }">
-                    <iframe width="100" height="100" :src="item.logo"></iframe>
+
+                    <lottie-player :src="item.logo"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop autoplay></lottie-player>
                 </template>
 
                 <template v-slot:item.deleted_at="{ item }">
@@ -120,7 +121,7 @@ import DeleteTypeDialog from "../components/dialog/Type/DeleteTypeDialog";
 import RestoreTypeDialog from "../components/dialog/Type/RestoreTypeDialog";
 
 export default {
-    components: {RestoreTypeDialog, DeleteTypeDialog, UpdateTypeDialog, StoreTypeDialog, BreadCrumbsComponent},
+    components: {RestoreTypeDialog, DeleteTypeDialog, UpdateTypeDialog, StoreTypeDialog, BreadCrumbsComponent,},
     data : ()=>({
         types : [],
         loading : true,

@@ -17,7 +17,7 @@
                                 <v-col
                                     cols="12"
                                     sm="6"
-                                    md="4"
+                                    md="6"
                                 >
                                     <v-text-field
                                         label="Nom"
@@ -28,18 +28,7 @@
                                 <v-col
                                     cols="12"
                                     sm="6"
-                                    md="4"
-                                >
-                                    <v-text-field
-                                        label="Logo"
-                                        v-model="data.logo"
-                                    ></v-text-field>
-                                </v-col>
-
-                                <v-col
-                                    cols="12"
-                                    sm="6"
-                                    md="4"
+                                    md="6"
                                 >
                                     <v-text-field
                                         label="%"
@@ -59,6 +48,7 @@
                             </v-row>
                         </form>
                     </v-container>
+                    <v-divider></v-divider>
                 </v-card-text>
                 <v-card-actions>
                     <v-spacer></v-spacer>

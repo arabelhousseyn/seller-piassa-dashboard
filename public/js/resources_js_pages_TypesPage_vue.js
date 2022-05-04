@@ -479,16 +479,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['data', 'dialog'],
   data: function data() {
@@ -558,6 +548,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_dialog_Type_UpdateTypeDialog__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/dialog/Type/UpdateTypeDialog */ "./resources/js/components/dialog/Type/UpdateTypeDialog.vue");
 /* harmony import */ var _components_dialog_Type_DeleteTypeDialog__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/dialog/Type/DeleteTypeDialog */ "./resources/js/components/dialog/Type/DeleteTypeDialog.vue");
 /* harmony import */ var _components_dialog_Type_RestoreTypeDialog__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/dialog/Type/RestoreTypeDialog */ "./resources/js/components/dialog/Type/RestoreTypeDialog.vue");
+//
 //
 //
 //
@@ -1731,7 +1722,7 @@ var render = function () {
                           [
                             _c(
                               "v-col",
-                              { attrs: { cols: "12", sm: "6", md: "4" } },
+                              { attrs: { cols: "12", sm: "6", md: "6" } },
                               [
                                 _c("v-text-field", {
                                   attrs: { label: "Nom" },
@@ -1749,25 +1740,7 @@ var render = function () {
                             _vm._v(" "),
                             _c(
                               "v-col",
-                              { attrs: { cols: "12", sm: "6", md: "4" } },
-                              [
-                                _c("v-text-field", {
-                                  attrs: { label: "Logo" },
-                                  model: {
-                                    value: _vm.data.logo,
-                                    callback: function ($$v) {
-                                      _vm.$set(_vm.data, "logo", $$v)
-                                    },
-                                    expression: "data.logo",
-                                  },
-                                }),
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "v-col",
-                              { attrs: { cols: "12", sm: "6", md: "4" } },
+                              { attrs: { cols: "12", sm: "6", md: "6" } },
                               [
                                 _c("v-text-field", {
                                   attrs: { label: "%" },
@@ -1842,6 +1815,8 @@ var render = function () {
                       1
                     ),
                   ]),
+                  _vm._v(" "),
+                  _c("v-divider"),
                 ],
                 1
               ),
@@ -2171,8 +2146,15 @@ var render = function () {
                 fn: function (ref) {
                   var item = ref.item
                   return [
-                    _c("iframe", {
-                      attrs: { width: "100", height: "100", src: item.logo },
+                    _c("lottie-player", {
+                      staticStyle: { width: "300px", height: "300px" },
+                      attrs: {
+                        src: item.logo,
+                        background: "transparent",
+                        speed: "1",
+                        loop: "",
+                        autoplay: "",
+                      },
                     }),
                   ]
                 },
