@@ -479,6 +479,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['data', 'dialog'],
   data: function data() {
@@ -490,7 +504,9 @@ __webpack_require__.r(__webpack_exports__);
       },
       hasError: false,
       errors: [],
-      progress: false
+      progress: false,
+      hasError1: false,
+      errors1: []
     };
   },
   methods: {
@@ -524,6 +540,37 @@ __webpack_require__.r(__webpack_exports__);
 
             _this.hasError = true;
             _this.progress = false;
+          }
+        });
+      });
+    },
+    logo: function logo(e) {
+      var _this2 = this;
+
+      this.errors1 = [];
+      this.hasError1 = false;
+      var data = new FormData();
+      data.append('type_id', this.data.id);
+      data.append('logo', e);
+      axios.get('/sanctum/csrf-cookie').then(function (res) {
+        axios.post("/api/types/change-type-logo", data).then(function (e) {
+          if (e.status == 204) {
+            _this2.$toast.open({
+              message: "Opération effectué",
+              type: 'success'
+            });
+
+            window.location.reload();
+          }
+        })["catch"](function (err) {
+          var errors = Object.values(err.response.data.errors);
+
+          for (var _i2 = 0, _errors2 = errors; _i2 < _errors2.length; _i2++) {
+            var error = _errors2[_i2];
+
+            _this2.errors1.push(error[0]);
+
+            _this2.hasError1 = true;
           }
         });
       });
@@ -1817,6 +1864,41 @@ var render = function () {
                   ]),
                   _vm._v(" "),
                   _c("v-divider"),
+                  _vm._v(" "),
+                  _c("v-file-input", {
+                    attrs: {
+                      accept: ".json",
+                      placeholder: "Logo",
+                      "prepend-icon": "mdi-code-braces",
+                      label: "Logo",
+                    },
+                    on: { change: _vm.logo },
+                  }),
+                  _vm._v(" "),
+                  _vm.hasError1
+                    ? _c(
+                        "v-alert",
+                        {
+                          attrs: {
+                            border: "right",
+                            "colored-border": "",
+                            type: "error",
+                            elevation: "2",
+                          },
+                        },
+                        [
+                          _c(
+                            "ul",
+                            _vm._l(_vm.errors1, function (error, index) {
+                              return _c("li", { key: index }, [
+                                _c("span", [_vm._v(_vm._s(error))]),
+                              ])
+                            }),
+                            0
+                          ),
+                        ]
+                      )
+                    : _vm._e(),
                 ],
                 1
               ),

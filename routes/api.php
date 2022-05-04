@@ -85,6 +85,7 @@ Route::middleware(['auth:sanctum','app_version'])->group(function (){
         Route::get('all','types');
         //Route::post('excel-import-types','storeTypesExcel');
         Route::put('restore/{id}','restore')->whereNumber('id');
+        Route::post('change-type-logo','changeLogoType');
     });
 
     //shippers

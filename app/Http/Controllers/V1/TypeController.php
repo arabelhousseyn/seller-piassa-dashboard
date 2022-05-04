@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ChangeTypeLogoRequest;
 use App\Http\Requests\StoreTypeRequest;
 use App\Http\Requests\UpdateTypeRequest;
 use App\Imports\TypesImport;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\{Type};
 class TypeController extends Controller
@@ -145,5 +147,19 @@ class TypeController extends Controller
         Excel::import(new TypesImport,$request->file);
 
         return response()->noContent();
+    }
+
+    public function changeLogoType(ChangeTypeLogoRequest $request)
+    {
+        if($request->validated())
+        {
+            $type = Type::find($request->type_id);
+            Storage::delete(str_replace('storage','public',$type->logo));
+            $json_name = uniqid() . '.json';
+            $path = 'storage/Types/' . $json_name;
+            $request->file('logo')->storeAs('public/Types/',$json_name);
+            $type->update(['logo' => $path]);
+            return response()->noContent();
+        }
     }
 }
