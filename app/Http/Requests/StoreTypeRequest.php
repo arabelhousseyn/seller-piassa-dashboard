@@ -26,7 +26,7 @@ class StoreTypeRequest extends FormRequest
         return [
             'name' => 'required',
             'logo' => 'required',
-            'percent' => 'required'
+            'percent' => 'required|numeric'
         ];
     }
 }

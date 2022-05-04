@@ -42,15 +42,14 @@
                                     sm="6"
                                     md="4"
                                 >
-                                    <v-text-field
-                                        :disabled="disable1"
-                                        @keydown="check"
-                                        label="Logo URL*"
-                                        v-model="data.logo"
-                                        required
-                                    ></v-text-field>
+                                    <v-file-input
+                                        accept=".json"
+                                        placeholder="Logo*"
+                                        prepend-icon="mdi-code-braces"
+                                        label="Logo"
+                                        @change="logo"
+                                    ></v-file-input>
                                 </v-col>
-
                                 <v-col
                                     cols="12"
                                     sm="6"
@@ -77,24 +76,6 @@
                         </form>
                     </v-container>
                     <small>*Indique le champ obligatoire</small>
-
-                    <div class="d-flex justify-content-center mt-5">
-                        <v-file-input
-                            label="CSV"
-                            color="success"
-                            prepend-icon="mdi-file-plus-outline"
-                            outlined
-                            @change="ImportExcelFile"
-                            dense
-                            accept=".xlsx,.csv"
-                        ></v-file-input>
-                    </div>
-                    <v-alert v-if="hasError1" border="right" colored-border type="error" elevation="2">
-                        <ul>
-                            <li v-for="(error,index) in errors1" :key="index"><span>{{error}}</span></li>
-                        </ul>
-                    </v-alert>
-
                 </v-card-text>
                 <v-card-actions>
                     <v-spacer></v-spacer>
@@ -125,8 +106,6 @@ export default {
         disable1 : false,
         hasError : false,
         errors : [],
-        hasError1 : false,
-        errors1 : [],
         progress : false,
     }),
     methods : {
@@ -134,13 +113,19 @@ export default {
         {
             this.disable = true
             this.progress = true
+
+            let data = new FormData
+            data.append('name',this.data.name)
+            data.append('logo',this.data.logo)
+            data.append('percent',this.data.percent)
+
             axios.get('/sanctum/csrf-cookie').then(res => {
-                axios.post('/api/types',this.data).then(e=>{
+                axios.post('/api/types',data).then(e=>{
                     this.$toast.open({
                         message : "Opération effectué",
                         type : 'success',
                     })
-                    window.location.reload()
+                   window.location.reload()
                 }).catch(err =>{
                     let errors = Object.values(err.response.data.errors)
                     for (const error of errors) {
@@ -153,31 +138,36 @@ export default {
             })
 
         },
-        ImportExcelFile(file)
+        logo(e)
         {
-            this.hasError1 = false
-            this.errors1 = []
-            this.disable1 = true
-            let data = new FormData
-            data.append('file',file)
-
-            axios.get('/sanctum/csrf-cookie').then(res => {
-                axios.post('/api/types/excel-import-types',data).then(e=>{
-                    console.log(e.data)
-                    this.$toast.open({
-                        message : "Opération effectué",
-                        type : 'success',
-                    })
-                    window.location.reload()
-                }).catch(err =>{
-                    let errors = Object.values(err.response.data.errors)
-                    for (const error of errors) {
-                        this.errors1.push(error[0])
-                        this.hasError1 = true
-                    }
-                })
-            })
+            this.data.logo = e
+            this.check()
         },
+        // ImportExcelFile(file)
+        // {
+        //     this.hasError1 = false
+        //     this.errors1 = []
+        //     this.disable1 = true
+        //     let data = new FormData
+        //     data.append('file',file)
+        //
+        //     axios.get('/sanctum/csrf-cookie').then(res => {
+        //         axios.post('/api/types/excel-import-types',data).then(e=>{
+        //             console.log(e.data)
+        //             this.$toast.open({
+        //                 message : "Opération effectué",
+        //                 type : 'success',
+        //             })
+        //             window.location.reload()
+        //         }).catch(err =>{
+        //             let errors = Object.values(err.response.data.errors)
+        //             for (const error of errors) {
+        //                 this.errors1.push(error[0])
+        //                 this.hasError1 = true
+        //             }
+        //         })
+        //     })
+        // },
         check()
         {
             this.hasError = false

@@ -313,25 +313,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -345,8 +326,6 @@ __webpack_require__.r(__webpack_exports__);
       disable1: false,
       hasError: false,
       errors: [],
-      hasError1: false,
-      errors1: [],
       progress: false
     };
   },
@@ -356,8 +335,12 @@ __webpack_require__.r(__webpack_exports__);
 
       this.disable = true;
       this.progress = true;
+      var data = new FormData();
+      data.append('name', this.data.name);
+      data.append('logo', this.data.logo);
+      data.append('percent', this.data.percent);
       axios.get('/sanctum/csrf-cookie').then(function (res) {
-        axios.post('/api/types', _this.data).then(function (e) {
+        axios.post('/api/types', data).then(function (e) {
           _this.$toast.open({
             message: "Opération effectué",
             type: 'success'
@@ -379,37 +362,35 @@ __webpack_require__.r(__webpack_exports__);
         });
       });
     },
-    ImportExcelFile: function ImportExcelFile(file) {
-      var _this2 = this;
-
-      this.hasError1 = false;
-      this.errors1 = [];
-      this.disable1 = true;
-      var data = new FormData();
-      data.append('file', file);
-      axios.get('/sanctum/csrf-cookie').then(function (res) {
-        axios.post('/api/types/excel-import-types', data).then(function (e) {
-          console.log(e.data);
-
-          _this2.$toast.open({
-            message: "Opération effectué",
-            type: 'success'
-          });
-
-          window.location.reload();
-        })["catch"](function (err) {
-          var errors = Object.values(err.response.data.errors);
-
-          for (var _i2 = 0, _errors2 = errors; _i2 < _errors2.length; _i2++) {
-            var error = _errors2[_i2];
-
-            _this2.errors1.push(error[0]);
-
-            _this2.hasError1 = true;
-          }
-        });
-      });
+    logo: function logo(e) {
+      this.data.logo = e;
+      this.check();
     },
+    // ImportExcelFile(file)
+    // {
+    //     this.hasError1 = false
+    //     this.errors1 = []
+    //     this.disable1 = true
+    //     let data = new FormData
+    //     data.append('file',file)
+    //
+    //     axios.get('/sanctum/csrf-cookie').then(res => {
+    //         axios.post('/api/types/excel-import-types',data).then(e=>{
+    //             console.log(e.data)
+    //             this.$toast.open({
+    //                 message : "Opération effectué",
+    //                 type : 'success',
+    //             })
+    //             window.location.reload()
+    //         }).catch(err =>{
+    //             let errors = Object.values(err.response.data.errors)
+    //             for (const error of errors) {
+    //                 this.errors1.push(error[0])
+    //                 this.hasError1 = true
+    //             }
+    //         })
+    //     })
+    // },
     check: function check() {
       this.hasError = false;
       this.errors = [];
@@ -1547,20 +1528,14 @@ var render = function () {
                               "v-col",
                               { attrs: { cols: "12", sm: "6", md: "4" } },
                               [
-                                _c("v-text-field", {
+                                _c("v-file-input", {
                                   attrs: {
-                                    disabled: _vm.disable1,
-                                    label: "Logo URL*",
-                                    required: "",
+                                    accept: ".json",
+                                    placeholder: "Logo*",
+                                    "prepend-icon": "mdi-code-braces",
+                                    label: "Logo",
                                   },
-                                  on: { keydown: _vm.check },
-                                  model: {
-                                    value: _vm.data.logo,
-                                    callback: function ($$v) {
-                                      _vm.$set(_vm.data, "logo", $$v)
-                                    },
-                                    expression: "data.logo",
-                                  },
+                                  on: { change: _vm.logo },
                                 }),
                               ],
                               1
@@ -1653,50 +1628,6 @@ var render = function () {
                   ]),
                   _vm._v(" "),
                   _c("small", [_vm._v("*Indique le champ obligatoire")]),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "d-flex justify-content-center mt-5" },
-                    [
-                      _c("v-file-input", {
-                        attrs: {
-                          label: "CSV",
-                          color: "success",
-                          "prepend-icon": "mdi-file-plus-outline",
-                          outlined: "",
-                          dense: "",
-                          accept: ".xlsx,.csv",
-                        },
-                        on: { change: _vm.ImportExcelFile },
-                      }),
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _vm.hasError1
-                    ? _c(
-                        "v-alert",
-                        {
-                          attrs: {
-                            border: "right",
-                            "colored-border": "",
-                            type: "error",
-                            elevation: "2",
-                          },
-                        },
-                        [
-                          _c(
-                            "ul",
-                            _vm._l(_vm.errors1, function (error, index) {
-                              return _c("li", { key: index }, [
-                                _c("span", [_vm._v(_vm._s(error))]),
-                              ])
-                            }),
-                            0
-                          ),
-                        ]
-                      )
-                    : _vm._e(),
                 ],
                 1
               ),

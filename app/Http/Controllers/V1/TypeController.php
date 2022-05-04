@@ -42,7 +42,13 @@ class TypeController extends Controller
     {
         if($request->validated())
         {
-            Type::create($request->validated());
+            $json_name = uniqid() . '.json';
+            $path = $request->file('logo')->storeAs('public/Types',$json_name);
+            $path = str_replace('public','storage',$path);
+            $logo = [
+                'logo' => $path
+            ];
+            Type::create(array_merge($request->except('logo'),$logo));
             return response()->noContent();
         }
     }

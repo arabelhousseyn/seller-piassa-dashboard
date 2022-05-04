@@ -268,6 +268,10 @@ return [
             'required' => 'Ad requis.',
             'mimes' => 'Type non valide.',
             'dimensions' => '640 X 1920 dimensions logo requis.'
+        ],
+        'percent' => [
+            'required' => 'Pourcentage requis.',
+            'numeric' => 'Pourecnetage doit être numeric.'
         ]
     ],
 
