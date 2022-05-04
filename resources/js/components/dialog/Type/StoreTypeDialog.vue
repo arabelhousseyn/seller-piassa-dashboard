@@ -46,7 +46,7 @@
                                         accept=".json"
                                         placeholder="Logo*"
                                         prepend-icon="mdi-code-braces"
-                                        label="Logo"
+                                        label="Logo* (json)"
                                         @change="logo"
                                     ></v-file-input>
                                 </v-col>

@@ -1571,7 +1571,7 @@ var render = function () {
                                     accept: ".json",
                                     placeholder: "Logo*",
                                     "prepend-icon": "mdi-code-braces",
-                                    label: "Logo",
+                                    label: "Logo* (json)",
                                   },
                                   on: { change: _vm.logo },
                                 }),
