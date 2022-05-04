@@ -26,4 +26,9 @@ class Type extends Model
     {
         return $this->attributes['percent'] . ' %';
     }
+
+    public function getLogoAttribute()
+    {
+        return env('APP_URL') . $this->attributes['logo'];
+    }
 }
