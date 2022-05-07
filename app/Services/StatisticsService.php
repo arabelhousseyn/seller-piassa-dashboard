@@ -18,19 +18,22 @@ class StatisticsService{
     public function exportData()
     {
         $data = array();
-        $user_requests = UserRequest::with('suggestions')
-            ->whereDate('created_at', '>=', Carbon::now()->subDays($this->days)->setTime(0, 0, 0)->toDateTimeString())->get();
-        $found = false;
+        $user_requests = UserRequest::with('suggestions')->get();
+
         foreach ($user_requests as $user_request) {
+            $found = false;
             foreach ($user_request->suggestions as $suggestion) {
                 if($suggestion->suggest_him_at !== null)
                 {
                     $found = true;
-                    break;
                 }
             }
 
-            if(!$found)
+            $request_created_at = Carbon::parse($user_request->created_at);
+            $now = Carbon::now();
+            $calculateDays = $request_created_at->diffInDays($now);
+
+            if(!$found && $calculateDays >= $this->days)
             {
                 $data[] = UserRequest::with('vehicle','informations','type')->find($user_request->id);
             }
