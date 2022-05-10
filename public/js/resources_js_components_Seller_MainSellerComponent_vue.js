@@ -863,6 +863,17 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -880,7 +891,13 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       hasError: false,
       errors: [],
       disabled: true,
-      progress: false
+      progress: false,
+      fruits: [],
+      fruits1: [],
+      signs: [],
+      types: [],
+      selectedSigns: [],
+      selectedTypes: []
     };
   },
   methods: {
@@ -3179,7 +3196,7 @@ var render = function () {
                                 _c("v-select", {
                                   attrs: {
                                     items: _vm.items,
-                                    placeholder: "Willayas",
+                                    placeholder: "Willayas *",
                                   },
                                   on: { change: _vm.check },
                                   model: {
@@ -3188,6 +3205,30 @@ var render = function () {
                                       _vm.selectedProvince = $$v
                                     },
                                     expression: "selectedProvince",
+                                  },
+                                }),
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-col",
+                              { attrs: { cols: "12", sm: "6", md: "4" } },
+                              [
+                                _c("v-combobox", {
+                                  attrs: {
+                                    items: _vm.items,
+                                    label: "Combobox",
+                                    multiple: "",
+                                    outlined: "",
+                                    dense: "",
+                                  },
+                                  model: {
+                                    value: _vm.select,
+                                    callback: function ($$v) {
+                                      _vm.select = $$v
+                                    },
+                                    expression: "select",
                                   },
                                 }),
                               ],

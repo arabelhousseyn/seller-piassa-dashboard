@@ -123,7 +123,18 @@
                                     sm="6"
                                     md="4"
                                 >
-                                    <v-select @change="check" v-model="selectedProvince" :items="items" placeholder="Willayas"></v-select>
+                                    <v-select @change="check" v-model="selectedProvince" :items="items" placeholder="Willayas *"></v-select>
+                                </v-col>
+
+                                <v-col cols="12" sm="6" md="4">
+                                    <v-combobox
+                                        v-model="select"
+                                        :items="items"
+                                        label="Combobox"
+                                        multiple
+                                        outlined
+                                        dense
+                                    ></v-combobox>
                                 </v-col>
 
                                 <v-alert v-if="hasError" border="right" colored-border type="error" elevation="2">
@@ -171,6 +182,12 @@ export default {
         errors : [],
         disabled : true,
         progress : false,
+        fruits : [],
+        fruits1 : [],
+        signs : [],
+        types : [],
+        selectedSigns : [],
+        selectedTypes : []
     }),
     methods : {
         init()

@@ -12,9 +12,7 @@ class SellerJob extends Model
 
     protected $fillable = [
         'seller_id',
-        'job',
-        'type_id',
-        'sign_id'
+        'job'
     ];
 
     protected $hidden = [
@@ -23,13 +21,14 @@ class SellerJob extends Model
         'deleted_at'
     ];
 
-    public function type()
+    public function signs()
     {
-        return $this->belongsTo(Type::class,'type_id')->withDefault();
+        return $this->hasMany(SellerJobSign::class);
     }
 
-    public function sign()
+    public function types()
     {
-        return $this->belongsTo(Sign::class,'sign_id')->withDefault();
+        return $this->hasMany(SellerJobType::class);
     }
+
 }

@@ -57,6 +57,16 @@ class Seller extends Model
         return $this->hasMany(SellerJob::class);
     }
 
+    public function signs()
+    {
+        return $this->hasManyThrough(SellerJobSign::class,SellerJob::class);
+    }
+
+    public function types()
+    {
+        return $this->hasManyThrough(SellerJobType::class,SellerJob::class);
+    }
+
     public function requests()
     {
         return $this->hasMany(SellerRequest::class);
