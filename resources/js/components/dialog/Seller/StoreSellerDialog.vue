@@ -123,14 +123,37 @@
                                     sm="6"
                                     md="4"
                                 >
+                                    <v-select
+                                        @change="check"
+                                        v-model="data.condition"
+                                        :items="conditions"
+                                        label="Condition*"
+                                    ></v-select>
+                                </v-col>
+
+                                <v-col
+                                    cols="12"
+                                    sm="6"
+                                    md="4"
+                                >
                                     <v-select @change="check" v-model="selectedProvince" :items="items" placeholder="Willayas *"></v-select>
+                                </v-col>
+
+                                <v-col cols="12">
+                                    <v-textarea
+                                        @change="check"
+                                        v-model="data.job"
+                                        label="Description de l'emploi*"
+                                        hint="Description de l'emploi*"
+                                    ></v-textarea>
                                 </v-col>
 
                                 <v-col cols="12" sm="6" md="4">
                                     <v-combobox
+                                        @change="check"
                                         v-model="selectedSigns"
                                         :items="items1"
-                                        label="Marques"
+                                        label="Marques*"
                                         multiple
                                         outlined
                                         dense
@@ -139,9 +162,10 @@
 
                                 <v-col cols="12" sm="6" md="4">
                                     <v-combobox
+                                        @change="check"
                                         v-model="selectedTypes"
                                         :items="items2"
-                                        label="Types"
+                                        label="Types*"
                                         multiple
                                         outlined
                                         dense
@@ -186,6 +210,10 @@ export default {
             last_name : null,
             province_id : null,
             commercial_name : null,
+            condition : null,
+            job : null,
+            types : [],
+            signs : []
         },
         items : [],
         items1 : [],
@@ -200,7 +228,8 @@ export default {
         signs : [],
         types : [],
         selectedSigns : [],
-        selectedTypes : []
+        selectedTypes : [],
+        conditions : ['new','used']
     }),
     methods : {
         async init()
@@ -254,12 +283,39 @@ export default {
         {
             this.hasError = false
             this.errors = []
-           this.disabled = (this.data.phone == null || this.data.commercial_name == null
-            || this.data.first_name == null || this.data.last_name == null || this.selectedProvince == null) ? true : false
+           this.disabled = (this.data.phone == null || this.data.condition == null || this.data.commercial_name == null
+            || this.data.first_name == null || this.data.last_name == null || this.selectedProvince == null
+            || this.selectedTypes.length == 0 || this.selectedSigns.length == 0 || this.data.job == null) ? true : false
 
         },
         store()
         {
+            // store the signs id's to the array of signs into the data object
+            for (const sign of this.selectedSigns) {
+                for (let i= 0;i<this.signs.length;i++)
+                {
+                    if(sign == this.signs[i].name)
+                    {
+                        this.data.signs.push({
+                            sign_id : this.signs[i].id
+                        })
+                    }
+                }
+            }
+
+            // store the types id's to the array of types into the dara object
+            for (const type of this.selectedTypes) {
+                for (let i= 0;i<this.types.length;i++)
+                {
+                    if(type == this.types[i].name)
+                    {
+                        this.data.types.push({
+                            type_id : this.types[i].id
+                        })
+                    }
+                }
+            }
+
             this.progress = true
             this.disabled = true
             for (const province of this.provinces) {

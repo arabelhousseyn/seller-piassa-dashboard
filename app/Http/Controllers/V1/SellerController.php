@@ -49,7 +49,7 @@ class SellerController extends Controller
             $password = ['password' => $hash_password];
             $seller = Seller::create(array_merge($password,$request->only('phone','email')));
             $seller->profile()->create($request->except('phone','email'));
-            $job = $seller->job()->create($request->only('job'));
+            $job = $seller->jobs()->create($request->only('job'));
 
             collect($request->types)->map(function ($type) use ($job){
                 $job->types()->create($type);

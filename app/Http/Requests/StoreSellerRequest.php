@@ -32,6 +32,7 @@ class StoreSellerRequest extends FormRequest
             'first_name' => 'required',
             'last_name' => 'required',
             'commercial_name' => 'required',
+            'condition' => 'required',
             'job' =>'required',
             'types' => 'required|array',
             'types.*.type_id' => 'required|exists:types,id',

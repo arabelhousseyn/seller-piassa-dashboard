@@ -910,6 +910,30 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -920,7 +944,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         first_name: null,
         last_name: null,
         province_id: null,
-        commercial_name: null
+        commercial_name: null,
+        condition: null,
+        job: null,
+        types: [],
+        signs: []
       },
       items: [],
       items1: [],
@@ -935,7 +963,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       signs: [],
       types: [],
       selectedSigns: [],
-      selectedTypes: []
+      selectedTypes: [],
+      conditions: ['new', 'used']
     };
   },
   methods: {
@@ -1045,20 +1074,64 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     check: function check() {
       this.hasError = false;
       this.errors = [];
-      this.disabled = this.data.phone == null || this.data.commercial_name == null || this.data.first_name == null || this.data.last_name == null || this.selectedProvince == null ? true : false;
+      this.disabled = this.data.phone == null || this.data.condition == null || this.data.commercial_name == null || this.data.first_name == null || this.data.last_name == null || this.selectedProvince == null || this.selectedTypes.length == 0 || this.selectedSigns.length == 0 || this.data.job == null ? true : false;
     },
     store: function store() {
       var _this2 = this;
 
-      this.progress = true;
-      this.disabled = true;
-
-      var _iterator4 = _createForOfIteratorHelper(this.provinces),
+      // store the signs id's to the array of signs into the data object
+      var _iterator4 = _createForOfIteratorHelper(this.selectedSigns),
           _step4;
 
       try {
         for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
-          var province = _step4.value;
+          var sign = _step4.value;
+
+          for (var i = 0; i < this.signs.length; i++) {
+            if (sign == this.signs[i].name) {
+              this.data.signs.push({
+                sign_id: this.signs[i].id
+              });
+            }
+          }
+        } // store the types id's to the array of types into the dara object
+
+      } catch (err) {
+        _iterator4.e(err);
+      } finally {
+        _iterator4.f();
+      }
+
+      var _iterator5 = _createForOfIteratorHelper(this.selectedTypes),
+          _step5;
+
+      try {
+        for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
+          var type = _step5.value;
+
+          for (var _i2 = 0; _i2 < this.types.length; _i2++) {
+            if (type == this.types[_i2].name) {
+              this.data.types.push({
+                type_id: this.types[_i2].id
+              });
+            }
+          }
+        }
+      } catch (err) {
+        _iterator5.e(err);
+      } finally {
+        _iterator5.f();
+      }
+
+      this.progress = true;
+      this.disabled = true;
+
+      var _iterator6 = _createForOfIteratorHelper(this.provinces),
+          _step6;
+
+      try {
+        for (_iterator6.s(); !(_step6 = _iterator6.n()).done;) {
+          var province = _step6.value;
 
           if (province.name == this.selectedProvince) {
             this.data.province_id = province.id;
@@ -1066,9 +1139,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }
       } catch (err) {
-        _iterator4.e(err);
+        _iterator6.e(err);
       } finally {
-        _iterator4.f();
+        _iterator6.f();
       }
 
       axios.get('/sanctum/csrf-cookie').then(function (res) {
@@ -4103,6 +4176,28 @@ var render = function () {
                               [
                                 _c("v-select", {
                                   attrs: {
+                                    items: _vm.conditions,
+                                    label: "Condition*",
+                                  },
+                                  on: { change: _vm.check },
+                                  model: {
+                                    value: _vm.data.condition,
+                                    callback: function ($$v) {
+                                      _vm.$set(_vm.data, "condition", $$v)
+                                    },
+                                    expression: "data.condition",
+                                  },
+                                }),
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-col",
+                              { attrs: { cols: "12", sm: "6", md: "4" } },
+                              [
+                                _c("v-select", {
+                                  attrs: {
                                     items: _vm.items,
                                     placeholder: "Willayas *",
                                   },
@@ -4121,16 +4216,39 @@ var render = function () {
                             _vm._v(" "),
                             _c(
                               "v-col",
+                              { attrs: { cols: "12" } },
+                              [
+                                _c("v-textarea", {
+                                  attrs: {
+                                    label: "Description de l'emploi*",
+                                    hint: "Description de l'emploi*",
+                                  },
+                                  on: { change: _vm.check },
+                                  model: {
+                                    value: _vm.data.job,
+                                    callback: function ($$v) {
+                                      _vm.$set(_vm.data, "job", $$v)
+                                    },
+                                    expression: "data.job",
+                                  },
+                                }),
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-col",
                               { attrs: { cols: "12", sm: "6", md: "4" } },
                               [
                                 _c("v-combobox", {
                                   attrs: {
                                     items: _vm.items1,
-                                    label: "Marques",
+                                    label: "Marques*",
                                     multiple: "",
                                     outlined: "",
                                     dense: "",
                                   },
+                                  on: { change: _vm.check },
                                   model: {
                                     value: _vm.selectedSigns,
                                     callback: function ($$v) {
@@ -4150,11 +4268,12 @@ var render = function () {
                                 _c("v-combobox", {
                                   attrs: {
                                     items: _vm.items2,
-                                    label: "Types",
+                                    label: "Types*",
                                     multiple: "",
                                     outlined: "",
                                     dense: "",
                                   },
+                                  on: { change: _vm.check },
                                   model: {
                                     value: _vm.selectedTypes,
                                     callback: function ($$v) {
