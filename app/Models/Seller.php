@@ -52,7 +52,7 @@ class Seller extends Model
         return $this->hasOne(SellerProfile::class);
     }
 
-    public function jobs()
+    public function job()
     {
         return $this->hasMany(SellerJob::class);
     }

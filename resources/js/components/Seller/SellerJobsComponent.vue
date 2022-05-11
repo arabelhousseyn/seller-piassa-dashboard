@@ -21,8 +21,6 @@
                             inset
                             vertical
                         ></v-divider>
-                        <v-spacer></v-spacer>
-                        <store-seller-job-dialog :seller_id="seller_id" />
                     </v-toolbar>
                     <v-toolbar flat>
                         <v-text-field
@@ -84,15 +82,12 @@
                 </template>
             </v-data-table>
         </v-container>
-        <delete-seller-job-dialog @close="close" :dialog="dialog" :id="seller_job_id" />
     </div>
 </template>
 
 <script>
-import StoreSellerJobDialog from "../dialog/Seller/StoreSellerJobDialog"
-import DeleteSellerJobDialog from "../dialog/Seller/DeleteSellerJobDialog";
 export default {
-    components: {DeleteSellerJobDialog, StoreSellerJobDialog},
+    components: {},
     props : ['jobs'],
     data : ()=>({
         data : undefined,
@@ -106,8 +101,6 @@ export default {
                 sortable: true,
                 value: 'job',
             },
-            { text: 'Marque', value: 'sign.name' },
-            { text: 'Type', value: 'type.name' },
             { text: 'actions', value: 'actions', sortable: false },
         ],
         seller_job_id : null,

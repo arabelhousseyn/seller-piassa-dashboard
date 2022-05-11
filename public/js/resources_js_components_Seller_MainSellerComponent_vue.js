@@ -3117,7 +3117,7 @@ var render = function () {
                                           name: "sellerJobs",
                                           params: {
                                             id: item.id,
-                                            jobs: item.jobs,
+                                            jobs: item.job,
                                           },
                                         })
                                       },

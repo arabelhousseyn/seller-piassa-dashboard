@@ -74,7 +74,7 @@
                                     <v-list-item-icon><v-icon color="primary">mdi-phone</v-icon></v-list-item-icon>
                                     <v-list-item-content><v-list-item-title>Téléphones</v-list-item-title></v-list-item-content>
                                 </v-list-item>
-                                <v-list-item link @click="$router.push({name : 'sellerJobs',params : {id : item.id,jobs : item.jobs}})">
+                                <v-list-item link @click="$router.push({name : 'sellerJobs',params : {id : item.id,jobs : item.job}})">
                                     <v-list-item-icon><v-icon color="primary">mdi-bag-checked</v-icon></v-list-item-icon>
                                     <v-list-item-content><v-list-item-title>Travaux</v-list-item-title></v-list-item-content>
                                 </v-list-item>
