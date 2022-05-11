@@ -32,6 +32,11 @@ class StoreSellerRequest extends FormRequest
             'first_name' => 'required',
             'last_name' => 'required',
             'commercial_name' => 'required',
+            'job' =>'required',
+            'types' => 'required|array',
+            'types.*.type_id' => 'required|exists:types,id',
+            'signs' => 'required|array',
+            'signs.*.sign_id' => 'required|exists:signs,id'
         ];
     }
 }

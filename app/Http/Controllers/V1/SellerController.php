@@ -21,7 +21,7 @@ class SellerController extends Controller
      */
     public function index()
     {
-        $sellers = Seller::withTrashed()->with('profile.province','jobs.type','jobs.sign','phones')->latest('created_at')->get();
+        $sellers = Seller::withTrashed()->with('profile.province','signs','types','phones')->latest('created_at')->get();
         return response(['data' => $sellers],200);
     }
 
@@ -49,6 +49,16 @@ class SellerController extends Controller
             $password = ['password' => $hash_password];
             $seller = Seller::create(array_merge($password,$request->only('phone','email')));
             $seller->profile()->create($request->except('phone','email'));
+            $job = $seller->job()->create($request->only('job'));
+
+            collect($request->types)->map(function ($type) use ($job){
+                $job->types()->create($type);
+            });
+
+            collect($request->signs)->map(function ($sign) use ($job){
+                $job->signs()->create($sign);
+            });
+
             return response('',204);
         }
     }

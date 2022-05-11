@@ -128,9 +128,20 @@
 
                                 <v-col cols="12" sm="6" md="4">
                                     <v-combobox
-                                        v-model="select"
-                                        :items="items"
-                                        label="Combobox"
+                                        v-model="selectedSigns"
+                                        :items="items1"
+                                        label="Marques"
+                                        multiple
+                                        outlined
+                                        dense
+                                    ></v-combobox>
+                                </v-col>
+
+                                <v-col cols="12" sm="6" md="4">
+                                    <v-combobox
+                                        v-model="selectedTypes"
+                                        :items="items2"
+                                        label="Types"
                                         multiple
                                         outlined
                                         dense
@@ -177,6 +188,8 @@ export default {
             commercial_name : null,
         },
         items : [],
+        items1 : [],
+        items2 : [],
         provinces : [],
         hasError : false,
         errors : [],
@@ -190,15 +203,46 @@ export default {
         selectedTypes : []
     }),
     methods : {
-        init()
+        async init()
         {
-            axios.get('/sanctum/csrf-cookie').then(res =>{
+            await axios.get('/sanctum/csrf-cookie').then(res =>{
                 axios.get('/api/provinces').then(e=>{
                     this.provinces = e.data
                     for (const province of e.data) {
                         this.items.push(province.name)
                     }
                 }).catch(err =>{
+                    this.$toast.open({
+                        message : "ERROR",
+                        type : 'error'
+                    })
+                })
+            })
+
+
+            await axios.get('/sanctum/csrf-cookie').then(res =>{
+                axios.get('/api/signs/all').then(e=>{
+                    this.signs = e.data.data
+                    for (const sign of e.data.data) {
+                        this.items1.push(sign.name)
+                    }
+                }).catch(err =>{
+                    console.log(err)
+                    this.$toast.open({
+                        message : "ERROR",
+                        type : 'error'
+                    })
+                })
+            })
+
+            await axios.get('/sanctum/csrf-cookie').then(res =>{
+                axios.get('/api/types/all').then(e=>{
+                    this.types = e.data.data
+                    for (const type of e.data.data) {
+                        this.items2.push(type.name)
+                    }
+                }).catch(err =>{
+                    console.log(err)
                     this.$toast.open({
                         message : "ERROR",
                         type : 'error'
