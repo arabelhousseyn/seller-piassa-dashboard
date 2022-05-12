@@ -275,6 +275,7 @@ class SellerController extends Controller
         try {
             $seller_job = SellerJobType::findOrFail($seller_job_type);
             $seller_job->forceDelete();
+            return response()->noContent();
         }catch (ModelNotFoundException $exception)
         {
             throw new ModelNotFoundException('not found');
@@ -310,6 +311,7 @@ class SellerController extends Controller
         try {
             $seller_job = SellerJobSign::findOrFail($seller_job_sign);
             $seller_job->forceDelete();
+            return response()->noContent();
         }catch (ModelNotFoundException $exception)
         {
             throw new ModelNotFoundException('not found');

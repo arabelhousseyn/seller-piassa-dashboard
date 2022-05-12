@@ -69,13 +69,15 @@
                 </v-card-actions>
             </v-card>
         </v-dialog>
+        <destroy-seller-job-type-dialog @close="close1" @close1="close2" v-if="dialog1" :dialog="dialog1" :id="seller_job_type_id" />
     </div>
 </template>
 
 <script>
 
+import DestroySellerJobTypeDialog from "./DestroySellerJobTypeDialog";
 export default {
-    components: {},
+    components: {DestroySellerJobTypeDialog},
     props : ['seller_job_id','dialog'],
     data : () =>({
         data : [],
@@ -88,10 +90,10 @@ export default {
         {
             this.$emit('close')
         },
-        destroy(product_variant_option_id)
+        destroy(seller_job_type_id)
         {
             this.dialog1 = true
-            this.product_variant_option_id = product_variant_option_id
+            this.seller_job_type_id = seller_job_type_id
         },
         init()
         {
@@ -104,7 +106,7 @@ export default {
                 this.close()
             })
         },
-        close1(seller_job_type_id)
+        close1()
         {
             this.dialog1 = false
             this.seller_job_type_id = null
@@ -113,7 +115,7 @@ export default {
         {
             for (let i = 0;i<this.data.length;i++)
             {
-                if(this.data[i]._id == seller_job_type_id)
+                if(this.data[i].id == seller_job_type_id)
                 {
                     this.data.splice(i,1)
                 }

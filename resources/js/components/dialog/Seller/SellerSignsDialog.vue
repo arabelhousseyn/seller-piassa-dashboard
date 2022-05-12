@@ -88,10 +88,10 @@ export default {
         {
             this.$emit('close')
         },
-        destroy(product_variant_option_id)
+        destroy(seller_job_sign_id)
         {
             this.dialog1 = true
-            this.product_variant_option_id = product_variant_option_id
+            this.seller_job_sign_id = seller_job_sign_id
         },
         init()
         {
@@ -113,7 +113,7 @@ export default {
         {
             for (let i = 0;i<this.data.length;i++)
             {
-                if(this.data[i]._id == seller_job_sign_id)
+                if(this.data[i].id == seller_job_sign_id)
                 {
                     this.data.splice(i,1)
                 }
