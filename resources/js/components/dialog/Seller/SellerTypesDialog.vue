@@ -1,5 +1,5 @@
 <template>
-    <div class="variant-options-dialog">
+    <div class="seller-types-dialog">
         <v-dialog
             v-model="dialog"
             persistent
@@ -8,6 +8,8 @@
             <v-card>
                 <v-card-title class="text-h5">
                     Types
+                    <v-spacer></v-spacer>
+                    <store-seller-job-types-dialog @close3="close3" :seller_job_id="seller_job_id" />
                 </v-card-title>
                 <v-card-text>
                     <v-container v-if="loading">
@@ -76,8 +78,9 @@
 <script>
 
 import DestroySellerJobTypeDialog from "./DestroySellerJobTypeDialog";
+import StoreSellerJobTypesDialog from "./StoreSellerJobTypesDialog";
 export default {
-    components: {DestroySellerJobTypeDialog},
+    components: {StoreSellerJobTypesDialog, DestroySellerJobTypeDialog},
     props : ['seller_job_id','dialog'],
     data : () =>({
         data : [],
@@ -123,6 +126,10 @@ export default {
 
             this.dialog1 = false
             this.seller_job_type_id = null
+        },
+        close3()
+        {
+            this.init()
         }
     },
     mounted() {

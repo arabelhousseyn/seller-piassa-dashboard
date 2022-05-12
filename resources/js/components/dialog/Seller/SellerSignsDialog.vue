@@ -1,5 +1,5 @@
 <template>
-    <div class="variant-options-dialog">
+    <div class="sellser-signs-dialog">
         <v-dialog
             v-model="dialog"
             persistent

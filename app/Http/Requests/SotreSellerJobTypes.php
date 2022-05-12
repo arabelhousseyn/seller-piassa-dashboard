@@ -24,7 +24,7 @@ class SotreSellerJobTypes extends FormRequest
     public function rules()
     {
         return [
-            'job_id' =>'required|exists:seller_jobs,id',
+            'seller_job_id' =>'required|exists:seller_jobs,id',
             'types' => 'required|array',
             'types.*.type_id' => 'required|exists:types,id',
         ];

@@ -261,7 +261,7 @@ class SellerController extends Controller
     {
         if($request->validated())
         {
-            $job = SellerJob::find($request->job_id);
+            $job = SellerJob::find($request->seller_job_id);
             collect($request->types)->map(function ($type) use ($job){
                 $job->types()->create($type);
             });
@@ -297,7 +297,7 @@ class SellerController extends Controller
     {
         if($request->validated())
         {
-            $job = SellerJob::find($request->job_id);
+            $job = SellerJob::find($request->seller_job_id);
             collect($request->signs)->map(function ($sign) use ($job){
                 $job->signs()->create($sign);
             });

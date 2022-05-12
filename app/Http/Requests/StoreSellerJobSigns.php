@@ -24,7 +24,7 @@ class StoreSellerJobSigns extends FormRequest
     public function rules()
     {
         return [
-            'job_id' =>'required|exists:seller_jobs,id',
+            'seller_job_id' =>'required|exists:seller_jobs,id',
             'signs' => 'required|array',
             'signs.*.sign_id' => 'required|exists:signs,id'
         ];
