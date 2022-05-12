@@ -1082,7 +1082,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     check: function check() {
       this.hasError = false;
       this.errors = [];
-      this.disabled = this.data.phone == null || this.data.condition == null || this.data.commercial_name == null || this.data.first_name == null || this.data.last_name == null || this.selectedProvince == null || this.selectedTypes.length == 0 || this.selectedSigns.length == 0 || this.data.job == null ? true : false;
+      this.disabled = this.data.phone == null || this.data.condition == null || this.data.commercial_name == null || this.data.first_name == null || this.data.last_name == null || this.selectedProvince == null || this.selectedTypes.length == 0 || this.selectedSigns.length == 0 ? true : false;
     },
     store: function store() {
       var _this2 = this;
@@ -4264,8 +4264,8 @@ var render = function () {
                               [
                                 _c("v-textarea", {
                                   attrs: {
-                                    label: "Description de l'emploi*",
-                                    hint: "Description de l'emploi*",
+                                    label: "Description de l'emploi",
+                                    hint: "Description de l'emploi",
                                   },
                                   on: { change: _vm.check },
                                   model: {

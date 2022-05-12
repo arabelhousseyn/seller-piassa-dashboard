@@ -30,7 +30,7 @@
                                         counter
                                         maxlength="255"
                                         @keydown="check"
-                                        label="Description de l'emploi*"
+                                        label="Description de l'emploi"
                                         v-model="data.job"
                                         required
                                     ></v-text-field>
@@ -192,7 +192,7 @@ export default {
         },
         check()
         {
-            this.disable = (this.selectedSigns.length == 0 || this.selectedTypes.length == 0 || this.data.job == null) ? true : false
+            this.disable = (this.selectedSigns.length == 0 || this.selectedTypes.length == 0) ? true : false
         }
     },
     mounted() {

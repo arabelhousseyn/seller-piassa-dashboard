@@ -1040,7 +1040,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       });
     },
     check: function check() {
-      this.disable = this.selectedSigns.length == 0 || this.selectedTypes.length == 0 || this.data.job == null ? true : false;
+      this.disable = this.selectedSigns.length == 0 || this.selectedTypes.length == 0 ? true : false;
     }
   },
   mounted: function mounted() {
@@ -2478,7 +2478,7 @@ var render = function () {
                                               _c(
                                                 "v-icon",
                                                 { attrs: { color: "success" } },
-                                                [_vm._v("mdi-square")]
+                                                [_vm._v("mdi-collage")]
                                               ),
                                             ],
                                             1
@@ -2514,7 +2514,7 @@ var render = function () {
                                               _c(
                                                 "v-icon",
                                                 { attrs: { color: "success" } },
-                                                [_vm._v("mdi-square")]
+                                                [_vm._v("mdi-bookmark")]
                                               ),
                                             ],
                                             1
@@ -2625,7 +2625,7 @@ var render = function () {
                   ],
                   null,
                   false,
-                  1787892511
+                  1512137484
                 ),
               }),
             ],
@@ -3467,7 +3467,7 @@ var render = function () {
                                   attrs: {
                                     counter: "",
                                     maxlength: "255",
-                                    label: "Description de l'emploi*",
+                                    label: "Description de l'emploi",
                                     required: "",
                                   },
                                   on: { keydown: _vm.check },

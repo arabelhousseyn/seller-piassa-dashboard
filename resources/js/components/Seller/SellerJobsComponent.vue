@@ -66,12 +66,12 @@
                                 </v-list-item>
 
                                 <v-list-item  link @click="types(item.id)">
-                                    <v-list-item-icon><v-icon color="success">mdi-square</v-icon></v-list-item-icon>
+                                    <v-list-item-icon><v-icon color="success">mdi-collage</v-icon></v-list-item-icon>
                                     <v-list-item-content><v-list-item-title>Types</v-list-item-title></v-list-item-content>
                                 </v-list-item>
 
                                 <v-list-item  link @click="signs(item.id)">
-                                    <v-list-item-icon><v-icon color="success">mdi-square</v-icon></v-list-item-icon>
+                                    <v-list-item-icon><v-icon color="success">mdi-bookmark</v-icon></v-list-item-icon>
                                     <v-list-item-content><v-list-item-title>marques</v-list-item-title></v-list-item-content>
                                 </v-list-item>
 

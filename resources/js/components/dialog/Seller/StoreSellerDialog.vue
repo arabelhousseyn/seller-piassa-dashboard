@@ -143,8 +143,8 @@
                                     <v-textarea
                                         @change="check"
                                         v-model="data.job"
-                                        label="Description de l'emploi*"
-                                        hint="Description de l'emploi*"
+                                        label="Description de l'emploi"
+                                        hint="Description de l'emploi"
                                     ></v-textarea>
                                 </v-col>
 
@@ -285,7 +285,7 @@ export default {
             this.errors = []
            this.disabled = (this.data.phone == null || this.data.condition == null || this.data.commercial_name == null
             || this.data.first_name == null || this.data.last_name == null || this.selectedProvince == null
-            || this.selectedTypes.length == 0 || this.selectedSigns.length == 0 || this.data.job == null) ? true : false
+            || this.selectedTypes.length == 0 || this.selectedSigns.length == 0) ? true : false
 
         },
         store()
