@@ -3999,7 +3999,7 @@ var render = function () {
       _c(
         "v-dialog",
         {
-          attrs: { persistent: "", "max-width": "600px" },
+          attrs: { persistent: "", "max-width": "700px" },
           scopedSlots: _vm._u([
             {
               key: "activator",
@@ -4282,7 +4282,7 @@ var render = function () {
                             _vm._v(" "),
                             _c(
                               "v-col",
-                              { attrs: { cols: "12", sm: "6", md: "4" } },
+                              { attrs: { cols: "12", sm: "6", md: "6" } },
                               [
                                 _c("v-combobox", {
                                   attrs: {
@@ -4307,7 +4307,7 @@ var render = function () {
                             _vm._v(" "),
                             _c(
                               "v-col",
-                              { attrs: { cols: "12", sm: "6", md: "4" } },
+                              { attrs: { cols: "12", sm: "6", md: "6" } },
                               [
                                 _c("v-combobox", {
                                   attrs: {
