@@ -249,7 +249,7 @@ class SellerController extends Controller
     public function getSellerJobTypes($seller_job)
     {
         try {
-            $seller_job = SellerJob::with('types')->findOrFail($seller_job);
+            $seller_job = SellerJob::with('types.type')->findOrFail($seller_job);
             return response(['data' => $seller_job->types],200);
         }catch (ModelNotFoundException $exception)
         {
@@ -284,7 +284,7 @@ class SellerController extends Controller
     public function getSellerJobSigns($seller_job)
     {
         try {
-            $seller_job = SellerJob::with('signs')->findOrFail($seller_job);
+            $seller_job = SellerJob::with('signs.sign')->findOrFail($seller_job);
             return response(['data' => $seller_job->signs],200);
         }catch (ModelNotFoundException $exception)
         {

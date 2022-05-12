@@ -56,6 +56,17 @@
 
                         <v-list>
                             <v-list-item-group>
+
+                                <v-list-item v-if="" link @click="types(item.id)">
+                                    <v-list-item-icon><v-icon color="success">mdi-square</v-icon></v-list-item-icon>
+                                    <v-list-item-content><v-list-item-title>Types</v-list-item-title></v-list-item-content>
+                                </v-list-item>
+
+                                <v-list-item v-if="" link @click="signs(item.id)">
+                                    <v-list-item-icon><v-icon color="success">mdi-square</v-icon></v-list-item-icon>
+                                    <v-list-item-content><v-list-item-title>marques</v-list-item-title></v-list-item-content>
+                                </v-list-item>
+
                                 <v-list-item v-if="item.deleted_at == null" link @click="destory(item.id)">
                                     <v-list-item-icon><v-icon color="red">mdi-delete</v-icon></v-list-item-icon>
                                     <v-list-item-content><v-list-item-title>Supprimer</v-list-item-title></v-list-item-content>
@@ -82,12 +93,16 @@
                 </template>
             </v-data-table>
         </v-container>
+        <seller-types-dialog v-if="dialog1" @close="close1" :dialog="dialog1" :seller_job_id="seller_job_id" />
+        <seller-signs-dialog v-if="dialog2" @close="close2" :dialog="dialog2" :seller_job_id="seller_job_id" />
     </div>
 </template>
 
 <script>
+import SellerTypesDialog from "../dialog/Seller/SellerTypesDialog";
+import SellerSignsDialog from "../dialog/Seller/SellerSignsDialog";
 export default {
-    components: {},
+    components: {SellerSignsDialog, SellerTypesDialog},
     props : ['jobs'],
     data : ()=>({
         data : undefined,
@@ -104,8 +119,20 @@ export default {
             { text: 'actions', value: 'actions', sortable: false },
         ],
         seller_job_id : null,
+        dialog1 : false,
+        dialog2 : false,
     }),
     methods : {
+        types(seller_job_id)
+        {
+            this.seller_job_id = seller_job_id
+            this.dialog1 = true
+        },
+        signs(seller_job_id)
+        {
+            this.seller_job_id = seller_job_id
+            this.dialog2 = true
+        },
         init()
         {
             axios.get('/sanctum/csrf-cookie').then(res =>{
@@ -131,7 +158,17 @@ export default {
         {
             this.seller_job_id = null
             this.dialog = false
-        }
+        },
+        close1()
+        {
+            this.seller_job_id = null
+            this.dialog1 = false
+        },
+        close2()
+        {
+            this.seller_job_id = null
+            this.dialog2 = false
+        },
     },
     mounted() {
         this.init()
