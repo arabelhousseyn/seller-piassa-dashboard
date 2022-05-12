@@ -10,8 +10,9 @@ use App\Http\Requests\StoreSellerPhoneRequest;
 use App\Http\Requests\StoreSellerRequest;
 use App\Http\Requests\UpdateSellerRequest;
 use App\Services\UpdateSellerService;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Hash;
-use App\Models\{Seller, SellerJob, SellerPhone};
+use App\Models\{Seller, SellerJob, SellerJobSign, SellerJobType, SellerPhone};
 use Illuminate\Http\Request;
 
 class SellerController extends Controller
@@ -258,6 +259,17 @@ class SellerController extends Controller
         }
     }
 
+    public function destorySellerType($seller_job_type)
+    {
+        try {
+            $seller_job = SellerJobType::find($seller_job_type);
+            $seller_job->forceDelete();
+        }catch (ModelNotFoundException $exception)
+        {
+            throw new ModelNotFoundException('not found');
+        }
+    }
+
     public function StoreSellerJobSigns(StoreSellerJobSigns $request)
     {
         if($request->validated())
@@ -268,6 +280,17 @@ class SellerController extends Controller
             });
 
             return response(['message' => 'created!'],201);
+        }
+    }
+
+    public function destorySellerSign($seller_job_sign)
+    {
+        try {
+            $seller_job = SellerJobSign::find($seller_job_sign);
+            $seller_job->forceDelete();
+        }catch (ModelNotFoundException $exception)
+        {
+            throw new ModelNotFoundException('not found');
         }
     }
 
