@@ -469,6 +469,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['dialog', 'profile'],
   methods: {
@@ -1348,7 +1356,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       this.data2.first_name = this.data.profile.first_name;
       this.data2.last_name = this.data.profile.last_name;
       this.data2.commercial_name = this.data.profile.commercial_name;
-      this.data2.condition = this.data.condition;
+      this.data2.condition = this.data.profile.condition;
 
       if (this.selectedProvince !== null) {
         var _iterator = _createForOfIteratorHelper(this.provinces),
@@ -3541,6 +3549,27 @@ var render = function () {
                                 _vm._v(" "),
                                 _c(
                                   "v-col",
+                                  { attrs: { cols: "12", sm: "6", md: "6" } },
+                                  [
+                                    _c("p", [
+                                      _c(
+                                        "span",
+                                        {
+                                          staticClass:
+                                            "font-weight-bold text-h6",
+                                        },
+                                        [_vm._v("Condition : ")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("span", [
+                                        _vm._v(_vm._s(_vm.profile.condition)),
+                                      ]),
+                                    ]),
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "v-col",
                                   { attrs: { cols: "12" } },
                                   [
                                     _c(
@@ -4580,11 +4609,15 @@ var render = function () {
                                     label: "Condition",
                                   },
                                   model: {
-                                    value: _vm.data.condition,
+                                    value: _vm.data.profile.condition,
                                     callback: function ($$v) {
-                                      _vm.$set(_vm.data, "condition", $$v)
+                                      _vm.$set(
+                                        _vm.data.profile,
+                                        "condition",
+                                        $$v
+                                      )
                                     },
-                                    expression: "data.condition",
+                                    expression: "data.profile.condition",
                                   },
                                 }),
                               ],

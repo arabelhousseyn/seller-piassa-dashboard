@@ -78,7 +78,7 @@
                                     <v-select
                                         :items="conditions"
                                         label="Condition"
-                                        v-model="data.condition"
+                                        v-model="data.profile.condition"
                                     ></v-select>
                                 </v-col>
 
@@ -153,7 +153,7 @@ export default {
             this.data2.first_name = this.data.profile.first_name
             this.data2.last_name = this.data.profile.last_name
             this.data2.commercial_name = this.data.profile.commercial_name
-            this.data2.condition = this.data.condition
+            this.data2.condition = this.data.profile.condition
             if(this.selectedProvince !== null)
             {
                 for (const province of this.provinces) {

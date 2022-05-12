@@ -37,6 +37,14 @@
                                         <p><span class="font-weight-bold text-h6">Willaya : </span> <span>{{profile.province.name}}</span></p>
                                     </v-col>
 
+                                    <v-col
+                                        cols="12"
+                                        sm="6"
+                                        md="6"
+                                    >
+                                        <p><span class="font-weight-bold text-h6">Condition : </span> <span>{{profile.condition}}</span></p>
+                                    </v-col>
+
                                     <v-col cols="12">
                                         <GmapMap
                                             disableDefaultUi="true"
