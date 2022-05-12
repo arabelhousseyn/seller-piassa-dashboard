@@ -17,7 +17,7 @@
             </template>
             <v-card>
                 <v-card-title>
-                    <span class="text-h5">Types</span>
+                    <span class="text-h5">Marques</span>
                 </v-card-title>
                 <v-card-text>
                     <v-container>

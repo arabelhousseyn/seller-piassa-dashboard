@@ -41,7 +41,7 @@
                                     sm="6"
                                     md="6"
                                 >
-                                    <v-select @change="check" :items="items" placeholder="Marques" v-model="selectedSign"></v-select>
+                                    <v-select @change="check" :items="items" placeholder="Marques" multiple outlined dense v-model="selectedSigns"></v-select>
                                 </v-col>
 
                                 <v-col
@@ -49,7 +49,7 @@
                                     sm="6"
                                     md="6"
                                 >
-                                    <v-select @change="check" :items="items2" placeholder="Types" v-model="selectedType"></v-select>
+                                    <v-select @change="check" :items="items2" placeholder="Types" multiple outlined dense v-model="selectedTypes"></v-select>
                                 </v-col>
 
                                 <v-alert v-if="hasError" border="right" colored-border type="error" elevation="2">
@@ -85,12 +85,12 @@ export default {
     props : ['seller_id'],
     data : ()=>({
         dialog : false,
-        selectedSign : null,
-        selectedType : null,
+        selectedSigns : [],
+        selectedTypes : [],
         data : {
             job : null,
-            sign_id : null,
-            type_id : null,
+            signs : [],
+            types : [],
             seller_id : null,
         },
         signs : [],
@@ -108,19 +108,30 @@ export default {
             this.disable = true
             this.progress = true
             this.data.seller_id = this.seller_id
-            for (const sign of this.signs) {
-                if(sign.name == this.selectedSign)
+
+            // store the signs id's to the array of signs into the data object
+            for (const sign of this.selectedSigns) {
+                for (let i= 0;i<this.signs.length;i++)
                 {
-                    this.data.sign_id = sign.id
-                    break
+                    if(sign == this.signs[i].name)
+                    {
+                        this.data.signs.push({
+                            sign_id : this.signs[i].id
+                        })
+                    }
                 }
             }
 
-            for (const type of this.types) {
-                if(type.name == this.selectedType)
+            // store the types id's to the array of types into the dara object
+            for (const type of this.selectedTypes) {
+                for (let i= 0;i<this.types.length;i++)
                 {
-                    this.data.type_id = type.id
-                    break
+                    if(type == this.types[i].name)
+                    {
+                        this.data.types.push({
+                            type_id : this.types[i].id
+                        })
+                    }
                 }
             }
 
@@ -181,7 +192,7 @@ export default {
         },
         check()
         {
-            this.disable = (this.selectedSign == null || this.selectedType == null || this.data.job == null) ? true : false
+            this.disable = (this.selectedSigns.length == 0 || this.selectedTypes.length == 0 || this.data.job == null) ? true : false
         }
     },
     mounted() {

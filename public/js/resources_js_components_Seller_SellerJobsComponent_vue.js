@@ -14,6 +14,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _dialog_Seller_SellerTypesDialog__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../dialog/Seller/SellerTypesDialog */ "./resources/js/components/dialog/Seller/SellerTypesDialog.vue");
 /* harmony import */ var _dialog_Seller_SellerSignsDialog__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../dialog/Seller/SellerSignsDialog */ "./resources/js/components/dialog/Seller/SellerSignsDialog.vue");
 /* harmony import */ var _dialog_Seller_UpdateSellerJobDescriptionDialog__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../dialog/Seller/UpdateSellerJobDescriptionDialog */ "./resources/js/components/dialog/Seller/UpdateSellerJobDescriptionDialog.vue");
+/* harmony import */ var _dialog_Seller_DeleteSellerJobDialog__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../dialog/Seller/DeleteSellerJobDialog */ "./resources/js/components/dialog/Seller/DeleteSellerJobDialog.vue");
+/* harmony import */ var _dialog_Seller_StoreSellerJobDialog__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../dialog/Seller/StoreSellerJobDialog */ "./resources/js/components/dialog/Seller/StoreSellerJobDialog.vue");
 //
 //
 //
@@ -120,11 +122,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+
+
 
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
+    StoreSellerJobDialog: _dialog_Seller_StoreSellerJobDialog__WEBPACK_IMPORTED_MODULE_4__["default"],
+    DeleteSellerJobDialog: _dialog_Seller_DeleteSellerJobDialog__WEBPACK_IMPORTED_MODULE_3__["default"],
     UpdateSellerJobDescriptionDialog: _dialog_Seller_UpdateSellerJobDescriptionDialog__WEBPACK_IMPORTED_MODULE_2__["default"],
     SellerSignsDialog: _dialog_Seller_SellerSignsDialog__WEBPACK_IMPORTED_MODULE_1__["default"],
     SellerTypesDialog: _dialog_Seller_SellerTypesDialog__WEBPACK_IMPORTED_MODULE_0__["default"]
@@ -204,6 +214,95 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.init();
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Seller/DeleteSellerJobDialog.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Seller/DeleteSellerJobDialog.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ['dialog', 'id'],
+  data: function data() {
+    return {
+      load: false
+    };
+  },
+  methods: {
+    destroy: function destroy() {
+      var _this = this;
+
+      this.load = true;
+      axios.get('/sanctum/csrf-cookie').then(function (res) {
+        axios["delete"]("/api/sellers/jobs/destroy/".concat(_this.id)).then(function (e) {
+          if (e.status == 204) {
+            _this.$toast.open({
+              message: 'Opération effectué',
+              type: 'success'
+            });
+
+            _this.load = false;
+            window.location.reload();
+          }
+        })["catch"](function (err) {
+          _this.$toast.open({
+            message: 'ERROR',
+            type: 'error'
+          });
+        });
+      });
+    },
+    close: function close() {
+      this.$emit('close');
+    }
   }
 });
 
@@ -680,6 +779,268 @@ __webpack_require__.r(__webpack_exports__);
     },
     close3: function close3() {
       this.init();
+    }
+  },
+  mounted: function mounted() {
+    this.init();
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Seller/StoreSellerJobDialog.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Seller/StoreSellerJobDialog.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ['seller_id'],
+  data: function data() {
+    return {
+      dialog: false,
+      selectedSigns: [],
+      selectedTypes: [],
+      data: {
+        job: null,
+        signs: [],
+        types: [],
+        seller_id: null
+      },
+      signs: [],
+      types: [],
+      items: [],
+      items2: [],
+      disable: true,
+      hasError: false,
+      errors: [],
+      progress: false
+    };
+  },
+  methods: {
+    store: function store() {
+      var _this = this;
+
+      this.disable = true;
+      this.progress = true;
+      this.data.seller_id = this.seller_id; // store the signs id's to the array of signs into the data object
+
+      var _iterator = _createForOfIteratorHelper(this.selectedSigns),
+          _step;
+
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var sign = _step.value;
+
+          for (var i = 0; i < this.signs.length; i++) {
+            if (sign == this.signs[i].name) {
+              this.data.signs.push({
+                sign_id: this.signs[i].id
+              });
+            }
+          }
+        } // store the types id's to the array of types into the dara object
+
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+
+      var _iterator2 = _createForOfIteratorHelper(this.selectedTypes),
+          _step2;
+
+      try {
+        for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+          var type = _step2.value;
+
+          for (var _i2 = 0; _i2 < this.types.length; _i2++) {
+            if (type == this.types[_i2].name) {
+              this.data.types.push({
+                type_id: this.types[_i2].id
+              });
+            }
+          }
+        }
+      } catch (err) {
+        _iterator2.e(err);
+      } finally {
+        _iterator2.f();
+      }
+
+      axios.get('/sanctum/csrf-cookie').then(function (res) {
+        axios.post('/api/sellers/jobs/store', _this.data).then(function (e) {
+          _this.$toast.open({
+            message: "Opération effectué",
+            type: 'success'
+          });
+
+          window.location.reload();
+        })["catch"](function (err) {
+          var errors = Object.values(err.response.data.errors);
+
+          for (var _i = 0, _errors = errors; _i < _errors.length; _i++) {
+            var error = _errors[_i];
+
+            _this.errors.push(error[0]);
+
+            _this.hasError = true;
+            _this.disable = false;
+            _this.progress = false;
+          }
+        });
+      });
+    },
+    init: function init() {
+      var _this2 = this;
+
+      axios.get('/sanctum/csrf-cookie').then(function (res) {
+        axios.get("/api/signs/all").then(function (e) {
+          _this2.signs = e.data.data;
+
+          var _iterator3 = _createForOfIteratorHelper(_this2.signs),
+              _step3;
+
+          try {
+            for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
+              var sign = _step3.value;
+
+              _this2.items.push(sign.name);
+            }
+          } catch (err) {
+            _iterator3.e(err);
+          } finally {
+            _iterator3.f();
+          }
+        })["catch"](function (err) {
+          if (err.response.status == 404) {
+            _this2.$router.push('/home/sellers');
+          }
+
+          console.log(err);
+        });
+      });
+      axios.get('/sanctum/csrf-cookie').then(function (res) {
+        axios.get("/api/types/all").then(function (e) {
+          _this2.types = e.data.data;
+
+          var _iterator4 = _createForOfIteratorHelper(_this2.types),
+              _step4;
+
+          try {
+            for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
+              var type = _step4.value;
+
+              _this2.items2.push(type.name);
+            }
+          } catch (err) {
+            _iterator4.e(err);
+          } finally {
+            _iterator4.f();
+          }
+        })["catch"](function (err) {
+          if (err.response.status == 404) {
+            _this2.$router.push('/home/sellers');
+          }
+
+          console.log(err);
+        });
+      });
+    },
+    check: function check() {
+      this.disable = this.selectedSigns.length == 0 || this.selectedTypes.length == 0 || this.data.job == null ? true : false;
     }
   },
   mounted: function mounted() {
@@ -1244,6 +1605,44 @@ component.options.__file = "resources/js/components/Seller/SellerJobsComponent.v
 
 /***/ }),
 
+/***/ "./resources/js/components/dialog/Seller/DeleteSellerJobDialog.vue":
+/*!*************************************************************************!*\
+  !*** ./resources/js/components/dialog/Seller/DeleteSellerJobDialog.vue ***!
+  \*************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _DeleteSellerJobDialog_vue_vue_type_template_id_35a24557___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DeleteSellerJobDialog.vue?vue&type=template&id=35a24557& */ "./resources/js/components/dialog/Seller/DeleteSellerJobDialog.vue?vue&type=template&id=35a24557&");
+/* harmony import */ var _DeleteSellerJobDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DeleteSellerJobDialog.vue?vue&type=script&lang=js& */ "./resources/js/components/dialog/Seller/DeleteSellerJobDialog.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _DeleteSellerJobDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _DeleteSellerJobDialog_vue_vue_type_template_id_35a24557___WEBPACK_IMPORTED_MODULE_0__.render,
+  _DeleteSellerJobDialog_vue_vue_type_template_id_35a24557___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/dialog/Seller/DeleteSellerJobDialog.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/dialog/Seller/DestroySellerJobSignDialog.vue":
 /*!******************************************************************************!*\
   !*** ./resources/js/components/dialog/Seller/DestroySellerJobSignDialog.vue ***!
@@ -1396,6 +1795,44 @@ component.options.__file = "resources/js/components/dialog/Seller/SellerTypesDia
 
 /***/ }),
 
+/***/ "./resources/js/components/dialog/Seller/StoreSellerJobDialog.vue":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/dialog/Seller/StoreSellerJobDialog.vue ***!
+  \************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _StoreSellerJobDialog_vue_vue_type_template_id_2ec0e459___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./StoreSellerJobDialog.vue?vue&type=template&id=2ec0e459& */ "./resources/js/components/dialog/Seller/StoreSellerJobDialog.vue?vue&type=template&id=2ec0e459&");
+/* harmony import */ var _StoreSellerJobDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./StoreSellerJobDialog.vue?vue&type=script&lang=js& */ "./resources/js/components/dialog/Seller/StoreSellerJobDialog.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _StoreSellerJobDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _StoreSellerJobDialog_vue_vue_type_template_id_2ec0e459___WEBPACK_IMPORTED_MODULE_0__.render,
+  _StoreSellerJobDialog_vue_vue_type_template_id_2ec0e459___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/dialog/Seller/StoreSellerJobDialog.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/dialog/Seller/StoreSellerJobSignsDialog.vue":
 /*!*****************************************************************************!*\
   !*** ./resources/js/components/dialog/Seller/StoreSellerJobSignsDialog.vue ***!
@@ -1525,6 +1962,21 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/dialog/Seller/DeleteSellerJobDialog.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************!*\
+  !*** ./resources/js/components/dialog/Seller/DeleteSellerJobDialog.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteSellerJobDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./DeleteSellerJobDialog.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Seller/DeleteSellerJobDialog.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteSellerJobDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/js/components/dialog/Seller/DestroySellerJobSignDialog.vue?vue&type=script&lang=js&":
 /*!*******************************************************************************************************!*\
   !*** ./resources/js/components/dialog/Seller/DestroySellerJobSignDialog.vue?vue&type=script&lang=js& ***!
@@ -1582,6 +2034,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SellerTypesDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./SellerTypesDialog.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Seller/SellerTypesDialog.vue?vue&type=script&lang=js&");
  /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SellerTypesDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/dialog/Seller/StoreSellerJobDialog.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************!*\
+  !*** ./resources/js/components/dialog/Seller/StoreSellerJobDialog.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_StoreSellerJobDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./StoreSellerJobDialog.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Seller/StoreSellerJobDialog.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_StoreSellerJobDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
@@ -1646,6 +2113,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/dialog/Seller/DeleteSellerJobDialog.vue?vue&type=template&id=35a24557&":
+/*!********************************************************************************************************!*\
+  !*** ./resources/js/components/dialog/Seller/DeleteSellerJobDialog.vue?vue&type=template&id=35a24557& ***!
+  \********************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteSellerJobDialog_vue_vue_type_template_id_35a24557___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteSellerJobDialog_vue_vue_type_template_id_35a24557___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DeleteSellerJobDialog_vue_vue_type_template_id_35a24557___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./DeleteSellerJobDialog.vue?vue&type=template&id=35a24557& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Seller/DeleteSellerJobDialog.vue?vue&type=template&id=35a24557&");
+
+
+/***/ }),
+
 /***/ "./resources/js/components/dialog/Seller/DestroySellerJobSignDialog.vue?vue&type=template&id=b3ffc186&":
 /*!*************************************************************************************************************!*\
   !*** ./resources/js/components/dialog/Seller/DestroySellerJobSignDialog.vue?vue&type=template&id=b3ffc186& ***!
@@ -1706,6 +2189,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SellerTypesDialog_vue_vue_type_template_id_51c4487e___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SellerTypesDialog_vue_vue_type_template_id_51c4487e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./SellerTypesDialog.vue?vue&type=template&id=51c4487e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Seller/SellerTypesDialog.vue?vue&type=template&id=51c4487e&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/dialog/Seller/StoreSellerJobDialog.vue?vue&type=template&id=2ec0e459&":
+/*!*******************************************************************************************************!*\
+  !*** ./resources/js/components/dialog/Seller/StoreSellerJobDialog.vue?vue&type=template&id=2ec0e459& ***!
+  \*******************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_StoreSellerJobDialog_vue_vue_type_template_id_2ec0e459___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_StoreSellerJobDialog_vue_vue_type_template_id_2ec0e459___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_StoreSellerJobDialog_vue_vue_type_template_id_2ec0e459___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./StoreSellerJobDialog.vue?vue&type=template&id=2ec0e459& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Seller/StoreSellerJobDialog.vue?vue&type=template&id=2ec0e459&");
 
 
 /***/ }),
@@ -1829,6 +2328,14 @@ var render = function () {
                                 staticClass: "mx-4",
                                 attrs: { inset: "", vertical: "" },
                               }),
+                              _vm._v(" "),
+                              _c("v-spacer"),
+                              _vm._v(" "),
+                              _vm.data.length == 0
+                                ? _c("store-seller-job-dialog", {
+                                    attrs: { seller_id: _vm.seller_id },
+                                  })
+                                : _vm._e(),
                             ],
                             1
                           ),
@@ -2118,12 +2625,19 @@ var render = function () {
                   ],
                   null,
                   false,
-                  1063670639
+                  1787892511
                 ),
               }),
             ],
             1
           ),
+          _vm._v(" "),
+          _vm.dialog
+            ? _c("delete-seller-job-dialog", {
+                attrs: { dialog: _vm.dialog, id: _vm.seller_job_id },
+                on: { close: _vm.close },
+              })
+            : _vm._e(),
           _vm._v(" "),
           _vm.dialog1
             ? _c("seller-types-dialog", {
@@ -2155,6 +2669,95 @@ var render = function () {
         1
       )
     : _vm._e()
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Seller/DeleteSellerJobDialog.vue?vue&type=template&id=35a24557&":
+/*!***********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Seller/DeleteSellerJobDialog.vue?vue&type=template&id=35a24557& ***!
+  \***********************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "delete_seller_dialog" },
+    [
+      _c(
+        "v-dialog",
+        {
+          attrs: { persistent: "", "max-width": "290" },
+          model: {
+            value: _vm.dialog,
+            callback: function ($$v) {
+              _vm.dialog = $$v
+            },
+            expression: "dialog",
+          },
+        },
+        [
+          _c(
+            "v-card",
+            [
+              _c("v-card-title", { staticClass: "text-h5" }, [
+                _vm._v(
+                  "\n                Etes-vous sûr que vous voulez supprimer !\n            "
+                ),
+              ]),
+              _vm._v(" "),
+              _c(
+                "v-card-actions",
+                [
+                  _c("v-spacer"),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { color: "grey darken-1", text: "" },
+                      on: { click: _vm.close },
+                    },
+                    [_c("v-icon", [_vm._v("mdi-cancel")])],
+                    1
+                  ),
+                  _vm._v(" "),
+                  !_vm.load
+                    ? _c(
+                        "v-btn",
+                        {
+                          attrs: { color: "red darken-1", text: "" },
+                          on: { click: _vm.destroy },
+                        },
+                        [_c("v-icon", [_vm._v("mdi-delete")])],
+                        1
+                      )
+                    : _c("v-progress-circular", {
+                        attrs: { indeterminate: "", color: "primary" },
+                      }),
+                ],
+                1
+              ),
+            ],
+            1
+          ),
+        ],
+        1
+      ),
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -2769,6 +3372,273 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Seller/StoreSellerJobDialog.vue?vue&type=template&id=2ec0e459&":
+/*!**********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Seller/StoreSellerJobDialog.vue?vue&type=template&id=2ec0e459& ***!
+  \**********************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "store-seller-job-dialog" },
+    [
+      _c(
+        "v-dialog",
+        {
+          attrs: { persistent: "", "max-width": "600px" },
+          scopedSlots: _vm._u([
+            {
+              key: "activator",
+              fn: function (ref) {
+                var on = ref.on
+                var attrs = ref.attrs
+                return [
+                  _c(
+                    "v-btn",
+                    _vm._g(
+                      _vm._b(
+                        { attrs: { color: "primary", dark: "" } },
+                        "v-btn",
+                        attrs,
+                        false
+                      ),
+                      on
+                    ),
+                    [
+                      _c("v-icon", [_vm._v("mdi-plus")]),
+                      _vm._v(" Ajouter\n            "),
+                    ],
+                    1
+                  ),
+                ]
+              },
+            },
+          ]),
+          model: {
+            value: _vm.dialog,
+            callback: function ($$v) {
+              _vm.dialog = $$v
+            },
+            expression: "dialog",
+          },
+        },
+        [
+          _vm._v(" "),
+          _c(
+            "v-card",
+            [
+              _c("v-card-title", [
+                _c("span", { staticClass: "text-h5" }, [_vm._v("Ajouter")]),
+              ]),
+              _vm._v(" "),
+              _c(
+                "v-card-text",
+                [
+                  _c("v-container", [
+                    _c(
+                      "form",
+                      {
+                        attrs: { method: "post" },
+                        on: {
+                          submit: function ($event) {
+                            $event.preventDefault()
+                            return _vm.store.apply(null, arguments)
+                          },
+                        },
+                      },
+                      [
+                        _c(
+                          "v-row",
+                          [
+                            _c(
+                              "v-col",
+                              { attrs: { cols: "12" } },
+                              [
+                                _c("v-text-field", {
+                                  attrs: {
+                                    counter: "",
+                                    maxlength: "255",
+                                    label: "Description de l'emploi*",
+                                    required: "",
+                                  },
+                                  on: { keydown: _vm.check },
+                                  model: {
+                                    value: _vm.data.job,
+                                    callback: function ($$v) {
+                                      _vm.$set(_vm.data, "job", $$v)
+                                    },
+                                    expression: "data.job",
+                                  },
+                                }),
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-col",
+                              { attrs: { cols: "12", sm: "6", md: "6" } },
+                              [
+                                _c("v-select", {
+                                  attrs: {
+                                    items: _vm.items,
+                                    placeholder: "Marques",
+                                    multiple: "",
+                                    outlined: "",
+                                    dense: "",
+                                  },
+                                  on: { change: _vm.check },
+                                  model: {
+                                    value: _vm.selectedSigns,
+                                    callback: function ($$v) {
+                                      _vm.selectedSigns = $$v
+                                    },
+                                    expression: "selectedSigns",
+                                  },
+                                }),
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-col",
+                              { attrs: { cols: "12", sm: "6", md: "6" } },
+                              [
+                                _c("v-select", {
+                                  attrs: {
+                                    items: _vm.items2,
+                                    placeholder: "Types",
+                                    multiple: "",
+                                    outlined: "",
+                                    dense: "",
+                                  },
+                                  on: { change: _vm.check },
+                                  model: {
+                                    value: _vm.selectedTypes,
+                                    callback: function ($$v) {
+                                      _vm.selectedTypes = $$v
+                                    },
+                                    expression: "selectedTypes",
+                                  },
+                                }),
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _vm.hasError
+                              ? _c(
+                                  "v-alert",
+                                  {
+                                    attrs: {
+                                      border: "right",
+                                      "colored-border": "",
+                                      type: "error",
+                                      elevation: "2",
+                                    },
+                                  },
+                                  [
+                                    _c(
+                                      "ul",
+                                      _vm._l(
+                                        _vm.errors,
+                                        function (error, index) {
+                                          return _c("li", { key: index }, [
+                                            _c("span", [_vm._v(_vm._s(error))]),
+                                          ])
+                                        }
+                                      ),
+                                      0
+                                    ),
+                                  ]
+                                )
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _c(
+                              "v-col",
+                              { attrs: { cols: "12" } },
+                              [
+                                _c(
+                                  "v-btn",
+                                  {
+                                    attrs: {
+                                      type: "submit",
+                                      disabled: _vm.disable,
+                                      color: "primary",
+                                    },
+                                  },
+                                  [
+                                    !_vm.progress
+                                      ? _c("v-icon", [_vm._v("mdi-check")])
+                                      : _c("v-progress-circular", {
+                                          attrs: {
+                                            indeterminate: "",
+                                            color: "white",
+                                          },
+                                        }),
+                                  ],
+                                  1
+                                ),
+                              ],
+                              1
+                            ),
+                          ],
+                          1
+                        ),
+                      ],
+                      1
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("small", [_vm._v("*Indique le champ obligatoire")]),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-card-actions",
+                [
+                  _c("v-spacer"),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { color: "blue darken-1", text: "" },
+                      on: {
+                        click: function ($event) {
+                          _vm.dialog = false
+                        },
+                      },
+                    },
+                    [_vm._v("\n                    Fermer\n                ")]
+                  ),
+                ],
+                1
+              ),
+            ],
+            1
+          ),
+        ],
+        1
+      ),
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Seller/StoreSellerJobSignsDialog.vue?vue&type=template&id=6aed59fd&":
 /*!***************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Seller/StoreSellerJobSignsDialog.vue?vue&type=template&id=6aed59fd& ***!
@@ -2834,7 +3704,7 @@ var render = function () {
             "v-card",
             [
               _c("v-card-title", [
-                _c("span", { staticClass: "text-h5" }, [_vm._v("Types")]),
+                _c("span", { staticClass: "text-h5" }, [_vm._v("Marques")]),
               ]),
               _vm._v(" "),
               _c(

@@ -21,6 +21,9 @@
                             inset
                             vertical
                         ></v-divider>
+                        <v-spacer></v-spacer>
+                        <store-seller-job-dialog v-if="data.length == 0" :seller_id="seller_id"/>
+
                     </v-toolbar>
                     <v-toolbar flat>
                         <v-text-field
@@ -98,6 +101,7 @@
                 </template>
             </v-data-table>
         </v-container>
+        <delete-seller-job-dialog v-if="dialog" @close="close" :dialog="dialog" :id="seller_job_id"  />
         <seller-types-dialog v-if="dialog1" @close="close1" :dialog="dialog1" :seller_job_id="seller_job_id" />
         <seller-signs-dialog v-if="dialog2" @close="close2" :dialog="dialog2" :seller_job_id="seller_job_id" />
         <update-seller-job-description-dialog v-if="dialog3" @close="close3" :dialog="dialog3" :data="fruits" />
@@ -108,8 +112,12 @@
 import SellerTypesDialog from "../dialog/Seller/SellerTypesDialog";
 import SellerSignsDialog from "../dialog/Seller/SellerSignsDialog";
 import UpdateSellerJobDescriptionDialog from "../dialog/Seller/UpdateSellerJobDescriptionDialog";
+import DeleteSellerJobDialog from "../dialog/Seller/DeleteSellerJobDialog";
+import StoreSellerJobDialog from "../dialog/Seller/StoreSellerJobDialog";
 export default {
-    components: {UpdateSellerJobDescriptionDialog, SellerSignsDialog, SellerTypesDialog},
+    components: {
+        StoreSellerJobDialog,
+        DeleteSellerJobDialog, UpdateSellerJobDescriptionDialog, SellerSignsDialog, SellerTypesDialog},
     props : ['jobs'],
     data : ()=>({
         data : undefined,

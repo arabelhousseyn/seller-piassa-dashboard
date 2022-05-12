@@ -24,10 +24,12 @@ class StoreSellerJobRequest extends FormRequest
     public function rules()
     {
         return [
+            'seller_id' => 'required|exists:sellers,id',
             'job' => 'required|max:254',
-            'sign_id' => 'required|exists:signs,id',
-            'type_id' => 'required|exists:types,id',
-            'seller_id' => 'required|exists:sellers,id'
+            'types' => 'required|array',
+            'types.*.type_id' => 'required|exists:types,id',
+            'signs' => 'required|array',
+            'signs.*.sign_id' => 'required|exists:signs,id'
         ];
     }
 }
