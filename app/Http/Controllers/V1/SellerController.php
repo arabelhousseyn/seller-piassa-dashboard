@@ -246,6 +246,17 @@ class SellerController extends Controller
         }
     }
 
+    public function getSellerJobTypes($seller_job)
+    {
+        try {
+            $seller_job = SellerJob::with('types')->findOrFail($seller_job);
+            return response(['data' => $seller_job->types],200);
+        }catch (ModelNotFoundException $exception)
+        {
+            throw new ModelNotFoundException('not found');
+        }
+    }
+
     public function storeSellerJobTypes(SotreSellerJobTypes $request)
     {
         if($request->validated())
@@ -262,8 +273,19 @@ class SellerController extends Controller
     public function destorySellerType($seller_job_type)
     {
         try {
-            $seller_job = SellerJobType::find($seller_job_type);
+            $seller_job = SellerJobType::findOrFail($seller_job_type);
             $seller_job->forceDelete();
+        }catch (ModelNotFoundException $exception)
+        {
+            throw new ModelNotFoundException('not found');
+        }
+    }
+
+    public function getSellerJobSigns($seller_job)
+    {
+        try {
+            $seller_job = SellerJob::with('signs')->findOrFail($seller_job);
+            return response(['data' => $seller_job->signs],200);
         }catch (ModelNotFoundException $exception)
         {
             throw new ModelNotFoundException('not found');
@@ -286,7 +308,7 @@ class SellerController extends Controller
     public function destorySellerSign($seller_job_sign)
     {
         try {
-            $seller_job = SellerJobSign::find($seller_job_sign);
+            $seller_job = SellerJobSign::findOrFail($seller_job_sign);
             $seller_job->forceDelete();
         }catch (ModelNotFoundException $exception)
         {

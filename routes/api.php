@@ -67,6 +67,9 @@ Route::middleware(['auth:sanctum','app_version'])->group(function (){
         Route::get('phones/{id}','sellerPhones')->whereNumber('id');
         Route::get('jobs/{id}','sellerJobs')->whereNumber('id');
 
+        Route::get('types/{seller_job}','getSellerJobTypes')->whereNumber('seller_job');
+        Route::get('signs/{seller_job}','getSellerJobSigns')->whereNumber('seller_job');
+
         Route::post('store_types','storeSellerJobTypes');
         Route::post('store_signs','StoreSellerJobSigns');
 
