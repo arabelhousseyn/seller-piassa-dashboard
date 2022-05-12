@@ -381,6 +381,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _DestroySellerJobSignDialog__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DestroySellerJobSignDialog */ "./resources/js/components/dialog/Seller/DestroySellerJobSignDialog.vue");
+/* harmony import */ var _StoreSellerJobSignsDialog__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./StoreSellerJobSignsDialog */ "./resources/js/components/dialog/Seller/StoreSellerJobSignsDialog.vue");
+//
+//
 //
 //
 //
@@ -457,8 +460,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
+    StoreSellerJobSignsDialog: _StoreSellerJobSignsDialog__WEBPACK_IMPORTED_MODULE_1__["default"],
     DestroySellerJobSignDialog: _DestroySellerJobSignDialog__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   props: ['seller_job_id', 'dialog'],
@@ -503,6 +508,9 @@ __webpack_require__.r(__webpack_exports__);
 
       this.dialog1 = false;
       this.seller_job_sign_id = null;
+    },
+    close3: function close3() {
+      this.init();
     }
   },
   mounted: function mounted() {
@@ -662,6 +670,204 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Seller/StoreSellerJobSignsDialog.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Seller/StoreSellerJobSignsDialog.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ['seller_job_id'],
+  data: function data() {
+    return {
+      disabled: true,
+      progress: false,
+      dialog: false,
+      data: {
+        seller_job_id: null,
+        signs: []
+      },
+      items1: [],
+      signs: [],
+      selectedSigns: [],
+      hasError: false,
+      errors: []
+    };
+  },
+  methods: {
+    store: function store() {
+      var _this = this;
+
+      var _iterator = _createForOfIteratorHelper(this.selectedSigns),
+          _step;
+
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var sign = _step.value;
+
+          for (var i = 0; i < this.signs.length; i++) {
+            if (sign == this.signs[i].name) {
+              this.data.signs.push({
+                sign_id: this.signs[i].id
+              });
+            }
+          }
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+
+      this.progress = true;
+      this.disabled = true;
+      this.data.seller_job_id = this.seller_job_id;
+      axios.get('/sanctum/csrf-cookie').then(function (res) {
+        axios.post('/api/sellers/store_signs', _this.data).then(function (e) {
+          _this.$toast.open({
+            message: "Opération effectué",
+            type: 'success'
+          });
+
+          _this.$emit('close3');
+
+          _this.dialog = false;
+          _this.disabled = true;
+          _this.progress = false;
+          _this.selectedSigns = [];
+          _this.data.signs = [];
+        })["catch"](function (err) {
+          var errors = Object.values(err.response.data.errors);
+
+          for (var _i = 0, _errors = errors; _i < _errors.length; _i++) {
+            var error = _errors[_i];
+
+            _this.errors.push(error[0]);
+
+            _this.hasError = true;
+            _this.progress = false;
+            _this.disabled = false;
+          }
+        });
+      });
+    },
+    init: function init() {
+      var _this2 = this;
+
+      axios.get('/sanctum/csrf-cookie').then(function (res) {
+        axios.get('/api/signs/all').then(function (e) {
+          _this2.signs = e.data.data;
+
+          var _iterator2 = _createForOfIteratorHelper(e.data.data),
+              _step2;
+
+          try {
+            for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+              var sign = _step2.value;
+
+              _this2.items1.push(sign.name);
+            }
+          } catch (err) {
+            _iterator2.e(err);
+          } finally {
+            _iterator2.f();
+          }
+        })["catch"](function (err) {
+          console.log(err);
+
+          _this2.$toast.open({
+            message: "ERROR",
+            type: 'error'
+          });
+        });
+      });
+    },
+    check: function check() {
+      this.disabled = this.selectedSigns.length > 0 ? false : true;
+    }
+  },
+  mounted: function mounted() {
+    this.init();
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Seller/StoreSellerJobTypesDialog.vue?vue&type=script&lang=js&":
 /*!**********************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Seller/StoreSellerJobTypesDialog.vue?vue&type=script&lang=js& ***!
@@ -802,6 +1008,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
           _this.disabled = true;
           _this.progress = false;
           _this.selectedTypes = [];
+          _this.data.types = [];
         })["catch"](function (err) {
           var errors = Object.values(err.response.data.errors);
 
@@ -1049,6 +1256,44 @@ component.options.__file = "resources/js/components/dialog/Seller/SellerTypesDia
 
 /***/ }),
 
+/***/ "./resources/js/components/dialog/Seller/StoreSellerJobSignsDialog.vue":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/components/dialog/Seller/StoreSellerJobSignsDialog.vue ***!
+  \*****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _StoreSellerJobSignsDialog_vue_vue_type_template_id_6aed59fd___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./StoreSellerJobSignsDialog.vue?vue&type=template&id=6aed59fd& */ "./resources/js/components/dialog/Seller/StoreSellerJobSignsDialog.vue?vue&type=template&id=6aed59fd&");
+/* harmony import */ var _StoreSellerJobSignsDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./StoreSellerJobSignsDialog.vue?vue&type=script&lang=js& */ "./resources/js/components/dialog/Seller/StoreSellerJobSignsDialog.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _StoreSellerJobSignsDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _StoreSellerJobSignsDialog_vue_vue_type_template_id_6aed59fd___WEBPACK_IMPORTED_MODULE_0__.render,
+  _StoreSellerJobSignsDialog_vue_vue_type_template_id_6aed59fd___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/dialog/Seller/StoreSellerJobSignsDialog.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/dialog/Seller/StoreSellerJobTypesDialog.vue":
 /*!*****************************************************************************!*\
   !*** ./resources/js/components/dialog/Seller/StoreSellerJobTypesDialog.vue ***!
@@ -1162,6 +1407,21 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/dialog/Seller/StoreSellerJobSignsDialog.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************!*\
+  !*** ./resources/js/components/dialog/Seller/StoreSellerJobSignsDialog.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_StoreSellerJobSignsDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./StoreSellerJobSignsDialog.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Seller/StoreSellerJobSignsDialog.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_StoreSellerJobSignsDialog_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/js/components/dialog/Seller/StoreSellerJobTypesDialog.vue?vue&type=script&lang=js&":
 /*!******************************************************************************************************!*\
   !*** ./resources/js/components/dialog/Seller/StoreSellerJobTypesDialog.vue?vue&type=script&lang=js& ***!
@@ -1253,6 +1513,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SellerTypesDialog_vue_vue_type_template_id_51c4487e___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SellerTypesDialog_vue_vue_type_template_id_51c4487e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./SellerTypesDialog.vue?vue&type=template&id=51c4487e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Seller/SellerTypesDialog.vue?vue&type=template&id=51c4487e&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/dialog/Seller/StoreSellerJobSignsDialog.vue?vue&type=template&id=6aed59fd&":
+/*!************************************************************************************************************!*\
+  !*** ./resources/js/components/dialog/Seller/StoreSellerJobSignsDialog.vue?vue&type=template&id=6aed59fd& ***!
+  \************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_StoreSellerJobSignsDialog_vue_vue_type_template_id_6aed59fd___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_StoreSellerJobSignsDialog_vue_vue_type_template_id_6aed59fd___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_StoreSellerJobSignsDialog_vue_vue_type_template_id_6aed59fd___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./StoreSellerJobSignsDialog.vue?vue&type=template&id=6aed59fd& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Seller/StoreSellerJobSignsDialog.vue?vue&type=template&id=6aed59fd&");
 
 
 /***/ }),
@@ -1848,9 +2124,20 @@ var render = function () {
           _c(
             "v-card",
             [
-              _c("v-card-title", { staticClass: "text-h5" }, [
-                _vm._v("\n                Marques\n            "),
-              ]),
+              _c(
+                "v-card-title",
+                { staticClass: "text-h5" },
+                [
+                  _vm._v("\n                Marques\n                "),
+                  _c("v-spacer"),
+                  _vm._v(" "),
+                  _c("store-seller-job-signs-dialog", {
+                    attrs: { seller_job_id: _vm.seller_job_id },
+                    on: { close3: _vm.close3 },
+                  }),
+                ],
+                1
+              ),
               _vm._v(" "),
               _c(
                 "v-card-text",
@@ -2219,6 +2506,224 @@ var render = function () {
             on: { close: _vm.close1, close1: _vm.close2 },
           })
         : _vm._e(),
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Seller/StoreSellerJobSignsDialog.vue?vue&type=template&id=6aed59fd&":
+/*!***************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/dialog/Seller/StoreSellerJobSignsDialog.vue?vue&type=template&id=6aed59fd& ***!
+  \***************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "seller-job-type-dialog" },
+    [
+      _c(
+        "v-dialog",
+        {
+          attrs: { persistent: "", "max-width": "600px" },
+          scopedSlots: _vm._u([
+            {
+              key: "activator",
+              fn: function (ref) {
+                var on = ref.on
+                var attrs = ref.attrs
+                return [
+                  _c(
+                    "v-btn",
+                    _vm._g(
+                      _vm._b(
+                        { attrs: { color: "primary", dark: "" } },
+                        "v-btn",
+                        attrs,
+                        false
+                      ),
+                      on
+                    ),
+                    [
+                      _c("v-icon", [_vm._v("mdi-plus")]),
+                      _vm._v(" Ajouter\n            "),
+                    ],
+                    1
+                  ),
+                ]
+              },
+            },
+          ]),
+          model: {
+            value: _vm.dialog,
+            callback: function ($$v) {
+              _vm.dialog = $$v
+            },
+            expression: "dialog",
+          },
+        },
+        [
+          _vm._v(" "),
+          _c(
+            "v-card",
+            [
+              _c("v-card-title", [
+                _c("span", { staticClass: "text-h5" }, [_vm._v("Types")]),
+              ]),
+              _vm._v(" "),
+              _c(
+                "v-card-text",
+                [
+                  _c(
+                    "v-container",
+                    [
+                      _c("v-row", [
+                        _c(
+                          "form",
+                          {
+                            attrs: { method: "post" },
+                            on: {
+                              submit: function ($event) {
+                                $event.preventDefault()
+                                return _vm.store.apply(null, arguments)
+                              },
+                            },
+                          },
+                          [
+                            _c(
+                              "v-col",
+                              { attrs: { cols: "12" } },
+                              [
+                                _c("v-combobox", {
+                                  attrs: {
+                                    items: _vm.items1,
+                                    label: "Marques*",
+                                    multiple: "",
+                                    outlined: "",
+                                    dense: "",
+                                  },
+                                  on: { change: _vm.check },
+                                  model: {
+                                    value: _vm.selectedSigns,
+                                    callback: function ($$v) {
+                                      _vm.selectedSigns = $$v
+                                    },
+                                    expression: "selectedSigns",
+                                  },
+                                }),
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _vm.hasError
+                              ? _c(
+                                  "v-alert",
+                                  {
+                                    attrs: {
+                                      border: "right",
+                                      "colored-border": "",
+                                      type: "error",
+                                      elevation: "2",
+                                    },
+                                  },
+                                  [
+                                    _c(
+                                      "ul",
+                                      _vm._l(
+                                        _vm.errors,
+                                        function (error, index) {
+                                          return _c("li", { key: index }, [
+                                            _c("span", [_vm._v(_vm._s(error))]),
+                                          ])
+                                        }
+                                      ),
+                                      0
+                                    ),
+                                  ]
+                                )
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _c(
+                              "v-col",
+                              { attrs: { cols: "12" } },
+                              [
+                                _c(
+                                  "v-btn",
+                                  {
+                                    attrs: {
+                                      type: "submit",
+                                      disabled: _vm.disabled,
+                                      color: "primary",
+                                    },
+                                  },
+                                  [
+                                    !_vm.progress
+                                      ? _c("v-icon", [_vm._v("mdi-check")])
+                                      : _c("v-progress-circular", {
+                                          attrs: {
+                                            indeterminate: "",
+                                            color: "white",
+                                          },
+                                        }),
+                                  ],
+                                  1
+                                ),
+                              ],
+                              1
+                            ),
+                          ],
+                          1
+                        ),
+                      ]),
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("small", [_vm._v("*indicates required field")]),
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-card-actions",
+                [
+                  _c("v-spacer"),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { color: "blue darken-1", text: "" },
+                      on: {
+                        click: function ($event) {
+                          _vm.dialog = false
+                        },
+                      },
+                    },
+                    [_vm._v("\n                    Fermer\n                ")]
+                  ),
+                ],
+                1
+              ),
+            ],
+            1
+          ),
+        ],
+        1
+      ),
     ],
     1
   )

@@ -8,6 +8,8 @@
             <v-card>
                 <v-card-title class="text-h5">
                     Marques
+                    <v-spacer></v-spacer>
+                    <store-seller-job-signs-dialog @close3="close3" :seller_job_id="seller_job_id" />
                 </v-card-title>
                 <v-card-text>
                     <v-container v-if="loading">
@@ -76,8 +78,9 @@
 <script>
 
 import DestroySellerJobSignDialog from "./DestroySellerJobSignDialog";
+import StoreSellerJobSignsDialog from "./StoreSellerJobSignsDialog";
 export default {
-    components: {DestroySellerJobSignDialog},
+    components: {StoreSellerJobSignsDialog, DestroySellerJobSignDialog},
     props : ['seller_job_id','dialog'],
     data : () =>({
         data : [],
@@ -123,6 +126,10 @@ export default {
 
             this.dialog1 = false
             this.seller_job_sign_id = null
+        },
+        close3()
+        {
+            this.init()
         }
     },
     mounted() {
