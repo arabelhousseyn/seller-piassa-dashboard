@@ -57,12 +57,17 @@
                         <v-list>
                             <v-list-item-group>
 
-                                <v-list-item v-if="" link @click="types(item.id)">
+                                <v-list-item link @click="update(item)">
+                                    <v-list-item-icon><v-icon color="success">mdi-pencil</v-icon></v-list-item-icon>
+                                    <v-list-item-content><v-list-item-title>Modifier description</v-list-item-title></v-list-item-content>
+                                </v-list-item>
+
+                                <v-list-item  link @click="types(item.id)">
                                     <v-list-item-icon><v-icon color="success">mdi-square</v-icon></v-list-item-icon>
                                     <v-list-item-content><v-list-item-title>Types</v-list-item-title></v-list-item-content>
                                 </v-list-item>
 
-                                <v-list-item v-if="" link @click="signs(item.id)">
+                                <v-list-item  link @click="signs(item.id)">
                                     <v-list-item-icon><v-icon color="success">mdi-square</v-icon></v-list-item-icon>
                                     <v-list-item-content><v-list-item-title>marques</v-list-item-title></v-list-item-content>
                                 </v-list-item>
@@ -95,14 +100,16 @@
         </v-container>
         <seller-types-dialog v-if="dialog1" @close="close1" :dialog="dialog1" :seller_job_id="seller_job_id" />
         <seller-signs-dialog v-if="dialog2" @close="close2" :dialog="dialog2" :seller_job_id="seller_job_id" />
+        <update-seller-job-description-dialog v-if="dialog3" @close="close3" :dialog="dialog3" :data="fruits" />
     </div>
 </template>
 
 <script>
 import SellerTypesDialog from "../dialog/Seller/SellerTypesDialog";
 import SellerSignsDialog from "../dialog/Seller/SellerSignsDialog";
+import UpdateSellerJobDescriptionDialog from "../dialog/Seller/UpdateSellerJobDescriptionDialog";
 export default {
-    components: {SellerSignsDialog, SellerTypesDialog},
+    components: {UpdateSellerJobDescriptionDialog, SellerSignsDialog, SellerTypesDialog},
     props : ['jobs'],
     data : ()=>({
         data : undefined,
@@ -121,6 +128,8 @@ export default {
         seller_job_id : null,
         dialog1 : false,
         dialog2 : false,
+        dialog3 : false,
+        fruits : [],
     }),
     methods : {
         types(seller_job_id)
@@ -132,6 +141,11 @@ export default {
         {
             this.seller_job_id = seller_job_id
             this.dialog2 = true
+        },
+        update(data)
+        {
+          this.fruits = data
+            this.dialog3 = true
         },
         init()
         {
@@ -169,6 +183,11 @@ export default {
             this.seller_job_id = null
             this.dialog2 = false
         },
+        close3()
+        {
+            this.fruits = []
+            this.dialog3 = false
+        }
     },
     mounted() {
         this.init()

@@ -16,8 +16,6 @@
 
                                 <v-col
                                     cols="12"
-                                    sm="6"
-                                    md="4"
                                 >
                                     <v-textarea
                                         label="Description"
@@ -79,7 +77,7 @@ export default {
             this.data2.job = this.data.job
 
             axios.get('/sanctum/csrf-cookie').then(res => {
-                axios.put(`/api/sellers/${this.data.id}`,this.data2).then(e=>{
+                axios.put(`/api/sellers/update_job_description/${this.data.id}`,this.data2).then(e=>{
                     console.log(e)
                     if(e.status == 204)
                     {
