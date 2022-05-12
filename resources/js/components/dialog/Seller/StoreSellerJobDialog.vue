@@ -32,7 +32,6 @@
                                         @keydown="check"
                                         label="Description de l'emploi"
                                         v-model="data.job"
-                                        required
                                     ></v-text-field>
                                 </v-col>
 

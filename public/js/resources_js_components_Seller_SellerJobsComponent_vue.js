@@ -885,7 +885,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['seller_id'],
   data: function data() {
@@ -3468,7 +3467,6 @@ var render = function () {
                                     counter: "",
                                     maxlength: "255",
                                     label: "Description de l'emploi",
-                                    required: "",
                                   },
                                   on: { keydown: _vm.check },
                                   model: {
