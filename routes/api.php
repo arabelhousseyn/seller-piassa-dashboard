@@ -74,7 +74,7 @@ Route::middleware(['auth:sanctum','app_version'])->group(function (){
         Route::post('store_signs','StoreSellerJobSigns');
 
         Route::delete('destroy_seller_type/{seller_job_type}','destorySellerType')->whereNumber('seller_job_type');
-        Route::delete('destroy_seller_sign/{seller_job_sign}','StoreSellerJobSigns')->whereNumber('seller_job_type');
+        Route::delete('destroy_seller_sign/{seller_job_sign}','destorySellerSign')->whereNumber('seller_job_type');
 
         Route::prefix('phones')->group(function (){
             Route::post('store','storeSellerPhones')->whereNumber('id'); // refactor

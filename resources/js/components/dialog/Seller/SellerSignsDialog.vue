@@ -69,13 +69,15 @@
                 </v-card-actions>
             </v-card>
         </v-dialog>
+        <destroy-seller-job-sign-dialog @close="close1" @close1="close2" v-if="dialog1" :dialog="dialog1" :id="seller_job_sign_id" />
     </div>
 </template>
 
 <script>
 
+import DestroySellerJobSignDialog from "./DestroySellerJobSignDialog";
 export default {
-    components: {},
+    components: {DestroySellerJobSignDialog},
     props : ['seller_job_id','dialog'],
     data : () =>({
         data : [],
@@ -109,7 +111,7 @@ export default {
             this.dialog1 = false
             this.seller_job_sign_id = null
         },
-        close2(seller_job_type_id)
+        close2(seller_job_sign_id)
         {
             for (let i = 0;i<this.data.length;i++)
             {
