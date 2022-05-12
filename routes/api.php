@@ -67,6 +67,9 @@ Route::middleware(['auth:sanctum','app_version'])->group(function (){
         Route::get('phones/{id}','sellerPhones')->whereNumber('id');
         Route::get('jobs/{id}','sellerJobs')->whereNumber('id');
 
+        Route::post('store_types','storeSellerJobTypes');
+        Route::post('store_signs','StoreSellerJobSigns');
+
         Route::prefix('phones')->group(function (){
             Route::post('store','storeSellerPhones')->whereNumber('id'); // refactor
             Route::put('update/{id}','updateSellerPhone')->whereNumber('id');

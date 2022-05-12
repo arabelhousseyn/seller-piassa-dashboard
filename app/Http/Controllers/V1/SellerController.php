@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SotreSellerJobTypes;
 use App\Http\Requests\StoreSellerJobRequest;
+use App\Http\Requests\StoreSellerJobSigns;
 use App\Http\Requests\StoreSellerPhoneRequest;
 use App\Http\Requests\StoreSellerRequest;
 use App\Http\Requests\UpdateSellerRequest;
@@ -240,6 +242,32 @@ class SellerController extends Controller
         {
             SellerJob::create($request->only('job','sign_id','type_id','seller_id'));
             return response()->noContent();
+        }
+    }
+
+    public function storeSellerJobTypes(SotreSellerJobTypes $request)
+    {
+        if($request->validated())
+        {
+            $job = SellerJob::find($request->job_id);
+            collect($request->types)->map(function ($type) use ($job){
+                $job->types()->create($type);
+            });
+
+            return response(['message' => 'created!'],201);
+        }
+    }
+
+    public function StoreSellerJobSigns(StoreSellerJobSigns $request)
+    {
+        if($request->validated())
+        {
+            $job = SellerJob::find($request->job_id);
+            collect($request->signs)->map(function ($sign) use ($job){
+                $job->signs()->create($sign);
+            });
+
+            return response(['message' => 'created!'],201);
         }
     }
 
