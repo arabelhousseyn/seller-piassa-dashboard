@@ -33,7 +33,7 @@ class StoreSellerRequest extends FormRequest
             'last_name' => 'required',
             'commercial_name' => 'required',
             'condition' => 'required',
-            'job' =>'required',
+            'job' =>'max:254',
             'types' => 'required|array',
             'types.*.type_id' => 'required|exists:types,id',
             'signs' => 'required|array',
