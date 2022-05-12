@@ -11,11 +11,7 @@ class UpdateSellerService{
         $seller = Seller::find($id);
         if($seller->phone == $request->phone)
         {
-            $rules = [
-                'email' => 'email:rfc,dns,filter',
-            ];
-            $validated0 = $request->validate($rules);
-            Seller::whereId($id)->update($validated0);
+            Seller::whereId($id)->update($request->only('email','phone'));
             $seller->profile()->update($request->except('email','phone'));
             return response('',204);
         }

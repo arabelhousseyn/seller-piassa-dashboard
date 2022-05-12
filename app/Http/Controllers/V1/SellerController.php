@@ -318,6 +318,18 @@ class SellerController extends Controller
         }
     }
 
+    public function updateDescriptionJob(Request $request,$seller_job_id)
+    {
+        try {
+            $seller_job = SellerJob::findOrFail($seller_job_id);
+            $seller_job->update($request->only('job'));
+            return response()->noContent();
+        }catch (ModelNotFoundException $exception)
+        {
+            throw new ModelNotFoundException('not found');
+        }
+    }
+
     public function destorySellerJob($seller_job_id)
     {
         try {

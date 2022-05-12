@@ -1302,6 +1302,18 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['data', 'dialog'],
   data: function data() {
@@ -1313,12 +1325,14 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         province_id: null,
         first_name: null,
         last_name: null,
-        commercial_name: null
+        commercial_name: null,
+        condition: null
       },
       items: [],
       hasError: false,
       errors: [],
-      progress: false
+      progress: false,
+      conditions: ['new', 'used']
     };
   },
   methods: {
@@ -1334,6 +1348,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       this.data2.first_name = this.data.profile.first_name;
       this.data2.last_name = this.data.profile.last_name;
       this.data2.commercial_name = this.data.profile.commercial_name;
+      this.data2.condition = this.data.condition;
 
       if (this.selectedProvince !== null) {
         var _iterator = _createForOfIteratorHelper(this.provinces),
@@ -4549,6 +4564,27 @@ var render = function () {
                                       )
                                     },
                                     expression: "data.profile.commercial_name",
+                                  },
+                                }),
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-col",
+                              { attrs: { cols: "12", sm: "6", md: "4" } },
+                              [
+                                _c("v-select", {
+                                  attrs: {
+                                    items: _vm.conditions,
+                                    label: "Condition",
+                                  },
+                                  model: {
+                                    value: _vm.data.condition,
+                                    callback: function ($$v) {
+                                      _vm.$set(_vm.data, "condition", $$v)
+                                    },
+                                    expression: "data.condition",
                                   },
                                 }),
                               ],

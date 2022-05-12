@@ -75,6 +75,18 @@
                                     sm="6"
                                     md="4"
                                 >
+                                    <v-select
+                                        :items="conditions"
+                                        label="Condition"
+                                        v-model="data.condition"
+                                    ></v-select>
+                                </v-col>
+
+                                <v-col
+                                    cols="12"
+                                    sm="6"
+                                    md="4"
+                                >
                                 <v-select placeholder="Willayas" :items="items" v-model="selectedProvince"></v-select>
                                     <v-chip color="primary">{{data.profile.province.name}}</v-chip>
                                 </v-col>
@@ -120,11 +132,13 @@ export default {
             first_name : null,
             last_name : null,
             commercial_name : null,
+            condition : null,
         },
         items : [],
         hasError : false,
         errors : [],
         progress : false,
+        conditions : ['new','used']
     }),
     methods : {
         close()
@@ -139,6 +153,7 @@ export default {
             this.data2.first_name = this.data.profile.first_name
             this.data2.last_name = this.data.profile.last_name
             this.data2.commercial_name = this.data.profile.commercial_name
+            this.data2.condition = this.data.condition
             if(this.selectedProvince !== null)
             {
                 for (const province of this.provinces) {
