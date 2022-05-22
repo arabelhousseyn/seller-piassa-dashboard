@@ -37,8 +37,8 @@
                                     </v-col>
                                 </v-row>
                             </v-container>
-                            <span v-if="info.commercial_registration !== undefined" class="text-h5 font-weight-bold">Document</span>
-                            <v-container v-if="info.commercial_registration !== undefined">
+                            <span v-if="info.commercial_info !== null" class="text-h5 font-weight-bold">Document</span>
+                            <v-container v-if="info.commercial_info !== null">
                                 <v-row>
                                     <v-col
                                         cols="12"

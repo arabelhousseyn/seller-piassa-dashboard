@@ -58,7 +58,7 @@ class User extends Model
 
     public function profile()
     {
-        return $this->hasOne(UserProfile::class);
+        return $this->hasOne(UserProfile::class)->withDefault([]);
     }
 
     public function vehicle()
@@ -83,7 +83,7 @@ class User extends Model
 
     public function commercial_info()
     {
-        return $this->hasOne(UserInfo::class)->withDefault();
+        return $this->hasOne(UserInfo::class)->withDefault([]);
     }
 
 
