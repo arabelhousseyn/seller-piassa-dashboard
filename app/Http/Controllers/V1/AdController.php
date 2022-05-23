@@ -131,7 +131,7 @@ class AdController extends Controller
         $size = $width . 'x' . $height;
 
         $created_ad = Ad::create([
-            'path' => $path,
+            'path' => env('APP_URL') . $path,
             'type' => 'MS',
             'size' => $size
         ]);
