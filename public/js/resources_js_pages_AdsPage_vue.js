@@ -826,7 +826,7 @@ var render = function () {
                               _c("v-file-input", {
                                 attrs: {
                                   color: "green",
-                                  label: "Modifier Image 640x1920",
+                                  label: "Modifier Image 360x640",
                                   filled: "",
                                   "prepend-icon": "mdi-camera",
                                 },

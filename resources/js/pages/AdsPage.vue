@@ -62,7 +62,7 @@
                         <v-card-text>
                             <v-file-input
                                 color="green"
-                                label="Modifier Image 640x1920"
+                                label="Modifier Image 360x640"
                                 filled
                                 v-model="data.image"
                                 @change="update"
