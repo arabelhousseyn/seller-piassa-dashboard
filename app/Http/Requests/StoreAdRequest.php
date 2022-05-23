@@ -24,7 +24,7 @@ class StoreAdRequest extends FormRequest
     public function rules()
     {
         return [
-            'ad' => 'required||mimes:jpg,jpeg,png|dimensions:min_width=640,min_height=1920'
+            'ad' => 'required||mimes:jpg,jpeg,png|dimensions:min_width=1080,min_height=1920'
         ];
     }
 }
