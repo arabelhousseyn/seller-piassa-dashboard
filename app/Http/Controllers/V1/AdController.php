@@ -121,7 +121,7 @@ class AdController extends Controller
 
     public function resize(int $width,int $height)
     {
-        $ad = Ad::where([['type','MS'],['size','640x1920']])->first();
+        $ad = Ad::where([['type','MS'],['size','360x640']])->first();
         $image_name = str_replace(env('APP_URL'),'',$ad->path);
         $save_image_name = uniqid() . '.jpg';
         $save_path = '../storage/app/public/ad/' . $save_image_name;

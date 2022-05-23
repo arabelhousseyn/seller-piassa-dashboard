@@ -19,8 +19,8 @@
 
                     <v-img
                         v-if="image !== null"
-                        height="1920"
-                        width="640"
+                        height="640"
+                        width="360"
                         :src="image.path"
                     ></v-img>
 
@@ -42,7 +42,7 @@
 
                         <v-file-input
                             v-if="image == null"
-                            label="Image 640x1920"
+                            label="Image 360x640"
                             filled
                             v-model="data.image"
                             @change="upload"

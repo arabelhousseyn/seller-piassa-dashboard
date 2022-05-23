@@ -717,8 +717,8 @@ var render = function () {
                   _vm.image !== null
                     ? _c("v-img", {
                         attrs: {
-                          height: "1920",
-                          width: "640",
+                          height: "640",
+                          width: "360",
                           src: _vm.image.path,
                         },
                       })
@@ -771,7 +771,7 @@ var render = function () {
                       _vm.image == null
                         ? _c("v-file-input", {
                             attrs: {
-                              label: "Image 640x1920",
+                              label: "Image 360x640",
                               filled: "",
                               "prepend-icon": "mdi-camera",
                             },
