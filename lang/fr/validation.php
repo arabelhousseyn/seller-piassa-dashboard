@@ -267,7 +267,7 @@ return [
         'ad' => [
             'required' => 'Ad requis.',
             'mimes' => 'Type non valide.',
-            'dimensions' => '640 X 1920 dimensions logo requis.'
+            'dimensions' => '1080 X 1920 dimensions logo requis.'
         ],
         'percent' => [
             'required' => 'Pourcentage requis.',
