@@ -4359,7 +4359,7 @@ var render = function () {
                           1
                         ),
                         _vm._v(" "),
-                        _vm.info.commercial_info !== null
+                        _vm.info !== null
                           ? _c(
                               "span",
                               { staticClass: "text-h5 font-weight-bold" },
@@ -4367,7 +4367,7 @@ var render = function () {
                             )
                           : _vm._e(),
                         _vm._v(" "),
-                        _vm.info.commercial_info !== null
+                        _vm.info !== null
                           ? _c(
                               "v-container",
                               [
