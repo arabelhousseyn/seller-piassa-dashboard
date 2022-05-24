@@ -53,6 +53,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['data'],
   data: function data() {
@@ -65,6 +73,9 @@ __webpack_require__.r(__webpack_exports__);
         align: 'start',
         sortable: true,
         value: 'item.mark'
+      }, {
+        text: 'Details',
+        value: 'item.request.request.informations'
       }, {
         text: 'Prix',
         value: 'item.price'
@@ -257,6 +268,20 @@ var render = function () {
                   ]
                 },
                 proxy: true,
+              },
+              {
+                key: "item.price",
+                fn: function (ref) {
+                  var item = ref.item
+                  return [_c("span", [_vm._v(_vm._s(item.price) + " DZD")])]
+                },
+              },
+              {
+                key: "item.request.request.informations",
+                fn: function (ref) {
+                  var item = ref.item
+                  return [_c("span", [_vm._v("to be changed")])]
+                },
               },
               {
                 key: "no-data",

@@ -28,6 +28,14 @@
                     </v-toolbar>
                 </template>
 
+                <template v-slot:item.price="{ item }">
+                    <span>{{ item.price }} DZD</span>
+                </template>
+
+                <template v-slot:item.request.request.informations="{ item }">
+                    <span>to be changed</span>
+                </template>
+
 
                 <template v-slot:no-data>
                     <v-btn
@@ -53,6 +61,10 @@ export default {
                 align: 'start',
                 sortable: true,
                 value: 'item.mark',
+            },
+            {
+                text: 'Details',
+                value: 'item.request.request.informations',
             },
             { text: 'Prix', value: 'item.price' },
             { text: 'Nom Vendeur', value: 'item.request.seller.profile.first_name' },
