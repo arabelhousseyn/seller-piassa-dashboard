@@ -4325,7 +4325,7 @@ var render = function () {
                                 }),
                                 _vm._v(" "),
                                 _c("v-checkbox", {
-                                  attrs: { label: "`Sélectionner tout" },
+                                  attrs: { label: "Sélectionner tout" },
                                   on: { change: _vm.VerifyCheck },
                                   model: {
                                     value: _vm.checkAll,

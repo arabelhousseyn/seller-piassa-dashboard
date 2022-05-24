@@ -162,7 +162,7 @@
                                     <v-checkbox
                                         @change="VerifyCheck"
                                         v-model="checkAll"
-                                        label="`Sélectionner tout"
+                                        label="Sélectionner tout"
                                     ></v-checkbox>
                                 </v-col>
 
