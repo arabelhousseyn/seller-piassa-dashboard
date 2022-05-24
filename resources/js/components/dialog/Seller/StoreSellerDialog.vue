@@ -158,6 +158,12 @@
                                         outlined
                                         dense
                                     ></v-combobox>
+
+                                    <v-checkbox
+                                        @change="VerifyCheck"
+                                        v-model="checkAll"
+                                        label="`Sélectionner tout"
+                                    ></v-checkbox>
                                 </v-col>
 
                                 <v-col cols="12" sm="6" md="6">
@@ -229,9 +235,26 @@ export default {
         types : [],
         selectedSigns : [],
         selectedTypes : [],
-        conditions : ['new','used']
+        conditions : ['new','used'],
+        checkAll : false,
     }),
     methods : {
+        VerifyCheck()
+        {
+            if(!this.checkAll)
+            {
+                this.selectedSigns = []
+            }else{
+                if(this.selectedSigns.length > 0)
+                {
+                    this.selectedSigns = []
+                }
+
+                this.signs.map((sign)=>{
+                    this.selectedSigns.push(sign.name)
+                })
+            }
+        },
         async init()
         {
             await axios.get('/sanctum/csrf-cookie').then(res =>{

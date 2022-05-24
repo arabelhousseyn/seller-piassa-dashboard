@@ -942,6 +942,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -972,12 +978,28 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       types: [],
       selectedSigns: [],
       selectedTypes: [],
-      conditions: ['new', 'used']
+      conditions: ['new', 'used'],
+      checkAll: false
     };
   },
   methods: {
-    init: function init() {
+    VerifyCheck: function VerifyCheck() {
       var _this = this;
+
+      if (!this.checkAll) {
+        this.selectedSigns = [];
+      } else {
+        if (this.selectedSigns.length > 0) {
+          this.selectedSigns = [];
+        }
+
+        this.signs.map(function (sign) {
+          _this.selectedSigns.push(sign.name);
+        });
+      }
+    },
+    init: function init() {
+      var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
@@ -987,7 +1009,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context.next = 2;
                 return axios.get('/sanctum/csrf-cookie').then(function (res) {
                   axios.get('/api/provinces').then(function (e) {
-                    _this.provinces = e.data;
+                    _this2.provinces = e.data;
 
                     var _iterator = _createForOfIteratorHelper(e.data),
                         _step;
@@ -996,7 +1018,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                       for (_iterator.s(); !(_step = _iterator.n()).done;) {
                         var province = _step.value;
 
-                        _this.items.push(province.name);
+                        _this2.items.push(province.name);
                       }
                     } catch (err) {
                       _iterator.e(err);
@@ -1004,7 +1026,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                       _iterator.f();
                     }
                   })["catch"](function (err) {
-                    _this.$toast.open({
+                    _this2.$toast.open({
                       message: "ERROR",
                       type: 'error'
                     });
@@ -1015,7 +1037,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context.next = 4;
                 return axios.get('/sanctum/csrf-cookie').then(function (res) {
                   axios.get('/api/signs/all').then(function (e) {
-                    _this.signs = e.data.data;
+                    _this2.signs = e.data.data;
 
                     var _iterator2 = _createForOfIteratorHelper(e.data.data),
                         _step2;
@@ -1024,7 +1046,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                       for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
                         var sign = _step2.value;
 
-                        _this.items1.push(sign.name);
+                        _this2.items1.push(sign.name);
                       }
                     } catch (err) {
                       _iterator2.e(err);
@@ -1034,7 +1056,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   })["catch"](function (err) {
                     console.log(err);
 
-                    _this.$toast.open({
+                    _this2.$toast.open({
                       message: "ERROR",
                       type: 'error'
                     });
@@ -1045,7 +1067,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context.next = 6;
                 return axios.get('/sanctum/csrf-cookie').then(function (res) {
                   axios.get('/api/types/all').then(function (e) {
-                    _this.types = e.data.data;
+                    _this2.types = e.data.data;
 
                     var _iterator3 = _createForOfIteratorHelper(e.data.data),
                         _step3;
@@ -1054,7 +1076,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                       for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
                         var type = _step3.value;
 
-                        _this.items2.push(type.name);
+                        _this2.items2.push(type.name);
                       }
                     } catch (err) {
                       _iterator3.e(err);
@@ -1064,7 +1086,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   })["catch"](function (err) {
                     console.log(err);
 
-                    _this.$toast.open({
+                    _this2.$toast.open({
                       message: "ERROR",
                       type: 'error'
                     });
@@ -1085,7 +1107,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.disabled = this.data.phone == null || this.data.condition == null || this.data.commercial_name == null || this.data.first_name == null || this.data.last_name == null || this.selectedProvince == null || this.selectedTypes.length == 0 || this.selectedSigns.length == 0 ? true : false;
     },
     store: function store() {
-      var _this2 = this;
+      var _this3 = this;
 
       // store the signs id's to the array of signs into the data object
       var _iterator4 = _createForOfIteratorHelper(this.selectedSigns),
@@ -1153,8 +1175,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
 
       axios.get('/sanctum/csrf-cookie').then(function (res) {
-        axios.post('/api/sellers', _this2.data).then(function (e) {
-          _this2.$toast.open({
+        axios.post('/api/sellers', _this3.data).then(function (e) {
+          _this3.$toast.open({
             message: "Opération effectué",
             type: 'success'
           });
@@ -1166,11 +1188,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           for (var _i = 0, _errors = errors; _i < _errors.length; _i++) {
             var error = _errors[_i];
 
-            _this2.errors.push(error[0]);
+            _this3.errors.push(error[0]);
 
-            _this2.hasError = true;
-            _this2.progress = false;
-            _this2.disabled = false;
+            _this3.hasError = true;
+            _this3.progress = false;
+            _this3.disabled = false;
           }
         });
       });
@@ -4299,6 +4321,18 @@ var render = function () {
                                       _vm.selectedSigns = $$v
                                     },
                                     expression: "selectedSigns",
+                                  },
+                                }),
+                                _vm._v(" "),
+                                _c("v-checkbox", {
+                                  attrs: { label: "`Sélectionner tout" },
+                                  on: { change: _vm.VerifyCheck },
+                                  model: {
+                                    value: _vm.checkAll,
+                                    callback: function ($$v) {
+                                      _vm.checkAll = $$v
+                                    },
+                                    expression: "checkAll",
                                   },
                                 }),
                               ],
