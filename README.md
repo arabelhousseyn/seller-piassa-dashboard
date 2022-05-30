@@ -1,4 +1,4 @@
 
-## About piassa dasbhaord
+## About piassa dasbhaord seller
 
-piassa it's a system admin
+piassa dashboard seller it's a system admin for sellers
