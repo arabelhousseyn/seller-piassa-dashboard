@@ -20,10 +20,6 @@ class DashbaordController extends Controller
     public function __invoke()
     {
 
-        $incomes = (new IncomeService())->setYear(Carbon::now()->format('Y'))->CalculateIncome();
-        $users_stats = (new UsersStatsService())->setYear(Carbon::now()->format('Y'))->Stats();
-
-
         $data = [
             'users' => [
                 'count' => User::count(),
@@ -40,18 +36,9 @@ class DashbaordController extends Controller
                 'icon' => 'mdi-account',
                 'title' => __('messages.shippers')
             ],
-            'company' => [
-                'count' => Money::DZD(CompanyCommission::sum('amount'))->getAmount() . ' DZD',
-                'icon' => 'mdi-currency-usd',
-                'title' => __('messages.company')
-            ],
-            'icomes_by_month' => $incomes,
-            'users_by_month' => $users_stats,
-            'count_notification' => count(Admin::find(Auth::id())->notifications),
-            'count_male' => UserProfile::gender('M')->count(),
-            'count_female' => UserProfile::gender('W')->count(),
-            'notifications' => Admin::find(Auth::id())->notifications,
-            'app_version' => AppVersion::where('app_type','web_dashboard')->first()
+            'count_notification' => count(Seller::find(Auth::id())->notifications),
+            'notifications' => Seller::find(Auth::id())->notifications,
+            'app_version' => AppVersion::where('app_type','seller_dashboard')->first()
 
         ];
 
