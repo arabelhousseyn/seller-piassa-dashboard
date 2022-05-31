@@ -4,6 +4,7 @@ namespace App\Http\Controllers\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
+use App\Models\Seller;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
@@ -20,10 +21,11 @@ class LoginController extends Controller
         {
             if(Auth::attempt($request->only('phone','password')))
             {
-                $user = Auth::user();
-                $token = $user->createToken('piassa-dashboard')->plainTextToken;
-                $user['token'] = $token;
-                return response($user,200);
+                $data = Auth::user();
+                $token = $data->createToken('piassa-dashboard')->plainTextToken;
+                $seller = Seller::with('profile')->find(Auth::id());
+                $seller['token'] = $token;
+                return response($seller,200);
             }else{
                 return response(['message' => __('messages.failed')],401);
             }

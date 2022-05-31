@@ -22927,7 +22927,9 @@ var render = function () {
                     [
                       _vm._v(
                         "\n                " +
-                          _vm._s(_vm.$store.state.user.fullName) +
+                          _vm._s(
+                            _vm.$store.state.user.profile.commercial_name
+                          ) +
                           " "
                       ),
                       _c("span", [_c("v-icon", [_vm._v("mdi-menu-down")])], 1),
@@ -22964,7 +22966,7 @@ var render = function () {
                         _c("img", {
                           attrs: {
                             src: _vm.$store.state.user_logo,
-                            alt: _vm.$store.state.user.fullName,
+                            alt: _vm.$store.state.user.profile.commercial_name,
                           },
                         }),
                       ]),
@@ -22973,10 +22975,14 @@ var render = function () {
                         "v-list-item-content",
                         [
                           _c("v-list-item-title", [
-                            _vm._v(_vm._s(_vm.$store.state.user.fullName)),
+                            _vm._v(
+                              _vm._s(
+                                _vm.$store.state.user.profile.commercial_name
+                              )
+                            ),
                           ]),
                           _vm._v(" "),
-                          _c("v-list-item-subtitle", [_vm._v("Admin")]),
+                          _c("v-list-item-subtitle", [_vm._v("Vendeur")]),
                         ],
                         1
                       ),

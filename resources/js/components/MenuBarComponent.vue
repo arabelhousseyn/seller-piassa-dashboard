@@ -11,7 +11,7 @@
                     <v-img :src="$store.state.user_logo"></v-img>
                 </v-avatar>
                 <v-btn v-bind="attrs" v-on="on" elevation="0" color="white">
-                    {{ $store.state.user.fullName }} <span><v-icon>mdi-menu-down</v-icon> </span>
+                    {{ $store.state.user.profile.commercial_name }} <span><v-icon>mdi-menu-down</v-icon> </span>
                 </v-btn>
             </template>
 
@@ -21,13 +21,13 @@
                         <v-list-item-avatar>
                             <img
                                 :src="$store.state.user_logo"
-                                :alt="$store.state.user.fullName"
+                                :alt="$store.state.user.profile.commercial_name"
                             >
                         </v-list-item-avatar>
 
                         <v-list-item-content>
-                            <v-list-item-title>{{ $store.state.user.fullName }}</v-list-item-title>
-                            <v-list-item-subtitle>Admin</v-list-item-subtitle>
+                            <v-list-item-title>{{ $store.state.user.profile.commercial_name }}</v-list-item-title>
+                            <v-list-item-subtitle>Vendeur</v-list-item-subtitle>
                         </v-list-item-content>
                     </v-list-item>
                 </v-list>
