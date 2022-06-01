@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 
 use App\Http\Controllers\V1\{LoginController,LogoutController, DashbaordController,SellerChangePassword
-,NotificationController,StatisticsController,SellerController};
+,NotificationController,StatisticsController, SellerController};
 
 
 Route::middleware(['throttle:login','app_version'])->group(function (){
@@ -41,12 +41,5 @@ Route::middleware(['auth:sanctum','app_version'])->group(function (){
     Route::controller(StatisticsController::class)->prefix('statistics')->group(function (){
         Route::get('request-expired/{days}','requestExpired')->whereNumber('days');
     });
-
-
-
-    //resources
-    Route::apiResources([
-        'sellers' => SellerController::class
-    ]);
 
 });
