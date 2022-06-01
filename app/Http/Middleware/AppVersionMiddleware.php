@@ -18,7 +18,7 @@ class AppVersionMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        $version = AppVersion::where('app_type','web_dashboard')->first()->versioning;
+        $version = AppVersion::where('app_type','seller_dashboard')->first()->versioning;
         if($version !== env('APP_VERSION'))
         {
             abort(500);
