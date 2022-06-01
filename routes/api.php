@@ -3,10 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 
-use App\Http\Controllers\V1\{LoginController,LogoutController,UserController,SellerController,ShipperController
-,DashbaordController,ProvincesController,UserChangePassword,VehicleController,SignController,SellerChangePassword
-,TypeController,UserOrderController,NotificationController,StatisticsController,AdminController,
-    AdminChangePasswordController,AdminChangeProfileController,AdController};
+use App\Http\Controllers\V1\{LoginController,LogoutController, DashbaordController,SellerChangePassword
+,NotificationController,StatisticsController,SellerController};
 
 
 Route::middleware(['throttle:login','app_version'])->group(function (){
