@@ -2,7 +2,7 @@
 
 namespace App\Http;
 
-use App\Http\Middleware\CheckChassisNumber;
+use App\Http\Middleware\CheckSellerMiddleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -64,7 +64,7 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'check_chassis' => \App\Http\Middleware\CheckChassisNumber::class,
         'app_version' => \App\Http\Middleware\AppVersionMiddleware::class,
+        'check_seller' => CheckSellerMiddleware::class
     ];
 }

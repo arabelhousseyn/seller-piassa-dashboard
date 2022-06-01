@@ -12,7 +12,7 @@ Route::middleware(['throttle:login','app_version'])->group(function (){
 });
 
 
-Route::middleware(['auth:sanctum','app_version'])->group(function (){
+Route::middleware(['auth:sanctum','app_version','check_seller'])->group(function (){
 
 
     Route::prefix('company')->group(function (){
