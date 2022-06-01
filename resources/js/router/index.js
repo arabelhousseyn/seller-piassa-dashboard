@@ -39,7 +39,13 @@ const routes = [
             },
             {
                 path: 'requests',
-                component : () => import('../pages/SellersPage')
+                component : () => import('../pages/SellersPage'),
+                children : [
+                    {
+                        path : '/',
+                        component : () => import('../components/Seller/MainSellerComponent')
+                    }
+                ]
             },
             {
                 path : '*',
