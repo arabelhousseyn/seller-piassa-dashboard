@@ -22,17 +22,17 @@ class DashbaordController extends Controller
 
         $data = [
             'users' => [
-                'count' => User::count(),
+                'count' => 0,
                 'icon' => 'mdi-account',
                 'title' => __('messages.users')
             ],
             'sellers' => [
-                'count' => Seller::count(),
+                'count' => 0,
                 'icon' => 'mdi-account',
                 'title' => __('messages.sellers')
             ],
             'shippers' => [
-                'count' => Shipper::count(),
+                'count' => 0,
                 'icon' => 'mdi-account',
                 'title' => __('messages.shippers')
             ],
