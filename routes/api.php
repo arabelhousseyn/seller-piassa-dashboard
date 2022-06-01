@@ -27,7 +27,7 @@ Route::middleware(['auth:sanctum','app_version'])->group(function (){
     });
 
     Route::controller(SellerController::class)->prefix('sellers')->group(function (){
-
+        Route::get('requests','index');
     });
 
     // notifications
