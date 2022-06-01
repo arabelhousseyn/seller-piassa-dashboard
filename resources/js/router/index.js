@@ -38,6 +38,10 @@ const routes = [
                 component : () => import('../pages/AdminProfilePage')
             },
             {
+                path: 'requests',
+                component : () => import('../pages/SellersPage')
+            },
+            {
                 path : '*',
                 component: () => import('../pages/NotFoundPage'),
             }
