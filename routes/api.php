@@ -13,7 +13,10 @@ Route::middleware(['throttle:login','app_version'])->group(function (){
 
 
 Route::middleware(['auth:sanctum','app_version','check_seller'])->group(function (){
+    // logout
 
+    Route::get('logout',LogoutController::class);
+    ///
 
     Route::prefix('company')->group(function (){
         Route::get('data',DashbaordController::class);
