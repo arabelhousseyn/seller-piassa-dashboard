@@ -472,7 +472,8 @@ __webpack_require__.r(__webpack_exports__);
       data: {
         mark: null,
         price: null,
-        available_at: new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().substr(0, 10)
+        available_at: new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().substr(0, 10),
+        seller_request_id: null
       },
       errors: [],
       hasError: false,
@@ -483,8 +484,43 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     store: function store() {
+      var _this = this;
+
       this.loading = true;
       this.disable = true;
+      this.data.seller_request_id = this.seller_request_id;
+      axios.get('/sanctum/csrf-cookie').then(function (res) {
+        axios.post('/api/sellers/sotre-seller-suggestion', _this.data).then(function (e) {
+          _this.$toast.open({
+            message: "Opération effectué",
+            type: 'success'
+          });
+
+          _this.loading = false;
+          _this.disable = true;
+
+          _this.empty();
+
+          _this.dialog = false;
+        })["catch"](function (err) {
+          var errors = Object.values(err.response.data.errors);
+
+          for (var _i = 0, _errors = errors; _i < _errors.length; _i++) {
+            var error = _errors[_i];
+
+            _this.errors.push(error[0]);
+
+            _this.hasError = true;
+            _this.loading = false;
+            _this.disable = false;
+          }
+        });
+      });
+    },
+    empty: function empty() {
+      this.data.mark = null;
+      this.data.price = null;
+      this.data.available_at = new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().substr(0, 10);
     },
     check: function check() {
       this.disable = this.data.mark == null || this.data.price == null ? true : false;

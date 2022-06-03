@@ -128,6 +128,7 @@ export default {
             mark : null,
             price : null,
             available_at : (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
+            seller_request_id : null
         },
         errors : [],
         hasError : false,
@@ -140,6 +141,34 @@ export default {
         {
             this.loading = true
             this.disable = true
+            this.data.seller_request_id = this.seller_request_id
+
+            axios.get('/sanctum/csrf-cookie').then(res => {
+                axios.post('/api/sellers/sotre-seller-suggestion',this.data).then(e=>{
+                    this.$toast.open({
+                        message : "Opération effectué",
+                        type : 'success',
+                    })
+                    this.loading = false
+                    this.disable = true
+                    this.empty()
+                    this.dialog = false
+                }).catch(err =>{
+                    let errors = Object.values(err.response.data.errors)
+                    for (const error of errors) {
+                        this.errors.push(error[0])
+                        this.hasError = true
+                        this.loading = false
+                        this.disable = false
+                    }
+                })
+            })
+        },
+        empty()
+        {
+            this.data.mark = null
+            this.data.price = null
+            this.data.available_at = (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)
         },
         check()
         {
