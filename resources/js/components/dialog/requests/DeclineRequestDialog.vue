@@ -1,5 +1,5 @@
 <template>
-    <div class="resotre_seller_dialog">
+    <div class="restore-sign-dialog">
         <v-dialog
             v-model="dialog"
             persistent
@@ -7,7 +7,7 @@
         >
             <v-card>
                 <v-card-title class="text-h5">
-                    Etes-vous sûr que vous voulez restorer !
+                    Etes-vous sûr que vous voulez decline !
                 </v-card-title>
                 <v-card-actions>
                     <v-spacer></v-spacer>
@@ -24,7 +24,7 @@
                         text
                         @click="destroy"
                     >
-                        <v-icon>mdi-restore</v-icon>
+                        <v-icon>mdi-check</v-icon>
                     </v-btn>
 
                     <v-progress-circular
@@ -49,7 +49,7 @@ export default {
         {
             this.load = true
             axios.get('/sanctum/csrf-cookie').then(res =>{
-                axios.put(`/api/sellers/restore/${this.id}`).then(e=>{
+                axios.delete(`/api/sellers/request/destroy/${this.id}`).then(e=>{
                     if(e.status == 204)
                     {
                         this.$toast.open({
@@ -57,7 +57,7 @@ export default {
                             type : 'success'
                         })
                         this.load = false
-                        window.location.reload()
+                        this.$emit('close1',this.id)
                     }
                 }).catch(err =>{
                     this.$toast.open({

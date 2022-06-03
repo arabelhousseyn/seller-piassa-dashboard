@@ -62,7 +62,7 @@
                                 </v-list-item>
                                 <v-list-item link @click="destroy(item.id)">
                                     <v-list-item-icon><v-icon color="red">mdi-trash-can</v-icon></v-list-item-icon>
-                                    <v-list-item-content><v-list-item-title>Supprimer</v-list-item-title></v-list-item-content>
+                                    <v-list-item-content><v-list-item-title>Décline</v-list-item-title></v-list-item-content>
                                 </v-list-item>
                             </v-list-item-group>
                         </v-list>
@@ -95,13 +95,15 @@
                 </template>
             </v-data-table>
         </v-container>
+        <decline-request-dialog @close1="close3" @close="close2" :id="seller_request_id" :dialog="dialog1" />
     </div>
 </template>
 
 <script>
 import BreadCrumbsComponent from "../BreadCrumbsComponent"
+import DeclineRequestDialog from "../dialog/requests/DeclineRequestDialog";
 export default {
-    components: {BreadCrumbsComponent},
+    components: {DeclineRequestDialog, BreadCrumbsComponent},
     data : ()=>({
         sellers : [],
         loading : true,
@@ -153,6 +155,15 @@ export default {
         {
             this.seller_request_id = null
             this.dialog1 = false
+        },
+        close3(id)
+        {
+            let seller_request_id = id
+            this.sellers.filter((seller)=>{
+                return seller.id != seller_request_id
+            },seller_request_id)
+            this.dialog1 = false
+            this.seller_request_id = null
         },
         init()
         {
