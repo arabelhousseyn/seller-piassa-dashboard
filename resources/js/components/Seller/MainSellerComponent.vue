@@ -96,14 +96,16 @@
             </v-data-table>
         </v-container>
         <decline-request-dialog @close1="close3" @close="close2" :id="seller_request_id" :dialog="dialog1" />
+        <suggestions-request-dialog @close="close1" :suggestions="suggestions" :dialog="dialog" />
     </div>
 </template>
 
 <script>
 import BreadCrumbsComponent from "../BreadCrumbsComponent"
-import DeclineRequestDialog from "../dialog/requests/DeclineRequestDialog";
+import DeclineRequestDialog from "../dialog/requests/DeclineRequestDialog"
+import SuggestionsRequestDialog from "../dialog/requests/SuggestionsRequestDialog";
 export default {
-    components: {DeclineRequestDialog, BreadCrumbsComponent},
+    components: {SuggestionsRequestDialog, DeclineRequestDialog, BreadCrumbsComponent},
     data : ()=>({
         sellers : [],
         loading : true,
