@@ -129,6 +129,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -154,7 +158,7 @@ __webpack_require__.r(__webpack_exports__);
         text: 'Type',
         value: 'request.type.name'
       }, {
-        text: 'Details',
+        text: 'Détails',
         value: 'request.informations'
       }, {
         text: 'Créé à',
@@ -171,6 +175,9 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    parse: function parse(data) {
+      return JSON.parse(data);
+    },
     reset: function reset() {
       this.init();
     },
@@ -599,8 +606,8 @@ var render = function () {
                                       [
                                         _c(
                                           "v-icon",
-                                          { attrs: { color: "primary" } },
-                                          [_vm._v("mdi-chart-box")]
+                                          { attrs: { color: "red" } },
+                                          [_vm._v("mdi-trash-can")]
                                         ),
                                       ],
                                       1
@@ -631,22 +638,39 @@ var render = function () {
                 },
               },
               {
-                key: "item.deleted_at",
+                key: "item.request.informations",
                 fn: function (ref) {
                   var item = ref.item
-                  return [
-                    item.deleted_at == null
-                      ? _c("v-chip", { attrs: { dark: "", color: "green" } }, [
-                          _vm._v(
-                            "\n                    Active\n                "
-                          ),
-                        ])
-                      : _c("v-chip", { attrs: { dark: "", color: "red" } }, [
-                          _vm._v(
-                            "\n                    Supprimé\n                "
-                          ),
+                  return _vm._l(
+                    item.request.informations,
+                    function (item, index) {
+                      return _c("ol", { key: index }, [
+                        _c("li", [
+                          _c("strong", [_vm._v("Detail " + _vm._s(index + 1))]),
+                          _vm._v(" "),
+                          _c("ul", [
+                            _c("li", [
+                              _vm._v(
+                                "Pièce : " + _vm._s(_vm.parse(item.value).piece)
+                              ),
+                            ]),
+                            _vm._v(" "),
+                            _c("li", [
+                              _vm._v(
+                                "Marque : " + _vm._s(_vm.parse(item.value).mark)
+                              ),
+                            ]),
+                            _vm._v(" "),
+                            _c("li", [
+                              _vm._v(
+                                "Quantité : " + _vm._s(_vm.parse(item.value).qt)
+                              ),
+                            ]),
+                          ]),
                         ]),
-                  ]
+                      ])
+                    }
+                  )
                 },
               },
               {

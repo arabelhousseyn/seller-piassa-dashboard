@@ -61,7 +61,7 @@
                                     <v-list-item-content><v-list-item-title>Les suggestion</v-list-item-title></v-list-item-content>
                                 </v-list-item>
                                 <v-list-item link @click="destroy(item.id)">
-                                    <v-list-item-icon><v-icon color="primary">mdi-chart-box</v-icon></v-list-item-icon>
+                                    <v-list-item-icon><v-icon color="red">mdi-trash-can</v-icon></v-list-item-icon>
                                     <v-list-item-content><v-list-item-title>Supprimer</v-list-item-title></v-list-item-content>
                                 </v-list-item>
                             </v-list-item-group>
@@ -69,13 +69,17 @@
                     </v-menu>
                 </template>
 
-                <template v-slot:item.deleted_at="{ item }">
-                    <v-chip dark v-if="item.deleted_at == null" color="green">
-                        Active
-                    </v-chip>
-                    <v-chip dark v-else color="red">
-                        Supprimé
-                    </v-chip>
+                <template v-slot:item.request.informations="{ item }">
+                    <ol v-for="(item,index) in item.request.informations" :key="index">
+                        <li>
+                            <strong>Detail {{index + 1}}</strong>
+                            <ul>
+                                <li>Pièce : {{ parse(item.value).piece }}</li>
+                                <li>Marque : {{ parse(item.value).mark }}</li>
+                                <li>Quantité : {{ parse(item.value).qt }}</li>
+                            </ul>
+                        </li>
+                    </ol>
                 </template>
 
                 <template v-slot:no-data>
@@ -107,7 +111,7 @@ export default {
             { text: 'Telephone', value: 'request.vehicle.user.phone' },
             { text: 'Type', value: 'request.type.name' },
             { text: 'Type', value: 'request.type.name' },
-            { text: 'Details', value: 'request.informations' },
+            { text: 'Détails', value: 'request.informations' },
             { text: 'Créé à', value: 'request.created_at' },
             { text: 'actions', value: 'actions', sortable: false },
         ],
@@ -117,6 +121,10 @@ export default {
         dialog1 : false,
     }),
     methods : {
+        parse(data)
+        {
+            return JSON.parse(data)
+        },
         reset()
         {
             this.init()
