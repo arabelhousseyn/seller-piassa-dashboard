@@ -13,7 +13,7 @@ class StoreSellerSuggestionRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,7 +25,7 @@ class StoreSellerSuggestionRequest extends FormRequest
     {
         return [
             'mark' => 'required',
-            'price' => 'reauired|numeric',
+            'price' => 'required|numeric',
             'available_at' => 'required|date:Y-m-d',
             'seller_request_id' => 'required|exists:seller_requests,id'
         ];
