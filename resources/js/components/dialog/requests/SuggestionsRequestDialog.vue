@@ -9,7 +9,7 @@
                 <v-card-title class="text-h5">
                     Suggestions
                     <v-spacer></v-spacer>
-                    add
+                    <store-suggestion-request />
                 </v-card-title>
                 <v-card-text>
                     <v-simple-table>
@@ -64,7 +64,9 @@
 </template>
 
 <script>
+import StoreSuggestionRequest from "./StoreSuggestionRequest";
 export default {
+    components: {StoreSuggestionRequest},
     props : ['suggestions','dialog'],
     data : ()=>({
 
