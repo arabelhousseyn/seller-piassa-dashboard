@@ -56,34 +56,13 @@
 
                         <v-list>
                             <v-list-item-group>
-                                <v-list-item link @click="fetchProfile(item.profile)">
-                                    <v-list-item-icon><v-icon color="primary">mdi-account</v-icon></v-list-item-icon>
-                                    <v-list-item-content><v-list-item-title>Compte</v-list-item-title></v-list-item-content>
+                                <v-list-item link @click="fetchSuggestions(item.request.suggestions)">
+                                    <v-list-item-icon><v-icon color="primary">mdi-chart-box</v-icon></v-list-item-icon>
+                                    <v-list-item-content><v-list-item-title>Les suggestion</v-list-item-title></v-list-item-content>
                                 </v-list-item>
-                                <v-list-item link @click="update(item)">
-                                    <v-list-item-icon><v-icon color="primary">mdi-pencil</v-icon></v-list-item-icon>
-                                    <v-list-item-content><v-list-item-title>Modifier</v-list-item-title></v-list-item-content>
-                                </v-list-item>
-                                <v-list-item link @click="security(item.id)">
-                                    <v-list-item-icon><v-icon color="primary">mdi-security</v-icon></v-list-item-icon>
-                                    <v-list-item-content><v-list-item-title>Sécurité</v-list-item-title></v-list-item-content>
-                                </v-list-item>
-                                <v-list-item link @click="$router.push({name : 'sellerPhones', params : {id : item.id,phones : item.phones} })">
-                                    <v-list-item-icon><v-icon color="primary">mdi-phone</v-icon></v-list-item-icon>
-                                    <v-list-item-content><v-list-item-title>Téléphones</v-list-item-title></v-list-item-content>
-                                </v-list-item>
-                                <v-list-item link @click="$router.push({name : 'sellerJobs',params : {id : item.id,jobs : item.job}})">
-                                    <v-list-item-icon><v-icon color="primary">mdi-bag-checked</v-icon></v-list-item-icon>
-                                    <v-list-item-content><v-list-item-title>Travaux</v-list-item-title></v-list-item-content>
-                                </v-list-item>
-
-                                <v-list-item v-if="item.deleted_at == null" link @click="destory(item.id)">
-                                    <v-list-item-icon><v-icon color="red">mdi-delete</v-icon></v-list-item-icon>
+                                <v-list-item link @click="destroy(item.id)">
+                                    <v-list-item-icon><v-icon color="primary">mdi-chart-box</v-icon></v-list-item-icon>
                                     <v-list-item-content><v-list-item-title>Supprimer</v-list-item-title></v-list-item-content>
-                                </v-list-item>
-                                <v-list-item v-else link @click="restore(item.id)">
-                                    <v-list-item-icon><v-icon color="green">mdi-restore</v-icon></v-list-item-icon>
-                                    <v-list-item-content><v-list-item-title>Restaurer</v-list-item-title></v-list-item-content>
                                 </v-list-item>
                             </v-list-item-group>
                         </v-list>
@@ -118,7 +97,6 @@ export default {
         sellers : [],
         loading : true,
         search : null,
-        dialog : false,
         headers: [
             {
                 text: 'Nom complete',
@@ -133,11 +111,35 @@ export default {
             { text: 'Créé à', value: 'request.created_at' },
             { text: 'actions', value: 'actions', sortable: false },
         ],
+        suggestions : [],
+        seller_request_id : null,
+        dialog : false,
+        dialog1 : false,
     }),
     methods : {
         reset()
         {
             this.init()
+        },
+        fetchSuggestions(data)
+        {
+            this.suggestions = data
+            this.dialog = true
+        },
+        destroy(id)
+        {
+           this.seller_request_id = id
+            this.dialog1 = true
+        },
+        close1()
+        {
+            this.suggestions = []
+            this.dialog = false
+        },
+        close2()
+        {
+            this.seller_request_id = null
+            this.dialog1 = false
         },
         init()
         {

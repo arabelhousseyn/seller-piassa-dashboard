@@ -129,27 +129,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -160,7 +139,6 @@ __webpack_require__.r(__webpack_exports__);
       sellers: [],
       loading: true,
       search: null,
-      dialog: false,
       headers: [{
         text: 'Nom complete',
         align: 'start',
@@ -185,12 +163,32 @@ __webpack_require__.r(__webpack_exports__);
         text: 'actions',
         value: 'actions',
         sortable: false
-      }]
+      }],
+      suggestions: [],
+      seller_request_id: null,
+      dialog: false,
+      dialog1: false
     };
   },
   methods: {
     reset: function reset() {
       this.init();
+    },
+    fetchSuggestions: function fetchSuggestions(data) {
+      this.suggestions = data;
+      this.dialog = true;
+    },
+    destroy: function destroy(id) {
+      this.seller_request_id = id;
+      this.dialog1 = true;
+    },
+    close1: function close1() {
+      this.suggestions = [];
+      this.dialog = false;
+    },
+    close2: function close2() {
+      this.seller_request_id = null;
+      this.dialog1 = false;
     },
     init: function init() {
       var _this = this;
@@ -553,7 +551,9 @@ var render = function () {
                                     attrs: { link: "" },
                                     on: {
                                       click: function ($event) {
-                                        return _vm.fetchProfile(item.profile)
+                                        return _vm.fetchSuggestions(
+                                          item.request.suggestions
+                                        )
                                       },
                                     },
                                   },
@@ -564,7 +564,7 @@ var render = function () {
                                         _c(
                                           "v-icon",
                                           { attrs: { color: "primary" } },
-                                          [_vm._v("mdi-account")]
+                                          [_vm._v("mdi-chart-box")]
                                         ),
                                       ],
                                       1
@@ -574,7 +574,7 @@ var render = function () {
                                       "v-list-item-content",
                                       [
                                         _c("v-list-item-title", [
-                                          _vm._v("Compte"),
+                                          _vm._v("Les suggestion"),
                                         ]),
                                       ],
                                       1
@@ -589,7 +589,7 @@ var render = function () {
                                     attrs: { link: "" },
                                     on: {
                                       click: function ($event) {
-                                        return _vm.update(item)
+                                        return _vm.destroy(item.id)
                                       },
                                     },
                                   },
@@ -600,7 +600,7 @@ var render = function () {
                                         _c(
                                           "v-icon",
                                           { attrs: { color: "primary" } },
-                                          [_vm._v("mdi-pencil")]
+                                          [_vm._v("mdi-chart-box")]
                                         ),
                                       ],
                                       1
@@ -610,7 +610,7 @@ var render = function () {
                                       "v-list-item-content",
                                       [
                                         _c("v-list-item-title", [
-                                          _vm._v("Modifier"),
+                                          _vm._v("Supprimer"),
                                         ]),
                                       ],
                                       1
@@ -618,198 +618,6 @@ var render = function () {
                                   ],
                                   1
                                 ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-list-item",
-                                  {
-                                    attrs: { link: "" },
-                                    on: {
-                                      click: function ($event) {
-                                        return _vm.security(item.id)
-                                      },
-                                    },
-                                  },
-                                  [
-                                    _c(
-                                      "v-list-item-icon",
-                                      [
-                                        _c(
-                                          "v-icon",
-                                          { attrs: { color: "primary" } },
-                                          [_vm._v("mdi-security")]
-                                        ),
-                                      ],
-                                      1
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "v-list-item-content",
-                                      [
-                                        _c("v-list-item-title", [
-                                          _vm._v("Sécurité"),
-                                        ]),
-                                      ],
-                                      1
-                                    ),
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-list-item",
-                                  {
-                                    attrs: { link: "" },
-                                    on: {
-                                      click: function ($event) {
-                                        return _vm.$router.push({
-                                          name: "sellerPhones",
-                                          params: {
-                                            id: item.id,
-                                            phones: item.phones,
-                                          },
-                                        })
-                                      },
-                                    },
-                                  },
-                                  [
-                                    _c(
-                                      "v-list-item-icon",
-                                      [
-                                        _c(
-                                          "v-icon",
-                                          { attrs: { color: "primary" } },
-                                          [_vm._v("mdi-phone")]
-                                        ),
-                                      ],
-                                      1
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "v-list-item-content",
-                                      [
-                                        _c("v-list-item-title", [
-                                          _vm._v("Téléphones"),
-                                        ]),
-                                      ],
-                                      1
-                                    ),
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-list-item",
-                                  {
-                                    attrs: { link: "" },
-                                    on: {
-                                      click: function ($event) {
-                                        return _vm.$router.push({
-                                          name: "sellerJobs",
-                                          params: {
-                                            id: item.id,
-                                            jobs: item.job,
-                                          },
-                                        })
-                                      },
-                                    },
-                                  },
-                                  [
-                                    _c(
-                                      "v-list-item-icon",
-                                      [
-                                        _c(
-                                          "v-icon",
-                                          { attrs: { color: "primary" } },
-                                          [_vm._v("mdi-bag-checked")]
-                                        ),
-                                      ],
-                                      1
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "v-list-item-content",
-                                      [
-                                        _c("v-list-item-title", [
-                                          _vm._v("Travaux"),
-                                        ]),
-                                      ],
-                                      1
-                                    ),
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                item.deleted_at == null
-                                  ? _c(
-                                      "v-list-item",
-                                      {
-                                        attrs: { link: "" },
-                                        on: {
-                                          click: function ($event) {
-                                            return _vm.destory(item.id)
-                                          },
-                                        },
-                                      },
-                                      [
-                                        _c(
-                                          "v-list-item-icon",
-                                          [
-                                            _c(
-                                              "v-icon",
-                                              { attrs: { color: "red" } },
-                                              [_vm._v("mdi-delete")]
-                                            ),
-                                          ],
-                                          1
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "v-list-item-content",
-                                          [
-                                            _c("v-list-item-title", [
-                                              _vm._v("Supprimer"),
-                                            ]),
-                                          ],
-                                          1
-                                        ),
-                                      ],
-                                      1
-                                    )
-                                  : _c(
-                                      "v-list-item",
-                                      {
-                                        attrs: { link: "" },
-                                        on: {
-                                          click: function ($event) {
-                                            return _vm.restore(item.id)
-                                          },
-                                        },
-                                      },
-                                      [
-                                        _c(
-                                          "v-list-item-icon",
-                                          [
-                                            _c(
-                                              "v-icon",
-                                              { attrs: { color: "green" } },
-                                              [_vm._v("mdi-restore")]
-                                            ),
-                                          ],
-                                          1
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "v-list-item-content",
-                                          [
-                                            _c("v-list-item-title", [
-                                              _vm._v("Restaurer"),
-                                            ]),
-                                          ],
-                                          1
-                                        ),
-                                      ],
-                                      1
-                                    ),
                               ],
                               1
                             ),
