@@ -10,8 +10,8 @@ class SellerController extends Controller
 {
     public function index()
     {
-        $seller = Seller::with('requests.request.type','requests.request.informations','requests.request.suggestions',
-        'requests.request.images','requests.request.vehicle')->find(Auth::id());
+        $seller = Seller::with('requests.request.type','requests.request.informations','requests.request.suggestions.suggestion',
+        'requests.request.images','requests.request.vehicle','requests.request.vehicle.user.profile')->find(Auth::id());
         return response(['data' => $seller->requests],200);
     }
 }
