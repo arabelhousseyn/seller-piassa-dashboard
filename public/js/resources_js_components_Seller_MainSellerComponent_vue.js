@@ -133,6 +133,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -666,6 +671,33 @@ var render = function () {
                                 "Quantité : " + _vm._s(_vm.parse(item.value).qt)
                               ),
                             ]),
+                            _vm._v(" "),
+                            _c("li", [
+                              _vm._v(
+                                "Dimenssion : " +
+                                  _vm._s(
+                                    _vm.parse(_vm.parse(item.value).details)
+                                      .dimension
+                                  ) +
+                                  " "
+                              ),
+                            ]),
+                            _vm._v(" "),
+                            _vm.parse(_vm.parse(item.value).details).left
+                              ? _c("li", [_vm._v("Partie Gauche")])
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _vm.parse(_vm.parse(item.value).details).right
+                              ? _c("li", [_vm._v("Partie droite")])
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _vm.parse(_vm.parse(item.value).details).front
+                              ? _c("li", [_vm._v("Partie avant")])
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _vm.parse(_vm.parse(item.value).details).back
+                              ? _c("li", [_vm._v("Partie arrière")])
+                              : _vm._e(),
                           ]),
                         ]),
                       ])

@@ -77,6 +77,11 @@
                                 <li>Pièce : {{ parse(item.value).piece }}</li>
                                 <li>Marque : {{ parse(item.value).mark }}</li>
                                 <li>Quantité : {{ parse(item.value).qt }}</li>
+                                <li>Dimenssion : {{ parse(parse(item.value).details).dimension }} </li>
+                                <li v-if="parse(parse(item.value).details).left">Partie Gauche</li>
+                                <li v-if="parse(parse(item.value).details).right">Partie droite</li>
+                                <li v-if="parse(parse(item.value).details).front">Partie avant</li>
+                                <li v-if="parse(parse(item.value).details).back">Partie arrière</li>
                             </ul>
                         </li>
                     </ol>
