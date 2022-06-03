@@ -56,7 +56,7 @@
 
                         <v-list>
                             <v-list-item-group>
-                                <v-list-item link @click="fetchSuggestions(item.request.suggestions)">
+                                <v-list-item link @click="fetchSuggestions(item.request.suggestions,item.id)">
                                     <v-list-item-icon><v-icon color="primary">mdi-chart-box</v-icon></v-list-item-icon>
                                     <v-list-item-content><v-list-item-title>Les suggestion</v-list-item-title></v-list-item-content>
                                 </v-list-item>
@@ -96,7 +96,7 @@
             </v-data-table>
         </v-container>
         <decline-request-dialog @close1="close3" @close="close2" :id="seller_request_id" :dialog="dialog1" />
-        <suggestions-request-dialog @close="close1" :suggestions="suggestions" :dialog="dialog" />
+        <suggestions-request-dialog @close="close1" :suggestions="suggestions" :dialog="dialog" :seller_request_id="seller_request_id" />
     </div>
 </template>
 
@@ -138,9 +138,10 @@ export default {
         {
             this.init()
         },
-        fetchSuggestions(data)
+        fetchSuggestions(data,seller_request_id)
         {
             this.suggestions = data
+            this.seller_request_id = seller_request_id
             this.dialog = true
         },
         destroy(id)
@@ -151,6 +152,7 @@ export default {
         close1()
         {
             this.suggestions = []
+            this.seller_request_id = null
             this.dialog = false
         },
         close2()

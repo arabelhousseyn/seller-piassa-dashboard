@@ -9,7 +9,7 @@
                 <v-card-title class="text-h5">
                     Suggestions
                     <v-spacer></v-spacer>
-                    <store-suggestion-request />
+                    <store-suggestion-request :seller_request_id="seller_request_id" />
                 </v-card-title>
                 <v-card-text>
                     <v-simple-table>
@@ -67,7 +67,7 @@
 import StoreSuggestionRequest from "./StoreSuggestionRequest";
 export default {
     components: {StoreSuggestionRequest},
-    props : ['suggestions','dialog'],
+    props : ['suggestions','dialog','seller_request_id'],
     data : ()=>({
 
     }),

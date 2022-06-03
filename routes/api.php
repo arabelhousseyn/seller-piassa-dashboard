@@ -31,6 +31,7 @@ Route::middleware(['auth:sanctum','app_version','check_seller'])->group(function
 
     Route::controller(SellerController::class)->prefix('sellers')->group(function (){
         Route::get('requests','index');
+        Route::post('sotre-seller-suggestion','storeSellerSuggestion');
         Route::delete('request/destroy/{seller_request_id}','destroySellerRequest');
     });
 

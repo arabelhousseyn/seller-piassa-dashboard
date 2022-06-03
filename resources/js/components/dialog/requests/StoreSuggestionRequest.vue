@@ -120,6 +120,7 @@
 
 <script>
 export default {
+    props : ['seller_request_id'],
     data : ()=>({
         menu: false,
         date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),

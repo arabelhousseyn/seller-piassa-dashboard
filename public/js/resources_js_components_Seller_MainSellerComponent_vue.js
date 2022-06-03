@@ -194,8 +194,9 @@ __webpack_require__.r(__webpack_exports__);
     reset: function reset() {
       this.init();
     },
-    fetchSuggestions: function fetchSuggestions(data) {
+    fetchSuggestions: function fetchSuggestions(data, seller_request_id) {
       this.suggestions = data;
+      this.seller_request_id = seller_request_id;
       this.dialog = true;
     },
     destroy: function destroy(id) {
@@ -204,6 +205,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     close1: function close1() {
       this.suggestions = [];
+      this.seller_request_id = null;
       this.dialog = false;
     },
     close2: function close2() {
@@ -462,6 +464,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ['seller_request_id'],
   data: function data() {
     return {
       menu: false,
@@ -577,7 +580,7 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     StoreSuggestionRequest: _StoreSuggestionRequest__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
-  props: ['suggestions', 'dialog'],
+  props: ['suggestions', 'dialog', 'seller_request_id'],
   data: function data() {
     return {};
   },
@@ -1137,7 +1140,8 @@ var render = function () {
                                     on: {
                                       click: function ($event) {
                                         return _vm.fetchSuggestions(
-                                          item.request.suggestions
+                                          item.request.suggestions,
+                                          item.id
                                         )
                                       },
                                     },
@@ -1301,7 +1305,11 @@ var render = function () {
       }),
       _vm._v(" "),
       _c("suggestions-request-dialog", {
-        attrs: { suggestions: _vm.suggestions, dialog: _vm.dialog },
+        attrs: {
+          suggestions: _vm.suggestions,
+          dialog: _vm.dialog,
+          seller_request_id: _vm.seller_request_id,
+        },
         on: { close: _vm.close1 },
       }),
     ],
@@ -1809,7 +1817,9 @@ var render = function () {
                   _vm._v("\n                Suggestions\n                "),
                   _c("v-spacer"),
                   _vm._v(" "),
-                  _c("store-suggestion-request"),
+                  _c("store-suggestion-request", {
+                    attrs: { seller_request_id: _vm.seller_request_id },
+                  }),
                 ],
                 1
               ),
