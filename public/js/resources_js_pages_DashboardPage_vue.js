@@ -442,15 +442,15 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       if (localStorage.getItem('permission') == 'granted') {
-        var notification = new Notification('Nouvelle notification', {
+        var notification = new Notification('Nouvelle demande', {
           vibrate: true,
-          body: "Num\xE9ro de commande : ".concat(data.data.ref),
+          body: "Nouvelle demande",
           badge: ""
         });
         this.$store.commit('INCREMENT_NOTIFICATION', 1);
         this.playSound();
         notification.addEventListener('click', function () {
-          _this.$router.push('/home/orders');
+          _this.$router.push('/home/requests');
 
           notification.close();
         });
@@ -487,8 +487,9 @@ __webpack_require__.r(__webpack_exports__);
     var pusher = new Pusher("b5ef6ef8a5619d1d4b7b", {
       cluster: "eu"
     });
-    var channel = pusher.subscribe('admin');
-    channel.bind('order-event', this.enableNotification);
+    var seller_id = this.$store.state.user.id;
+    var channel = pusher.subscribe('seller');
+    channel.bind('request-event-'.seller_id, this.enableNotification);
   }
 });
 

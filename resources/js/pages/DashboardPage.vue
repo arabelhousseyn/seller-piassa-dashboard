@@ -24,15 +24,15 @@ export default {
         {
             if(localStorage.getItem('permission') == 'granted')
             {
-                let notification = new Notification('Nouvelle notification',{
+                let notification = new Notification('Nouvelle demande',{
                     vibrate : true,
-                    body : `Numéro de commande : ${data.data.ref}`,
+                    body : `Nouvelle demande`,
                     badge : ""
                 })
                 this.$store.commit('INCREMENT_NOTIFICATION',1)
                 this.playSound()
                 notification.addEventListener('click',()=>{
-                    this.$router.push('/home/orders')
+                    this.$router.push('/home/requests')
                     notification.close()
                 })
             }
@@ -67,8 +67,10 @@ export default {
              cluster: process.env.MIX_PUSHER_APP_CLUSTER
          });
 
-         var channel = pusher.subscribe('admin');
-         channel.bind('order-event', this.enableNotification);
+            let seller_id = this.$store.state.user.id
+            var channel = pusher.subscribe('seller');
+            channel.bind('request-event-' . seller_id , this.enableNotification);
+
     }
 }
 </script>
