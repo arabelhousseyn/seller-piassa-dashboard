@@ -214,8 +214,8 @@ __webpack_require__.r(__webpack_exports__);
     },
     close3: function close3(id) {
       var seller_request_id = id;
-      this.sellers.filter(function (seller) {
-        return seller.id != seller_request_id;
+      this.sellers = this.sellers.filter(function (seller) {
+        return seller.id !== seller_request_id;
       }, seller_request_id);
       this.dialog1 = false;
       this.seller_request_id = null;

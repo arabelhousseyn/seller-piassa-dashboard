@@ -163,8 +163,8 @@ export default {
         close3(id)
         {
             let seller_request_id = id
-            this.sellers.filter((seller)=>{
-                return seller.id != seller_request_id
+           this.sellers = this.sellers.filter((seller)=>{
+                return seller.id !== seller_request_id
             },seller_request_id)
             this.dialog1 = false
             this.seller_request_id = null
