@@ -38,24 +38,31 @@ class IncomeService{
     public function CalculateIncomes()
     {
 
-//        $company_comissions = CompanyCommission::all();
-//        $months = ['1' => 0,'2' => 0,'3' => 0,'4' => 0,'5' => 0,'6' => 0
-//            ,'7' => 0,'8' => 0,'9' => 0,'10' => 0,'11' => 0,'11' => 0];
-//
-//        foreach ($company_comissions as $company_comission) {
-//            $date = Carbon::parse($company_comission->created_at);
-//            if($this->year == $date->format('Y'))
-//            {
-//                foreach ($months as $month => $value) {
-//
-//                    if($month == $date->format('m'))
-//                    {
-//                         $months[$month] += $company_comission->amount;
-//                    }
-//                }
-//            }
-//        }
-//        return array_values($months);
+        $seller = Seller::with('requests.request.type','requests.request.informations','requests.request.suggestions.suggestion',
+            'requests.request.images','requests.request.vehicle','requests.request.vehicle.user.profile')->find(Auth::id());
+        $months = ['1' => 0,'2' => 0,'3' => 0,'4' => 0,'5' => 0,'6' => 0
+            ,'7' => 0,'8' => 0,'9' => 0,'10' => 0,'11' => 0,'11' => 0];
+
+        foreach ($seller->requests as $request) {
+
+            foreach ($request->request->suggestions as $suggestion) {
+                if($suggestion->suggestion->delivered_at !== null)
+                {
+                    $date = Carbon::parse($suggestion->suggest_him_at);
+                    if($this->year == $date->format('Y'))
+                    {
+                        foreach ($months as $month => $value) {
+
+                            if($month == $date->format('m'))
+                            {
+                                $months[$month] += $suggestion->suggestion->price;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return array_values($months);
         return 0;
     }
 
