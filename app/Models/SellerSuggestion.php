@@ -35,9 +35,4 @@ class SellerSuggestion extends Model
         return $this->hasOne(UserOrderItem::class);
     }
 
-    public function getPriceAttribute()
-    {
-        return $this->attributes['price'] . ' DZD';
-    }
-
 }

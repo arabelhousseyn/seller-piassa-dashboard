@@ -27,15 +27,16 @@ class DashbaordController extends Controller
                 'title' => __('messages.requests')
             ],
             'income_year' => [
-                'count' => 0,
+                'count' => (new IncomeService())->setType('Y',Carbon::now()->year)->income(),
                 'icon' => 'mdi-currency-usd',
                 'title' => __('messages.income_year')
             ],
             'income_month' => [
-                'count' => 0,
+                'count' => (new IncomeService())->setType('M',Carbon::now()->month)->income(),
                 'icon' => 'mdi-currency-usd',
                 'title' => __('messages.income_month')
             ],
+            'icomes_by_month' =>(new IncomeService())->setYear(Carbon::now()->year)->CalculateIncomes(),
             'count_notification' => count(Seller::find(Auth::id())->notifications),
             'notifications' => Seller::find(Auth::id())->notifications,
             'app_version' => AppVersion::where('app_type','seller_dashboard')->first()
