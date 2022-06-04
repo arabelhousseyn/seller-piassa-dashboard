@@ -21,20 +21,20 @@ class DashbaordController extends Controller
     {
 
         $data = [
-            'users' => [
-                'count' => 0,
-                'icon' => 'mdi-account',
-                'title' => __('messages.users')
+            'requests' => [
+                'count' =>Seller::withCount('requests')->find(Auth::id())->requests_count,
+                'icon' => 'mdi-chart-box',
+                'title' => __('messages.requests')
             ],
-            'sellers' => [
+            'income_year' => [
                 'count' => 0,
-                'icon' => 'mdi-account',
-                'title' => __('messages.sellers')
+                'icon' => 'mdi-currency-usd',
+                'title' => __('messages.income_year')
             ],
-            'shippers' => [
+            'income_month' => [
                 'count' => 0,
-                'icon' => 'mdi-account',
-                'title' => __('messages.shippers')
+                'icon' => 'mdi-currency-usd',
+                'title' => __('messages.income_month')
             ],
             'count_notification' => count(Seller::find(Auth::id())->notifications),
             'notifications' => Seller::find(Auth::id())->notifications,

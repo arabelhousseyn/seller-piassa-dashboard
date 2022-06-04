@@ -54,9 +54,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _CardInformationComponent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CardInformationComponent */ "./resources/js/components/CardInformationComponent.vue");
-/* harmony import */ var _charts_UsersStatsComponent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./charts/UsersStatsComponent */ "./resources/js/components/charts/UsersStatsComponent.vue");
-/* harmony import */ var _charts_ComissionStatsComponent__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./charts/ComissionStatsComponent */ "./resources/js/components/charts/ComissionStatsComponent.vue");
-/* harmony import */ var _charts_GenderStatsComponent__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./charts/GenderStatsComponent */ "./resources/js/components/charts/GenderStatsComponent.vue");
+/* harmony import */ var _charts_ComissionStatsComponent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./charts/ComissionStatsComponent */ "./resources/js/components/charts/ComissionStatsComponent.vue");
 //
 //
 //
@@ -94,36 +92,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    GenderStatsComponent: _charts_GenderStatsComponent__WEBPACK_IMPORTED_MODULE_3__["default"],
-    ComissionStatsComponent: _charts_ComissionStatsComponent__WEBPACK_IMPORTED_MODULE_2__["default"],
-    UsersStatsComponent: _charts_UsersStatsComponent__WEBPACK_IMPORTED_MODULE_1__["default"],
+    ComissionStatsComponent: _charts_ComissionStatsComponent__WEBPACK_IMPORTED_MODULE_1__["default"],
     CardInformationComponent: _CardInformationComponent__WEBPACK_IMPORTED_MODULE_0__["default"]
   }
 });
@@ -153,75 +126,6 @@ __webpack_require__.r(__webpack_exports__);
         label: "Piassa comission par mois ".concat(new Date().getFullYear(), "- ").concat(new Date().getFullYear() + 1, " "),
         backgroundColor: '#e85810',
         data: this.$store.state.data.icomes_by_month
-      }]
-    });
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/charts/GenderStatsComponent.vue?vue&type=script&lang=js&":
-/*!**********************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/charts/GenderStatsComponent.vue?vue&type=script&lang=js& ***!
-  \**********************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var vue_chartjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-chartjs */ "./node_modules/vue-chartjs/es/index.js");
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  "extends": vue_chartjs__WEBPACK_IMPORTED_MODULE_0__.Pie,
-  mounted: function mounted() {
-    this.gradient = this.$refs.canvas.getContext("2d").createLinearGradient(0, 0, 0, 450);
-    this.gradient2 = this.$refs.canvas.getContext("2d").createLinearGradient(0, 0, 0, 450);
-    this.gradient.addColorStop(0, "rgba(255, 0,0, 0.5)");
-    this.gradient.addColorStop(0.5, "rgba(255, 0, 0, 0.25)");
-    this.gradient.addColorStop(1, "rgba(255, 0, 0, 0)");
-    this.gradient2.addColorStop(0, "rgba(0, 231, 255, 0.9)");
-    this.gradient2.addColorStop(0.5, "rgba(0, 231, 255, 0.25)");
-    this.gradient2.addColorStop(1, "rgba(0, 231, 255, 0)");
-    this.renderChart({
-      labels: ["Homme", "Femme"],
-      datasets: [{
-        backgroundColor: [this.gradient2, this.gradient, "#e85810"],
-        data: [this.$store.state.data.count_male, this.$store.state.data.count_female]
-      }]
-    }, {
-      responsive: true,
-      maintainAspectRatio: false
-    });
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/charts/UsersStatsComponent.vue?vue&type=script&lang=js&":
-/*!*********************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/charts/UsersStatsComponent.vue?vue&type=script&lang=js& ***!
-  \*********************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var vue_chartjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-chartjs */ "./node_modules/vue-chartjs/es/index.js");
-//
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  "extends": vue_chartjs__WEBPACK_IMPORTED_MODULE_0__.Line,
-  mounted: function mounted() {
-    this.renderChart({
-      labels: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
-      datasets: [{
-        label: "Utilisateurs par mois ".concat(new Date().getFullYear(), "- ").concat(new Date().getFullYear() + 1, " "),
-        backgroundColor: '#e85810',
-        data: this.$store.state.data.users_by_month
       }]
     });
   }
@@ -38240,82 +38144,6 @@ component.options.__file = "resources/js/components/charts/ComissionStatsCompone
 
 /***/ }),
 
-/***/ "./resources/js/components/charts/GenderStatsComponent.vue":
-/*!*****************************************************************!*\
-  !*** ./resources/js/components/charts/GenderStatsComponent.vue ***!
-  \*****************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _GenderStatsComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./GenderStatsComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/charts/GenderStatsComponent.vue?vue&type=script&lang=js&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-var render, staticRenderFns
-;
-
-
-
-/* normalize component */
-;
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
-  _GenderStatsComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"],
-  render,
-  staticRenderFns,
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/charts/GenderStatsComponent.vue"
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/charts/UsersStatsComponent.vue":
-/*!****************************************************************!*\
-  !*** ./resources/js/components/charts/UsersStatsComponent.vue ***!
-  \****************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _UsersStatsComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UsersStatsComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/charts/UsersStatsComponent.vue?vue&type=script&lang=js&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-var render, staticRenderFns
-;
-
-
-
-/* normalize component */
-;
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
-  _UsersStatsComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"],
-  render,
-  staticRenderFns,
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/charts/UsersStatsComponent.vue"
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
-
-/***/ }),
-
 /***/ "./resources/js/components/CardInformationComponent.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************!*\
   !*** ./resources/js/components/CardInformationComponent.vue?vue&type=script&lang=js& ***!
@@ -38361,38 +38189,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ComissionStatsComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ComissionStatsComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/charts/ComissionStatsComponent.vue?vue&type=script&lang=js&");
  /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ComissionStatsComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/components/charts/GenderStatsComponent.vue?vue&type=script&lang=js&":
-/*!******************************************************************************************!*\
-  !*** ./resources/js/components/charts/GenderStatsComponent.vue?vue&type=script&lang=js& ***!
-  \******************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_GenderStatsComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./GenderStatsComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/charts/GenderStatsComponent.vue?vue&type=script&lang=js&");
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_GenderStatsComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/components/charts/UsersStatsComponent.vue?vue&type=script&lang=js&":
-/*!*****************************************************************************************!*\
-  !*** ./resources/js/components/charts/UsersStatsComponent.vue?vue&type=script&lang=js& ***!
-  \*****************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_UsersStatsComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./UsersStatsComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/charts/UsersStatsComponent.vue?vue&type=script&lang=js&");
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_UsersStatsComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
@@ -38550,13 +38346,13 @@ var render = function () {
             [
               _c(
                 "v-col",
-                { attrs: { cols: "12", lg: "3", md: "4" } },
+                { attrs: { cols: "12", lg: "4", md: "4" } },
                 [
                   _c("card-information-component", {
                     attrs: {
-                      count: _vm.$store.state.data.users.count,
-                      icon: _vm.$store.state.data.users.icon,
-                      title: _vm.$store.state.data.users.title,
+                      count: _vm.$store.state.data.requests.count,
+                      icon: _vm.$store.state.data.requests.icon,
+                      title: _vm.$store.state.data.requests.title,
                     },
                   }),
                 ],
@@ -38565,13 +38361,13 @@ var render = function () {
               _vm._v(" "),
               _c(
                 "v-col",
-                { attrs: { cols: "12", lg: "3", md: "4" } },
+                { attrs: { cols: "12", lg: "4", md: "4" } },
                 [
                   _c("card-information-component", {
                     attrs: {
-                      count: _vm.$store.state.data.sellers.count,
-                      icon: _vm.$store.state.data.sellers.icon,
-                      title: _vm.$store.state.data.sellers.title,
+                      count: _vm.$store.state.data.income_year.count,
+                      icon: _vm.$store.state.data.income_year.icon,
+                      title: _vm.$store.state.data.income_year.title,
                     },
                   }),
                 ],
@@ -38580,28 +38376,13 @@ var render = function () {
               _vm._v(" "),
               _c(
                 "v-col",
-                { attrs: { cols: "12", lg: "3", md: "4" } },
+                { attrs: { cols: "12", lg: "4", md: "4" } },
                 [
                   _c("card-information-component", {
                     attrs: {
-                      count: _vm.$store.state.data.shippers.count,
-                      icon: _vm.$store.state.data.shippers.icon,
-                      title: _vm.$store.state.data.shippers.title,
-                    },
-                  }),
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-col",
-                { attrs: { cols: "12", lg: "3", md: "4" } },
-                [
-                  _c("card-information-component", {
-                    attrs: {
-                      count: _vm.$store.state.data.company.count,
-                      icon: _vm.$store.state.data.company.icon,
-                      title: _vm.$store.state.data.company.title,
+                      count: _vm.$store.state.data.income_month.count,
+                      icon: _vm.$store.state.data.income_month.icon,
+                      title: _vm.$store.state.data.income_month.title,
                     },
                   }),
                 ],
@@ -38623,40 +38404,12 @@ var render = function () {
             [
               _c(
                 "v-col",
-                { attrs: { cols: "12", lg: "6", md: "6" } },
-                [
-                  _c(
-                    "v-card",
-                    { attrs: { elevation: "0" } },
-                    [_c("v-card-text", [_c("users-stats-component")], 1)],
-                    1
-                  ),
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-col",
-                { attrs: { cols: "12", lg: "6", md: "6" } },
+                { attrs: { cols: "12" } },
                 [
                   _c(
                     "v-card",
                     { attrs: { elevation: "0" } },
                     [_c("v-card-text", [_c("comission-stats-component")], 1)],
-                    1
-                  ),
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-col",
-                { attrs: { cols: "12", lg: "6", md: "6" } },
-                [
-                  _c(
-                    "v-card",
-                    { attrs: { elevation: "0" } },
-                    [_c("v-card-text", [_c("gender-stats-component")], 1)],
                     1
                   ),
                 ],

@@ -2,53 +2,32 @@
     <div class="main">
         <v-container fluid>
             <v-row>
-                <v-col cols="12" lg="3" md="4">
+                <v-col cols="12" lg="4" md="4">
                     <card-information-component
-                        :count="$store.state.data.users.count"
-                        :icon="$store.state.data.users.icon"
-                        :title="$store.state.data.users.title" />
+                        :count="$store.state.data.requests.count"
+                        :icon="$store.state.data.requests.icon"
+                        :title="$store.state.data.requests.title" />
                 </v-col>
-                <v-col cols="12" lg="3" md="4">
+                <v-col cols="12" lg="4" md="4">
                     <card-information-component
-                        :count="$store.state.data.sellers.count"
-                        :icon="$store.state.data.sellers.icon"
-                        :title="$store.state.data.sellers.title" />
+                        :count="$store.state.data.income_year.count"
+                        :icon="$store.state.data.income_year.icon"
+                        :title="$store.state.data.income_year.title" />
                 </v-col>
-                <v-col cols="12" lg="3" md="4">
+                <v-col cols="12" lg="4" md="4">
                     <card-information-component
-                        :count="$store.state.data.shippers.count"
-                        :icon="$store.state.data.shippers.icon"
-                        :title="$store.state.data.shippers.title" />
-                </v-col>
-                <v-col cols="12" lg="3" md="4">
-                    <card-information-component
-                        :count="$store.state.data.company.count"
-                        :icon="$store.state.data.company.icon"
-                        :title="$store.state.data.company.title" />
+                        :count="$store.state.data.income_month.count"
+                        :icon="$store.state.data.income_month.icon"
+                        :title="$store.state.data.income_month.title" />
                 </v-col>
             </v-row>
         </v-container>
         <v-container fluid>
             <v-row>
-                <v-col cols="12" lg="6" md="6">
-                    <v-card elevation="0">
-                        <v-card-text>
-                            <users-stats-component />
-                        </v-card-text>
-                    </v-card>
-                </v-col>
-                <v-col cols="12" lg="6" md="6">
+                <v-col cols="12">
                     <v-card elevation="0">
                         <v-card-text>
                             <comission-stats-component />
-                        </v-card-text>
-                    </v-card>
-                </v-col>
-
-                <v-col cols="12" lg="6" md="6">
-                    <v-card elevation="0">
-                        <v-card-text>
-                            <gender-stats-component />
                         </v-card-text>
                     </v-card>
                 </v-col>
@@ -57,11 +36,9 @@
     </div>
 </template>
 <script>
-import CardInformationComponent from "./CardInformationComponent";
-import UsersStatsComponent from "./charts/UsersStatsComponent";
-import ComissionStatsComponent from "./charts/ComissionStatsComponent";
-import GenderStatsComponent from "./charts/GenderStatsComponent";
+import CardInformationComponent from "./CardInformationComponent"
+import ComissionStatsComponent from "./charts/ComissionStatsComponent"
 export default {
-    components: {GenderStatsComponent, ComissionStatsComponent, UsersStatsComponent, CardInformationComponent}
+    components: { ComissionStatsComponent, CardInformationComponent}
 }
 </script>

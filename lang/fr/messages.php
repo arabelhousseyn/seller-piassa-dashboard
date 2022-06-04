@@ -3,9 +3,9 @@
 return[
   'many' => 'Trop de requêtes réessayer dans 5 minutes',
     'failed' => 'Le téléphone ou le mot de passe est incorrect',
-    'users' => 'Utilisateurs',
-    'shippers' => 'Livreurs',
-    'sellers' => 'Vendeurs',
+    'requests' => 'Demandes',
+    'income_year' => 'Année de revenu',
+    'income_month' => 'Mois de revenu',
     'company' => 'Piassa comission',
     'user_delete_error' => 'Utilisateur déjà supprimé',
     'user_not_found' => 'Utilisateur non trouvé',
