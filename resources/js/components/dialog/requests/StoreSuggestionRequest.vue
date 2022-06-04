@@ -96,7 +96,16 @@
                                 </v-alert>
 
                                 <v-col cols="12">
-                                    <v-btn type="submit" :disabled="disable" color="primary" ><v-icon>mdi-plus</v-icon></v-btn>
+                                    <v-btn type="submit" :disabled="disable" color="primary" >
+
+                                        <v-icon v-if="!loading">mdi-plus</v-icon>
+                                        <v-progress-circular
+                                            v-else
+                                            indeterminate
+                                            color="primary"
+                                        ></v-progress-circular>
+
+                                    </v-btn>
                                 </v-col>
                             </form>
                         </v-row>

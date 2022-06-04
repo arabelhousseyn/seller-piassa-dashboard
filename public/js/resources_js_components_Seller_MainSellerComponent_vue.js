@@ -463,6 +463,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['seller_request_id'],
   data: function data() {
@@ -1755,7 +1764,16 @@ var render = function () {
                                       color: "primary",
                                     },
                                   },
-                                  [_c("v-icon", [_vm._v("mdi-plus")])],
+                                  [
+                                    !_vm.loading
+                                      ? _c("v-icon", [_vm._v("mdi-plus")])
+                                      : _c("v-progress-circular", {
+                                          attrs: {
+                                            indeterminate: "",
+                                            color: "primary",
+                                          },
+                                        }),
+                                  ],
                                   1
                                 ),
                               ],
