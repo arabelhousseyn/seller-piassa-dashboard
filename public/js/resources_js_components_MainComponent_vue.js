@@ -123,7 +123,7 @@ __webpack_require__.r(__webpack_exports__);
     this.renderChart({
       labels: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
       datasets: [{
-        label: "Piassa comission par mois ".concat(new Date().getFullYear(), "- ").concat(new Date().getFullYear() + 1, " "),
+        label: "Revenu par ann\xE9e ".concat(new Date().getFullYear(), "- ").concat(new Date().getFullYear() + 1, " "),
         backgroundColor: '#e85810',
         data: this.$store.state.data.icomes_by_month
       }]

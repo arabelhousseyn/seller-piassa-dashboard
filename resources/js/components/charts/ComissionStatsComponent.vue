@@ -10,7 +10,7 @@ export default {
             labels: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
             datasets: [
                 {
-                    label: `Piassa comission par mois ${new Date().getFullYear()}- ${new Date().getFullYear() + 1} `,
+                    label: `Revenu par année ${new Date().getFullYear()}- ${new Date().getFullYear() + 1} `,
                     backgroundColor: '#e85810',
                     data: this.$store.state.data.icomes_by_month
                 }
