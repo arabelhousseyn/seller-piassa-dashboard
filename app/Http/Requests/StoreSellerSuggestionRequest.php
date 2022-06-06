@@ -24,10 +24,9 @@ class StoreSellerSuggestionRequest extends FormRequest
     public function rules()
     {
         return [
-            'mark' => 'required',
-            'price' => 'required|numeric',
-            'available_at' => 'required|date:Y-m-d',
-            'seller_request_id' => 'required|exists:seller_requests,id'
+            'marks' => 'required',
+            'prices' => 'required',
+            'available_at' => 'required'
         ];
     }
 }
