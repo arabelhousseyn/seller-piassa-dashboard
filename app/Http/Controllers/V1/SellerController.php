@@ -46,9 +46,9 @@ class SellerController extends Controller
         if(count($marks) == count($prices) && count($marks) == count($available_at) &&
             count($prices) == count($available_at))
         {
-            $seller_request = SellerRequest::with('request.vehicle')->find(Auth::id());
+            $seller_request = SellerRequest::with('request.vehicle')->find($request->seller_request_id);
 
-            SellerRequest::whereId(Auth::id())->update([
+            SellerRequest::whereId($request->seller_request_id)->update([
                 'suggest_him_at' => Carbon::now()
             ]);
 
@@ -60,7 +60,7 @@ class SellerController extends Controller
                     'available_at' => $available_at[$i],
                 ]);
             }
-            $data = SellerRequest::with('suggestion','request.informations')->find(Auth::id());
+            $data = SellerRequest::with('suggestion','request.informations')->find($request->seller_request_id);
             event(new NewSuggestionEvent($data,$seller_request->request->vehicle->user_id));
             $this->pushNotification('Vous avez une nouvelle suggestion','nouvelle suggestion',[$seller_request->request->vehicle->user_id],'clients');
 //                event(new NewRequestEvent($data));

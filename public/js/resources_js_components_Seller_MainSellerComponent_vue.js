@@ -436,59 +436,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['seller_request_id'],
   data: function data() {
     return {
-      menu: false,
       date: new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().substr(0, 10),
       data: {
-        mark: null,
-        price: null,
-        available_at: new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().substr(0, 10),
+        marks: null,
+        prices: null,
+        available_at: null,
         seller_request_id: null
       },
       errors: [],
       hasError: false,
       disable: true,
       dialog: false,
-      loading: false
+      loading: false,
+      inputs1: 1,
+      mark: null,
+      price: null,
+      available_at: null
     };
   },
   methods: {
@@ -526,17 +493,52 @@ __webpack_require__.r(__webpack_exports__);
         });
       });
     },
+    incrementInput: function incrementInput() {
+      this.inputs1++;
+    },
     empty: function empty() {
-      this.data.mark = null;
-      this.data.price = null;
-      this.data.available_at = new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().substr(0, 10);
+      this.inputs1 = 1;
     },
-    check: function check() {
-      this.disable = this.data.mark == null || this.data.price == null ? true : false;
-    },
-    mutate: function mutate(e) {
-      this.data.available_at = e;
-      this.date = e;
+    mutate: function mutate(data, type) {
+      switch (type) {
+        case 'M':
+          this.mark = data;
+          break;
+
+        case 'P':
+          this.price = data;
+          break;
+
+        case 'A':
+          this.available_at = data.target.value;
+          break;
+      }
+
+      if (this.mark !== null && this.price !== null && this.available_at !== null) {
+        this.disable = false;
+
+        if (this.data.marks == null) {
+          this.data.marks = this.mark;
+        } else {
+          this.data.marks = "".concat(this.data.marks, ",").concat(this.mark);
+        }
+
+        if (this.data.prices == null) {
+          this.data.prices = this.price;
+        } else {
+          this.data.prices = "".concat(this.data.prices, ",").concat(this.price);
+        }
+
+        if (this.data.available_at == null) {
+          this.data.available_at = this.available_at;
+        } else {
+          this.data.available_at = "".concat(this.data.available_at, ",").concat(this.available_at);
+        }
+
+        this.mark = null;
+        this.price = null;
+        this.available_at = null;
+      }
     }
   },
   mounted: function mounted() {}
@@ -1544,182 +1546,81 @@ var render = function () {
                             },
                           },
                           [
-                            _c(
-                              "v-col",
-                              { attrs: { cols: "12" } },
-                              [
-                                _c("v-text-field", {
-                                  attrs: { label: "Marque*", required: "" },
-                                  on: { keydown: _vm.check },
-                                  model: {
-                                    value: _vm.data.mark,
-                                    callback: function ($$v) {
-                                      _vm.$set(_vm.data, "mark", $$v)
-                                    },
-                                    expression: "data.mark",
-                                  },
-                                }),
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "v-col",
-                              { attrs: { cols: "12" } },
-                              [
-                                _c("v-text-field", {
-                                  attrs: { label: "Prix*", required: "" },
-                                  on: { keydown: _vm.check },
-                                  model: {
-                                    value: _vm.data.price,
-                                    callback: function ($$v) {
-                                      _vm.$set(_vm.data, "price", $$v)
-                                    },
-                                    expression: "data.price",
-                                  },
-                                }),
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "v-col",
-                              { attrs: { cols: "12" } },
-                              [
-                                _c(
-                                  "v-menu",
-                                  {
-                                    ref: "menu",
-                                    attrs: {
-                                      "close-on-content-click": false,
-                                      "return-value": _vm.data.available_at,
-                                      transition: "scale-transition",
-                                      "offset-y": "",
-                                      "min-width": "auto",
-                                    },
-                                    on: {
-                                      "update:returnValue": function ($event) {
-                                        return _vm.$set(
-                                          _vm.data,
-                                          "available_at",
-                                          $event
-                                        )
-                                      },
-                                      "update:return-value": function ($event) {
-                                        return _vm.$set(
-                                          _vm.data,
-                                          "available_at",
-                                          $event
-                                        )
-                                      },
-                                    },
-                                    scopedSlots: _vm._u([
-                                      {
-                                        key: "activator",
-                                        fn: function (ref) {
-                                          var on = ref.on
-                                          var attrs = ref.attrs
-                                          return [
-                                            _c(
-                                              "v-text-field",
-                                              _vm._g(
-                                                _vm._b(
-                                                  {
-                                                    attrs: {
-                                                      label: "Disponible à*",
-                                                      "prepend-icon":
-                                                        "mdi-calendar",
-                                                      readonly: "",
-                                                    },
-                                                    model: {
-                                                      value: _vm.date,
-                                                      callback: function ($$v) {
-                                                        _vm.date = $$v
-                                                      },
-                                                      expression: "date",
-                                                    },
-                                                  },
-                                                  "v-text-field",
-                                                  attrs,
-                                                  false
-                                                ),
-                                                on
-                                              )
-                                            ),
-                                          ]
-                                        },
-                                      },
-                                    ]),
-                                    model: {
-                                      value: _vm.menu,
-                                      callback: function ($$v) {
-                                        _vm.menu = $$v
-                                      },
-                                      expression: "menu",
-                                    },
-                                  },
-                                  [
-                                    _vm._v(" "),
-                                    _c(
-                                      "v-date-picker",
-                                      {
+                            _vm._l(_vm.inputs1, function (input, index) {
+                              return _c(
+                                "div",
+                                { key: index },
+                                [
+                                  _c(
+                                    "v-col",
+                                    { attrs: { cols: "12" } },
+                                    [
+                                      _c("v-text-field", {
                                         attrs: {
-                                          "no-title": "",
-                                          scrollable: "",
+                                          label: "Marque*",
+                                          required: "",
                                         },
-                                        on: { change: _vm.mutate },
-                                      },
-                                      [
-                                        _c("v-spacer"),
-                                        _vm._v(" "),
-                                        _c(
-                                          "v-btn",
-                                          {
-                                            attrs: {
-                                              text: "",
-                                              color: "primary",
-                                            },
-                                            on: {
-                                              click: function ($event) {
-                                                _vm.menu = false
-                                              },
-                                            },
+                                        on: {
+                                          change: function ($event) {
+                                            return _vm.mutate($event, "M")
                                           },
-                                          [
-                                            _vm._v(
-                                              "\n                                            Cancel\n                                        "
-                                            ),
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "v-btn",
-                                          {
-                                            attrs: {
-                                              text: "",
-                                              color: "primary",
-                                            },
-                                            on: {
-                                              click: function ($event) {
-                                                return _vm.$refs.menu.save(
-                                                  _vm.data.available_at
-                                                )
-                                              },
-                                            },
+                                        },
+                                      }),
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-col",
+                                    { attrs: { cols: "12" } },
+                                    [
+                                      _c("v-text-field", {
+                                        attrs: { label: "Prix*", required: "" },
+                                        on: {
+                                          change: function ($event) {
+                                            return _vm.mutate($event, "P")
                                           },
-                                          [
-                                            _vm._v(
-                                              "\n                                            OK\n                                        "
-                                            ),
-                                          ]
-                                        ),
-                                      ],
-                                      1
+                                        },
+                                      }),
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c("v-col", { attrs: { cols: "12" } }, [
+                                    _c(
+                                      "label",
+                                      { attrs: { for: "available" } },
+                                      [_vm._v("Disponible à*")]
                                     ),
-                                  ],
-                                  1
-                                ),
-                              ],
+                                    _vm._v(" "),
+                                    _c("br"),
+                                    _vm._v(" "),
+                                    _c("input", {
+                                      attrs: { type: "date", id: "available" },
+                                      on: {
+                                        input: function ($event) {
+                                          return _vm.mutate($event, "A")
+                                        },
+                                      },
+                                    }),
+                                  ]),
+                                ],
+                                1
+                              )
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "v-btn",
+                              {
+                                attrs: {
+                                  text: "",
+                                  dark: "",
+                                  rounded: "",
+                                  color: "green",
+                                },
+                                on: { click: _vm.incrementInput },
+                              },
+                              [_c("v-icon", [_vm._v("mdi-plus")])],
                               1
                             ),
                             _vm._v(" "),
@@ -1780,7 +1681,7 @@ var render = function () {
                               1
                             ),
                           ],
-                          1
+                          2
                         ),
                       ]),
                     ],
