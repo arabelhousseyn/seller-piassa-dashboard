@@ -77,47 +77,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -138,13 +97,13 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    update: function update() {
+    updatePassword: function updatePassword() {
       var _this = this;
 
-      this.disable = true;
-      this.progress = true;
+      this.disable1 = true;
+      this.progress1 = true;
       axios.get('/sanctum/csrf-cookie').then(function (res) {
-        axios.put('/api/seller/change-password', _this.data).then(function (e) {
+        axios.put('/api/seller/change-password', _this.infos).then(function (e) {
           _this.$toast.open({
             message: "Opération effectué",
             type: 'success'
@@ -163,45 +122,11 @@ __webpack_require__.r(__webpack_exports__);
           for (var _i = 0, _errors = errors; _i < _errors.length; _i++) {
             var error = _errors[_i];
 
-            _this.errors.push(error[0]);
+            _this.errors1.push(error[0]);
 
-            _this.hasError = true;
-            _this.disable = false;
-            _this.progress = false;
-          }
-        });
-      });
-    },
-    updatePassword: function updatePassword() {
-      var _this2 = this;
-
-      this.disable1 = true;
-      this.progress1 = true;
-      axios.get('/sanctum/csrf-cookie').then(function (res) {
-        axios.put('/api/seller/change-password', _this2.infos).then(function (e) {
-          _this2.$toast.open({
-            message: "Opération effectué",
-            type: 'success'
-          });
-
-          _this2.$store.commit('SET_AUTH', false);
-
-          _this2.$store.commit('SET_USER', []);
-
-          localStorage.clear();
-
-          _this2.$router.push('/');
-        })["catch"](function (err) {
-          var errors = Object.values(err.response.data.errors);
-
-          for (var _i2 = 0, _errors2 = errors; _i2 < _errors2.length; _i2++) {
-            var error = _errors2[_i2];
-
-            _this2.errors1.push(error[0]);
-
-            _this2.hasError1 = true;
-            _this2.disable1 = false;
-            _this2.progress1 = false;
+            _this.hasError1 = true;
+            _this.disable1 = false;
+            _this.progress1 = false;
           }
         });
       });
@@ -409,132 +334,6 @@ var render = function () {
         "v-card",
         { attrs: { elevation: "0" } },
         [
-          _c(
-            "v-card",
-            { attrs: { elevation: "0" } },
-            [
-              _c("v-card-title", [_vm._v("Informations globales")]),
-              _vm._v(" "),
-              _c("v-card-text", [
-                _c(
-                  "form",
-                  {
-                    attrs: { method: "put" },
-                    on: {
-                      submit: function ($event) {
-                        $event.preventDefault()
-                        return _vm.update.apply(null, arguments)
-                      },
-                    },
-                  },
-                  [
-                    _c(
-                      "v-row",
-                      [
-                        _c(
-                          "v-col",
-                          { attrs: { cols: "12", md: "6", lg: "6" } },
-                          [
-                            _c("v-text-field", {
-                              attrs: { label: "Nom complet", dense: "" },
-                              model: {
-                                value: _vm.data.fullName,
-                                callback: function ($$v) {
-                                  _vm.$set(_vm.data, "fullName", $$v)
-                                },
-                                expression: "data.fullName",
-                              },
-                            }),
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "v-col",
-                          { attrs: { cols: "12", md: "6", lg: "6" } },
-                          [
-                            _c("v-text-field", {
-                              attrs: { label: "Téléphone", dense: "" },
-                              model: {
-                                value: _vm.data.phone,
-                                callback: function ($$v) {
-                                  _vm.$set(_vm.data, "phone", $$v)
-                                },
-                                expression: "data.phone",
-                              },
-                            }),
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _vm.hasError
-                          ? _c(
-                              "v-alert",
-                              {
-                                attrs: {
-                                  border: "right",
-                                  "colored-border": "",
-                                  type: "error",
-                                  elevation: "2",
-                                },
-                              },
-                              [
-                                _c(
-                                  "ul",
-                                  _vm._l(_vm.errors, function (error, index) {
-                                    return _c("li", { key: index }, [
-                                      _c("span", [_vm._v(_vm._s(error))]),
-                                    ])
-                                  }),
-                                  0
-                                ),
-                              ]
-                            )
-                          : _vm._e(),
-                        _vm._v(" "),
-                        _c(
-                          "v-col",
-                          { attrs: { cols: "12" } },
-                          [
-                            _c(
-                              "v-btn",
-                              {
-                                attrs: {
-                                  disabled: _vm.disable,
-                                  type: "submit",
-                                  color: "green",
-                                },
-                              },
-                              [
-                                !_vm.progress
-                                  ? _c(
-                                      "v-icon",
-                                      { attrs: { color: "white" } },
-                                      [_vm._v("mdi-check")]
-                                    )
-                                  : _c("v-progress-circular", {
-                                      attrs: {
-                                        indeterminate: "",
-                                        color: "white",
-                                      },
-                                    }),
-                              ],
-                              1
-                            ),
-                          ],
-                          1
-                        ),
-                      ],
-                      1
-                    ),
-                  ],
-                  1
-                ),
-              ]),
-            ],
-            1
-          ),
-          _vm._v(" "),
           _c(
             "v-card",
             { attrs: { elevation: "0" } },

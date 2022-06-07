@@ -2,47 +2,6 @@
     <div class="update-profile-component">
         <v-card elevation="0">
             <v-card elevation="0">
-                <v-card-title>Informations globales</v-card-title>
-                <v-card-text>
-                    <form @submit.prevent="update" method="put">
-                        <v-row>
-                            <v-col
-                                cols="12"
-                                md="6"
-                                lg="6"
-                            >
-                                <v-text-field
-                                    v-model="data.fullName"
-                                    label="Nom complet"
-                                    dense
-                                ></v-text-field>
-                            </v-col>
-                            <v-col
-                                cols="12"
-                                md="6"
-                                lg="6"
-                            >
-                                <v-text-field
-                                    v-model="data.phone"
-                                    label="Téléphone"
-                                    dense
-                                ></v-text-field>
-                            </v-col>
-
-                            <v-alert v-if="hasError" border="right" colored-border type="error" elevation="2">
-                                <ul>
-                                    <li v-for="(error,index) in errors" :key="index"><span>{{error}}</span></li>
-                                </ul>
-                            </v-alert>
-
-                            <v-col cols="12">
-                                <v-btn :disabled="disable" type="submit" color="green"><v-icon v-if="!progress" color="white">mdi-check</v-icon> <v-progress-circular v-else indeterminate color="white"></v-progress-circular></v-btn>
-                            </v-col>
-                        </v-row>
-                    </form>
-                </v-card-text>
-            </v-card>
-            <v-card elevation="0">
                 <v-card-title>Sécurité</v-card-title>
                 <v-card-text>
                     <form @submit.prevent="updatePassword" method="put">
@@ -124,31 +83,6 @@ export default {
         errors : [],
     }),
     methods : {
-        update()
-        {
-            this.disable = true
-            this.progress = true
-            axios.get('/sanctum/csrf-cookie').then(res => {
-                axios.put('/api/seller/change-password',this.data).then(e=>{
-                    this.$toast.open({
-                        message : "Opération effectué",
-                        type : 'success',
-                    })
-                    this.$store.commit('SET_AUTH',false)
-                    this.$store.commit('SET_USER',[])
-                    localStorage.clear()
-                    this.$router.push('/')
-                }).catch(err =>{
-                    let errors = Object.values(err.response.data.errors)
-                    for (const error of errors) {
-                        this.errors.push(error[0])
-                        this.hasError = true
-                        this.disable = false
-                        this.progress = false
-                    }
-                })
-            })
-        },
         updatePassword()
         {
             this.disable1 = true

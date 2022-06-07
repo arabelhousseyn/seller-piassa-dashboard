@@ -20,10 +20,23 @@ class SellerChangePassword extends Controller
     {
         if($request->validated())
         {
-            Seller::whereId(Auth::id())->update([
-                'password' => Hash::make($request->password_confirmation)
-            ]);
-            return response()->noContent();
+            $seller = Seller::find(Auth::id());
+            if(Hash::check($request->old_password,$seller->password))
+            {
+                $seller->update([
+                    'password' => Hash::make($request->password_confirmation)
+                ]);
+                return response()->noContent();
+            }else{
+                $errors = [
+                    'errors' => [
+                        'password' => [
+                            'Ancien mot de passe incorrect.'
+                        ]
+                    ]
+                ];
+                return response($errors,422);
+            }
         }
     }
 }
