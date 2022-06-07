@@ -129,7 +129,7 @@ export default {
             this.disable = true
             this.progress = true
             axios.get('/sanctum/csrf-cookie').then(res => {
-                axios.put('/api/admins/update-profile-admin-dashboard',this.data).then(e=>{
+                axios.put('/api/seller/change-password',this.data).then(e=>{
                     this.$toast.open({
                         message : "Opération effectué",
                         type : 'success',
@@ -154,7 +154,7 @@ export default {
             this.disable1 = true
             this.progress1 = true
             axios.get('/sanctum/csrf-cookie').then(res => {
-                axios.put('/api/admins/update-password-admin-dashboard',this.infos).then(e=>{
+                axios.put('/api/seller/change-password',this.infos).then(e=>{
                     this.$toast.open({
                         message : "Opération effectué",
                         type : 'success',

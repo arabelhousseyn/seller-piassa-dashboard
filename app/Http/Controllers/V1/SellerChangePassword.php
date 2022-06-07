@@ -5,6 +5,7 @@ namespace App\Http\Controllers\V1;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SellerChangePasswordRequest;
 use App\Models\Seller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class SellerChangePassword extends Controller
@@ -15,14 +16,14 @@ class SellerChangePassword extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(SellerChangePasswordRequest $request,$id)
+    public function __invoke(SellerChangePasswordRequest $request)
     {
         if($request->validated())
         {
-            Seller::whereId($id)->update([
+            Seller::whereId(Auth::id())->update([
                 'password' => Hash::make($request->password_confirmation)
             ]);
-            return response('',204);
+            return response()->noContent();
         }
     }
 }

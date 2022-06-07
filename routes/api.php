@@ -25,8 +25,8 @@ Route::middleware(['auth:sanctum','app_version','check_seller'])->group(function
 
     // sellers
 
-    Route::prefix('sellers')->group(function (){
-        Route::put('change-password/{id}',SellerChangePassword::class)->whereNumber('id');
+    Route::prefix('seller')->group(function (){
+        Route::put('change-password',SellerChangePassword::class);
     });
 
     Route::controller(SellerController::class)->prefix('sellers')->group(function (){
