@@ -60,6 +60,10 @@
                                     <v-list-item-icon><v-icon color="primary">mdi-chart-box</v-icon></v-list-item-icon>
                                     <v-list-item-content><v-list-item-title>Les suggestion</v-list-item-title></v-list-item-content>
                                 </v-list-item>
+                                <v-list-item link @click="fetchSuggestions(item.request.suggestions,item.id)">
+                                    <v-list-item-icon><v-icon color="primary">mdi-folder-multiple-image</v-icon></v-list-item-icon>
+                                    <v-list-item-content><v-list-item-title>Images</v-list-item-title></v-list-item-content>
+                                </v-list-item>
                                 <v-list-item link @click="destroy(item.id)">
                                     <v-list-item-icon><v-icon color="red">mdi-trash-can</v-icon></v-list-item-icon>
                                     <v-list-item-content><v-list-item-title>Décline</v-list-item-title></v-list-item-content>
@@ -118,7 +122,6 @@ export default {
                 value: 'request.vehicle.user.profile.full_name',
             },
             { text: 'Telephone', value: 'request.vehicle.user.phone' },
-            { text: 'Type', value: 'request.type.name' },
             { text: 'Type', value: 'request.type.name' },
             { text: 'Détails', value: 'request.informations' },
             { text: 'Créé à', value: 'request.created_at' },

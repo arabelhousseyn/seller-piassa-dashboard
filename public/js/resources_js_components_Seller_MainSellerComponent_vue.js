@@ -142,6 +142,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -164,9 +168,6 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         text: 'Telephone',
         value: 'request.vehicle.user.phone'
-      }, {
-        text: 'Type',
-        value: 'request.type.name'
       }, {
         text: 'Type',
         value: 'request.type.name'
@@ -1211,6 +1212,45 @@ var render = function () {
                                       [
                                         _c("v-list-item-title", [
                                           _vm._v("Les suggestion"),
+                                        ]),
+                                      ],
+                                      1
+                                    ),
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "v-list-item",
+                                  {
+                                    attrs: { link: "" },
+                                    on: {
+                                      click: function ($event) {
+                                        return _vm.fetchSuggestions(
+                                          item.request.suggestions,
+                                          item.id
+                                        )
+                                      },
+                                    },
+                                  },
+                                  [
+                                    _c(
+                                      "v-list-item-icon",
+                                      [
+                                        _c(
+                                          "v-icon",
+                                          { attrs: { color: "primary" } },
+                                          [_vm._v("mdi-folder-multiple-image")]
+                                        ),
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-list-item-content",
+                                      [
+                                        _c("v-list-item-title", [
+                                          _vm._v("Images"),
                                         ]),
                                       ],
                                       1
