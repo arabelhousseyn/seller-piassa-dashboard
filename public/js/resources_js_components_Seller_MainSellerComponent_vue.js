@@ -185,7 +185,9 @@ __webpack_require__.r(__webpack_exports__);
       suggestions: [],
       seller_request_id: null,
       dialog: false,
-      dialog1: false
+      dialog1: false,
+      dialog2: false,
+      images: []
     };
   },
   methods: {
@@ -194,6 +196,10 @@ __webpack_require__.r(__webpack_exports__);
     },
     reset: function reset() {
       this.init();
+    },
+    fetchImages: function fetchImages(images) {
+      this.images = images;
+      this.dialog2 = true;
     },
     fetchSuggestions: function fetchSuggestions(data, seller_request_id) {
       this.suggestions = data;
@@ -220,6 +226,10 @@ __webpack_require__.r(__webpack_exports__);
       }, seller_request_id);
       this.dialog1 = false;
       this.seller_request_id = null;
+    },
+    close4: function close4() {
+      this.images = [];
+      this.dialog2 = false;
     },
     init: function init() {
       var _this = this;
@@ -1226,9 +1236,8 @@ var render = function () {
                                     attrs: { link: "" },
                                     on: {
                                       click: function ($event) {
-                                        return _vm.fetchSuggestions(
-                                          item.request.suggestions,
-                                          item.id
+                                        return _vm.fetchImages(
+                                          item.request.images
                                         )
                                       },
                                     },

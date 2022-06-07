@@ -60,7 +60,7 @@
                                     <v-list-item-icon><v-icon color="primary">mdi-chart-box</v-icon></v-list-item-icon>
                                     <v-list-item-content><v-list-item-title>Les suggestion</v-list-item-title></v-list-item-content>
                                 </v-list-item>
-                                <v-list-item link @click="fetchSuggestions(item.request.suggestions,item.id)">
+                                <v-list-item link @click="fetchImages(item.request.images)">
                                     <v-list-item-icon><v-icon color="primary">mdi-folder-multiple-image</v-icon></v-list-item-icon>
                                     <v-list-item-content><v-list-item-title>Images</v-list-item-title></v-list-item-content>
                                 </v-list-item>
@@ -131,6 +131,8 @@ export default {
         seller_request_id : null,
         dialog : false,
         dialog1 : false,
+        dialog2 : false,
+        images : [],
     }),
     methods : {
         parse(data)
@@ -140,6 +142,11 @@ export default {
         reset()
         {
             this.init()
+        },
+        fetchImages(images)
+        {
+            this.images = images
+            this.dialog2 = true
         },
         fetchSuggestions(data,seller_request_id)
         {
@@ -171,6 +178,11 @@ export default {
             },seller_request_id)
             this.dialog1 = false
             this.seller_request_id = null
+        },
+        close4()
+        {
+            this.images = []
+            this.dialog2 = false
         },
         init()
         {
