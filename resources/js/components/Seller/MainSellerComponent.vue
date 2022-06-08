@@ -99,6 +99,7 @@
                 </template>
             </v-data-table>
         </v-container>
+        <request-images-dialog @close="close4" v-if="dialog2" :dialog="dialog2" :images="images" />
         <decline-request-dialog @close1="close3" @close="close2" :id="seller_request_id" :dialog="dialog1" />
         <suggestions-request-dialog @close="close1" :suggestions="suggestions" :dialog="dialog" :seller_request_id="seller_request_id" />
     </div>
@@ -108,8 +109,9 @@
 import BreadCrumbsComponent from "../BreadCrumbsComponent"
 import DeclineRequestDialog from "../dialog/requests/DeclineRequestDialog"
 import SuggestionsRequestDialog from "../dialog/requests/SuggestionsRequestDialog";
+import RequestImagesDialog from "../dialog/requests/RequestImagesDialog";
 export default {
-    components: {SuggestionsRequestDialog, DeclineRequestDialog, BreadCrumbsComponent},
+    components: {RequestImagesDialog, SuggestionsRequestDialog, DeclineRequestDialog, BreadCrumbsComponent},
     data : ()=>({
         sellers : [],
         loading : true,
