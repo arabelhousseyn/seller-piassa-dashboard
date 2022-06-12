@@ -22,6 +22,7 @@ export default {
     methods : {
         enableNotification(data)
         {
+            console.log('hello')
             if(localStorage.getItem('permission') == 'granted')
             {
                 let notification = new Notification('Nouvelle demande',{

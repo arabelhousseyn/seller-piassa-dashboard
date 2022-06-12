@@ -441,6 +441,8 @@ __webpack_require__.r(__webpack_exports__);
     enableNotification: function enableNotification(data) {
       var _this = this;
 
+      console.log('hello');
+
       if (localStorage.getItem('permission') == 'granted') {
         var notification = new Notification('Nouvelle demande', {
           vibrate: true,
