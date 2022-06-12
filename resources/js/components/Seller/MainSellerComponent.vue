@@ -118,13 +118,11 @@ export default {
         search : null,
         headers: [
             {
-                text: 'Nom complete',
+                text: 'Type',
                 align: 'start',
                 sortable: true,
-                value: 'request.vehicle.user.profile.full_name',
+                value: 'request.type.name'
             },
-            { text: 'Telephone', value: 'request.vehicle.user.phone' },
-            { text: 'Type', value: 'request.type.name' },
             { text: 'Détails', value: 'request.informations' },
             { text: 'Créé à', value: 'request.created_at' },
             { text: 'actions', value: 'actions', sortable: false },

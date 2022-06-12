@@ -165,15 +165,9 @@ __webpack_require__.r(__webpack_exports__);
       loading: true,
       search: null,
       headers: [{
-        text: 'Nom complete',
+        text: 'Type',
         align: 'start',
         sortable: true,
-        value: 'request.vehicle.user.profile.full_name'
-      }, {
-        text: 'Telephone',
-        value: 'request.vehicle.user.phone'
-      }, {
-        text: 'Type',
         value: 'request.type.name'
       }, {
         text: 'Détails',
