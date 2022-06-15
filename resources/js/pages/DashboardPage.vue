@@ -17,12 +17,12 @@ import Echo from "laravel-echo";
 export default {
     data : () =>({
        isLoading : true,
+        event : null
     }),
     components: {FooterComponent, HeaderComponent, ProgressCircularComponent},
     methods : {
         enableNotification(data)
         {
-            console.log('hello')
             if(localStorage.getItem('permission') == 'granted')
             {
                 let notification = new Notification('Nouvelle demande',{
@@ -67,10 +67,9 @@ export default {
          var pusher = new Pusher(process.env.MIX_PUSHER_APP_KEY, {
              cluster: process.env.MIX_PUSHER_APP_CLUSTER
          });
-
-            let seller_id = this.$store.state.user.id
+        this.event = `request-event-${this.$store.state.user.id}`
             var channel = pusher.subscribe('seller');
-            channel.bind('request-event-' . seller_id , this.enableNotification);
+            channel.bind(this.event , this.enableNotification);
 
     }
 }

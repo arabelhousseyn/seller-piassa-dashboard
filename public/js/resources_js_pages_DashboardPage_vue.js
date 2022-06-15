@@ -429,7 +429,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      isLoading: true
+      isLoading: true,
+      event: null
     };
   },
   components: {
@@ -440,8 +441,6 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     enableNotification: function enableNotification(data) {
       var _this = this;
-
-      console.log('hello');
 
       if (localStorage.getItem('permission') == 'granted') {
         var notification = new Notification('Nouvelle demande', {
@@ -489,9 +488,9 @@ __webpack_require__.r(__webpack_exports__);
     var pusher = new Pusher("b5ef6ef8a5619d1d4b7b", {
       cluster: "eu"
     });
-    var seller_id = this.$store.state.user.id;
+    this.event = "request-event-".concat(this.$store.state.user.id);
     var channel = pusher.subscribe('seller');
-    channel.bind('request-event-'.seller_id, this.enableNotification);
+    channel.bind(this.event, this.enableNotification);
   }
 });
 
