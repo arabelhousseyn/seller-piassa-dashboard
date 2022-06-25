@@ -58,7 +58,7 @@
                             <v-list-item-group>
                                 <v-list-item link @click="fetchSuggestions(item.request.suggestions,item.id)">
                                     <v-list-item-icon><v-icon color="primary">mdi-chart-box</v-icon></v-list-item-icon>
-                                    <v-list-item-content><v-list-item-title>Les suggestion</v-list-item-title></v-list-item-content>
+                                    <v-list-item-content><v-list-item-title>Disponible</v-list-item-title></v-list-item-content>
                                 </v-list-item>
                                 <v-list-item link @click="fetchImages(item.request.images)">
                                     <v-list-item-icon><v-icon color="primary">mdi-folder-multiple-image</v-icon></v-list-item-icon>
@@ -66,7 +66,7 @@
                                 </v-list-item>
                                 <v-list-item link @click="destroy(item.id)">
                                     <v-list-item-icon><v-icon color="red">mdi-trash-can</v-icon></v-list-item-icon>
-                                    <v-list-item-content><v-list-item-title>Décline</v-list-item-title></v-list-item-content>
+                                    <v-list-item-content><v-list-item-title>Indisponible</v-list-item-title></v-list-item-content>
                                 </v-list-item>
                             </v-list-item-group>
                         </v-list>
@@ -89,6 +89,16 @@
                             </ul>
                         </li>
                     </ol>
+                </template>
+
+                <template v-slot:item.request.vehicle="{ item }">
+                            <ul>
+                                <li>numéro de châssis : {{ item.request.vehicle.chassis_number }}</li>
+                                <li>Modèle : {{ item.request.vehicle.model }}</li>
+                                <li>motorisation : {{ item.request.vehicle.motorization }}</li>
+                                <li>Année : {{ item.request.vehicle.year }} </li>
+                                <li>Marque : {{ item.request.vehicle.sign.name }} </li>
+                            </ul>
                 </template>
 
                 <template v-slot:no-data>
@@ -124,6 +134,7 @@ export default {
                 value: 'request.type.name'
             },
             { text: 'Détails', value: 'request.informations' },
+            { text: 'Véhicule', value: 'request.vehicle' },
             { text: 'Créé à', value: 'request.created_at' },
             { text: 'actions', value: 'actions', sortable: false },
         ],

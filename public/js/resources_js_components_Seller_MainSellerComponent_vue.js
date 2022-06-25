@@ -148,6 +148,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -172,6 +182,9 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         text: 'Détails',
         value: 'request.informations'
+      }, {
+        text: 'Véhicule',
+        value: 'request.vehicle'
       }, {
         text: 'Créé à',
         value: 'request.created_at'
@@ -1349,7 +1362,7 @@ var render = function () {
                                       "v-list-item-content",
                                       [
                                         _c("v-list-item-title", [
-                                          _vm._v("Les suggestion"),
+                                          _vm._v("Disponible"),
                                         ]),
                                       ],
                                       1
@@ -1423,7 +1436,7 @@ var render = function () {
                                       "v-list-item-content",
                                       [
                                         _c("v-list-item-title", [
-                                          _vm._v("Décline"),
+                                          _vm._v("Indisponible"),
                                         ]),
                                       ],
                                       1
@@ -1504,6 +1517,49 @@ var render = function () {
                       ])
                     }
                   )
+                },
+              },
+              {
+                key: "item.request.vehicle",
+                fn: function (ref) {
+                  var item = ref.item
+                  return [
+                    _c("ul", [
+                      _c("li", [
+                        _vm._v(
+                          "numéro de châssis : " +
+                            _vm._s(item.request.vehicle.chassis_number)
+                        ),
+                      ]),
+                      _vm._v(" "),
+                      _c("li", [
+                        _vm._v(
+                          "Modèle : " + _vm._s(item.request.vehicle.model)
+                        ),
+                      ]),
+                      _vm._v(" "),
+                      _c("li", [
+                        _vm._v(
+                          "motorisation : " +
+                            _vm._s(item.request.vehicle.motorization)
+                        ),
+                      ]),
+                      _vm._v(" "),
+                      _c("li", [
+                        _vm._v(
+                          "Année : " + _vm._s(item.request.vehicle.year) + " "
+                        ),
+                      ]),
+                      _vm._v(" "),
+                      _c("li", [
+                        _vm._v(
+                          "Marque : " +
+                            _vm._s(item.request.vehicle.sign.name) +
+                            " "
+                        ),
+                      ]),
+                    ]),
+                  ]
                 },
               },
               {
