@@ -22489,8 +22489,8 @@ var render = function () {
                                       [
                                         _c("v-list-item-title", [
                                           _vm._v(
-                                            "Numéro de commande : " +
-                                              _vm._s(notification.data.data.ref)
+                                            "Numéro de demande : " +
+                                              _vm._s(notification.data.data.id)
                                           ),
                                         ]),
                                         _vm._v(" "),

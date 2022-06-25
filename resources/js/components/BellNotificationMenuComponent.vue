@@ -34,7 +34,7 @@
                                         <v-icon v-else>mdi-star</v-icon>
                                     </v-list-item-avatar>
                                     <v-list-item-content>
-                                        <v-list-item-title>Numéro de commande : {{notification.data.data.ref}}</v-list-item-title>
+                                        <v-list-item-title>Numéro de demande : {{notification.data.data.id}}</v-list-item-title>
                                         <v-list-item-subtitle v-if="notification.read_at == null">
                                             <v-chip color="green" dark>Nouvelle notification</v-chip>
                                         </v-list-item-subtitle>
