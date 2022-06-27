@@ -93,11 +93,11 @@
 
                 <template v-slot:item.request.vehicle="{ item }">
                             <ul>
-                                <li>numéro de châssis : {{ item.request.vehicle.chassis_number }}</li>
-                                <li>Modèle : {{ item.request.vehicle.model }}</li>
-                                <li>motorisation : {{ item.request.vehicle.motorization }}</li>
-                                <li>Année : {{ item.request.vehicle.year }} </li>
                                 <li>Marque : {{ item.request.vehicle.sign.name }} </li>
+                                <li>Modèle : {{ item.request.vehicle.model }}</li>
+                                <li>Année : {{ item.request.vehicle.year }} </li>
+                                <li>motorisation : {{ item.request.vehicle.motorization }}</li>
+                                <li>numéro de châssis : {{ item.request.vehicle.chassis_number }}</li>
                             </ul>
                 </template>
 
