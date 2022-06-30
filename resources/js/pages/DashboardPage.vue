@@ -40,7 +40,7 @@ export default {
         },
         playSound()
         {
-            let audio = new Audio('storage/notification.mp3')
+            let audio = new Audio('http://soundbible.com/mp3/Air Plane Ding-SoundBible.com-496729130.mp3')
             audio.play()
         }
     },
