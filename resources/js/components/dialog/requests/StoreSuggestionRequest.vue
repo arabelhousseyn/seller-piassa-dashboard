@@ -150,6 +150,12 @@ export default {
         empty()
         {
             this.inputs1 = 1
+            this.mark = null
+            this.price = null
+            this.data.marks = null
+            this.data.prices = null
+            this.data.seller_request_id = null
+            this.data.available_at = null
         },
         mutate(data,type)
         {
